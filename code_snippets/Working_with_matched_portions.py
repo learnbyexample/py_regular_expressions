@@ -1,3 +1,5 @@
+import re
+
 re.search(r'ab*c', 'abc ac adc abbbc')
 
 re.search(r'b.*d', 'abc ac adc abbbc')
