@@ -2,6 +2,9 @@
 
 Learn Python Regular Expressions step by step from beginner to advanced levels with 200+ examples
 
+The book also includes exercises to test your understanding, which is presented together
+as a single file in this repo - [Exercises.md](./exercises/Exercises.md)
+
 <br>
 
 # E-book
