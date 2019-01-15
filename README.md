@@ -5,11 +5,15 @@ Learn Python Regular Expressions step by step from beginner to advanced levels w
 The book also includes exercises to test your understanding, which is presented together
 as a single file in this repo - [Exercises.md](./exercises/Exercises.md)
 
+See [Version_changes.md](./Version_changes.md) to keep track of changes made to the book.
+
 <br>
 
 # E-book
 
 You can download the book from https://leanpub.com/py_regex
+
+You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
 
 <br>
 
