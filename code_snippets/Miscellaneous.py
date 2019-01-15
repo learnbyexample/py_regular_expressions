@@ -74,7 +74,7 @@ lvl2 = regex.compile('''
             \([^()]++\)  #level-one RE
            )++           #end of non-capturing group, 1 or more times
          \)              #literal )
-         ''', flags=re.X)
+         ''', flags=regex.X)
 
 lvl2.findall(eqn1)
 
@@ -88,7 +88,7 @@ lvln = regex.compile('''
             (?0)      #recursive call
            )++        #end of non-capturing group, 1 or more times
          \)           #literal )
-         ''', flags=re.X)
+         ''', flags=regex.X)
 
 lvln.findall(eqn0)
 
