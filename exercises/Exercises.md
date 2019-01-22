@@ -429,14 +429,15 @@ with hyphens. Can you do it without using a capture group?
 ['F2H3u%9', 'A $B C1234']
 ```
 
-**c)** Match strings if it doesn't contain whitespace or the string `error` between
-the strings `qty` and `price`
+**c)** Match strings if it contains `qty` followed by `price` but not if
+there is **whitespace** or the string `error` between them.
 
 ```ruby
 >>> str1 = '23,qty,price,42'
 >>> str2 = 'qty price,oh'
 >>> str3 = '3.14,qty,6,errors,9,price,3'
->>> str4 = 'qty-6,apple-56,price-234'
+>>> str4 = '42\nqty-6,apple-56,price-234,error'
+>>> str5 = '4,price,3.14,qty,4'
 
 >>> neg = re.compile()       ##### add your solution here
 >>> bool(neg.search(str1))
@@ -447,6 +448,8 @@ False
 False
 >>> bool(neg.search(str4))
 True
+>>> bool(neg.search(str5))
+False
 ```
 
 <br>
