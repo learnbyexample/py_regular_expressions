@@ -11,9 +11,11 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 # E-book
 
-You can download the book from https://leanpub.com/py_regex
+* You can download the book from https://leanpub.com/py_regex
+    * You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
+* For those in India, visit https://www.instamojo.com/learnbyexample/python-regex/
 
-You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
+For a preview of the book, see [sample chapters](./sample_chapters/Python_Regex_sample.pdf)
 
 <br>
 
