@@ -11,9 +11,11 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 # E-book
 
-* You can download the book from https://leanpub.com/py_regex
-    * You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
-* For those in India, visit https://www.instamojo.com/learnbyexample/python-regex/
+* You can download the book from any of these links
+    * https://leanpub.com/py_regex
+        * You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
+    * https://gumroad.com/l/py_regex
+    * For those in India, visit https://www.instamojo.com/learnbyexample/python-regex/
 * You can also get the book as a bundle
     * **Python 201: Intermediate Python + Python re(gex)?** from https://leanpub.com/b/python201_and_regex
         * Python 201 is authored by [Michael Driscoll](https://www.blog.pythonlibrary.org/)
