@@ -1,5 +1,13 @@
 <br>
 
+### 1.3
+
+* changed cover image
+* added `warning` and `info` icons to highlight notes
+* better wording and test strings for 3rd lookaround exercise
+
+<br>
+
 ### 1.2
 
 * added [debuggex](https://www.debuggex.com) links, this site provides railroad diagrams to help understand complex REs
