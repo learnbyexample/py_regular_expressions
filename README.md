@@ -2,6 +2,10 @@
 
 Learn Python Regular Expressions step by step from beginner to advanced levels with 200+ examples
 
+<p align="center">
+    <img src="./images/Python_regex_v1p3.png" width="320px" height="400px" />
+</p>
+
 The book also includes exercises to test your understanding, which is presented together
 as a single file in this repo - [Exercises.md](./exercises/Exercises.md)
 
