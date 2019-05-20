@@ -46,6 +46,22 @@ For a preview of the book, see [sample chapters](./sample_chapters/Python_Regex_
 
 <br>
 
+# Acknowledgements
+
+* [Python documentation](https://docs.python.org/3/) - manuals and tutorials
+* [/r/learnpython/](https://www.reddit.com/r/learnpython/) - helpful forum for beginners and experienced programmers alike
+* [stackoverflow](https://stackoverflow.com/) - for getting answers to pertinent questions on Python and regular expressions
+* [tex.stackexchange](https://tex.stackexchange.com/) - for help on `pandoc` and `tex` related questions
+* Cover image: [draw.io](https://about.draw.io/), [tree icon](https://www.iconfinder.com/icons/3199231/ellipse_green_nature_tree_icon) by [Gopi Doraisamy](https://www.iconfinder.com/gopidoraisamy) under [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/) and [wand icon](https://www.iconfinder.com/icons/1679640/design_magic_magician_tool_wand_icon) by [roundicons.com](https://www.iconfinder.com/roundicons)
+* [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [softwareengineering.stackexchange](https://softwareengineering.stackexchange.com/questions/39/whats-your-favourite-quote-about-programming) and [skolakoda](https://skolakoda.org/programming-quotes) for programming quotes
+
+Special thanks to Al Sweigart, for introducing me to Python with his awesome
+[automatetheboringstuff](https://automatetheboringstuff.com/) book and video course.
+
+
+<br>
+
 # Contributing
 
 * Open an issue for suggestions, bugs, typos, etc
