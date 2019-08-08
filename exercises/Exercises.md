@@ -3,7 +3,7 @@
 **a)** For the given input file, print all lines containing the string `two`
 
 ```ruby
-# note that expected output shown here is wrapped to fit pdf width
+# note that the expected output shown here is wrapped to fit pdf width
 >>> filename = 'programming_quotes.txt'
 >>> word = re.compile()     ##### add your solution here
 >>> with open(filename, 'r') as ip_file:
@@ -11,9 +11,10 @@
 ...         if word.search(ip_line):
 ...             print(ip_line, end='')
 ... 
-"Some people, when confronted with a problem, think - I know, I'll use regular expressions.
-Now they have two problems" by Jamie Zawinski
-"So much complexity in software comes from trying to make one thing do two things" by Ryan Singer
+"Some people, when confronted with a problem, think - I know, I'll use regular
+expressions. Now they have two problems" by Jamie Zawinski
+"So much complexity in software comes from trying to make one thing do two
+things" by Ryan Singer
 ```
 
 **b)** For the given input string, print all lines NOT containing the string `2`
@@ -39,8 +40,7 @@ water 10
 
 # Anchors
 
-**a)** For the given **url**, count the total number of lines that contain `is` or `the` as whole words.
-Note that each `line` in the `for` loop will be of `bytes` data type.
+**a)** For the given url, count the total number of lines that contain `is` or `the` as whole words. **Note** that each `line` in the `for` loop will be of `bytes` data type.
 
 ```ruby
 >>> import urllib.request
@@ -111,9 +111,7 @@ wall mall ball fall
 ['lovely', '2 lonely', 'dent']
 ```
 
-**b)** For the given **url**, count the total number of lines that contain `removed` or `rested` or
-`received` or `replied` or `refused` or `retired` as whole words. Note that each `line` in the
-`for` loop will be of `bytes` data type.
+**b)** For the given url, count the total number of lines that contain `removed` or `rested` or `received` or `replied` or `refused` or `retired` as whole words. **Note** that each `line` in the `for` loop will be of `bytes` data type.
 
 ```ruby
 >>> import urllib.request
@@ -133,7 +131,7 @@ wall mall ball fall
 
 # Escaping metacharacters
 
-**a)** Transform given input strings to expected output using same logic on both strings.
+**a)** Transform the given input strings to the expected output using same logic on both strings.
 
 ```ruby
 >>> str1 = '(9-2)*5+qty/3'
@@ -145,7 +143,7 @@ wall mall ball fall
 '(qty+4)/2-35+pq/4'
 ```
 
-**b)** Replace any matching item from given list with `X` for given input strings.
+**b)** Replace any matching item from the given list with `X` for given the input strings.
 
 ```ruby
 >>> items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
@@ -163,10 +161,7 @@ wall mall ball fall
 
 # Dot metacharacter and Quantifiers
 
-**Note** that some exercises are intentionally designed to be complicated to solve with regular
-expressions alone. Try to use normal string methods, break down the problem into multiple steps, etc.
-Some exercises will become easier to solve with techniques presented in chapters to come. Going through
-the exercises a second time after finishing entire book will be fruitful as well.
+**Note** that some exercises are intentionally designed to be complicated to solve with regular expressions alone. Try to use normal string methods, break down the problem into multiple steps, etc. Some exercises will become easier to solve with techniques presented in chapters to come. Going through the exercises a second time after finishing entire book will be fruitful as well.
 
 **a)** Use regular expression to get the output as shown for the given strings.
 
@@ -252,7 +247,7 @@ the exercises a second time after finishing entire book will be fruitful as well
 'ission is to read and practice consistent'
 ```
 
-**b)** Transform the given input strings to expected output as shown.
+**b)** Transform the given input strings to the expected output as shown below.
 
 ```ruby
 >>> row1 = '-2,5 4,+3 +42,-53 '
@@ -284,9 +279,7 @@ the exercises a second time after finishing entire book will be fruitful as well
 'Hi there. Nice day(a'
 ```
 
-**b)** Extract all hex character sequences, with optional prefix. Match the
-characters case insensitively, and the sequences shouldn't be surrounded by
-other word characters.
+**b)** Extract all hex character sequences, with optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
 
 ```ruby
 >>> hex_seq = re.compile()        ##### add your solution here
@@ -295,13 +288,12 @@ other word characters.
 ##### add your solution here
 ['128A', '0xfe32', '34']
 
->>> str2 = '0XDEADBEEF lace 0x0ff1ce bad'
+>>> str2 = '0XDEADBEEF place 0x0ff1ce bad'
 ##### add your solution here
 ['0XDEADBEEF', '0x0ff1ce', 'bad']
 ```
 
-**c)** Output True/False depending upon input string containing any number sequence
-that is greater than `624`
+**c)** Check if input string contains any number sequence that is greater than 624.
 
 ```ruby
 >>> str1 = 'hi0000432abcd'
@@ -323,7 +315,6 @@ True
 >>> str1 = 'lion \t Ink32onion Nice'
 >>> str2 = '**1\f2\n3star\t7 77\r**'
 >>> expr = re.compile()       ##### add your solution here
-
 >>> expr.split(str1)
 ['lion', 'Ink', 'onion', 'Nice']
 >>> expr.split(str2)
@@ -334,9 +325,7 @@ True
 
 # Groupings and backreferences
 
-**a)** The given string has fields separated by `:` and each field has a floating point
-number followed by a `,` and a string. If the floating point number has only one digit
-precision, append `0` and swap the strings separated by `,` for that particular field.
+**a)** The given string has fields separated by `:` and each field has a floating point number followed by a `,` and a string. If the floating point number has only one digit precision, append `0` and swap the strings separated by `,` for that particular field.
 
 ```ruby
 >>> row = '3.14,hi:42.5,bye:1056.1,cool:00.9,fool'
@@ -344,10 +333,7 @@ precision, append `0` and swap the strings separated by `,` for that particular 
 '3.14,hi:bye,42.50:cool,1056.10:fool,00.90'
 ```
 
-**b)** Count the number of words that have at least two consecutive repeated alphabets,
-for ex: words like `stillness` and `Committee` but not words like `root` or `readable` or `rotational`.
-Consider word to be as defined in regular expression parlance and word split across two lines as two
-different words.
+**b)** Count the number of words that have at least two consecutive repeated alphabets. For example, words like `stillness` and `Committee` but not words like `root` or `readable` or `rotational`. Consider word to be as defined in regular expression parlance and any word split across two lines should be treated as two different words.
 
 ```ruby
 >>> import urllib.request
@@ -364,10 +350,7 @@ different words.
 219
 ```
 
-**c)** Convert the given **markdown** headers to corresponding **anchor** tag.
-Consider the input to start with one or more `#` characters followed by space and word characters.
-The `name` attribute is constructed by converting the header to lowercase and replacing spaces
-with hyphens. Can you do it without using a capture group?
+**c)** Convert the given **markdown** headers to corresponding **anchor** tag. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
 
 ```ruby
 >>> header1 = '# Regular Expressions'
@@ -391,7 +374,7 @@ with hyphens. Can you do it without using a capture group?
 '[Subexpression calls](#subexpression-calls)'
 ```
 
-**e)** Use appropriate regular expression function to get the expected output for given string.
+**e)** Use appropriate regular expression function to get the expected output for the given string.
 
 ```ruby
 >>> str1 = 'price_42 roast:\t\n:-ice==cat\neast'
@@ -429,8 +412,7 @@ with hyphens. Can you do it without using a capture group?
 ['F2H3u%9', 'A $B C1234']
 ```
 
-**c)** Match strings if it contains `qty` followed by `price` but not if
-there is **whitespace** or the string `error` between them.
+**c)** Match strings if it contains `qty` followed by `price` but not if there is **whitespace** or the string `error` between them.
 
 ```ruby
 >>> str1 = '23,qty,price,42'
@@ -456,9 +438,7 @@ False
 
 # Flags
 
-**a)** Delete from the string `start` if it is at beginning of a line up to
-the next occurrence of the string `end` at end of a line. Match these keywords
-irrespective of case.
+**a)** Delete from the string `start` if it is at beginning of a line up to the next occurrence of the string `end` at end of a line. Match these keywords irrespective of case.
 
 ```ruby
 >>> para = '''\
@@ -484,7 +464,7 @@ hi there
 bye
 ```
 
-**b)** Explore what the `re.DEBUG` flag does. Here's some examples, check their output:
+**b)** Explore what the `re.DEBUG` flag does. Here's some examples, check their output.
 
 * `re.compile(r'\Aden|ly\Z', flags=re.DEBUG)`
 * `re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)`
@@ -494,9 +474,7 @@ bye
 
 # Unicode
 
-**a)** Output `True` or `False` depending on input string made up of ASCII characters or not.
-Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII
-set should give `False`
+**a)** Output `True` or `False` depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give `False`
 
 ```ruby
 >>> str1 = '123—456'
@@ -518,8 +496,7 @@ False
 
 # Miscellaneous
 
-**a)** Count the maximum depth of nested braces for the given string.
-Unbalanced or wrongly ordered braces should return `-1`
+**a)** Count the maximum depth of nested braces for the given string. Unbalanced or wrongly ordered braces should return `-1`
 
 ```ruby
 >>> def max_nested_braces(ip):
@@ -557,8 +534,7 @@ Unbalanced or wrongly ordered braces should return `-1`
 'write a sparser'
 ```
 
-**c)** Read about `POSIX` flag from [regex module documentation](https://pypi.org/project/regex/).
-Is the following code snippet showing the correct output?
+**c)** Read about `POSIX` flag from [regex module documentation](https://pypi.org/project/regex/). Is the following code snippet showing the correct output?
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -567,10 +543,7 @@ Is the following code snippet showing the correct output?
 'plX XmX tX wX X cautX sentient'
 ```
 
-**d)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective
-of case) with the string `Python`. However, any match within code blocks that start with whole line
-` ```python ` and end with whole line ` ``` ` shouldn't be replaced.
-Consider the input file to be small enough to fit memory requirements.
+**d)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective of case) with the string `Python`. However, any match within code blocks that start with whole line ` ```python ` and end with whole line ` ``` ` shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.
 
 ```ruby
 >>> ip_str = open('sample.md', 'r').read()
