@@ -14,9 +14,9 @@ expr = '(a^b)'
 
 print(re.escape(expr))
 
+re.sub(re.escape(expr) + r'\Z', r'c', eqn)
+
 terms = ['foo_baz', expr]
 
 print('|'.join(re.escape(w) for w in terms))
-
-re.sub(re.escape(expr) + r'\Z', r'c', eqn)
 

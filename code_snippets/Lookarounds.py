@@ -72,3 +72,5 @@ bool(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot'))
 
 re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0]
 
+re.findall(r'a(?:(?!\d).)*z', 'at,baz,a2z,bad-zoo')
+

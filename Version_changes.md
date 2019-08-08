@@ -1,5 +1,17 @@
 <br>
 
+### 2.0
+
+* added Table of Contents
+* changed book formatting
+    * better contrast for chapter and section names
+    * increased font size and page margins
+* added cheatsheet at end of chapters
+* improved descriptions and examples
+* corrected minor typos and improved grammar (some were based on feedback received)
+
+<br>
+
 ### 1.3
 
 * changed cover image

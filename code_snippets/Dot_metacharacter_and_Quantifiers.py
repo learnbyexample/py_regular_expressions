@@ -2,7 +2,7 @@ re.sub(r'c.t', r'X', 'tac tin cat abc;tuv acute')
 
 re.sub(r'r..d', r'X', 'breadth markedly reported overrides')
 
-re.sub(r'2.3', r'8', '42\t33')
+re.sub(r'2.3', r'8', '42\t35')
 
 re.sub(r'e?ar', r'X', 'far feat flare fear')
 

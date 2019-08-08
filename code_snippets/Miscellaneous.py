@@ -36,8 +36,6 @@ while True:
 
 row
 
-import regex
-
 regex.findall(r'\G\S', '123-87-593 42 foo')
 
 regex.sub(r'\G\S', r'*', '123-87-593 42 foo')
@@ -45,6 +43,8 @@ regex.sub(r'\G\S', r'*', '123-87-593 42 foo')
 regex.findall(r'\G\d+-?', '123-87-593 42 foo')
 
 regex.sub(r'\G(\d+)(-?)', r'(\1)\2', '123-87-593 42 foo')
+
+regex.findall(r'\G\w(?=\w)', 'cat12 bat pin')
 
 regex.sub(r'\G\w(?=\w)', r'\g<0>:', 'cat12 bat pin')
 
@@ -102,11 +102,11 @@ lvln.findall(eqn3)
 
 regex.split(r'[[:digit:]]+', 'Sample123string42with777numbers')
 
-regex.findall(r'[[:alpha:]]+', 'Sample123string42with777numbers')
+regex.sub(r'[[:alpha:]]+', r':', 'Sample123string42with777numbers')
 
-regex.findall(r'[[:word:][:space:]]+', 'tea sea-pit sit-lean bean')
+regex.findall(r'[[:word:][:space:]]+', 'tea sea-pit sit-lean\tbean')
 
-regex.findall(r'[[:^space:]]+', 'tea sea-pit sit-lean bean')
+regex.findall(r'[[:^space:]]+', 'tea sea-pit sit-lean\tbean')
 
 regex.findall(r'(?<![[:punct:]])\b\w+\b(?![[:punct:]])', 'tie. ink eat;')
 

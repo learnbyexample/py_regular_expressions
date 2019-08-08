@@ -4,11 +4,7 @@ words = ['cute', 'cat', 'cot', 'coat', 'cost', 'scuttle']
 
 re.sub(r'[aeo]+t', r'X', 'meeting cute boat site foot')
 
-re.findall(r'[0123456789]+', 'Sample123string42with777numbers')
-
 re.findall(r'[0-9]+', 'Sample123string42with777numbers')
-
-re.findall(r'\b[a-z]+\b', 'coat Bin food tar12 best')
 
 re.findall(r'\b[a-z0-9]+\b', 'coat Bin food tar12 best')
 
@@ -33,8 +29,6 @@ re.sub(r'[0-9]+', num_range, '45 349 651 593 4 204')
 
 re.findall(r'[^0-9]+', 'Sample123string42with777numbers')
 
-re.sub(r'\A[^=]+', r'', 'foo=42; baz=123', count=1)
-
 re.sub(r'\A([^:]+:){2}', r'', 'foo:123:bar:baz', count=1)
 
 re.sub(r'=[^=]+\Z', r'', 'foo=42; baz=123', count=1)
@@ -53,7 +47,7 @@ re.findall(r'a[+^]b', 'f*(a^b) - 3*(a+b)')
 
 re.findall(r'a[\^+]b', 'f*(a^b) - 3*(a+b)')
 
-re.search(r'[a-z\[\]0-9]+', 'words[5] = tea')
+re.search(r'[a-z\[\]0-9]+', 'words[5] = tea')[0]
 
 print(re.search(r'[a\\b]+', r'5ba\babc2')[0])
 
@@ -63,7 +57,7 @@ re.findall(r'\d+', 'foo=5, bar=3; x=83, y=120')
 
 ''.join(re.findall(r'\b\w', 'sea eat car rat eel tea'))
 
-re.findall(r'[\w\s]+', 'tea sea-pit sit-lean bean')
+re.findall(r'[\w\s]+', 'tea sea-pit sit-lean\tbean')
 
 re.sub(r'\D+', r'-', 'Sample123string42with777numbers')
 

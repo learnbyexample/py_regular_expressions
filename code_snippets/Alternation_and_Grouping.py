@@ -70,9 +70,9 @@ re.sub(r'are|art|ar', r'X', words)
 
 words = ['hand', 'handy', 'handful']
 
-'|'.join(sorted(words, key=len, reverse=True))
-
 alt = re.compile('|'.join(sorted(words, key=len, reverse=True)))
+
+alt.pattern
 
 alt.sub(r'X', 'hands handful handed handy')
 

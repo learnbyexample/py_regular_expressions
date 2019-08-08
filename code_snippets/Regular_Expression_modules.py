@@ -10,6 +10,8 @@ bool(re.search(r'is', sentence))
 
 bool(re.search(r'xyz', sentence))
 
+sentence = 'This is a sample string'
+
 if re.search(r'ring', sentence):
     print('mission success')
 
@@ -42,11 +44,13 @@ bool(word.search(sentence, 6))
 
 bool(word.search(sentence, 2, 4))
 
-sentence = b'This is a sample string'
+byte_data = b'This is a sample string'
 
-bool(re.search(rb'is', sentence))
+re.search(r'is', byte_data)
 
-bool(re.search(rb'xyz', sentence))
+bool(re.search(rb'is', byte_data))
+
+bool(re.search(rb'xyz', byte_data))
 
 import regex
 

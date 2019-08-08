@@ -6,13 +6,13 @@ re.sub(r'\d+', r'(\g<0>0)', '52 apples and 31 mangoes')
 
 re.sub(r'.*', r'Hi. \g<0>. Have a nice day', 'Hello world', count=1)
 
-re.sub(r'(\w+),(\w+)', r'\2,\1', 'a,b 42,24')
+re.sub(r'(\w+),(\w+)', r'\2,\1', 'good,bad 42,24')
 
 words = ['effort', 'flee', 'facade', 'oddball', 'rat', 'tool']
 
 [w for w in words if re.search(r'\b\w*(\w)\1\w*\b', w)]
 
-re.sub(r'\b(\w+)( \1)+\b', r'\1', 'a a a walking for for a cause')
+re.sub(r'\b(\w+)( \1)+\b', r'\1', 'aa a a a 42 f_1 f_1 f_13.14')
 
 re.split(r'\d+', 'Sample123string42with777numbers')
 
@@ -38,7 +38,7 @@ m_iter = repeat_char.finditer(words)
 
 [m[0] for m in m_iter]
 
-re.sub(r'(?P<fw>\w+),(?P<sw>\w+)', r'\g<sw>,\g<fw>', 'a,b 42,24')
+re.sub(r'(?P<fw>\w+),(?P<sw>\w+)', r'\g<sw>,\g<fw>', 'good,bad 42,24')
 
 sentence = 'I bought an apple'
 

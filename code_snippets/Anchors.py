@@ -16,19 +16,19 @@ words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 [w for w in words if re.search(r't\Z', w)]
 
-pat = re.compile(r'\Acat\Z')
+word_pat = re.compile(r'\Acat\Z')
 
-bool(pat.search('cat'))
+bool(word_pat.search('cat'))
 
-bool(pat.search('cater'))
+bool(word_pat.search('cater'))
 
-bool(pat.search('concatenation'))
+bool(word_pat.search('concatenation'))
 
-pat = re.compile(r'\Aat\Z')
+word_pat = re.compile(r'\Aat')
 
-bool(pat.search('cat', 1))
+bool(word_pat.search('cater', 1))
 
-bool(pat.search('cat'[1:]))
+bool(word_pat.search('cater'[1:]))
 
 re.sub(r'\A', r're', 'live')
 
@@ -68,17 +68,17 @@ bool(re.search(r'day\Z', greeting))
 
 bool(re.search(r'day\n\Z', greeting))
 
-bool(re.search(r'^tap', "hi hello\ntop spot", flags=re.M))
+bool(re.search(r'^top', 'hi hello\ntop spot', flags=re.M))
 
-bool(re.search(r'ar$', "spare\npar\ndare", flags=re.M))
+bool(re.search(r'ar$', 'spare\npar\ndare', flags=re.M))
 
-elements = ['spare\n', 'par\n', 'dare']
+elements = ['spare\ntool', 'par\n', 'dare']
 
 [e for e in elements if re.search(r'are$', e, flags=re.M)]
 
-bool(re.search(r'^par$', "spare\npar\ndare", flags=re.M))
+bool(re.search(r'^par$', 'spare\npar\ndare', flags=re.M))
 
-ip_lines = "catapults\nconcatenate\ncat"
+ip_lines = 'catapults\nconcatenate\ncat'
 
 print(re.sub(r'^', r'* ', ip_lines, flags=re.M))
 
@@ -93,6 +93,8 @@ re.sub(r'\bpar', r'X', words)
 re.sub(r'par\b', r'X', words)
 
 re.sub(r'\bpar\b', r'X', words)
+
+words = 'par spar apparent spare part'
 
 print(re.sub(r'\b', r'"', words).replace(' ', ','))
 

@@ -34,4 +34,5 @@ Note: Some of these resources are not specific to Python
 * [stackoverflow: Greedy vs Reluctant vs Possessive Quantifiers](https://stackoverflow.com/questions/5319840/greedy-vs-reluctant-vs-possessive-quantifiers)
 * [stackoverflow: named captures as a dict](https://stackoverflow.com/questions/11103856/re-findall-which-returns-a-dict-of-named-capturing-groups)
 * [stackoverflow: Is it worth using re.compile?](https://stackoverflow.com/questions/452104/is-it-worth-using-pythons-re-compile)
+* [cloudflare: Details of the Cloudflare outage on July 2, 2019](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/) - see appendix for details about CPU exhaustion caused due to regular expression backtracking
 
