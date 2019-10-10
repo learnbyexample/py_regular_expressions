@@ -71,6 +71,7 @@ Twitter: https://twitter.com/learn_byexample
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
 * [softwareengineering.stackexchange](https://softwareengineering.stackexchange.com/questions/39/whats-your-favourite-quote-about-programming) and [skolakoda](https://skolakoda.org/programming-quotes) for programming quotes
 * [David Cortesi](https://leanpub.com/u/dcortesi) for helpful feedback on both the technical content and grammar issues
+* **Kye** for spotting a typo
 
 Special thanks to Al Sweigart, for introducing me to Python with his awesome [automatetheboringstuff](https://automatetheboringstuff.com/) book and video course.
 
