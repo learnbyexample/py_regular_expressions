@@ -1,5 +1,12 @@
 <br>
 
+### 2.1
+
+* corrected a typo
+* changed background color of code snippets for better contrast
+
+<br>
+
 ### 2.0
 
 * added Table of Contents
