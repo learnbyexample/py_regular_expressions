@@ -19,9 +19,10 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
         * You might find reduced price using this coupon https://leanpub.com/py_regex/c/P7erPYAm1386
     * https://gumroad.com/l/py_regex
     * For those in India, visit https://www.instamojo.com/learnbyexample/python-regex/
-* You can also get the book as a bundle
+* You can also get the book as a bundle:
     * **Python 201: Intermediate Python + Python re(gex)?** from https://leanpub.com/b/python201_and_regex
         * Python 201 is authored by [Michael Driscoll](https://www.blog.pythonlibrary.org/)
+    * **Awesome Regex** bundle from https://leanpub.com/b/regex
     * **(Python|Ruby) regex** from https://leanpub.com/b/pythonrubyregex
 
 For a preview of the book, see [sample chapters](./sample_chapters/Python_Regex_sample.pdf)
