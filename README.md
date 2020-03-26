@@ -21,11 +21,13 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 * You can also get the book as a bundle:
     * **Python 201: Intermediate Python + Python re(gex)?** from https://leanpub.com/b/python201_and_regex
         * Python 201 is authored by [Michael Driscoll](https://www.blog.pythonlibrary.org/)
-    * **Awesome Regex** bundle from https://leanpub.com/b/regex
+    * **Awesome Regex** bundle from https://leanpub.com/b/regex or https://gumroad.com/l/regex
     * **(Python|Ruby) regex** from https://leanpub.com/b/pythonrubyregex
 * See https://learnbyexample.github.io/books/ for list of other books
 
 For a preview of the book, see [sample chapters](./sample_chapters/Python_Regex_sample.pdf)
+
+The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/) if you are interested in the ebook creation process.
 
 <br>
 
@@ -86,6 +88,8 @@ Special thanks to Al Sweigart, for introducing me to Python with his awesome [au
 <br>
 
 # License
+
+The book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 The code snippets are licensed under MIT, see [LICENSE](./LICENSE) file
 
