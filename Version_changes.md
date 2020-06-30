@@ -1,5 +1,20 @@
 <br>
 
+### 3.0
+
+* Separated out `regex` module as a separate chapter (with description for more features) instead of mixing up with `re` module contents
+* Added plenty of new exercises, perhaps too many
+* Updated and clarified descriptions for many concepts, too many changes to list individually
+* Added description for new features in Python 3.8 like `\N` escape sequence
+* Added two interlude chapters to highlight external resources
+* Added separate section about escape sequences and differences compared to string literals
+* Added section for `re.fullmatch` function and modified/added several examples/exercises in multiple chapters to highlight its usage
+* Added section for conditional group `(?(id/name)yes-pattern|no-pattern)`
+* Converted chapter/section references to clickable links
+* And many more typo corrections and miscellaneous changes
+
+<br>
+
 ### 2.1
 
 * corrected a typo
