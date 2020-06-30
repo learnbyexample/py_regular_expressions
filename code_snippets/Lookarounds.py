@@ -1,20 +1,48 @@
-re.sub(r'foo(?!\d)', r'baz', 'hey food! foo42 foot5 foofoo')
+## Conditional expressions
 
-re.sub(r'(?<!_)foo', r'baz', 'foo _foo 42foofoo')
+items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
 
-re.sub(r'(?<!_)foo.', r'baz', 'food _fool 42foo_foot')
+[s for s in items if re.search(r'\d', s) and '#' in s]
 
-re.sub(r'(?<![:-])\b\w+\b', r'X', ':cart <apple -rest ;tea')
+for s in items:
+    if s[0] != '#':
+        print(re.sub(r',.+,', ' ', s))
 
-re.sub(r'(?<!\A)\b(?!\Z)', r' ', 'foo_baz=num1+35*42/num2')
+## Negative lookarounds
+
+re.sub(r'foo(?!\d)', 'baz', 'hey food! foo42 foot5 foofoo')
+
+re.sub(r'(?<!_)foo', 'baz', 'foo _foo 42foofoo')
+
+re.sub(r'(?<!_)foo.', 'baz', 'food _fool 42foo_foot')
+
+re.sub(r'(?<![:-])\b\w+\b', 'X', ':cart <apple -rest ;tea')
+
+re.sub(r'(?<!\A)\b(?!\Z)', ' ', 'foo_baz=num1+35*42/num2')
+
+re.sub(r'(?<![pr]).', '*', 'spare')
+
+re.sub(r'.(?<![pr].)', '*', 'spare')
+
+re.sub(r'par(?!.*s)', 'X', 'par spare part party')
+
+re.sub(r'(?!.*s)par', 'X', 'par spare part party')
+
+re.sub(r'(?!\Z)\b(?<!\A)', ' ', 'foo_baz=num1+35*42/num2')
+
+## Positive lookarounds
 
 re.findall(r'\d+(?=,)', '42 foo-5, baz3; x-83, y-20: f12')
 
 re.findall(r'(?<=-)\d+(?=[:;])', '42 foo-5, baz3; x-83, y-20: f12')
 
+re.sub(r'par(?=.*\bpart\b)', 'X', 'par spare part party')
+
 re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5')
 
-re.sub(r'(?<![^,])(?![^,])', r'NA', ',1,,,two,3,,,')
+re.sub(r'(?<![^,])(?![^,])', 'NA', ',1,,,two,3,,,')
+
+## Capture groups inside positive lookarounds
 
 print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
 
@@ -22,43 +50,55 @@ re.findall(r'(?<=(po|ca)re)\d+', 'pore42 car3 pare7 care5')
 
 re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5')
 
+## Conditional AND with lookarounds
+
 words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
 
 [w for w in words if re.search(r'(?=.*b)(?=.*e).*t', w)]
 
 [w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)]
 
-re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5')
+[w for w in words if re.search(r'(?=.*a)(?=.*q)(?!.*n\Z)', w)]
 
-re.findall(r'(?<=\b[a-z]{4})\d+', 'pore42 car3 pare7 care5')
+## Variable length lookbehind
 
-re.findall(r'(?<!car|pare)\d+', 'pore42 car3 pare7 care5')
+s = 'pore42 tar3 dare7 care5'
 
-re.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5')
+re.findall(r'(?<=(?:po|da)re)\d+', s)
 
-re.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,')
+re.findall(r'(?<=\b[a-z]{4})\d+', s)
 
-import regex
+re.findall(r'(?<!tar|dare)\d+', s)
 
-regex.sub(r'\b\w\K\w*\W*', r'', 'sea eat car rat eel tea')
+re.findall(r'(?<=\b[pd][a-z]*)\d+', s)
 
-regex.sub(r'(cat.*?){2}\Kcat', r'X', 'cat scatter cater scat', count=1)
+re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
 
-regex.findall(r'(?<=\b[a-z]+)\d+', 'pore42 car3 pare7 care5')
+s = 'pore42 tar3 dare7 care5'
 
-regex.sub(r'(?<=\A|,)(?=,|\Z)', r'NA', ',1,,,two,3,,,')
+re.findall(r'(?<!tar)(?<!dare)\d+', s)
 
-regex.sub(r'(?<=(cat.*?){2})cat', r'X', 'cat scatter cater scat', count=1)
+re.findall(r'(?:(?<=tar)|(?<=dare))\d+', s)
 
-regex.findall(r'(?<!car|pare)\d+', 'pore42 car3 pare7 care5')
+re.sub(r'((?<=\A)|(?<=,))(?=,|\Z)', 'NA', ',1,,,two,3,,,')
 
-bool(regex.search(r'(?<!cat.*)dog', 'fox,cat,dog,parrot'))
+s = 'pore42 tar3 dare7 care5'
 
-bool(regex.search(r'(?<!parrot.*)dog', 'fox,cat,dog,parrot'))
+re.findall(r'(?:tar|dare)(\d+)', s)
+
+re.sub(r'(tar|dare)\d+', r'\1', s)
+
+re.findall(r'\b[pd][a-z]*(\d+)', s)
+
+re.sub(r'(\b[pd][a-z]*)\d+', r'\1', s)
+
+## Negated groups
 
 bool(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot'))
 
 bool(re.search(r'\A((?!parrot).)*dog', 'fox,cat,dog,parrot'))
+
+bool(re.search(r'((?!cat).)*dog', 'fox,cat,dog,parrot'))
 
 re.search(r'\A((?!cat).)*', 'fox,cat,dog,parrot')[0]
 

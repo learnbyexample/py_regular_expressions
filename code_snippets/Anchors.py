@@ -1,3 +1,5 @@
+## String anchors
+
 bool(re.search(r'\Acat', 'cater'))
 
 bool(re.search(r'\Acat', 'concatenation'))
@@ -16,13 +18,13 @@ words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
 [w for w in words if re.search(r't\Z', w)]
 
-word_pat = re.compile(r'\Acat\Z')
+re.sub(r'\A', 're', 'live')
 
-bool(word_pat.search('cat'))
+re.sub(r'\A', 're', 'send')
 
-bool(word_pat.search('cater'))
+re.sub(r'\Z', 'er', 'cat')
 
-bool(word_pat.search('concatenation'))
+re.sub(r'\Z', 'er', 'hack')
 
 word_pat = re.compile(r'\Aat')
 
@@ -30,23 +32,21 @@ bool(word_pat.search('cater', 1))
 
 bool(word_pat.search('cater'[1:]))
 
-re.sub(r'\A', r're', 'live')
+## re.fullmatch
 
-re.sub(r'\A', r're', 'send')
+word_pat = re.compile(r'\Acat\Z')
 
-re.sub(r'\Z', r'er', 'cat')
+bool(word_pat.search('cat'))
 
-re.sub(r'\Z', r'er', 'hack')
+bool(word_pat.search('concatenation'))
 
-word = 'cater'
+word_pat = re.compile(r'cat', flags=re.I)
 
-re.sub(r'\Acat', r'hack', word)
+bool(word_pat.fullmatch('Cat'))
 
-word
+bool(word_pat.fullmatch('Scatter'))
 
-word = re.sub(r'\Acat', r'hack', word)
-
-word
+## Line anchors
 
 pets = 'cat and dog'
 
@@ -80,45 +80,47 @@ bool(re.search(r'^par$', 'spare\npar\ndare', flags=re.M))
 
 ip_lines = 'catapults\nconcatenate\ncat'
 
-print(re.sub(r'^', r'* ', ip_lines, flags=re.M))
+print(re.sub(r'^', '* ', ip_lines, flags=re.M))
 
-print(re.sub(r'$', r'.', ip_lines, flags=re.M))
+print(re.sub(r'$', '.', ip_lines, flags=re.M))
 
-words = 'par spar apparent spare part'
-
-re.sub(r'par', r'X', words)
-
-re.sub(r'\bpar', r'X', words)
-
-re.sub(r'par\b', r'X', words)
-
-re.sub(r'\bpar\b', r'X', words)
+## Word anchors
 
 words = 'par spar apparent spare part'
 
-print(re.sub(r'\b', r'"', words).replace(' ', ','))
+re.sub(r'par', 'X', words)
 
-re.sub(r'\b', r' ', '-----hello-----')
+re.sub(r'\bpar', 'X', words)
 
-re.sub(r'\b', r' ', 'foo_baz=num1+35*42/num2')
+re.sub(r'par\b', 'X', words)
 
-re.sub(r'\b', r' ', 'foo_baz=num1+35*42/num2').strip()
+re.sub(r'\bpar\b', 'X', words)
 
 words = 'par spar apparent spare part'
 
-re.sub(r'\Bpar', r'X', words)
+print(re.sub(r'\b', '"', words).replace(' ', ','))
 
-re.sub(r'\Bpar\b', r'X', words)
+re.sub(r'\b', ' ', '-----hello-----')
 
-re.sub(r'par\B', r'X', words)
+re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2')
 
-re.sub(r'\Bpar\B', r'X', words)
+re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2').strip()
 
-re.sub(r'\b', r':', 'copper')
+words = 'par spar apparent spare part'
 
-re.sub(r'\B', r':', 'copper')
+re.sub(r'\Bpar', 'X', words)
 
-re.sub(r'\b', r' ', '-----hello-----')
+re.sub(r'\Bpar\b', 'X', words)
 
-re.sub(r'\B', r' ', '-----hello-----')
+re.sub(r'par\B', 'X', words)
+
+re.sub(r'\Bpar\B', 'X', words)
+
+re.sub(r'\b', ':', 'copper')
+
+re.sub(r'\B', ':', 'copper')
+
+re.sub(r'\b', ' ', '-----hello-----')
+
+re.sub(r'\B', ' ', '-----hello-----')
 

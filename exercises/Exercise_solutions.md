@@ -8,9 +8,9 @@
 >>> line1 = 'start address: 0xA0, func1 address: 0xC0'
 >>> line2 = 'end address: 0xFF, func2 address: 0xB0'
 
->>> bool(re.search(r'', line1))     ##### add your solution here
+>>> bool(re.search(r'0xB0', line1))
 False
->>> bool(re.search(r'', line2))     ##### add your solution here
+>>> bool(re.search(r'0xB0', line2))
 True
 ```
 
@@ -19,7 +19,7 @@ True
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
 
->>> re.sub()        ##### add your solution here
+>>> re.sub(r'5', 'five', ip)
 'They ate five apples and five oranges'
 ```
 
@@ -28,7 +28,7 @@ True
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
 
->>> re.sub()       ##### add your solution here
+>>> re.sub(r'5', 'five', ip, count=1)
 'They ate five apples and 5 oranges'
 ```
 
@@ -37,7 +37,7 @@ True
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
->>> [w for w in items if not re.search()]        ##### add your solution here
+>>> [w for w in items if not re.search(r'e', w)]
 ['goal', 'sit']
 ```
 
@@ -46,7 +46,7 @@ True
 ```ruby
 >>> ip = 'This note should not be NoTeD'
 
->>> re.sub()        ##### add your solution here
+>>> re.sub(r'note', 'X', ip, flags=re.I)
 'This X should not be XD'
 ```
 
@@ -55,7 +55,7 @@ True
 ```ruby
 >>> ip = b'tiger imp goat'
 
->>> bool(re.search())     ##### add your solution here
+>>> bool(re.search(rb'at', ip))
 True
 ```
 
@@ -71,7 +71,7 @@ True
 ... finish the book
 ... bye'''
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'start', flags=re.I)
 >>> for line in para.split('\n'):
 ...     if not pat.search(line):
 ...         print(line)
@@ -88,8 +88,7 @@ bye
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-##### add your solution here
->>> [w for w in items if re.search() or re.search()]
+>>> [w for w in items if re.search(r'a', w) or re.search(r'w', w)]
 ['goal', 'new', 'eat']
 ```
 
@@ -98,8 +97,7 @@ bye
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-##### add your solution here
->>> [w for w in items if re.search() and re.search()]
+>>> [w for w in items if re.search(r'e', w) and re.search(r'n', w)]
 ['new', 'dinner']
 ```
 
@@ -108,7 +106,7 @@ bye
 ```ruby
 >>> ip = 'start address: 0xA0, func1 address: 0xC0'
 
-##### add your solution here
+>>> re.sub(r'0xC0', '0x1F', re.sub(r'0xA0', '0x7F', ip))
 'start address: 0x7F, func1 address: 0x1F'
 ```
 
@@ -124,7 +122,7 @@ bye
 >>> line3 = 'better?'
 >>> line4 = 'oh no\nbear spotted'
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'\Abe')
 
 >>> bool(pat.search(line1))
 True
@@ -141,7 +139,7 @@ False
 ```ruby
 >>> words = 'bred red spread credible'
 
->>> re.sub()     ##### add your solution here
+>>> re.sub(r'\bred\b', 'brown', words)
 'bred brown spread credible'
 ```
 
@@ -150,7 +148,7 @@ False
 ```ruby
 >>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
 
->>> [w for w in words if re.search()]   ##### add your solution here
+>>> [w for w in words if re.search(r'\B42\B', w)]
 ['hi42bye', 'nice1423', 'cool_42a']
 ```
 
@@ -159,7 +157,7 @@ False
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
->>> [e for e in items if ]        ##### add your solution here
+>>> [e for e in items if re.search(r'\Aden', e) or re.search(r'ly\Z', e)]
 ['lovely', '2 lonely', 'dent']
 ```
 
@@ -172,7 +170,7 @@ False
 ... wall mall ball fall
 ... mallet wallet malls'''
 
->>> print(re.sub())    ##### add your solution here
+>>> print(re.sub(r'^mall\b', '1234', para, flags=re.M))
 ball fall wall tall
 1234 call ball pall
 wall mall ball fall
@@ -184,7 +182,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-##### add your solution here
+>>> [e for e in items if re.search(r'^den', e, flags=re.M) or re.search(r'ly$', e, re.M)]
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
@@ -192,7 +190,7 @@ mallet wallet malls
 
 ```ruby
 >>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
-##### add your solution here
+>>> [e for e in items if re.fullmatch(r'12\nthree', e, flags=re.I)]
 ['12\nThree', '12\nthree']
 ```
 
@@ -201,7 +199,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-##### add your solution here
+>>> [re.sub(r'\bhand\B', 'X', w) for w in items]
 ['Xed', 'hand', 'Xy', 'unhanded', 'Xle', 'hand-2']
 ```
 
@@ -210,7 +208,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
-##### add your solution here
+>>> [re.sub(r'e', 'X', w) for w in items if re.search(r'\Ah', w)]
 ['handXd', 'hand', 'handy', 'handlX', 'hand-2']
 ```
 
@@ -223,7 +221,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
-##### add your solution here
+>>> [e for e in items if re.search(r'\Aden|ly\Z', e)]
 ['lovely', '2 lonely', 'dent']
 ```
 
@@ -232,7 +230,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
-##### add your solution here
+>>> [e for e in items if re.search(r'^den|ly$', e, flags=re.M)]
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
@@ -242,7 +240,7 @@ mallet wallet malls
 >>> s1 = 'creed refuse removed read'
 >>> s2 = 'refused reed redo received'
 
->>> pat = re.compile()        ##### add your solution here
+>>> pat = re.compile(r're(mov|ceiv|fus|)ed')
 
 >>> pat.sub('X', s1)
 'cX refuse X read'
@@ -257,7 +255,7 @@ mallet wallet malls
 >>> s2 = "slated for later, don't be late"
 >>> words = ['late', 'later', 'slated']
 
->>> pat = re.compile()        ##### add your solution here
+>>> pat = re.compile('|'.join(sorted(words, key=len, reverse=True)))
 
 >>> pat.sub('A', s1)
 'pA full of sA'
@@ -271,9 +269,9 @@ mallet wallet malls
 >>> items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
 >>> words = ['late', 'later', 'slated']
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile('|'.join(words))
 
-##### add your solution here
+>>> [w for w in items if pat.fullmatch(w)]
 ['later', 'late']
 ```
 
@@ -287,9 +285,9 @@ mallet wallet malls
 >>> str1 = '(9-2)*5+qty/3'
 >>> str2 = '(qty+4)/2-(9-2)*5+pq/4'
 
-##### add your solution here for str1
+>>> str1.replace('(9-2)*5', '35')
 '35+qty/3'
-##### add your solution here for str2
+>>> str2.replace('(9-2)*5', '35')
 '(qty+4)/2-35+pq/4'
 ```
 
@@ -300,7 +298,7 @@ mallet wallet malls
 >>> s2 = r'(4)\|42 - (4)\|3'
 >>> s3 = 'two - (4)\\|\n'
 
->>> pat = re.compile()        ##### add your solution here
+>>> pat = re.compile(r'\A\(4\)\\\||\(4\)\\\|\Z')
 
 >>> pat.sub('2', s1)
 '2.3/(4)\\|6 foo 5.3-2'
@@ -314,7 +312,7 @@ mallet wallet malls
 
 ```ruby
 >>> items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile('|'.join(re.escape(e) for e in items))
 
 >>> pat.sub('X', '0a.bcd')
 '0Xcd'
@@ -333,7 +331,7 @@ mallet wallet malls
 >>> print(ip)
 12456
 
->>> re.sub()        ##### add your solution here
+>>> re.sub(r'\x08', ' ', ip)
 '123 456'
 ```
 
@@ -342,7 +340,7 @@ mallet wallet malls
 ```ruby
 >>> ip = r'th\er\e ar\e common asp\ects among th\e alt\ernations'
 
->>> re.sub()     ##### add your solution here
+>>> re.sub(r'\\e', 'e', ip)
 'there are common aspects among the alternations'
 ```
 
@@ -352,7 +350,8 @@ mallet wallet malls
 >>> ip = '3-(a^b)+2*(a^b)-(a/b)+3'
 >>> eqns = ['(a^b)', '(a/b)', '(a^b)+2']
 
-##### add your solution here
+>>> eqns_sorted = sorted(eqns, key=len, reverse=True)
+>>> pat = re.compile('|'.join(re.escape(s) for s in eqns_sorted))
 
 >>> pat.sub('X', ip)
 '3-X*X-X+3'
@@ -369,7 +368,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'a+42//5-c pressure*3+42/5-14256'
 
->>> re.sub()      ##### add your solution here
+>>> re.sub(r'42//?5', '8', ip)
 'a+8-c pressure*3+8-14256'
 ```
 
@@ -378,7 +377,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
 
-##### add your solution here
+>>> [w for w in items if re.fullmatch(r'hand(.|le)?', w)]
 ['hand', 'handy', 'hands', 'handle']
 ```
 
@@ -389,11 +388,13 @@ mallet wallet malls
 >>> eqn2 = 'pressure*3+42/5-14256'
 >>> eqn3 = 'r*42-5/3+42///5-42/53+a'
 
-##### add your solution here for eqn1
+>>> pat = re.compile(r'42//?5')
+
+>>> pat.split(eqn1)
 ['a+', '-c']
-##### add your solution here for eqn2
+>>> pat.split(eqn2)
 ['pressure*3+', '-14256']
-##### add your solution here for eqn3
+>>> pat.split(eqn3)
 ['r*42-5/3+42///5-', '3+a']
 ```
 
@@ -403,7 +404,7 @@ mallet wallet malls
 >>> s1 = 'remove the special meaning of such constructs'
 >>> s2 = 'characters while constructing'
 
->>> pat = re.compile()        ##### add your solution here
+>>> pat = re.compile(r'i.*')
 
 >>> pat.sub('', s1)
 'remove the spec'
@@ -418,7 +419,7 @@ mallet wallet malls
 >>> str2 = 'a/b(division) + c%d(#modulo)'
 >>> str3 = 'Hi there(greeting). Nice day(a(b)'
 
->>> remove_parentheses = re.compile()     ##### add your solution here
+>>> remove_parentheses = re.compile(r'\(.*?\)')
 
 >>> remove_parentheses.sub('', str1)
 'a+b'
@@ -439,18 +440,20 @@ mallet wallet malls
 'plXk XcomXg tX wXer X cautX sentient'
 
 # expected output
->>> change = re.compile()       ##### add your solution here
+>>> change = re.compile(r'in(ter|co|t|g|k)?|ion')
 >>> change.sub('X', words)
 'plX XmX tX wX X cautX sentient'
 ```
 
 **g)** For the given greedy quantifiers, what would be the equivalent form using `{m,n}` representation?
 
-* `?` is same as
-* `*` is same as
-* `+` is same as
+* `?` is same as `{,1}`
+* `*` is same as `{0,}`
+* `+` is same as `{1,}`
 
 **h)** `(a*|b*)` is same as `(a|b)*` — True or False?
+
+False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match a mixed sequence like `ababbba` too.
 
 **i)** For the given input strings, remove everything from first the occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
 
@@ -459,7 +462,7 @@ mallet wallet malls
 >>> s2 = 'always test your RE for corner cases'
 >>> s3 = 'a TEST of skill tests?'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile('test.+', flags=re.I)
 
 >>> pat.sub('', s1)
 'this is a Test'
@@ -474,7 +477,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-##### add your solution here
+>>> [w for w in words if re.search(r'\As.*(e.*t|t.*e)', w)]
 ['subtle', 'sets', 'site']
 ```
 
@@ -483,7 +486,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-##### add your solution here
+>>> [w for w in words if re.search(r'.{6,}', w)]
 ['sequoia', 'subtle', 'exhibit']
 ```
 
@@ -492,11 +495,13 @@ mallet wallet malls
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
-##### add your solution here
+>>> [w for w in words if re.fullmatch(r'(s|t).{,5}', w)]
 ['subtle', 'sets', 'tests', 'site']
 ```
 
 **m)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+
+The use of `.+` quantifier after `<` means that `<>` cannot be a possible match to satisfy `<.+?>`. So, after matching `<` (which occurs after `1` and `2` in the given input string) the regular expression engine will look for next occurrence of `>` character to satisfy the given pattern. To solve such cases, you need to use character classes, which is discussed in a later chapter, to specify which particular set of characters should be matched by the `+` quantifier instead of `.` metacharacter.
 
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -512,13 +517,13 @@ mallet wallet malls
 >>> s2 = 'a//b // c//d e//f // 4//5'
 >>> s3 = '42// hi//bye//see // carefully'
 
->>> pat = re.compile()     ##### add your solution here
+>>> pat = re.compile(r' +// +')
 
->>> pat.split()     ##### add your solution here for s1
+>>> pat.split(s1, maxsplit=1)
 ['go there', '"this // that"']
->>> pat.split()     ##### add your solution here for s2
+>>> pat.split(s2, maxsplit=1)
 ['a//b', 'c//d e//f // 4//5']
->>> pat.split()     ##### add your solution here for s3
+>>> pat.split(s3, maxsplit=1)
 ['42// hi//bye//see', 'carefully']
 ```
 
@@ -532,11 +537,11 @@ mallet wallet malls
 >>> str1 = 'This the biggest fruit you have seen?'
 >>> str2 = 'Your mission is to read and practice consistently'
 
->>> pat = re.compile()     ##### add your solution here
+>>> pat = re.compile(r'is.*t')
 
-##### add your solution here for str1
+>>> pat.search(str1)[0]
 'is the biggest fruit'
-##### add your solution here for str2
+>>> pat.search(str2)[0]
 'ission is to read and practice consistent'
 ```
 
@@ -548,15 +553,15 @@ mallet wallet malls
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'is|the|was|to')
 
-##### add your solution here for s1
+>>> pat.search(s1).start()
 12
-##### add your solution here for s2
+>>> pat.search(s2).start()
 4
-##### add your solution here for s3
+>>> pat.search(s3).start()
 2
-##### add your solution here for s4
+>>> pat.search(s4).start()
 4
 ```
 
@@ -568,15 +573,15 @@ mallet wallet malls
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'.*(is|the|was|to)')
 
-##### add your solution here for s1
+>>> pat.search(s1).start(1)
 12
-##### add your solution here for s2
+>>> pat.search(s2).start(1)
 18
-##### add your solution here for s3
+>>> pat.search(s3).start(1)
 17
-##### add your solution here for s4
+>>> pat.search(s4).start(1)
 14
 ```
 
@@ -585,7 +590,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'fruits:apple, mango, guava, blueberry'
 
-##### add your solution here
+>>> re.search(r':(.*)', ip)[1]
 'apple, mango, guava, blueberry'
 ```
 
@@ -595,12 +600,12 @@ mallet wallet malls
 >>> s1 = 'first-3.14'
 >>> s2 = 'next-123'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'-(.*)')
 
 >>> import math
->>> pat.sub()     ##### add your solution here for s1
+>>> pat.sub(lambda m: '-' + str(math.log(float(m[1]))), s1)
 'first-1.144222799920162'
->>> pat.sub()     ##### add your solution here for s2
+>>> pat.sub(lambda m: '-' + str(math.log(float(m[1]))), s2)
 'next-4.812184355372417'
 ```
 
@@ -611,13 +616,14 @@ mallet wallet malls
 >>> str2 = 'do you have a spare cable'
 >>> str3 = 'write a parser'
 
-##### add your solution here
+>>> pat = re.compile(r'park?|spare')
+>>> d = {'par': 'spar', 'spare': 'extra', 'park': 'garden'}
 
->>> pat.sub()        ##### add your solution here for str1
+>>> pat.sub(lambda m: d[m[0]], str1)
 'aspartment has a garden'
->>> pat.sub()        ##### add your solution here for str2
+>>> pat.sub(lambda m: d[m[0]], str2)
 'do you have a extra cable'
->>> pat.sub()        ##### add your solution here for str3
+>>> pat.sub(lambda m: d[m[0]], str3)
 'write a sparser'
 ```
 
@@ -626,7 +632,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'another (way) to reuse (portion) matched (by) capture groups'
 
->>> re.findall()        ##### add your solution here
+>>> re.findall(r'\((.*?)\)', ip)
 ['way', 'portion', 'by']
 ```
 
@@ -635,7 +641,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
->>> re.findall()        ##### add your solution here
+>>> re.findall(r'<.+?>', ip)
 ['<apple>', '<> b<bye>', '<> c<cat>']
 ```
 
@@ -645,7 +651,7 @@ mallet wallet malls
 >>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'(.+?),(.+?) ')
 
 >>> pat.findall(row1)
 [('-2', '5'), ('4', '+3'), ('+42', '-53'), ('4356246', '-357532354')]
@@ -663,12 +669,12 @@ mallet wallet malls
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 # should be same as previous question
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'(.+?),(.+?) ')
 
-##### add your solution here for row1
+>>> [int(m[1]) + int(m[2]) for m in pat.finditer(row1)]
 [3, 7, -11, -353176108]
 
-##### add your solution here for row2
+>>> [float(m[1]) + float(m[2]) for m in pat.finditer(row2)]
 [-1.82, 639.63, 9907809408643.234]
 ```
 
@@ -677,7 +683,7 @@ mallet wallet malls
 ```ruby
 >>> ip = '42:no-output;1000:car-truck;SQEX49801'
 
->>> re.split()        ##### add your solution here
+>>> re.split(r':.+?-(.+?);', ip)
 ['42', 'output', '1000', 'truck', 'SQEX49801']
 ```
 
@@ -686,7 +692,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['sequoia', 'attest', 'tattletale', 'asset']
 
-##### add your solution here
+>>> [re.subn(r't', 't', w) for w in words]
 [('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
 ```
 
@@ -694,7 +700,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'TWXA42:JWPA:NTED01:'
 
-##### add your solution here
+>>> [m.groups(default='NA') for m in re.finditer(r'(.{4})(..)?:', ip)]
 [('TWXA', '42'), ('JWPA', 'NA'), ('NTED', '01')]
 ```
 
@@ -706,11 +712,11 @@ mallet wallet malls
 >>> row1 = 'name:rohan,maths:75,phy:89'
 >>> row2 = 'name:rose,maths:88,phy:92'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'([^:]+):([^,]+),?')
 
-##### add your solution here for row1
+>>> {m[1]:m[2] for m in pat.finditer(row1)}
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
-##### add your solution here for row2
+>>> {m[1]:m[2] for m in pat.finditer(row2)}
 {'name': 'rose', 'maths': '88', 'phy': '92'}
 ```
 
@@ -723,7 +729,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'handle']
 
-##### add your solution here
+>>> [w for w in items if re.fullmatch(r'hand([sy]|le)', w)]
 ['handy', 'hands', 'handle']
 ```
 
@@ -732,7 +738,7 @@ mallet wallet malls
 ```ruby
 >>> ip = 'redo red credible :read: rod reed'
 
-##### add your solution here
+>>> re.sub(r'\bre[ae]?d\b', 'X', ip)
 'redo X credible :X: rod X'
 ```
 
@@ -741,7 +747,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-##### add your solution here
+>>> [w for w in words if re.search(r'[ei].*[ln]', w)]
 ['surrender', 'unicorn', 'eel']
 ```
 
@@ -750,7 +756,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-##### add your solution here
+>>> [w for w in words if re.search(r'[ei].*[ln]|[ln].*[ei]', w)]
 ['surrender', 'unicorn', 'newer', 'eel']
 ```
 
@@ -760,12 +766,12 @@ mallet wallet malls
 >>> str1 = '128A foo 0xfe32 34 0xbar'
 >>> str2 = '0XDEADBEEF place 0x0ff1ce bad'
 
->>> hex_seq = re.compile()        ##### add your solution here
+>>> hex_seq = re.compile(r'\b(0x)?[\da-f]+\b', flags=re.I)
 
-##### add your solution here for str1
+>>> [m[0] for m in hex_seq.finditer(str1)]
 ['128A', '0xfe32', '34']
 
-##### add your solution here for str2
+>>> [m[0] for m in hex_seq.finditer(str2)]
 ['0XDEADBEEF', '0x0ff1ce', 'bad']
 ```
 
@@ -776,7 +782,7 @@ mallet wallet malls
 >>> str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
 >>> str3 = 'Hi there(greeting). Nice day(a(b)'
 
->>> remove_parentheses = re.compile()      ##### add your solution here
+>>> remove_parentheses = re.compile(r'\([^()]*\)')
 
 >>> remove_parentheses.sub('', str1)
 'def factorial'
@@ -791,7 +797,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
 
-##### add your solution here
+>>> [w for w in words if re.search(r'\A[^epu]', w)]
 ['surrender', 'newer', 'door']
 ```
 
@@ -800,7 +806,7 @@ mallet wallet malls
 ```ruby
 >>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
 
-##### add your solution here
+>>> [w for w in words if not re.search(r'[uw-]|ee', w)]
 ['tea', 'ear']
 ```
 
@@ -810,11 +816,11 @@ mallet wallet malls
 >>> row1 = '(2),kite,12,,D,C,,'
 >>> row2 = 'hi,bye,sun,moon'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'(,[^,]*){3}\Z')
 
->>> pat.sub()       ##### add your solution here for row1
+>>> pat.sub(',WHTSZ323', row1)
 '(2),kite,12,,D,WHTSZ323'
->>> pat.sub()       ##### add your solution here for row2
+>>> pat.sub(',WHTSZ323', row2)
 'hi,WHTSZ323'
 ```
 
@@ -824,7 +830,7 @@ mallet wallet malls
 >>> str1 = 'lion \t Ink32onion Nice'
 >>> str2 = '**1\f2\n3star\t7 77\r**'
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'[\d\s]+')
 
 >>> pat.split(str1)
 ['lion', 'Ink', 'onion', 'Nice']
@@ -837,11 +843,13 @@ mallet wallet malls
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
 
-##### add your solution here
+>>> re.sub(r'<[^>]+>', '', ip)
 'a 1<> b 2<> c'
 ```
 
 **l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
+
+False. `[on]{2}` will also match `oo` and `nn`.
 
 ```ruby
 >>> print('known\nmood\nknow\npony\ninns')
@@ -857,7 +865,7 @@ inns
 ```ruby
 >>> items = ['hi0000432abcd', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
 
-##### add your solution here
+>>> [e for e in items if any(int(m[0])>624 for m in re.finditer(r'\d+', e))]
 ['car00625', '3.14 96 2 foo1234baz']
 ```
 
@@ -865,7 +873,16 @@ inns
 
 ```ruby
 >>> def max_nested_braces(ip):
-##### add your solution here
+...     count = 0
+...     while True:
+...         ip, no_of_subs = re.subn(r'\{[^{}]*\}', '', ip)
+...         if no_of_subs == 0:
+...             break
+...         count += 1
+...     if re.search(r'[{}]', ip):
+...         return -1
+...     return count
+... 
 
 >>> max_nested_braces('a*b')
 0
@@ -890,7 +907,7 @@ inns
 
 >>> ip.split()
 ['so', 'pole', 'lit', 'in', 'to']
-##### add your solution here
+>>> re.findall(r'\S+', ip)
 ['so', 'pole', 'lit', 'in', 'to']
 ```
 
@@ -899,10 +916,10 @@ inns
 ```ruby
 >>> ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
-##### add your solution here
+>>> re.split(r'[\s^=-]+', ip)
 ['price_42', 'roast', 'ice', 'cat', 'east']
 
-##### add your solution here
+>>> re.split(r'([\s^=-]+)', ip)
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 ```
 
@@ -911,7 +928,7 @@ inns
 ```ruby
 >>> items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
-##### add your solution here
+>>> [e for e in items if re.search(r'\A\s*[^#\s]', e)]
 ['\t\napple #42', 'sure', 'no#1']
 ```
 
@@ -924,7 +941,7 @@ inns
 ```ruby
 >>> ip = 'area not a _a2_ roar took 22'
 
->>> print(re.sub())      ##### add your solution here
+>>> print(re.sub(r'([ar]) ', r'\1\n', ip))
 area
 not a
 _a2_ roar
@@ -936,7 +953,7 @@ took 22
 ```ruby
 >>> ip = 'sequoia subtle exhibit asset sets tests site'
 
-##### add your solution here
+>>> re.sub(r'\bs\w*(t\w*e|e\w*t)\w*', r'[\g<0>]', ip)
 'sequoia [subtle] exhibit asset [sets] tests [site]'
 ```
 
@@ -945,7 +962,7 @@ took 22
 ```ruby
 >>> ip = 'oreo not a _a2_ roar took 22'
 
-##### add your solution here
+>>> re.sub(r'\b(\w|(\w)\w*\2)\b', 'X', ip)
 'X not X X X took X'
 ```
 
@@ -955,9 +972,13 @@ took 22
 >>> header1 = '# Regular Expressions'
 >>> header2 = '## Compiling regular expressions'
 
-##### add your solution here for header1
+>>> anchor = re.compile(r'\w.*')
+>>> def hyphenify(m):
+...     return f'<a name="{m[0].lower().replace(" ", "-")}"></a>{m[0]}'
+... 
+>>> anchor.sub(hyphenify, header1)
 '# <a name="regular-expressions"></a>Regular Expressions'
-##### add your solution here for header2
+>>> anchor.sub(hyphenify, header2)
 '## <a name="compiling-regular-expressions"></a>Compiling regular expressions'
 ```
 
@@ -967,9 +988,11 @@ took 22
 >>> anchor1 = '# <a name="regular-expressions"></a>Regular Expressions'
 >>> anchor2 = '## <a name="subexpression-calls"></a>Subexpression calls'
 
-##### add your solution here for anchor1
+>>> hyperlink = re.compile(r'[^"]+"([^"]+)"></a>(.+)')
+
+>>> hyperlink.sub(r'[\2](#\1)', anchor1)
 '[Regular Expressions](#regular-expressions)'
-##### add your solution here for anchor2
+>>> hyperlink.sub(r'[\2](#\1)', anchor2)
 '[Subexpression calls](#subexpression-calls)'
 ```
 
@@ -982,7 +1005,7 @@ took 22
 ... depended successfully succeeded
 ... possession cleanliness suppress'''
 
-##### add your solution here
+>>> len(re.findall(r'\b(\w*(\w)\2){2}\w*\b', ip))
 13
 ```
 
@@ -991,7 +1014,7 @@ took 22
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
 
-##### add your solution here
+>>> re.sub(r'\b(\d+)\1+\b', r'\1', ip)
 '1234 23 4535 9339 1 60260260'
 ```
 
@@ -1000,7 +1023,7 @@ took 22
 ```ruby
 >>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
 
-##### add your solution here
+>>> re.sub(r'(\w+)[:.](\w+[:.])+', r'\1', ip)
 'wow hi bye kite'
 ```
 
@@ -1009,7 +1032,7 @@ took 22
 ```ruby
 >>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
 
-##### add your solution here
+>>> re.sub(r'((\w+)[:.])+', r'\2', ip)
 'five hi bye water'
 ```
 
@@ -1018,7 +1041,7 @@ took 22
 ```ruby
 >>> ip = 'firecatlioncatcatcatbearcatcatparrot'
 
-##### add your solution here
+>>> re.split(r'(?:cat)+', ip)
 ['fire', 'lion', 'bear', 'parrot']
 ```
 
@@ -1027,14 +1050,14 @@ took 22
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'\b(\d+)\1+\b')
 
 # entire sequences in the output
-##### add your solution here
+>>> [m[0] for m in pat.finditer(ip)]
 ['2323', '453545354535', '11']
 
 # only the unique sequence in the output
-##### add your solution here
+>>> pat.findall(ip)
 ['23', '4535', '1']
 ```
 
@@ -1044,11 +1067,11 @@ took 22
 >>> row1 = 'rohan,75,89'
 >>> row2 = 'rose,88,92'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'(?P<name>[^,]+),(?P<maths>[^,]+),(?P<phy>[^,]+)')
 
-##### add your solution here for row1
+>>> pat.search(row1).groupdict()
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
-##### add your solution here for row2
+>>> pat.search(row2).groupdict()
 {'name': 'rose', 'maths': '88', 'phy': '92'}
 ```
 
@@ -1057,7 +1080,7 @@ took 22
 ```ruby
 >>> ip = 'tiger imp goat eagle ant important'
 
-##### add your solution here
+>>> re.sub(r'\b(?:imp|ant|(\w+))\b', r'(\1)', ip)
 '(tiger) () (goat) (eagle) () (important)'
 ```
 
@@ -1066,7 +1089,7 @@ took 22
 ```ruby
 >>> ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
 
-##### add your solution here
+>>> [w for w in ip if re.fullmatch(r'({{)?[a-z]+-\d+(?(1)}})', w)]
 ['{{apple-150}}', 'grape-87']
 ```
 
@@ -1075,7 +1098,7 @@ took 22
 ```ruby
 >>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
 
-##### add your solution here
+>>> [m.expand(r'\2-\1') for m in re.finditer(r'(\w+)[:.](?:(\w+)[:.])+', ip)]
 ['five-wow', 'water-kite']
 ```
 
@@ -1090,7 +1113,7 @@ took 22
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
 
-##### add your solution here
+>>> re.sub(r'(?<!\()\b\w+', 'X', ip)
 '(apple) X X) X (mango) (grape'
 ```
 
@@ -1099,7 +1122,7 @@ took 22
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
 
-##### add your solution here
+>>> re.sub(r'\b\w+\b(?!\))', 'X', ip)
 '(apple) X berry) X (mango) (X'
 ```
 
@@ -1108,7 +1131,7 @@ took 22
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
 
-##### add your solution here
+>>> re.sub(r'(?<!\()\b\w+\b(?!\))', 'X', ip)
 '(apple) X berry) X (mango) (grape'
 ```
 
@@ -1117,7 +1140,7 @@ took 22
 ```ruby
 >>> ip = 'at row on urn e note dust n'
 
-##### add your solution here
+>>> re.findall(r'\b\w+\b(?<![en])', ip)
 ['at', 'row', 'dust']
 ```
 
@@ -1126,7 +1149,7 @@ took 22
 ```ruby
 >>> ip = 'at row on urn e note dust n'
 
-##### add your solution here
+>>> re.findall(r'(?![adn])\b\w+\b', ip)
 ['row', 'on', 'urn', 'e']
 ```
 
@@ -1135,7 +1158,7 @@ took 22
 ```ruby
 >>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-##### add your solution here
+>>> re.findall(r'\w+(?=[:,-])', ip)
 ['poke', 'so', 'ever']
 ```
 
@@ -1144,7 +1167,7 @@ took 22
 ```ruby
 >>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-##### add your solution here
+>>> re.findall(r'(?<=[=/-])\w+', ip)
 ['so', 'is', 'sit']
 ```
 
@@ -1153,7 +1176,7 @@ took 22
 ```ruby
 >>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-##### add your solution here
+>>> re.findall(r'(?<=[=:])\w+(?=[:.])', ip)
 ['so', 'ink']
 ```
 
@@ -1162,7 +1185,7 @@ took 22
 ```ruby
 >>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
 
-##### add your solution here
+>>> re.findall(r'(?<=[=:.(-])\w+\b(?![/.])', ip)
 ['so', 'vast', 'sit']
 ```
 
@@ -1172,7 +1195,7 @@ took 22
 >>> csv1 = ' comma  ,separated ,values \t\r '
 >>> csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
->>> remove_whitespace = re.compile()     ##### add your solution here
+>>> remove_whitespace = re.compile(r'(?<![^,])\s+|\s+(?![^,])')
 
 >>> remove_whitespace.sub('', csv1)
 'comma,separated,values'
@@ -1190,7 +1213,9 @@ took 22
 ```ruby
 >>> pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
-##### add your solution here
+>>> rule_chk = re.compile(r'(?=(.*[a-zA-Z]){2})(?=(.*\d){3})(?!.*\s\Z).*[%*#$]')
+
+>>> [p for p in pwds if rule_chk.search(p)]
 ['F2H3u%9', 'A $B C1234']
 ```
 
@@ -1199,7 +1224,7 @@ took 22
 ```ruby
 >>> ip = 'part; cat {super} rest_42 par scatter apple spar'
 
-##### add your solution here
+>>> re.sub(r'\b(?!(?:par|cat|apple)\b)\w+\b', r'{\g<0>}', ip)
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 ```
 
@@ -1208,7 +1233,7 @@ took 22
 ```ruby
 >>> ip = '12 ab32.4 go 5 2. 46.42 5'
 
-##### add your solution here
+>>> re.findall(r'\d+(?=\.\d+)', ip)
 ['32', '46']
 ```
 
@@ -1218,11 +1243,11 @@ took 22
 >>> s1 = 'apple'
 >>> s2 = '1.2-3:4'
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'.(?=(.))')
 
-##### add your solution here for s1
+>>> [m[0]+m[1] for m in pat.finditer(s1)]
 ['ap', 'pp', 'pl', 'le']
-##### add your solution here for s2
+>>> [m[0]+m[1] for m in pat.finditer(s2)]
 ['1.', '.2', '2-', '-3', '3:', ':4']
 ```
 
@@ -1233,13 +1258,13 @@ took 22
 >>> s2 = 'twelve:a2b'
 >>> s3 = 'we:be:he:0:a:b:bother'
 
->>> pat = re.compile()      ##### add your solution here
+>>> pat = re.compile(r'(.*\d.*):.*')
 
->>> pat.sub()       ##### add your solution here for s1
+>>> pat.sub(r'\1', s1)
 '42'
->>> pat.sub()       ##### add your solution here for s2
+>>> pat.sub(r'\1', s2)
 'twelve:a2b'
->>> pat.sub()       ##### add your solution here for s3
+>>> pat.sub(r'\1', s3)
 'we:be:he:0:a:b'
 ```
 
@@ -1248,7 +1273,7 @@ took 22
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
-##### add your solution here
+>>> re.findall(r'(?<![:#])(?<!<=>)(?<!-{4})\b\w+', ip)
 ['at', 'in', 'a_b', 'lion']
 ```
 
@@ -1261,7 +1286,7 @@ took 22
 >>> str4 = '42\nqty-6,apple-56,price-234,error'
 >>> str5 = '4,price,3.14,qty,4'
 
->>> neg = re.compile()       ##### add your solution here
+>>> neg = re.compile(r'qty((?!\s|error).)*price')
 
 >>> bool(neg.search(str1))
 True
@@ -1276,6 +1301,10 @@ False
 ```
 
 **r)** Can you reason out why the output shown is different for these two regular expressions?
+
+`\b` matches both the start and end of word locations. In the below example, `\b..\b` doesn't necessarily mean that first `\b` will match only the start of word location and second `\b` will match only the end of word location. They can be any combination! For example, `I` followed by space in the input string here is using start of word location for both whereas space followed by `2` is using end of word location for both.
+
+In contrast, the negative lookarounds only ensure that there are no word characters around any two characters. And these assertions will always be satisfied at the start of string and the end of string respectively. But `\b` depends on the presence of word characters. So, `!` at the end of the input string here matches the lookaround assertion but not word boundary.
 
 ```ruby
 >>> ip = 'I have 12, he has 2!'
@@ -1297,7 +1326,7 @@ False
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
 >>> s2 = 'it this hat is sliced HIT.'
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'hat.*it', flags=re.S|re.I)
 
 >>> pat.sub('', s1)
 'But Cool Te'
@@ -1320,7 +1349,7 @@ False
 ... finish the End
 ... bye'''
 
->>> pat = re.compile()        ##### add your solution here
+>>> pat = re.compile(r'(?ims)^start.*?end$')
 
 >>> print(pat.sub('', para))
 good start
@@ -1342,7 +1371,7 @@ bye
 >>> s2 = 'Nice and cool this is'
 >>> s3 = 'What is so nice and cool about This?'
 
->>> pat = re.compile()       ##### add your solution here
+>>> pat = re.compile(r'(?i)(?=.*nice)(?=.*cool)(?-i:.*This)')
 
 >>> bool(pat.search(s1))
 True
@@ -1359,7 +1388,7 @@ True
 >>> s2 = 'This is a mess\nYeah?\nThereeeee'
 >>> s3 = 'Oh\nThere goes the fun'
 
->>> pat = re.compile()     ##### add your solution here
+>>> pat = re.compile(r'\A(?=Th)(?ms:.*^There)')
 
 >>> bool(pat.search(s1))
 True
@@ -1387,17 +1416,27 @@ False
 >>> str3 = 'happy learning!'
 >>> str4 = 'İıſK'
 
-##### add your solution here for str1
+>>> str1.isascii()
 False
-##### add your solution here for str2
+>>> str2.isascii()
 False
-##### add your solution here for str3
+>>> str3.isascii()
 True
-##### add your solution here for str4
+>>> str4.isascii()
 False
 ```
 
 **b)** Does `.` quantifier with `re.ASCII` flag enabled match non-ASCII characters?
+
+Yes.
+
+```ruby
+>>> re.search(r'.+', 'fox:αλεπού')[0]
+'fox:αλεπού'
+
+>>> re.search(r'(?a).+', 'fox:αλεπού')[0]
+'fox:αλεπού'
+```
 
 **c)** Explore the following Q&A threads.
 
@@ -1413,7 +1452,7 @@ False
 ```ruby
 >>> items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
-##### add your solution here
+>>> [e for e in items if regex.search(r'\A\s*+[^#]', e)]
 ['\t\napple #42', 'sure', 'no#1']
 ```
 
@@ -1422,7 +1461,7 @@ False
 ```ruby
 >>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
 
-##### add your solution here
+>>> regex.sub(r'(\w+[:.])(?1)+', r'\1', ip)
 'wow: hi bye kite.'
 ```
 
@@ -1431,7 +1470,7 @@ False
 ```ruby
 >>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother']
 
-##### add your solution here
+>>> [regex.sub(r'\d.*\K:.*', '', e) for e in items]
 ['42', 'twelve:a2b', 'we:be:he:0:a:b']
 ```
 
@@ -1440,7 +1479,7 @@ False
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
-##### add your solution here
+>>> regex.findall(r'(?<![:#]|<=>|-{4})\b\w+', ip)
 ['at', 'in', 'a_b', 'lion']
 ```
 
@@ -1449,7 +1488,7 @@ False
 ```ruby
 >>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 
-##### add your solution here
+>>> regex.findall(r'(?<=\d[^:]*:)[^:]+', ip)
 ['ride', '3list', 'end']
 ```
 
@@ -1459,7 +1498,7 @@ False
 >>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 >>> row2 = 'um:no:low:3e:s4w:seer'
 
->>> pat = regex.compile()      ##### add your solution here
+>>> pat = regex.compile(r'\G[^\d:]+:')
 
 >>> pat.sub('', row1)
 'a2b2:ride:in:awe:b2b:3list:end'
@@ -1473,7 +1512,7 @@ False
 >>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
 >>> ip2 = 'if+while if(a(b)c(d(e(f)1)2)3) for(i=1)'
 
->>> pat = regex.compile()       ##### add your solution here
+>>> pat = regex.compile(r'if(\((?:[^()]++|(?1))++\))')
 
 >>> pat.search(ip1)[0]
 'if(3-(k*3+4)/12-(r+2/3))'
@@ -1482,6 +1521,8 @@ False
 ```
 
 **h)** Read about `POSIX` flag from https://pypi.org/project/regex/. Is the following code snippet showing the correct output?
+
+Yes. Leftmost longest match wins in `POSIX` implementations, so alternation order doesn't matter.
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -1492,6 +1533,17 @@ False
 'plX XmX tX wX X cautX sentient'
 ```
 
+Unless two or more patterns match the same portion with the same length. In such cases, left-to-right priority is applied for the alternations. For example:
+
+```ruby
+>>> ip = 'tryst,fun,glyph,pity,why,group'
+
+>>> regex.sub(r'\b\w+\b|(\b[gp]\w*y\w*\b)', r'\1', ip)
+',,,,,'
+>>> regex.sub(r'(\b[gp]\w*y\w*\b)|\b\w+\b', r'\1', ip)
+',,glyph,pity,,'
+```
+
 **i)** Extract all whole words for the given input strings. However, based on user input `ignore`, do not match words if they contain any character present in the `ignore` variable.
 
 ```ruby
@@ -1499,15 +1551,15 @@ False
 >>> s2 = 'and then you want to test'
 
 >>> ignore = 'aty'
->>> regex.findall()     ##### add your solution here for s1
+>>> regex.findall(r'\b[\w--[' + ignore + r']]+\b', s1)
 ['newline']
->>> regex.findall()     ##### add your solution here for s2
+>>> regex.findall(r'\b[\w--[' + ignore + r']]+\b', s2)
 []
 
 >>> ignore = 'esw'
->>> regex.findall()     ##### add your solution here for s1
+>>> regex.findall(r'\b[\w--[' + ignore + r']]+\b', s1)
 ['match']
->>> regex.findall()     ##### add your solution here for s2
+>>> regex.findall(r'\b[\w--[' + ignore + r']]+\b', s2)
 ['and', 'you', 'to']
 ```
 
@@ -1518,7 +1570,7 @@ False
 >>> s2 = ''.join(chr(c) for c in range(0x80, 0x100))
 >>> s3 = ''.join(chr(c) for c in range(0x2600, 0x27ec))
 
->>> pat = regex.compile()       ##### add your solution here
+>>> pat = regex.compile(r'\P{P}+')
 
 >>> pat.sub('', s1)
 '!"#%&\'()*,-./:;?@[\\]_{}'
@@ -1534,9 +1586,9 @@ Refer to [github: exercises folder](https://github.com/learnbyexample/py_regular
 
 ```ruby
 >>> ip_str = open('sample.md', 'r').read()
->>> pat = regex.compile()      ##### add your solution here
+>>> pat = regex.compile(r'(?ms)^```python$.*?^```$(*SKIP)(*F)|(?i:python)')
 >>> with open('sample_mod.md', 'w') as op_file:
-...     ##### add your solution here
+...     op_file.write(pat.sub(lambda m: m[0].capitalize(), ip_str))
 ... 
 305
 >>> assert open('sample_mod.md').read() == open('expected.md').read()
@@ -1548,11 +1600,11 @@ Refer to [github: exercises folder](https://github.com/learnbyexample/py_regular
 >>> s1 = 'knack tic pi roar what'
 >>> s2 = '42;rod;t2t2;car'
 
->>> pat = regex.compile()       ##### add your solution here
+>>> pat = regex.compile(r'(?r)\w\b')
 
-##### add your solution here for s1
+>>> ''.join(pat.findall(s1))
 'trick'
-##### add your solution here for s2
+>>> ''.join(pat.findall(s2))
 'r2d2'
 ```
 
@@ -1562,16 +1614,16 @@ Refer to [github: exercises folder](https://github.com/learnbyexample/py_regular
 >>> s1 = 'Sample123string42with777numbers'
 >>> s2 = '12apples'
 
-##### add your solution here for s1
+>>> regex.split(r'(\d+)(?!.*\d)', s1)
 ['Sample123string42with', '777', 'numbers']
-##### add your solution here for s2
+>>> regex.split(r'(\d+)(?!.*\d)', s2)
 ['', '12', 'apples']
 ```
 
 **n)** Read about fuzzy matching on https://pypi.org/project/regex/. For the given input strings, return `True` if they are exactly same as `cat` or there is exactly one character difference. Ignore case when comparing differences. For example, `Ca2` should give `True`. `act` will be `False` even though the characters are same because position should be maintained.
 
 ```ruby
->>> pat = regex.compile()       ##### add your solution here
+>>> pat = regex.compile(r'(?i)(cat){s<=1}')
 
 >>> bool(pat.fullmatch('CaT'))
 True

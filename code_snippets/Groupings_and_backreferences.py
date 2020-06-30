@@ -1,12 +1,22 @@
+## Backreference
+
 re.sub(r'\[(\d+)\]', r'\1', '[52] apples and [31] mangoes')
 
 re.sub(r'(_)?_', r'\1', '_foo_ __123__ _baz_')
 
-re.sub(r'\d+', r'(\g<0>0)', '52 apples and 31 mangoes')
-
-re.sub(r'.*', r'Hi. \g<0>. Have a nice day', 'Hello world', count=1)
-
 re.sub(r'(\w+),(\w+)', r'\2,\1', 'good,bad 42,24')
+
+re.sub(r'\[(\d+)\]', r'(\15)', '[52] apples and [31] mangoes')
+
+re.sub(r'\[(\d+)\]', r'(\g<1>5)', '[52] apples and [31] mangoes')
+
+re.sub(r'\[(\d+)\]', r'(\1\065)', '[52] apples and [31] mangoes')
+
+re.sub(r'[a-z]+', r'{\g<0>}', '[52] apples and [31] mangoes')
+
+re.sub(r'.+', r'Hi. \g<0>. Have a nice day', 'Hello world')
+
+re.sub(r'\A([^,]+),.+', r'\g<0>,\1', 'fork,42,nice,3.14')
 
 words = ['effort', 'flee', 'facade', 'oddball', 'rat', 'tool']
 
@@ -14,19 +24,39 @@ words = ['effort', 'flee', 'facade', 'oddball', 'rat', 'tool']
 
 re.sub(r'\b(\w+)( \1)+\b', r'\1', 'aa a a a 42 f_1 f_1 f_13.14')
 
-re.split(r'\d+', 'Sample123string42with777numbers')
+s = 'abcdefghijklmna1d'
 
-re.split(r'(\d+)', 'Sample123string42with777numbers')
+re.sub(r'(.).*\11', 'X', s)
 
-re.split(r'(1*2)', '3111111111125111142', maxsplit=1)
+re.sub(r'(.).*\1\x31', 'X', s)
+
+re.sub(r'(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\11', 'X', s)
+
+re.sub(r'(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31', 'X', s)
+
+## Non-capturing groups
 
 re.findall(r'\b\w*(?:st|in)\b', 'cost akin more east run against')
 
 re.split(r'hand(?:y|ful)?', '123hand42handy777handful500')
 
-re.sub(r'\A(([^,]+,){3})([^,]+)', r'\1(\3)', '1,2,3,4,5,6,7', count=1)
+re.sub(r'\A(([^,]+,){3})([^,]+)', r'\1(\3)', '1,2,3,4,5,6,7')
 
-re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1(\2)', '1,2,3,4,5,6,7', count=1)
+re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1(\2)', '1,2,3,4,5,6,7')
+
+s = 'hi 123123123 bye 456123456'
+
+re.findall(r'(123)+', s)
+
+re.findall(r'(?:123)+', s)
+
+re.sub(r'(123)+', 'X', s)
+
+row = 'one,2,3.14,42,five'
+
+re.sub(r'\A([^,]+,){3}([^,]+)', r'\1"\2"', row)
+
+re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1"\2"', row)
 
 words = 'effort flee facade oddball rat tool'
 
@@ -38,7 +68,13 @@ m_iter = repeat_char.finditer(words)
 
 [m[0] for m in m_iter]
 
+## Named capture groups
+
 re.sub(r'(?P<fw>\w+),(?P<sw>\w+)', r'\g<sw>,\g<fw>', 'good,bad 42,24')
+
+s = 'aa a a a 42 f_1 f_1 f_13.14'
+
+re.sub(r'\b(?P<dup>\w+)( (?P=dup))+\b', r'\g<dup>', s)
 
 sentence = 'I bought an apple'
 
@@ -50,17 +86,45 @@ m['fruit']
 
 m.group('fruit')
 
-import re, regex
+details = '2018-10-25,car,2346'
 
-row = 'today,2008-03-24,food,2012-08-12,nice,5632'
+re.search(r'(?P<date>[^,]+),(?P<product>[^,]+)', details).groupdict()
 
-re.search(r'\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}', row)[0]
+re.search(r'(?P<date>[^,]+),([^,]+)', details).groupdict()
 
-regex.search(r'(\d{4}-\d{2}-\d{2}).*(?1)', row)[0]
+s = 'good,bad 42,24'
 
-import regex
+[m.groupdict() for m in re.finditer(r'(?P<fw>\w+),(?P<sw>\w+)', s)]
 
-row = 'today,2008-03-24,food,2012-08-12,nice,5632'
+## Conditional groups
 
-regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', row)[0]
+words = ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
+
+pat = re.compile(r'(")?\w+(?(1)")')
+
+[w for w in words if pat.fullmatch(w)]
+
+[w for w in words if re.fullmatch(r'"\w+"|\w+', w)]
+
+[w for w in words if re.fullmatch(r'"?\w+"?', w)]
+
+[w for w in words if pat.search(w)]
+
+words = ['(hi)', 'good-bye', 'bad', '(42)', '-oh', 'i-j', '(-)']
+
+pat = re.compile(r'(\()?\w+(?(1)\)|-\w+)')
+
+[w for w in words if pat.fullmatch(w)]
+
+## Match.expand
+
+re.sub(r'w(.*)m', r'[\1]', 'awesome')
+
+re.search(r'w(.*)m', 'awesome').expand(r'[\1]')
+
+dates = '2020/04/25,1986/03/02,77/12/31'
+
+m_iter = re.finditer(r'([^/]+)/([^/]+)/[^,]+,?', dates)
+
+[m.expand(r'Month:\2, Year:\1') for m in m_iter]
 
