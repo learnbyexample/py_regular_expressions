@@ -182,7 +182,7 @@ mallet wallet malls
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
->>> [e for e in items if re.search(r'^den', e, flags=re.M) or re.search(r'ly$', e, re.M)]
+>>> [e for e in items if re.search(r'^den', e, flags=re.M) or re.search(r'ly$', e, flags=re.M)]
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
@@ -455,7 +455,7 @@ mallet wallet malls
 
 False. Because `(a*|b*)` will match only sequences like `a`, `aaa`, `bb`, `bbbbbbbb`. But `(a|b)*` can match a mixed sequence like `ababbba` too.
 
-**i)** For the given input strings, remove everything from first the occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
+**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
 
 ```ruby
 >>> s1 = 'this is a Test'
@@ -801,7 +801,7 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 ['surrender', 'newer', 'door']
 ```
 
-**h)** For the list `words`, filter all elements not containing with `u` or `w` or `ee` or `-`.
+**h)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
 
 ```ruby
 >>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
@@ -1021,19 +1021,19 @@ took 22
 **h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 >>> re.sub(r'(\w+)[:.](\w+[:.])+', r'\1', ip)
-'wow hi bye kite'
+'wow hi-2 bye kite'
 ```
 
 **i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 >>> re.sub(r'((\w+)[:.])+', r'\2', ip)
-'five hi bye water'
+'five hi-2 bye water'
 ```
 
 **j)** Split the given input string on one or more repeated sequence of `cat`.
@@ -1096,7 +1096,7 @@ took 22
 **o)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by first word.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 >>> [m.expand(r'\2-\1') for m in re.finditer(r'(\w+)[:.](?:(\w+)[:.])+', ip)]
 ['five-wow', 'water-kite']

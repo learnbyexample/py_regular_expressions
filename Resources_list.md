@@ -15,6 +15,7 @@
 
 * [docs.python: Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 * [stackoverflow: python regex](https://stackoverflow.com/questions/tagged/python+regex?sort=votes&pageSize=15)
+* [PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions) — construct regular expressions with natural language terms
 * [CommonRegex](https://github.com/madisonmay/CommonRegex) — collection of common regular expressions
 * [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
 * [Generate strings that match a given regular expression](https://stackoverflow.com/questions/492716/reversing-a-regular-expression-in-python)

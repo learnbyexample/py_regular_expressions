@@ -88,9 +88,9 @@ re.sub(r'cat|tiger', lambda m: swap[m[0]], words)
 
 d = { 'hand': '1', 'handy': '2', 'handful': '3', 'a^b': '4' }
 
-words = (re.escape(k) for k in d.keys())
+words = sorted(d.keys(), key=len, reverse=True)
 
-pat = re.compile('|'.join(sorted(words, key=len, reverse=True)))
+pat = re.compile('|'.join(re.escape(s) for s in words))
 
 pat.pattern
 

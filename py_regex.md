@@ -30,6 +30,7 @@ If you have prior experience with a programming language, but new to Python, see
 * **Kye** for spotting a typo
 * **Hugh**'s email exchanges helped me significantly to improve the presentation of concepts and exercises
 * [Christopher Patti](https://github.com/feoh) for reviewing the book, providing feedback and brightening the day with kind words
+* Users **73tada**, **DrBobHope**, **nlomb** and others for feedback in [this reddit thread](https://www.reddit.com/r/learnpython/comments/hmvnt1/my_python_regex_ebook_with_hundreds_of_examples/)
 
 Special thanks to Al Sweigart, for introducing me to Python with his awesome
 [automatetheboringstuff](https://automatetheboringstuff.com/) book and video course.
@@ -62,8 +63,7 @@ Resources mentioned in Acknowledgements section above are available under origin
 
 ## Book version
 
-3.0
-
+3.1  
 See [Version_changes.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/Version_changes.md) to track changes across book versions.
 
 # Why is it needed?
@@ -78,13 +78,44 @@ Here's some common use cases.
 * Filtering or extracting portions on an abstract level like alphabets, numbers, punctuation and so on.
 * Qualified string replacement. For example, at the start or the end of a string, only whole words, based on surrounding text, etc.
 
-**Further Reading**
+You are likely to be familiar with graphical search and replace tool, like the screenshot shown below from LibreOffice Writer. **Match case**, **Whole words only**, **Replace** and **Replace All** are some of the basic features supported by regular expressions.
+
+![find and replace](images/find_replace.png)
+
+Another real world use case is password validation. The screenshot below is from GitHub sign up page. Performing multiple checks like **string length** and the **type of characters allowed** is another core feature of regular expressions.
+
+![password check](images/password_check.png)
+
+Here's some articles on regular expressions to know about its history and the type of problems it is suited for.
 
 * [The true power of regular expressions](https://nikic.github.io/2012/06/15/The-true-power-of-regular-expressions.html) — it also includes a nice explanation of what *regular* means in this context
 * [softwareengineering: Is it a must for every programmer to learn regular expressions?](https://softwareengineering.stackexchange.com/questions/133968/is-it-a-must-for-every-programmer-to-learn-regular-expressions)
 * [softwareengineering: When you should NOT use Regular Expressions?](https://softwareengineering.stackexchange.com/questions/113237/when-you-should-not-use-regular-expressions)
 * [codinghorror: Now You Have Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
 * [wikipedia: Regular expression](https://en.wikipedia.org/wiki/Regular_expression) — this article includes discussion on regular expressions as a formal language as well as details on various implementations
+
+## How this book is organized
+
+The book introduces concepts one by one and exercises at the end of chapters will require only the features introduced until that chapter. Each concept is accompanied by multiple examples to cover various angles of usage and corner cases. As mentioned before, follow along the illustrations by typing out the code snippets manually. It is important to understand both the nature of the sample input string as well as the actual programming command used. There are two interlude chapters that give an overview of useful external resources and some more resources are collated in the final chapter.
+
+* [re introduction](#re-introduction)
+* [Anchors](#anchors)
+* [Alternation and Grouping](#alternation-and-grouping)
+* [Escaping metacharacters](#escaping-metacharacters)
+* [Dot metacharacter and Quantifiers](#dot-metacharacter-and-quantifiers)
+* [Interlude: Tools for debugging and visualization](#interlude-tools-for-debugging-and-visualization)
+* [Working with matched portions](#working-with-matched-portions)
+* [Character class](#character-class)
+* [Groupings and backreferences](#groupings-and-backreferences)
+* [Interlude: Common tasks](#interlude-common-tasks)
+* [Lookarounds](#lookarounds)
+* [Flags](#flags)
+* [Unicode](#unicode)
+* [regex module](#regex-module)
+* [Gotchas](#gotchas)
+* [Further Reading](#further-reading)
+
+By the end of the book, you should be comfortable with both writing and reading regular expressions, how to debug them and know when to *avoid* them.
 
 # re introduction
 
@@ -300,6 +331,8 @@ The next section has exercises to test your understanding of the concepts introd
 ## Exercises
 
 >![info](images/info.svg) Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.
+
+>![info](images/info.svg) All the exercises are also collated together in one place at [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md). For solutions, see [Exercise_solutions.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md).
 
 **a)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
 
@@ -794,7 +827,6 @@ False
 # replace either 'cat' at start of string or 'cat' at end of word
 >>> re.sub(r'\Acat|cat\b', 'X', 'catapults concatenate cat scat')
 'Xapults concatenate X sX'
-
 # replace either 'cat' or 'dog' or 'fox' with 'mammal'
 >>> re.sub(r'cat|dog|fox', 'mammal', 'cat dog bee parrot fox')
 'mammal mammal bee parrot mammal'
@@ -805,16 +837,16 @@ You might infer from above examples that there can be cases where many alternati
 ```ruby
 >>> '|'.join(['car', 'jeep'])
 'car|jeep'
-
 >>> words = ['cat', 'dog', 'fox']
 >>> '|'.join(words)
 'cat|dog|fox'
-
 >>> re.sub('|'.join(words), 'mammal', 'cat dog bee parrot fox')
 'mammal mammal bee parrot mammal'
 ```
 
->![warning](images/warning.svg) In the above examples with `join` method, the elements do not contain any special regular expression characters. Strings having metacharacters will be discussed in [re.escape](#reescape) section.
+>![warning](images/warning.svg) In the above examples, the elements do not contain any special regular expression characters. Strings having metacharacters will be discussed in [re.escape](#reescape) section.
+
+>![info](images/info.svg) If you have thousands of search terms to be matched, using specialized libraries like [github: flashtext](https://github.com/vi3k6i5/flashtext) is highly recommended instead of regular expressions.
 
 ## Grouping
 
@@ -1617,7 +1649,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 
 **h)** `(a*|b*)` is same as `(a|b)*` — True or False?
 
-**i)** For the given input strings, remove everything from first the occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
+**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till end of the string, provided `test` isn't at the end of the string.
 
 ```ruby
 >>> s1 = 'this is a Test'
@@ -1892,15 +1924,17 @@ For `dict` objects that have many entries and likely to undergo changes during d
 # otherwise, you'd need to convert it in the lambda code
 >>> d = { 'hand': '1', 'handy': '2', 'handful': '3', 'a^b': '4' }
 
-# take care of metacharacter escaping first
->>> words = (re.escape(k) for k in d.keys())
+# sort the keys to handle precedence rules
+>>> words = sorted(d.keys(), key=len, reverse=True)
 # add anchors and flags if needed
->>> pat = re.compile('|'.join(sorted(words, key=len, reverse=True)))
+>>> pat = re.compile('|'.join(re.escape(s) for s in words))
 >>> pat.pattern
 'handful|handy|hand|a\\^b'
 >>> pat.sub(lambda m: d[m[0]], 'handful hand pin handy (a^b)')
 '3 1 pin 2 (4)'
 ```
+
+>![info](images/info.svg) If you have thousands of key-value pairs, using specialized libraries like [github: flashtext](https://github.com/vi3k6i5/flashtext) is highly recommended instead of regular expressions.
 
 ## re.findall
 
@@ -2601,7 +2635,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['surrender', 'newer', 'door']
 ```
 
-**h)** For the list `words`, filter all elements not containing with `u` or `w` or `ee` or `-`.
+**h)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
 
 ```ruby
 >>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
@@ -3096,19 +3130,19 @@ took 22
 **h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 ##### add your solution here
-'wow hi bye kite'
+'wow hi-2 bye kite'
 ```
 
 **i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 ##### add your solution here
-'five hi bye water'
+'five hi-2 bye water'
 ```
 
 **j)** Split the given input string on one or more repeated sequence of `cat`.
@@ -3171,7 +3205,7 @@ took 22
 **o)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by first word.
 
 ```ruby
->>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
 
 ##### add your solution here
 ['five-wow', 'water-kite']
@@ -4863,6 +4897,7 @@ Hope you have found Python regular expressions an interesting topic to learn. So
 
 * [docs.python: Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 * [stackoverflow: python regex](https://stackoverflow.com/questions/tagged/python+regex?sort=votes&pageSize=15)
+* [PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions) — construct regular expressions with natural language terms
 * [CommonRegex](https://github.com/madisonmay/CommonRegex) — collection of common regular expressions
 * [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
 * [Generate strings that match a given regular expression](https://stackoverflow.com/questions/492716/reversing-a-regular-expression-in-python)
