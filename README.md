@@ -80,6 +80,7 @@ Twitter: https://twitter.com/learn_byexample
 * **Kye** for spotting a typo
 * **Hugh**'s email exchanges helped me significantly to improve the presentation of concepts and exercises
 * [Christopher Patti](https://github.com/feoh) for reviewing the book, providing feedback and brightening the day with kind words
+* Users **73tada**, **DrBobHope**, **nlomb** and others for feedback in [this reddit thread](https://www.reddit.com/r/learnpython/comments/hmvnt1/my_python_regex_ebook_with_hundreds_of_examples/)
 
 Special thanks to Al Sweigart, for introducing me to Python with his awesome [automatetheboringstuff](https://automatetheboringstuff.com/) book and video course.
 
