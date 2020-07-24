@@ -1,5 +1,15 @@
 <br>
 
+### 3.1
+
+* Added real world regular expressions usage examples and overview of book in introduction chapter
+* Added links to single file collation of exercises and solutions
+* Added information about [flashtext](https://github.com/vi3k6i5/flashtext) and [PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions)
+* Corrected typos in exercises and solutions
+* Corrected order of sorting for usage of `dict` in replacement section
+
+<br>
+
 ### 3.0
 
 * Separated out `regex` module as a separate chapter (with description for more features) instead of mixing up with `re` module contents
