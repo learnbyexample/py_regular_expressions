@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Escaping metacharacters - Python re(gex)?</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Example based guide to mastering Python regular expressions">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="why-is-it-needed.html"><strong aria-hidden="true">2.</strong> Why is it needed?</a></li><li class="chapter-item expanded "><a href="re-introduction.html"><strong aria-hidden="true">3.</strong> re introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html" class="active"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="flags.html"><strong aria-hidden="true">14.</strong> Flags</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">15.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="regex-module.html"><strong aria-hidden="true">16.</strong> regex module</a></li><li class="chapter-item expanded "><a href="gotchas.html"><strong aria-hidden="true">17.</strong> Gotchas</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">18.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">19.</strong> Exercise Solutions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Python re(gex)?</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="https://github.com/learnbyexample/py_regular_expressions" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#escaping-metacharacters" id="escaping-metacharacters">Escaping metacharacters</a></h1>
+<p>This chapter will show how to match metacharacters literally, for manually as well as programmatically constructed patterns. You'll also learn about escape sequences supported by the <code>re</code> module.</p>
+<h2><a class="header" href="#escaping-with-" id="escaping-with-">Escaping with \</a></h2>
+<p>You have seen a few metacharacters and escape sequences that help to compose a RE. To match the metacharacters literally, i.e. to remove their special meaning, prefix those characters with a <code>\</code> (backslash) character. To indicate a literal <code>\</code> character, use <code>\\</code>. Assuming these are all part of raw string, not normal strings.</p>
+<pre><code class="language-python"># even though ^ is not being used as anchor, it won't be matched literally
+&gt;&gt;&gt; bool(re.search(r'b^2', 'a^2 + b^2 - C*3'))
+False
+# escaping will work
+&gt;&gt;&gt; bool(re.search(r'b\^2', 'a^2 + b^2 - C*3'))
+True
+
+# match ( or ) literally
+&gt;&gt;&gt; re.sub(r'\(|\)', '', '(a*b) + c')
+'a*b + c'
+
+# note that here input string is also a raw string
+&gt;&gt;&gt; re.sub(r'\\', '/', r'\learn\by\example')
+'/learn/by/example'
+</code></pre>
+<p>As emphasized earlier, regular expressions is just another tool to process text. Some examples and exercises presented in this book can be solved using normal string methods as well. For real world use cases, ask yourself if regular expressions is needed at all?</p>
+<pre><code class="language-python">&gt;&gt;&gt; eqn = 'f*(a^b) - 3*(a^b)'
+
+# straightforward search and replace, no need RE shenanigans
+&gt;&gt;&gt; eqn.replace('(a^b)', 'c')
+'f*c - 3*c'
+</code></pre>
+<h2><a class="header" href="#reescape" id="reescape">re.escape</a></h2>
+<p>Okay, what if you have a string variable that must be used to construct a RE — how to escape all the metacharacters? Relax, <code>re.escape</code> function has got you covered. No need to manually take care of all the metacharacters or worry about changes in future versions.</p>
+<pre><code class="language-python">&gt;&gt;&gt; expr = '(a^b)'
+# print used here to show results similar to raw string
+&gt;&gt;&gt; print(re.escape(expr))
+\(a\^b\)
+
+# replace only at end of string
+&gt;&gt;&gt; eqn = 'f*(a^b) - 3*(a^b)'
+&gt;&gt;&gt; re.sub(re.escape(expr) + r'\Z', 'c', eqn)
+'f*(a^b) - 3*c'
+</code></pre>
+<p>Recall that in <a href="./alternation-and-grouping.html#alternation">Alternation</a> section, <code>join</code> was used to dynamically construct RE pattern from an iterable of strings. However, that didn't handle metacharacters. Here's how you can use <code>re.escape</code> so that the resulting pattern will match the strings from the input iterable literally.</p>
+<pre><code class="language-python"># iterable of strings, assume alternation precedence sorting isn't needed
+&gt;&gt;&gt; terms = ['a_42', '(a^b)', '2|3']
+# using 're.escape' and 'join' to construct the pattern
+&gt;&gt;&gt; pat1 = re.compile('|'.join(re.escape(s) for s in terms))
+# using only 'join' to construct the pattern
+&gt;&gt;&gt; pat2 = re.compile('|'.join(terms))
+
+&gt;&gt;&gt; print(pat1.pattern)
+a_42|\(a\^b\)|2\|3
+&gt;&gt;&gt; print(pat2.pattern)
+a_42|(a^b)|2|3
+
+&gt;&gt;&gt; s = 'ba_423 (a^b)c 2|3 a^b'
+&gt;&gt;&gt; pat1.sub('X', s)
+'bX3 Xc X a^b'
+&gt;&gt;&gt; pat2.sub('X', s)
+'bXX (a^b)c X|X a^b'
+</code></pre>
+<h2><a class="header" href="#escape-sequences" id="escape-sequences">Escape sequences</a></h2>
+<p>Certain characters like tab and newline can be expressed using escape sequences as <code>\t</code> and <code>\n</code> respectively. These are similar to how they are treated in normal string literals. However, <code>\b</code> is for word boundaries as seen earlier, whereas it stands for backspace character in normal string literals.</p>
+<p>The full list is mentioned at the end of <a href="https://docs.python.org/3/library/re.html#regular-expression-syntax">docs.python: Regular Expression Syntax</a> section as <code>\a \b \f \n \N \r \t \u \U \v \x \\</code>. Do read the documentation for details as well as how it differs for byte data.</p>
+<pre><code class="language-python">&gt;&gt;&gt; re.sub(r'\t', ':', 'a\tb\tc')
+'a:b:c'
+
+&gt;&gt;&gt; re.sub(r'\n', ' ', '1\n2\n3')
+'1 2 3'
+</code></pre>
+<blockquote>
+<p><img src="images/warning.svg" alt="warning" /> If an escape sequence is not defined, you'll get an error.</p>
+</blockquote>
+<pre><code class="language-python">&gt;&gt;&gt; re.search(r'\e', 'hello')
+re.error: bad escape \e at position 0
+</code></pre>
+<p>You can also represent a character using hexadecimal escape of the format <code>\xNN</code> where <code>NN</code> are exactly two hexadecimal characters. If you represent a metacharacter using escapes, it will be treated literally instead of its metacharacter feature.</p>
+<pre><code class="language-python"># \x20 is space character
+&gt;&gt;&gt; re.sub(r'\x20', '', 'h e l l o')
+'hello'
+
+# \x7c is '|' character
+&gt;&gt;&gt; re.sub(r'2\x7c3', '5', '12|30')
+'150'
+&gt;&gt;&gt; re.sub(r'2|3', '5', '12|30')
+'15|50'
+</code></pre>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> See <a href="https://ascii.cl/">ASCII code table</a> for a handy cheatsheet with all the ASCII characters and their hexadecimal representation.</p>
+</blockquote>
+<p>Octal escapes will be discussed in <a href="./groupings-and-backreferences.html#backreference">Backreference</a> section. <a href="./unicode.html#codepoints-and-unicode-escapes">Codepoints and Unicode escapes</a> section will discuss escapes for unicode characters using <code>\u</code> and <code>\U</code>.</p>
+<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
+<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>\</code></td><td>prefix metacharacters with <code>\</code> to match them literally</td></tr>
+<tr><td><code>\\</code></td><td>to match <code>\</code> literally</td></tr>
+<tr><td><code>re.escape</code></td><td>automatically escape all metacharacters</td></tr>
+<tr><td></td><td>ex: <code>'\|'.join(re.escape(s) for s in iterable)</code></td></tr>
+<tr><td><code>\t</code></td><td>escape sequences like those supported in string literals</td></tr>
+<tr><td><code>\b</code></td><td>word boundary in RE but backspace in string literals</td></tr>
+<tr><td><code>\e</code></td><td>undefined escapes will result in an error</td></tr>
+<tr><td><code>\xNN</code></td><td>represent a character using hexadecimal value</td></tr>
+<tr><td><code>\x7c</code></td><td>will match <code>\|</code> literally</td></tr>
+</tbody></table>
+<p>This short chapter discussed how to match metacharacters literally. <code>re.escape</code> helps if you are using input strings sourced from elsewhere to build the final RE. You also saw how to use escape sequences to represent characters and how they differ from normal string literals.</p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<p><strong>a)</strong> Transform the given input strings to the expected output using same logic on both strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '(9-2)*5+qty/3'
+&gt;&gt;&gt; str2 = '(qty+4)/2-(9-2)*5+pq/4'
+
+##### add your solution here for str1
+'35+qty/3'
+##### add your solution here for str2
+'(qty+4)/2-35+pq/4'
+</code></pre>
+<p><strong>b)</strong> Replace <code>(4)\|</code> with <code>2</code> only at the start or end of given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = r'2.3/(4)\|6 foo 5.3-(4)\|'
+&gt;&gt;&gt; s2 = r'(4)\|42 - (4)\|3'
+&gt;&gt;&gt; s3 = 'two - (4)\\|\n'
+
+&gt;&gt;&gt; pat = re.compile()        ##### add your solution here
+
+&gt;&gt;&gt; pat.sub('2', s1)
+'2.3/(4)\\|6 foo 5.3-2'
+&gt;&gt;&gt; pat.sub('2', s2)
+'242 - (4)\\|3'
+&gt;&gt;&gt; pat.sub('2', s3)
+'two - (4)\\|\n'
+</code></pre>
+<p><strong>c)</strong> Replace any matching element from the list <code>items</code> with <code>X</code> for given the input strings. Match the elements from <code>items</code> literally. Assume no two elements of <code>items</code> will result in any matching conflict.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
+&gt;&gt;&gt; pat = re.compile()      ##### add your solution here
+
+&gt;&gt;&gt; pat.sub('X', '0a.bcd')
+'0Xcd'
+&gt;&gt;&gt; pat.sub('X', 'E{n}AMPLE')
+'EXAMPLE'
+&gt;&gt;&gt; pat.sub('X', r'43+n2 ax\y\ze')
+'4X2 aXe'
+</code></pre>
+<p><strong>d)</strong> Replace backspace character <code>\b</code> with a single space character for the given input string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '123\b456'
+&gt;&gt;&gt; ip
+'123\x08456'
+&gt;&gt;&gt; print(ip)
+12456
+
+&gt;&gt;&gt; re.sub()        ##### add your solution here
+'123 456'
+</code></pre>
+<p><strong>e)</strong> Replace all occurrences of <code>\e</code> with <code>e</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = r'th\er\e ar\e common asp\ects among th\e alt\ernations'
+
+&gt;&gt;&gt; re.sub()     ##### add your solution here
+'there are common aspects among the alternations'
+</code></pre>
+<p><strong>f)</strong> Replace any matching item from the list <code>eqns</code> with <code>X</code> for given the string <code>ip</code>. Match the items from <code>eqns</code> literally.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '3-(a^b)+2*(a^b)-(a/b)+3'
+&gt;&gt;&gt; eqns = ['(a^b)', '(a/b)', '(a^b)+2']
+
+##### add your solution here
+
+&gt;&gt;&gt; pat.sub('X', ip)
+'3-X*X-X+3'
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="alternation-and-grouping.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="dot-metacharacter-and-quantifiers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="alternation-and-grouping.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="dot-metacharacter-and-quantifiers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

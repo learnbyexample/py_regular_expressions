@@ -1,0 +1,1461 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Exercise Solutions - Python re(gex)?</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Example based guide to mastering Python regular expressions">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="why-is-it-needed.html"><strong aria-hidden="true">2.</strong> Why is it needed?</a></li><li class="chapter-item expanded "><a href="re-introduction.html"><strong aria-hidden="true">3.</strong> re introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="flags.html"><strong aria-hidden="true">14.</strong> Flags</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">15.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="regex-module.html"><strong aria-hidden="true">16.</strong> regex module</a></li><li class="chapter-item expanded "><a href="gotchas.html"><strong aria-hidden="true">17.</strong> Gotchas</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">18.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html" class="active"><strong aria-hidden="true">19.</strong> Exercise Solutions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Python re(gex)?</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="https://github.com/learnbyexample/py_regular_expressions" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#re-introduction" id="re-introduction">re introduction</a></h1>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.</p>
+</blockquote>
+<p><strong>a)</strong> Check whether the given strings contain <code>0xB0</code>. Display a boolean result as shown below.</p>
+<pre><code class="language-python">&gt;&gt;&gt; line1 = 'start address: 0xA0, func1 address: 0xC0'
+&gt;&gt;&gt; line2 = 'end address: 0xFF, func2 address: 0xB0'
+
+&gt;&gt;&gt; bool(re.search(r'0xB0', line1))
+False
+&gt;&gt;&gt; bool(re.search(r'0xB0', line2))
+True
+</code></pre>
+<p><strong>b)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'They ate 5 apples and 5 oranges'
+
+&gt;&gt;&gt; re.sub(r'5', 'five', ip)
+'They ate five apples and five oranges'
+</code></pre>
+<p><strong>c)</strong> Replace first occurrence of <code>5</code> with <code>five</code> for the given string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'They ate 5 apples and 5 oranges'
+
+&gt;&gt;&gt; re.sub(r'5', 'five', ip, count=1)
+'They ate five apples and 5 oranges'
+</code></pre>
+<p><strong>d)</strong> For the given list, filter all elements that do <em>not</em> contain <code>e</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt;&gt;&gt; [w for w in items if not re.search(r'e', w)]
+['goal', 'sit']
+</code></pre>
+<p><strong>e)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'This note should not be NoTeD'
+
+&gt;&gt;&gt; re.sub(r'note', 'X', ip, flags=re.I)
+'This X should not be XD'
+</code></pre>
+<p><strong>f)</strong> Check if <code>at</code> is present in the given byte input data.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = b'tiger imp goat'
+
+&gt;&gt;&gt; bool(re.search(rb'at', ip))
+True
+</code></pre>
+<p><strong>g)</strong> For the given input string, display all lines not containing <code>start</code> irrespective of case.</p>
+<pre><code class="language-python">&gt;&gt;&gt; para = '''good start
+... Start working on that
+... project you always wanted
+... stars are shining brightly
+... hi there
+... start and try to
+... finish the book
+... bye'''
+
+&gt;&gt;&gt; pat = re.compile(r'start', flags=re.I)
+&gt;&gt;&gt; for line in para.split('\n'):
+...     if not pat.search(line):
+...         print(line)
+... 
+project you always wanted
+stars are shining brightly
+hi there
+finish the book
+bye
+</code></pre>
+<p><strong>h)</strong> For the given list, filter all elements that contains either <code>a</code> or <code>w</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt;&gt;&gt; [w for w in items if re.search(r'a', w) or re.search(r'w', w)]
+['goal', 'new', 'eat']
+</code></pre>
+<p><strong>i)</strong> For the given list, filter all elements that contains both <code>e</code> and <code>n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+
+&gt;&gt;&gt; [w for w in items if re.search(r'e', w) and re.search(r'n', w)]
+['new', 'dinner']
+</code></pre>
+<p><strong>j)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'start address: 0xA0, func1 address: 0xC0'
+
+&gt;&gt;&gt; re.sub(r'0xC0', '0x1F', re.sub(r'0xA0', '0x7F', ip))
+'start address: 0x7F, func1 address: 0x1F'
+</code></pre>
+<br>
+<h1><a class="header" href="#anchors" id="anchors">Anchors</a></h1>
+<p><strong>a)</strong> Check if the given strings start with <code>be</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; line1 = 'be nice'
+&gt;&gt;&gt; line2 = '&quot;best!&quot;'
+&gt;&gt;&gt; line3 = 'better?'
+&gt;&gt;&gt; line4 = 'oh no\nbear spotted'
+
+&gt;&gt;&gt; pat = re.compile(r'\Abe')
+
+&gt;&gt;&gt; bool(pat.search(line1))
+True
+&gt;&gt;&gt; bool(pat.search(line2))
+False
+&gt;&gt;&gt; bool(pat.search(line3))
+True
+&gt;&gt;&gt; bool(pat.search(line4))
+False
+</code></pre>
+<p><strong>b)</strong> For the given input string, change only whole word <code>red</code> to <code>brown</code></p>
+<pre><code class="language-python">&gt;&gt;&gt; words = 'bred red spread credible'
+
+&gt;&gt;&gt; re.sub(r'\bred\b', 'brown', words)
+'bred brown spread credible'
+</code></pre>
+<p><strong>c)</strong> For the given input list, filter all elements that contains <code>42</code> surrounded by word characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'\B42\B', w)]
+['hi42bye', 'nice1423', 'cool_42a']
+</code></pre>
+<p><strong>d)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+
+&gt;&gt;&gt; [e for e in items if re.search(r'\Aden', e) or re.search(r'ly\Z', e)]
+['lovely', '2 lonely', 'dent']
+</code></pre>
+<p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of a line.</p>
+<pre><code class="language-python">&gt;&gt;&gt; para = '''\
+... ball fall wall tall
+... mall call ball pall
+... wall mall ball fall
+... mallet wallet malls'''
+
+&gt;&gt;&gt; print(re.sub(r'^mall\b', '1234', para, flags=re.M))
+ball fall wall tall
+1234 call ball pall
+wall mall ball fall
+mallet wallet malls
+</code></pre>
+<p><strong>f)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+&gt;&gt;&gt; [e for e in items if re.search(r'^den', e, flags=re.M) or re.search(r'ly$', e, flags=re.M)]
+['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
+</code></pre>
+<p><strong>g)</strong> For the given input list, filter all whole elements <code>12\nthree</code> irrespective of case.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
+&gt;&gt;&gt; [e for e in items if re.fullmatch(r'12\nthree', e, flags=re.I)]
+['12\nThree', '12\nthree']
+</code></pre>
+<p><strong>h)</strong> For the given input list, replace <code>hand</code> with <code>X</code> for all elements that start with <code>hand</code> followed by at least one word character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+&gt;&gt;&gt; [re.sub(r'\bhand\B', 'X', w) for w in items]
+['Xed', 'hand', 'Xy', 'unhanded', 'Xle', 'hand-2']
+</code></pre>
+<p><strong>i)</strong> For the given input list, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+
+&gt;&gt;&gt; [re.sub(r'e', 'X', w) for w in items if re.search(r'\Ah', w)]
+['handXd', 'hand', 'handy', 'handlX', 'hand-2']
+</code></pre>
+<br>
+<h1><a class="header" href="#alternation-and-grouping" id="alternation-and-grouping">Alternation and Grouping</a></h1>
+<p><strong>a)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code></p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+
+&gt;&gt;&gt; [e for e in items if re.search(r'\Aden|ly\Z', e)]
+['lovely', '2 lonely', 'dent']
+</code></pre>
+<p><strong>b)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+
+&gt;&gt;&gt; [e for e in items if re.search(r'^den|ly$', e, flags=re.M)]
+['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
+</code></pre>
+<p><strong>c)</strong> For the given input strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'creed refuse removed read'
+&gt;&gt;&gt; s2 = 'refused reed redo received'
+
+&gt;&gt;&gt; pat = re.compile(r're(mov|ceiv|fus|)ed')
+
+&gt;&gt;&gt; pat.sub('X', s1)
+'cX refuse X read'
+&gt;&gt;&gt; pat.sub('X', s2)
+'X X redo X'
+</code></pre>
+<p><strong>d)</strong> For the given input strings, replace all matches from the list <code>words</code> with <code>A</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'plate full of slate'
+&gt;&gt;&gt; s2 = &quot;slated for later, don't be late&quot;
+&gt;&gt;&gt; words = ['late', 'later', 'slated']
+
+&gt;&gt;&gt; pat = re.compile('|'.join(sorted(words, key=len, reverse=True)))
+
+&gt;&gt;&gt; pat.sub('A', s1)
+'pA full of sA'
+&gt;&gt;&gt; pat.sub('A', s2)
+&quot;A for A, don't be A&quot;
+</code></pre>
+<p><strong>e)</strong> Filter all whole elements from the input list <code>items</code> based on elements listed in <code>words</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
+&gt;&gt;&gt; words = ['late', 'later', 'slated']
+
+&gt;&gt;&gt; pat = re.compile('|'.join(words))
+
+&gt;&gt;&gt; [w for w in items if pat.fullmatch(w)]
+['later', 'late']
+</code></pre>
+<br>
+<h1><a class="header" href="#escaping-metacharacters" id="escaping-metacharacters">Escaping metacharacters</a></h1>
+<p><strong>a)</strong> Transform the given input strings to the expected output using same logic on both strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '(9-2)*5+qty/3'
+&gt;&gt;&gt; str2 = '(qty+4)/2-(9-2)*5+pq/4'
+
+&gt;&gt;&gt; str1.replace('(9-2)*5', '35')
+'35+qty/3'
+&gt;&gt;&gt; str2.replace('(9-2)*5', '35')
+'(qty+4)/2-35+pq/4'
+</code></pre>
+<p><strong>b)</strong> Replace <code>(4)\|</code> with <code>2</code> only at the start or end of given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = r'2.3/(4)\|6 foo 5.3-(4)\|'
+&gt;&gt;&gt; s2 = r'(4)\|42 - (4)\|3'
+&gt;&gt;&gt; s3 = 'two - (4)\\|\n'
+
+&gt;&gt;&gt; pat = re.compile(r'\A\(4\)\\\||\(4\)\\\|\Z')
+
+&gt;&gt;&gt; pat.sub('2', s1)
+'2.3/(4)\\|6 foo 5.3-2'
+&gt;&gt;&gt; pat.sub('2', s2)
+'242 - (4)\\|3'
+&gt;&gt;&gt; pat.sub('2', s3)
+'two - (4)\\|\n'
+</code></pre>
+<p><strong>c)</strong> Replace any matching element from the list <code>items</code> with <code>X</code> for given the input strings. Match the elements from <code>items</code> literally. Assume no two elements of <code>items</code> will result in any matching conflict.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
+&gt;&gt;&gt; pat = re.compile('|'.join(re.escape(e) for e in items))
+
+&gt;&gt;&gt; pat.sub('X', '0a.bcd')
+'0Xcd'
+&gt;&gt;&gt; pat.sub('X', 'E{n}AMPLE')
+'EXAMPLE'
+&gt;&gt;&gt; pat.sub('X', r'43+n2 ax\y\ze')
+'4X2 aXe'
+</code></pre>
+<p><strong>d)</strong> Replace backspace character <code>\b</code> with a single space character for the given input string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '123\b456'
+&gt;&gt;&gt; ip
+'123\x08456'
+&gt;&gt;&gt; print(ip)
+12456
+
+&gt;&gt;&gt; re.sub(r'\x08', ' ', ip)
+'123 456'
+</code></pre>
+<p><strong>e)</strong> Replace all occurrences of <code>\e</code> with <code>e</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = r'th\er\e ar\e common asp\ects among th\e alt\ernations'
+
+&gt;&gt;&gt; re.sub(r'\\e', 'e', ip)
+'there are common aspects among the alternations'
+</code></pre>
+<p><strong>f)</strong> Replace any matching item from the list <code>eqns</code> with <code>X</code> for given the string <code>ip</code>. Match the items from <code>eqns</code> literally.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '3-(a^b)+2*(a^b)-(a/b)+3'
+&gt;&gt;&gt; eqns = ['(a^b)', '(a/b)', '(a^b)+2']
+
+&gt;&gt;&gt; eqns_sorted = sorted(eqns, key=len, reverse=True)
+&gt;&gt;&gt; pat = re.compile('|'.join(re.escape(s) for s in eqns_sorted))
+
+&gt;&gt;&gt; pat.sub('X', ip)
+'3-X*X-X+3'
+</code></pre>
+<br>
+<h1><a class="header" href="#dot-metacharacter-and-quantifiers" id="dot-metacharacter-and-quantifiers">Dot metacharacter and Quantifiers</a></h1>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Since <code>.</code> metacharacter doesn't match newline character by default, assume that the input strings in the following exercises will not contain newline characters.</p>
+</blockquote>
+<p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'a+42//5-c pressure*3+42/5-14256'
+
+&gt;&gt;&gt; re.sub(r'42//?5', '8', ip)
+'a+8-c pressure*3+8-14256'
+</code></pre>
+<p><strong>b)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending with at most one more character or <code>le</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+
+&gt;&gt;&gt; [w for w in items if re.fullmatch(r'hand(.|le)?', w)]
+['hand', 'handy', 'hands', 'handle']
+</code></pre>
+<p><strong>c)</strong> Use <code>re.split</code> to get the output as shown for the given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; eqn1 = 'a+42//5-c'
+&gt;&gt;&gt; eqn2 = 'pressure*3+42/5-14256'
+&gt;&gt;&gt; eqn3 = 'r*42-5/3+42///5-42/53+a'
+
+&gt;&gt;&gt; pat = re.compile(r'42//?5')
+
+&gt;&gt;&gt; pat.split(eqn1)
+['a+', '-c']
+&gt;&gt;&gt; pat.split(eqn2)
+['pressure*3+', '-14256']
+&gt;&gt;&gt; pat.split(eqn3)
+['r*42-5/3+42///5-', '3+a']
+</code></pre>
+<p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till end of the string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'remove the special meaning of such constructs'
+&gt;&gt;&gt; s2 = 'characters while constructing'
+
+&gt;&gt;&gt; pat = re.compile(r'i.*')
+
+&gt;&gt;&gt; pat.sub('', s1)
+'remove the spec'
+&gt;&gt;&gt; pat.sub('', s2)
+'characters wh'
+</code></pre>
+<p><strong>e)</strong> For the given strings, construct a RE to get output as shown.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = 'a+b(addition)'
+&gt;&gt;&gt; str2 = 'a/b(division) + c%d(#modulo)'
+&gt;&gt;&gt; str3 = 'Hi there(greeting). Nice day(a(b)'
+
+&gt;&gt;&gt; remove_parentheses = re.compile(r'\(.*?\)')
+
+&gt;&gt;&gt; remove_parentheses.sub('', str1)
+'a+b'
+&gt;&gt;&gt; remove_parentheses.sub('', str2)
+'a/b + c%d'
+&gt;&gt;&gt; remove_parentheses.sub('', str3)
+'Hi there. Nice day'
+</code></pre>
+<p><strong>f)</strong> Correct the given RE to get the expected output.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = 'plink incoming tint winter in caution sentient'
+&gt;&gt;&gt; change = re.compile(r'int|in|ion|ing|inco|inter|ink')
+
+# wrong output
+&gt;&gt;&gt; change.sub('X', words)
+'plXk XcomXg tX wXer X cautX sentient'
+
+# expected output
+&gt;&gt;&gt; change = re.compile(r'in(ter|co|t|g|k)?|ion')
+&gt;&gt;&gt; change.sub('X', words)
+'plX XmX tX wX X cautX sentient'
+</code></pre>
+<p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using <code>{m,n}</code> representation?</p>
+<ul>
+<li><code>?</code> is same as <code>{,1}</code></li>
+<li><code>*</code> is same as <code>{0,}</code></li>
+<li><code>+</code> is same as <code>{1,}</code></li>
+</ul>
+<p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — True or False?</p>
+<p>False. Because <code>(a*|b*)</code> will match only sequences like <code>a</code>, <code>aaa</code>, <code>bb</code>, <code>bbbbbbbb</code>. But <code>(a|b)*</code> can match a mixed sequence like <code>ababbba</code> too.</p>
+<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till end of the string, provided <code>test</code> isn't at the end of the string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'this is a Test'
+&gt;&gt;&gt; s2 = 'always test your RE for corner cases'
+&gt;&gt;&gt; s3 = 'a TEST of skill tests?'
+
+&gt;&gt;&gt; pat = re.compile('test.+', flags=re.I)
+
+&gt;&gt;&gt; pat.sub('', s1)
+'this is a Test'
+&gt;&gt;&gt; pat.sub('', s2)
+'always '
+&gt;&gt;&gt; pat.sub('', s3)
+'a '
+</code></pre>
+<p><strong>j)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'\As.*(e.*t|t.*e)', w)]
+['subtle', 'sets', 'site']
+</code></pre>
+<p><strong>k)</strong> For the input list <code>words</code>, remove all elements having less than <code>6</code> characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'.{6,}', w)]
+['sequoia', 'subtle', 'exhibit']
+</code></pre>
+<p><strong>l)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+
+&gt;&gt;&gt; [w for w in words if re.fullmatch(r'(s|t).{,5}', w)]
+['subtle', 'sets', 'tests', 'site']
+</code></pre>
+<p><strong>m)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&lt;characters&gt;</code> patterns but not the <code>&lt;&gt;</code> ones. The expected result was <code>'a 1&lt;&gt; b 2&lt;&gt; c'</code>.</p>
+<p>The use of <code>.+</code> quantifier after <code>&lt;</code> means that <code>&lt;&gt;</code> cannot be a possible match to satisfy <code>&lt;.+?&gt;</code>. So, after matching <code>&lt;</code> (which occurs after <code>1</code> and <code>2</code> in the given input string) the regular expression engine will look for next occurrence of <code>&gt;</code> character to satisfy the given pattern. To solve such cases, you need to use character classes, which is discussed in a later chapter, to specify which particular set of characters should be matched by the <code>+</code> quantifier instead of <code>.</code> metacharacter.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt;&gt;&gt; re.sub(r'&lt;.+?&gt;', '', ip)
+'a 1 2'
+</code></pre>
+<p><strong>n)</strong> Use <code>re.split</code> to get the output as shown below for given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'go there  //   &quot;this // that&quot;'
+&gt;&gt;&gt; s2 = 'a//b // c//d e//f // 4//5'
+&gt;&gt;&gt; s3 = '42// hi//bye//see // carefully'
+
+&gt;&gt;&gt; pat = re.compile(r' +// +')
+
+&gt;&gt;&gt; pat.split(s1, maxsplit=1)
+['go there', '&quot;this // that&quot;']
+&gt;&gt;&gt; pat.split(s2, maxsplit=1)
+['a//b', 'c//d e//f // 4//5']
+&gt;&gt;&gt; pat.split(s3, maxsplit=1)
+['42// hi//bye//see', 'carefully']
+</code></pre>
+<br>
+<h1><a class="header" href="#working-with-matched-portions" id="working-with-matched-portions">Working with matched portions</a></h1>
+<p><strong>a)</strong> For the given strings, extract the matching portion from first <code>is</code> to last <code>t</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = 'This the biggest fruit you have seen?'
+&gt;&gt;&gt; str2 = 'Your mission is to read and practice consistently'
+
+&gt;&gt;&gt; pat = re.compile(r'is.*t')
+
+&gt;&gt;&gt; pat.search(str1)[0]
+'is the biggest fruit'
+&gt;&gt;&gt; pat.search(str2)[0]
+'ission is to read and practice consistent'
+</code></pre>
+<p><strong>b)</strong> Find the starting index of first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'match after the last newline character'
+&gt;&gt;&gt; s2 = 'and then you want to test'
+&gt;&gt;&gt; s3 = 'this is good bye then'
+&gt;&gt;&gt; s4 = 'who was there to see?'
+
+&gt;&gt;&gt; pat = re.compile(r'is|the|was|to')
+
+&gt;&gt;&gt; pat.search(s1).start()
+12
+&gt;&gt;&gt; pat.search(s2).start()
+4
+&gt;&gt;&gt; pat.search(s3).start()
+2
+&gt;&gt;&gt; pat.search(s4).start()
+4
+</code></pre>
+<p><strong>c)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'match after the last newline character'
+&gt;&gt;&gt; s2 = 'and then you want to test'
+&gt;&gt;&gt; s3 = 'this is good bye then'
+&gt;&gt;&gt; s4 = 'who was there to see?'
+
+&gt;&gt;&gt; pat = re.compile(r'.*(is|the|was|to)')
+
+&gt;&gt;&gt; pat.search(s1).start(1)
+12
+&gt;&gt;&gt; pat.search(s2).start(1)
+18
+&gt;&gt;&gt; pat.search(s3).start(1)
+17
+&gt;&gt;&gt; pat.search(s4).start(1)
+14
+</code></pre>
+<p><strong>d)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'fruits:apple, mango, guava, blueberry'
+
+&gt;&gt;&gt; re.search(r':(.*)', ip)[1]
+'apple, mango, guava, blueberry'
+</code></pre>
+<p><strong>e)</strong> The given input strings contains some text followed by <code>-</code> followed by a number. Replace that number with its <code>log</code> value using <code>math.log()</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'first-3.14'
+&gt;&gt;&gt; s2 = 'next-123'
+
+&gt;&gt;&gt; pat = re.compile(r'-(.*)')
+
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; pat.sub(lambda m: '-' + str(math.log(float(m[1]))), s1)
+'first-1.144222799920162'
+&gt;&gt;&gt; pat.sub(lambda m: '-' + str(math.log(float(m[1]))), s2)
+'next-4.812184355372417'
+</code></pre>
+<p><strong>f)</strong> Replace all occurrences of <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code> for the given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = 'apartment has a park'
+&gt;&gt;&gt; str2 = 'do you have a spare cable'
+&gt;&gt;&gt; str3 = 'write a parser'
+
+&gt;&gt;&gt; pat = re.compile(r'park?|spare')
+&gt;&gt;&gt; d = {'par': 'spar', 'spare': 'extra', 'park': 'garden'}
+
+&gt;&gt;&gt; pat.sub(lambda m: d[m[0]], str1)
+'aspartment has a garden'
+&gt;&gt;&gt; pat.sub(lambda m: d[m[0]], str2)
+'do you have a extra cable'
+&gt;&gt;&gt; pat.sub(lambda m: d[m[0]], str3)
+'write a sparser'
+</code></pre>
+<p><strong>g)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as a list. Assume that the input will not contain any broken parentheses.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'another (way) to reuse (portion) matched (by) capture groups'
+
+&gt;&gt;&gt; re.findall(r'\((.*?)\)', ip)
+['way', 'portion', 'by']
+</code></pre>
+<p><strong>h)</strong> Extract all occurrences of <code>&lt;</code> up to next occurrence of <code>&gt;</code>, provided there is at least one character in between <code>&lt;</code> and <code>&gt;</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt;&gt;&gt; re.findall(r'&lt;.+?&gt;', ip)
+['&lt;apple&gt;', '&lt;&gt; b&lt;bye&gt;', '&lt;&gt; c&lt;cat&gt;']
+</code></pre>
+<p><strong>i)</strong> Use <code>re.findall</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.</p>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+&gt;&gt;&gt; row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+&gt;&gt;&gt; pat = re.compile(r'(.+?),(.+?) ')
+
+&gt;&gt;&gt; pat.findall(row1)
+[('-2', '5'), ('4', '+3'), ('+42', '-53'), ('4356246', '-357532354')]
+&gt;&gt;&gt; pat.findall(row2)
+[('1.32', '-3.14'), ('634', '5.63'), ('63.3e3', '9907809345343.235')]
+</code></pre>
+<p><strong>j)</strong> This is an extension to previous question.</p>
+<ul>
+<li>For <code>row1</code>, find the sum of integers of each tuple element. For example, sum of <code>-2</code> and <code>5</code> is <code>3</code>.</li>
+<li>For <code>row2</code>, find the sum of floating-point numbers of each tuple element. For example, sum of <code>1.32</code> and <code>-3.14</code> is <code>-1.82</code>.</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+&gt;&gt;&gt; row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
+
+# should be same as previous question
+&gt;&gt;&gt; pat = re.compile(r'(.+?),(.+?) ')
+
+&gt;&gt;&gt; [int(m[1]) + int(m[2]) for m in pat.finditer(row1)]
+[3, 7, -11, -353176108]
+
+&gt;&gt;&gt; [float(m[1]) + float(m[2]) for m in pat.finditer(row2)]
+[-1.82, 639.63, 9907809408643.234]
+</code></pre>
+<p><strong>k)</strong> Use <code>re.split</code> to get the output as shown below.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '42:no-output;1000:car-truck;SQEX49801'
+
+&gt;&gt;&gt; re.split(r':.+?-(.+?);', ip)
+['42', 'output', '1000', 'truck', 'SQEX49801']
+</code></pre>
+<p><strong>l)</strong> For the given list of strings, change the elements into a tuple of original element and number of times <code>t</code> occurs in that element.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['sequoia', 'attest', 'tattletale', 'asset']
+
+&gt;&gt;&gt; [re.subn(r't', 't', w) for w in words]
+[('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
+</code></pre>
+<p><strong>m)</strong> The given input string has fields separated by <code>:</code>. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See <a href="https://docs.python.org/3/library/re.html#re.Match.groups">docs.python: Match.groups</a> and use <code>re.finditer</code> to get the output as shown below. If the optional digits aren't present, show <code>'NA'</code> instead of <code>None</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'TWXA42:JWPA:NTED01:'
+
+&gt;&gt;&gt; [m.groups(default='NA') for m in re.finditer(r'(.{4})(..)?:', ip)]
+[('TWXA', '42'), ('JWPA', 'NA'), ('NTED', '01')]
+</code></pre>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Note that this is different from <code>re.findall</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</p>
+</blockquote>
+<p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.</p>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = 'name:rohan,maths:75,phy:89'
+&gt;&gt;&gt; row2 = 'name:rose,maths:88,phy:92'
+
+&gt;&gt;&gt; pat = re.compile(r'([^:]+):([^,]+),?')
+
+&gt;&gt;&gt; {m[1]:m[2] for m in pat.finditer(row1)}
+{'name': 'rohan', 'maths': '75', 'phy': '89'}
+&gt;&gt;&gt; {m[1]:m[2] for m in pat.finditer(row2)}
+{'name': 'rose', 'maths': '88', 'phy': '92'}
+</code></pre>
+<br>
+<h1><a class="header" href="#character-class" id="character-class">Character class</a></h1>
+<p><strong>a)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending with <code>s</code> or <code>y</code> or <code>le</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'handle']
+
+&gt;&gt;&gt; [w for w in items if re.fullmatch(r'hand([sy]|le)', w)]
+['handy', 'hands', 'handle']
+</code></pre>
+<p><strong>b)</strong> Replace all whole words <code>reed</code> or <code>read</code> or <code>red</code> with <code>X</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'redo red credible :read: rod reed'
+
+&gt;&gt;&gt; re.sub(r'\bre[ae]?d\b', 'X', ip)
+'redo X credible :X: rod X'
+</code></pre>
+<p><strong>c)</strong> For the list <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> followed by <code>l</code> or <code>n</code>. Note that the order mentioned should be followed.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'[ei].*[ln]', w)]
+['surrender', 'unicorn', 'eel']
+</code></pre>
+<p><strong>d)</strong> For the list <code>words</code>, filter all elements containing <code>e</code> or <code>i</code> and <code>l</code> or <code>n</code> in any order.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'[ei].*[ln]|[ln].*[ei]', w)]
+['surrender', 'unicorn', 'newer', 'eel']
+</code></pre>
+<p><strong>e)</strong> Extract all hex character sequences, with <code>0x</code> optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '128A foo 0xfe32 34 0xbar'
+&gt;&gt;&gt; str2 = '0XDEADBEEF place 0x0ff1ce bad'
+
+&gt;&gt;&gt; hex_seq = re.compile(r'\b(0x)?[\da-f]+\b', flags=re.I)
+
+&gt;&gt;&gt; [m[0] for m in hex_seq.finditer(str1)]
+['128A', '0xfe32', '34']
+
+&gt;&gt;&gt; [m[0] for m in hex_seq.finditer(str2)]
+['0XDEADBEEF', '0x0ff1ce', 'bad']
+</code></pre>
+<p><strong>f)</strong> Delete from <code>(</code> to the next occurrence of <code>)</code> unless they contain parentheses characters in between.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = 'def factorial()'
+&gt;&gt;&gt; str2 = 'a/b(division) + c%d(#modulo) - (e+(j/k-3)*4)'
+&gt;&gt;&gt; str3 = 'Hi there(greeting). Nice day(a(b)'
+
+&gt;&gt;&gt; remove_parentheses = re.compile(r'\([^()]*\)')
+
+&gt;&gt;&gt; remove_parentheses.sub('', str1)
+'def factorial'
+&gt;&gt;&gt; remove_parentheses.sub('', str2)
+'a/b + c%d - (e+*4)'
+&gt;&gt;&gt; remove_parentheses.sub('', str3)
+'Hi there. Nice day(a'
+</code></pre>
+<p><strong>g)</strong> For the list <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+
+&gt;&gt;&gt; [w for w in words if re.search(r'\A[^epu]', w)]
+['surrender', 'newer', 'door']
+</code></pre>
+<p><strong>h)</strong> For the list <code>words</code>, filter all elements not containing <code>u</code> or <code>w</code> or <code>ee</code> or <code>-</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
+
+&gt;&gt;&gt; [w for w in words if not re.search(r'[uw-]|ee', w)]
+['tea', 'ear']
+</code></pre>
+<p><strong>i)</strong> The given input strings contain fields separated by <code>,</code> and fields can be empty too. Replace last three fields with <code>WHTSZ323</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = '(2),kite,12,,D,C,,'
+&gt;&gt;&gt; row2 = 'hi,bye,sun,moon'
+
+&gt;&gt;&gt; pat = re.compile(r'(,[^,]*){3}\Z')
+
+&gt;&gt;&gt; pat.sub(',WHTSZ323', row1)
+'(2),kite,12,,D,WHTSZ323'
+&gt;&gt;&gt; pat.sub(',WHTSZ323', row2)
+'hi,WHTSZ323'
+</code></pre>
+<p><strong>j)</strong> Split the given strings based on consecutive sequence of digit or whitespace characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = 'lion \t Ink32onion Nice'
+&gt;&gt;&gt; str2 = '**1\f2\n3star\t7 77\r**'
+
+&gt;&gt;&gt; pat = re.compile(r'[\d\s]+')
+
+&gt;&gt;&gt; pat.split(str1)
+['lion', 'Ink', 'onion', 'Nice']
+&gt;&gt;&gt; pat.split(str2)
+['**', 'star', '**']
+</code></pre>
+<p><strong>k)</strong> Delete all occurrences of the sequence <code>&lt;characters&gt;</code> where <code>characters</code> is one or more non <code>&gt;</code> characters and cannot be empty.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'a&lt;apple&gt; 1&lt;&gt; b&lt;bye&gt; 2&lt;&gt; c&lt;cat&gt;'
+
+&gt;&gt;&gt; re.sub(r'&lt;[^&gt;]+&gt;', '', ip)
+'a 1&lt;&gt; b 2&lt;&gt; c'
+</code></pre>
+<p><strong>l)</strong> <code>\b[a-z](on|no)[a-z]\b</code> is same as <code>\b[a-z][on]{2}[a-z]\b</code>. True or False? Sample input lines shown below might help to understand the differences, if any.</p>
+<p>False. <code>[on]{2}</code> will also match <code>oo</code> and <code>nn</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; print('known\nmood\nknow\npony\ninns')
+known
+mood
+know
+pony
+inns
+</code></pre>
+<p><strong>m)</strong> For the given list, filter all elements containing any number sequence greater than <code>624</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['hi0000432abcd', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
+
+&gt;&gt;&gt; [e for e in items if any(int(m[0])&gt;624 for m in re.finditer(r'\d+', e))]
+['car00625', '3.14 96 2 foo1234baz']
+</code></pre>
+<p><strong>n)</strong> Count the maximum depth of nested braces for the given strings. Unbalanced or wrongly ordered braces should return <code>-1</code>. Note that this will require a mix of regular expressions and Python code.</p>
+<pre><code class="language-python">&gt;&gt;&gt; def max_nested_braces(ip):
+...     count = 0
+...     while True:
+...         ip, no_of_subs = re.subn(r'\{[^{}]*\}', '', ip)
+...         if no_of_subs == 0:
+...             break
+...         count += 1
+...     if re.search(r'[{}]', ip):
+...         return -1
+...     return count
+... 
+
+&gt;&gt;&gt; max_nested_braces('a*b')
+0
+&gt;&gt;&gt; max_nested_braces('}a+b{')
+-1
+&gt;&gt;&gt; max_nested_braces('a*b+{}')
+1
+&gt;&gt;&gt; max_nested_braces('{{a+2}*{b+c}+e}')
+2
+&gt;&gt;&gt; max_nested_braces('{{a+2}*{b+{c*d}}+e}')
+3
+&gt;&gt;&gt; max_nested_braces('{{a+2}*{\n{b+{c*d}}+e*d}}')
+4
+&gt;&gt;&gt; max_nested_braces('a*{b+c*{e*3.14}}}')
+-1
+</code></pre>
+<p><strong>o)</strong> By default, <code>str.split</code> method will split on whitespace and remove empty strings from the result. Which <code>re</code> module function would you use to replicate this functionality?</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = ' \t\r  so  pole\t\t\t\n\nlit in to \r\n\v\f  '
+
+&gt;&gt;&gt; ip.split()
+['so', 'pole', 'lit', 'in', 'to']
+&gt;&gt;&gt; re.findall(r'\S+', ip)
+['so', 'pole', 'lit', 'in', 'to']
+</code></pre>
+<p><strong>p)</strong> Convert the given input string to two different lists as shown below.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'price_42 roast^\t\n^-ice==cat\neast'
+
+&gt;&gt;&gt; re.split(r'[\s^=-]+', ip)
+['price_42', 'roast', 'ice', 'cat', 'east']
+
+&gt;&gt;&gt; re.split(r'([\s^=-]+)', ip)
+['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
+</code></pre>
+<p><strong>q)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+
+&gt;&gt;&gt; [e for e in items if re.search(r'\A\s*[^#\s]', e)]
+['\t\napple #42', 'sure', 'no#1']
+</code></pre>
+<br>
+<h1><a class="header" href="#groupings-and-backreferences" id="groupings-and-backreferences">Groupings and backreferences</a></h1>
+<p><strong>a)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'area not a _a2_ roar took 22'
+
+&gt;&gt;&gt; print(re.sub(r'([ar]) ', r'\1\n', ip))
+area
+not a
+_a2_ roar
+took 22
+</code></pre>
+<p><strong>b)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'sequoia subtle exhibit asset sets tests site'
+
+&gt;&gt;&gt; re.sub(r'\bs\w*(t\w*e|e\w*t)\w*', r'[\g&lt;0&gt;]', ip)
+'sequoia [subtle] exhibit asset [sets] tests [site]'
+</code></pre>
+<p><strong>c)</strong> Replace all whole words with <code>X</code> that start and end with the same word character. Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'oreo not a _a2_ roar took 22'
+
+&gt;&gt;&gt; re.sub(r'\b(\w|(\w)\w*\2)\b', 'X', ip)
+'X not X X X took X'
+</code></pre>
+<p><strong>d)</strong> Convert the given <strong>markdown</strong> headers to corresponding <strong>anchor</strong> tag. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?</p>
+<pre><code class="language-python">&gt;&gt;&gt; header1 = '# Regular Expressions'
+&gt;&gt;&gt; header2 = '## Compiling regular expressions'
+
+&gt;&gt;&gt; anchor = re.compile(r'\w.*')
+&gt;&gt;&gt; def hyphenify(m):
+...     return f'&lt;a name=&quot;{m[0].lower().replace(&quot; &quot;, &quot;-&quot;)}&quot;&gt;&lt;/a&gt;{m[0]}'
+... 
+&gt;&gt;&gt; anchor.sub(hyphenify, header1)
+'# &lt;a name=&quot;regular-expressions&quot;&gt;&lt;/a&gt;Regular Expressions'
+&gt;&gt;&gt; anchor.sub(hyphenify, header2)
+'## &lt;a name=&quot;compiling-regular-expressions&quot;&gt;&lt;/a&gt;Compiling regular expressions'
+</code></pre>
+<p><strong>e)</strong> Convert the given <strong>markdown</strong> anchors to corresponding <strong>hyperlinks</strong>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; anchor1 = '# &lt;a name=&quot;regular-expressions&quot;&gt;&lt;/a&gt;Regular Expressions'
+&gt;&gt;&gt; anchor2 = '## &lt;a name=&quot;subexpression-calls&quot;&gt;&lt;/a&gt;Subexpression calls'
+
+&gt;&gt;&gt; hyperlink = re.compile(r'[^&quot;]+&quot;([^&quot;]+)&quot;&gt;&lt;/a&gt;(.+)')
+
+&gt;&gt;&gt; hyperlink.sub(r'[\2](#\1)', anchor1)
+'[Regular Expressions](#regular-expressions)'
+&gt;&gt;&gt; hyperlink.sub(r'[\2](#\1)', anchor2)
+'[Subexpression calls](#subexpression-calls)'
+</code></pre>
+<p><strong>f)</strong> Count the number of whole words that have at least two occurrences of consecutive repeated alphabets. For example, words like <code>stillness</code> and <code>Committee</code> should be counted but not words like <code>root</code> or <code>readable</code> or <code>rotational</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '''oppressed abandon accommodation bloodless
+... carelessness committed apparition innkeeper
+... occasionally afforded embarrassment foolishness
+... depended successfully succeeded
+... possession cleanliness suppress'''
+
+&gt;&gt;&gt; len(re.findall(r'\b(\w*(\w)\2){2}\w*\b', ip))
+13
+</code></pre>
+<p><strong>g)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '1234 2323 453545354535 9339 11 60260260'
+
+&gt;&gt;&gt; re.sub(r'\b(\d+)\1+\b', r'\1', ip)
+'1234 23 4535 9339 1 60260260'
+</code></pre>
+<p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+&gt;&gt;&gt; re.sub(r'(\w+)[:.](\w+[:.])+', r'\1', ip)
+'wow hi-2 bye kite'
+</code></pre>
+<p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+&gt;&gt;&gt; re.sub(r'((\w+)[:.])+', r'\2', ip)
+'five hi-2 bye water'
+</code></pre>
+<p><strong>j)</strong> Split the given input string on one or more repeated sequence of <code>cat</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'firecatlioncatcatcatbearcatcatparrot'
+
+&gt;&gt;&gt; re.split(r'(?:cat)+', ip)
+['fire', 'lion', 'bear', 'parrot']
+</code></pre>
+<p><strong>k)</strong> For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, <code>232323</code> and <code>897897</code>. If the repeats end prematurely, for example <code>12121</code>, it should not be matched.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '1234 2323 453545354535 9339 11 60260260'
+
+&gt;&gt;&gt; pat = re.compile(r'\b(\d+)\1+\b')
+
+# entire sequences in the output
+&gt;&gt;&gt; [m[0] for m in pat.finditer(ip)]
+['2323', '453545354535', '11']
+
+# only the unique sequence in the output
+&gt;&gt;&gt; pat.findall(ip)
+['23', '4535', '1']
+</code></pre>
+<p><strong>l)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below. The keys are <code>name</code>, <code>maths</code> and <code>phy</code> for the three fields in the input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = 'rohan,75,89'
+&gt;&gt;&gt; row2 = 'rose,88,92'
+
+&gt;&gt;&gt; pat = re.compile(r'(?P&lt;name&gt;[^,]+),(?P&lt;maths&gt;[^,]+),(?P&lt;phy&gt;[^,]+)')
+
+&gt;&gt;&gt; pat.search(row1).groupdict()
+{'name': 'rohan', 'maths': '75', 'phy': '89'}
+&gt;&gt;&gt; pat.search(row2).groupdict()
+{'name': 'rose', 'maths': '88', 'phy': '92'}
+</code></pre>
+<p><strong>m)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with single substitution?</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'tiger imp goat eagle ant important'
+
+&gt;&gt;&gt; re.sub(r'\b(?:imp|ant|(\w+))\b', r'(\1)', ip)
+'(tiger) () (goat) (eagle) () (important)'
+</code></pre>
+<p><strong>n)</strong> Filter all elements that contains a sequence of lowercase alphabets followed by <code>-</code> followed by digits. They can be optionally surrounded by <code>{{</code> and <code>}}</code>. Any partial match shouldn't be part of the output.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
+
+&gt;&gt;&gt; [w for w in ip if re.fullmatch(r'({{)?[a-z]+-\d+(?(1)}})', w)]
+['{{apple-150}}', 'grape-87']
+</code></pre>
+<p><strong>o)</strong> The given input string has sequences made up of words separated by <code>:</code> or <code>.</code> and such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character. For all such sequences, display only the last word followed by <code>-</code> followed by first word.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+
+&gt;&gt;&gt; [m.expand(r'\2-\1') for m in re.finditer(r'(\w+)[:.](?:(\w+)[:.])+', ip)]
+['five-wow', 'water-kite']
+</code></pre>
+<br>
+<h1><a class="header" href="#lookarounds" id="lookarounds">Lookarounds</a></h1>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</p>
+</blockquote>
+<p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt;&gt;&gt; re.sub(r'(?&lt;!\()\b\w+', 'X', ip)
+'(apple) X X) X (mango) (grape'
+</code></pre>
+<p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt;&gt;&gt; re.sub(r'\b\w+\b(?!\))', 'X', ip)
+'(apple) X berry) X (mango) (X'
+</code></pre>
+<p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+&gt;&gt;&gt; re.sub(r'(?&lt;!\()\b\w+\b(?!\))', 'X', ip)
+'(apple) X berry) X (mango) (grape'
+</code></pre>
+<p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'at row on urn e note dust n'
+
+&gt;&gt;&gt; re.findall(r'\b\w+\b(?&lt;![en])', ip)
+['at', 'row', 'dust']
+</code></pre>
+<p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'at row on urn e note dust n'
+
+&gt;&gt;&gt; re.findall(r'(?![adn])\b\w+\b', ip)
+['row', 'on', 'urn', 'e']
+</code></pre>
+<p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt;&gt;&gt; re.findall(r'\w+(?=[:,-])', ip)
+['poke', 'so', 'ever']
+</code></pre>
+<p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt;&gt;&gt; re.findall(r'(?&lt;=[=/-])\w+', ip)
+['so', 'is', 'sit']
+</code></pre>
+<p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt;&gt;&gt; re.findall(r'(?&lt;=[=:])\w+(?=[:.])', ip)
+['so', 'ink']
+</code></pre>
+<p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+&gt;&gt;&gt; re.findall(r'(?&lt;=[=:.(-])\w+\b(?![/.])', ip)
+['so', 'vast', 'sit']
+</code></pre>
+<p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.</p>
+<pre><code class="language-python">&gt;&gt;&gt; csv1 = ' comma  ,separated ,values \t\r '
+&gt;&gt;&gt; csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
+
+&gt;&gt;&gt; remove_whitespace = re.compile(r'(?&lt;![^,])\s+|\s+(?![^,])')
+
+&gt;&gt;&gt; remove_whitespace.sub('', csv1)
+'comma,separated,values'
+&gt;&gt;&gt; remove_whitespace.sub('', csv2)
+'good bad,nice  ice,42,,stall   small'
+</code></pre>
+<p><strong>k)</strong> Filter all elements that satisfy all of these rules:</p>
+<ul>
+<li>should have at least two alphabets</li>
+<li>should have at least 3 digits</li>
+<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code></li>
+<li>should not end with a whitespace character</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+
+&gt;&gt;&gt; rule_chk = re.compile(r'(?=(.*[a-zA-Z]){2})(?=(.*\d){3})(?!.*\s\Z).*[%*#$]')
+
+&gt;&gt;&gt; [p for p in pwds if rule_chk.search(p)]
+['F2H3u%9', 'A $B C1234']
+</code></pre>
+<p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'part; cat {super} rest_42 par scatter apple spar'
+
+&gt;&gt;&gt; re.sub(r'\b(?!(?:par|cat|apple)\b)\w+\b', r'{\g&lt;0&gt;}', ip)
+'{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
+</code></pre>
+<p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '12 ab32.4 go 5 2. 46.42 5'
+
+&gt;&gt;&gt; re.findall(r'\d+(?=\.\d+)', ip)
+['32', '46']
+</code></pre>
+<p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'apple'
+&gt;&gt;&gt; s2 = '1.2-3:4'
+
+&gt;&gt;&gt; pat = re.compile(r'.(?=(.))')
+
+&gt;&gt;&gt; [m[0]+m[1] for m in pat.finditer(s1)]
+['ap', 'pp', 'pl', 'le']
+&gt;&gt;&gt; [m[0]+m[1] for m in pat.finditer(s2)]
+['1.', '.2', '2-', '-3', '3:', ':4']
+</code></pre>
+<p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = '42:cat'
+&gt;&gt;&gt; s2 = 'twelve:a2b'
+&gt;&gt;&gt; s3 = 'we:be:he:0:a:b:bother'
+
+&gt;&gt;&gt; pat = re.compile(r'(.*\d.*):.*')
+
+&gt;&gt;&gt; pat.sub(r'\1', s1)
+'42'
+&gt;&gt;&gt; pat.sub(r'\1', s2)
+'twelve:a2b'
+&gt;&gt;&gt; pat.sub(r'\1', s3)
+'we:be:he:0:a:b'
+</code></pre>
+<p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code>&lt;=&gt;</code> or <code>----</code> or <code>#</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '::very--at&lt;=&gt;row|in.a_b#b2c=&gt;lion----east'
+
+&gt;&gt;&gt; re.findall(r'(?&lt;![:#])(?&lt;!&lt;=&gt;)(?&lt;!-{4})\b\w+', ip)
+['at', 'in', 'a_b', 'lion']
+</code></pre>
+<p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '23,qty,price,42'
+&gt;&gt;&gt; str2 = 'qty price,oh'
+&gt;&gt;&gt; str3 = '3.14,qty,6,errors,9,price,3'
+&gt;&gt;&gt; str4 = '42\nqty-6,apple-56,price-234,error'
+&gt;&gt;&gt; str5 = '4,price,3.14,qty,4'
+
+&gt;&gt;&gt; neg = re.compile(r'qty((?!\s|error).)*price')
+
+&gt;&gt;&gt; bool(neg.search(str1))
+True
+&gt;&gt;&gt; bool(neg.search(str2))
+False
+&gt;&gt;&gt; bool(neg.search(str3))
+False
+&gt;&gt;&gt; bool(neg.search(str4))
+True
+&gt;&gt;&gt; bool(neg.search(str5))
+False
+</code></pre>
+<p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?</p>
+<p><code>\b</code> matches both the start and end of word locations. In the below example, <code>\b..\b</code> doesn't necessarily mean that first <code>\b</code> will match only the start of word location and second <code>\b</code> will match only the end of word location. They can be any combination! For example, <code>I</code> followed by space in the input string here is using start of word location for both whereas space followed by <code>2</code> is using end of word location for both.</p>
+<p>In contrast, the negative lookarounds only ensure that there are no word characters around any two characters. And these assertions will always be satisfied at the start of string and the end of string respectively. But <code>\b</code> depends on the presence of word characters. So, <code>!</code> at the end of the input string here matches the lookaround assertion but not word boundary.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'I have 12, he has 2!'
+
+&gt;&gt;&gt; re.sub(r'\b..\b', '{\g&lt;0&gt;}', ip)
+'{I }have {12}{, }{he} has{ 2}!'
+
+&gt;&gt;&gt; re.sub(r'(?&lt;!\w)..(?!\w)', '{\g&lt;0&gt;}', ip)
+'I have {12}, {he} has {2!}'
+</code></pre>
+<br>
+<h1><a class="header" href="#flags" id="flags">Flags</a></h1>
+<p><strong>a)</strong> Remove from first occurrence of <code>hat</code> to last occurrence of <code>ice</code> for the given input strings. Match these markers case insensitively.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'But Cool THAT\nsee What okay\nwow quite'
+&gt;&gt;&gt; s2 = 'it this hat is sliced HIT.'
+
+&gt;&gt;&gt; pat = re.compile(r'hat.*it', flags=re.S|re.I)
+
+&gt;&gt;&gt; pat.sub('', s1)
+'But Cool Te'
+&gt;&gt;&gt; pat.sub('', s2)
+'it this .'
+</code></pre>
+<p><strong>b)</strong> Delete from <code>start</code> if it is at the beginning of a line up to the next occurrence of the <code>end</code> at the end of a line. Match these markers case insensitively.</p>
+<pre><code class="language-python">&gt;&gt;&gt; para = '''\
+... good start
+... start working on that
+... project you always wanted
+... to, do not let it end
+... hi there
+... start and end the end
+... 42
+... Start and try to
+... finish the End
+... bye'''
+
+&gt;&gt;&gt; pat = re.compile(r'(?ims)^start.*?end$')
+
+&gt;&gt;&gt; print(pat.sub('', para))
+good start
+
+hi there
+
+42
+
+bye
+</code></pre>
+<p><strong>c)</strong> For the given input strings, match all of these three patterns:</p>
+<ul>
+<li><code>This</code> case sensitively</li>
+<li><code>nice</code> and <code>cool</code> case insensitively</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'This is nice and Cool'
+&gt;&gt;&gt; s2 = 'Nice and cool this is'
+&gt;&gt;&gt; s3 = 'What is so nice and cool about This?'
+
+&gt;&gt;&gt; pat = re.compile(r'(?i)(?=.*nice)(?=.*cool)(?-i:.*This)')
+
+&gt;&gt;&gt; bool(pat.search(s1))
+True
+&gt;&gt;&gt; bool(pat.search(s2))
+False
+&gt;&gt;&gt; bool(pat.search(s3))
+True
+</code></pre>
+<p><strong>d)</strong> For the given input strings, match if the string begins with <code>Th</code> and also contains a line that starts with <code>There</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'There there\nHave a cookie'
+&gt;&gt;&gt; s2 = 'This is a mess\nYeah?\nThereeeee'
+&gt;&gt;&gt; s3 = 'Oh\nThere goes the fun'
+
+&gt;&gt;&gt; pat = re.compile(r'\A(?=Th)(?ms:.*^There)')
+
+&gt;&gt;&gt; bool(pat.search(s1))
+True
+&gt;&gt;&gt; bool(pat.search(s2))
+True
+&gt;&gt;&gt; bool(pat.search(s3))
+False
+</code></pre>
+<p><strong>e)</strong> Explore what the <code>re.DEBUG</code> flag does. Here's some example patterns to check out.</p>
+<ul>
+<li><code>re.compile(r'\Aden|ly\Z', flags=re.DEBUG)</code></li>
+<li><code>re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)</code></li>
+<li><code>re.compile(r'\b(?:0x)?[\da-f]+\b', flags=re.I|re.DEBUG)</code></li>
+</ul>
+<br>
+<h1><a class="header" href="#unicode" id="unicode">Unicode</a></h1>
+<p><strong>a)</strong> Output <code>True</code> or <code>False</code> depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give <code>False</code>. Do you need regular expressions for this?</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '123—456'
+&gt;&gt;&gt; str2 = 'good fοοd'
+&gt;&gt;&gt; str3 = 'happy learning!'
+&gt;&gt;&gt; str4 = 'İıſK'
+
+&gt;&gt;&gt; str1.isascii()
+False
+&gt;&gt;&gt; str2.isascii()
+False
+&gt;&gt;&gt; str3.isascii()
+True
+&gt;&gt;&gt; str4.isascii()
+False
+</code></pre>
+<p><strong>b)</strong> Does <code>.</code> quantifier with <code>re.ASCII</code> flag enabled match non-ASCII characters?</p>
+<p>Yes.</p>
+<pre><code class="language-python">&gt;&gt;&gt; re.search(r'.+', 'fox:αλεπού')[0]
+'fox:αλεπού'
+
+&gt;&gt;&gt; re.search(r'(?a).+', 'fox:αλεπού')[0]
+'fox:αλεπού'
+</code></pre>
+<p><strong>c)</strong> Explore the following Q&amp;A threads.</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/57553721/remove-powered-number-from-string-in-python">stackoverflow: remove powered number from string</a></li>
+<li><a href="https://stackoverflow.com/questions/1922097/regular-expression-for-french-characters">stackoverflow: regular expression for French characters</a></li>
+</ul>
+<br>
+<h1><a class="header" href="#regex-module" id="regex-module">regex module</a></h1>
+<p><strong>a)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+
+&gt;&gt;&gt; [e for e in items if regex.search(r'\A\s*+[^#]', e)]
+['\t\napple #42', 'sure', 'no#1']
+</code></pre>
+<p><strong>b)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence and the separator. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+
+&gt;&gt;&gt; regex.sub(r'(\w+[:.])(?1)+', r'\1', ip)
+'wow: hi bye kite.'
+</code></pre>
+<p><strong>c)</strong> The given list of strings has fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother']
+
+&gt;&gt;&gt; [regex.sub(r'\d.*\K:.*', '', e) for e in items]
+['42', 'twelve:a2b', 'we:be:he:0:a:b']
+</code></pre>
+<p><strong>d)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code>&lt;=&gt;</code> or <code>----</code> or <code>#</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '::very--at&lt;=&gt;row|in.a_b#b2c=&gt;lion----east'
+
+&gt;&gt;&gt; regex.findall(r'(?&lt;![:#]|&lt;=&gt;|-{4})\b\w+', ip)
+['at', 'in', 'a_b', 'lion']
+</code></pre>
+<p><strong>e)</strong> The given input string has fields separated by <code>:</code> character. Extract all fields if the previous field contains a digit character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+
+&gt;&gt;&gt; regex.findall(r'(?&lt;=\d[^:]*:)[^:]+', ip)
+['ride', '3list', 'end']
+</code></pre>
+<p><strong>f)</strong> The given input string has fields separated by <code>:</code> character. Delete all fields, including the separator, unless the field contains a digit character. Stop deleting once a field with digit character is found.</p>
+<pre><code class="language-python">&gt;&gt;&gt; row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+&gt;&gt;&gt; row2 = 'um:no:low:3e:s4w:seer'
+
+&gt;&gt;&gt; pat = regex.compile(r'\G[^\d:]+:')
+
+&gt;&gt;&gt; pat.sub('', row1)
+'a2b2:ride:in:awe:b2b:3list:end'
+&gt;&gt;&gt; pat.sub('', row2)
+'3e:s4w:seer'
+</code></pre>
+<p><strong>g)</strong> For the given input strings, extract <code>if</code> followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
+&gt;&gt;&gt; ip2 = 'if+while if(a(b)c(d(e(f)1)2)3) for(i=1)'
+
+&gt;&gt;&gt; pat = regex.compile(r'if(\((?:[^()]++|(?1))++\))')
+
+&gt;&gt;&gt; pat.search(ip1)[0]
+'if(3-(k*3+4)/12-(r+2/3))'
+&gt;&gt;&gt; pat.search(ip2)[0]
+'if(a(b)c(d(e(f)1)2)3)'
+</code></pre>
+<p><strong>h)</strong> Read about <code>POSIX</code> flag from https://pypi.org/project/regex/. Is the following code snippet showing the correct output?</p>
+<p>Yes. Leftmost longest match wins in <code>POSIX</code> implementations, so alternation order doesn't matter.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = 'plink incoming tint winter in caution sentient'
+
+&gt;&gt;&gt; change = regex.compile(r'int|in|ion|ing|inco|inter|ink', flags=regex.POSIX)
+
+&gt;&gt;&gt; change.sub('X', words)
+'plX XmX tX wX X cautX sentient'
+</code></pre>
+<p>Unless two or more patterns match the same portion with the same length. In such cases, left-to-right priority is applied for the alternations. For example:</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'tryst,fun,glyph,pity,why,group'
+
+&gt;&gt;&gt; regex.sub(r'\b\w+\b|(\b[gp]\w*y\w*\b)', r'\1', ip)
+',,,,,'
+&gt;&gt;&gt; regex.sub(r'(\b[gp]\w*y\w*\b)|\b\w+\b', r'\1', ip)
+',,glyph,pity,,'
+</code></pre>
+<p><strong>i)</strong> Extract all whole words for the given input strings. However, based on user input <code>ignore</code>, do not match words if they contain any character present in the <code>ignore</code> variable.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'match after the last newline character'
+&gt;&gt;&gt; s2 = 'and then you want to test'
+
+&gt;&gt;&gt; ignore = 'aty'
+&gt;&gt;&gt; regex.findall(r'\b[\w--[' + ignore + r']]+\b', s1)
+['newline']
+&gt;&gt;&gt; regex.findall(r'\b[\w--[' + ignore + r']]+\b', s2)
+[]
+
+&gt;&gt;&gt; ignore = 'esw'
+&gt;&gt;&gt; regex.findall(r'\b[\w--[' + ignore + r']]+\b', s1)
+['match']
+&gt;&gt;&gt; regex.findall(r'\b[\w--[' + ignore + r']]+\b', s2)
+['and', 'you', 'to']
+</code></pre>
+<p><strong>j)</strong> Retain only punctuation characters for the given strings (generated from codepoints). Use Unicode character set definition for punctuation for solving this exercise.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = ''.join(chr(c) for c in range(0, 0x80))
+&gt;&gt;&gt; s2 = ''.join(chr(c) for c in range(0x80, 0x100))
+&gt;&gt;&gt; s3 = ''.join(chr(c) for c in range(0x2600, 0x27ec))
+
+&gt;&gt;&gt; pat = regex.compile(r'\P{P}+')
+
+&gt;&gt;&gt; pat.sub('', s1)
+'!&quot;#%&amp;\'()*,-./:;?@[\\]_{}'
+&gt;&gt;&gt; pat.sub('', s2)
+'¡§«¶·»¿'
+&gt;&gt;&gt; pat.sub('', s3)
+'❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪⟫'
+</code></pre>
+<p><strong>k)</strong> For the given <strong>markdown</strong> file, replace all occurrences of the string <code>python</code> (irrespective of case) with the string <code>Python</code>. However, any match within code blocks that start with whole line <code>```python</code> and end with whole line <code>```</code> shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.</p>
+<p>Refer to <a href="https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises">github: exercises folder</a> for files <code>sample.md</code> and <code>expected.md</code> required to solve this exercise.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip_str = open('sample.md', 'r').read()
+&gt;&gt;&gt; pat = regex.compile(r'(?ms)^```python$.*?^```$(*SKIP)(*F)|(?i:python)')
+&gt;&gt;&gt; with open('sample_mod.md', 'w') as op_file:
+...     op_file.write(pat.sub(lambda m: m[0].capitalize(), ip_str))
+... 
+305
+&gt;&gt;&gt; assert open('sample_mod.md').read() == open('expected.md').read()
+</code></pre>
+<p><strong>l)</strong> For the given input strings, construct a word that is made up of last characters of all the words in the input. Use last character of last word as first character, last character of last but one word as second character and so on.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'knack tic pi roar what'
+&gt;&gt;&gt; s2 = '42;rod;t2t2;car'
+
+&gt;&gt;&gt; pat = regex.compile(r'(?r)\w\b')
+
+&gt;&gt;&gt; ''.join(pat.findall(s1))
+'trick'
+&gt;&gt;&gt; ''.join(pat.findall(s2))
+'r2d2'
+</code></pre>
+<p><strong>m)</strong> Replicate <code>str.rpartition</code> functionality with regular expressions. Split into three parts based on last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'Sample123string42with777numbers'
+&gt;&gt;&gt; s2 = '12apples'
+
+&gt;&gt;&gt; regex.split(r'(\d+)(?!.*\d)', s1)
+['Sample123string42with', '777', 'numbers']
+&gt;&gt;&gt; regex.split(r'(\d+)(?!.*\d)', s2)
+['', '12', 'apples']
+</code></pre>
+<p><strong>n)</strong> Read about fuzzy matching on https://pypi.org/project/regex/. For the given input strings, return <code>True</code> if they are exactly same as <code>cat</code> or there is exactly one character difference. Ignore case when comparing differences. For example, <code>Ca2</code> should give <code>True</code>. <code>act</code> will be <code>False</code> even though the characters are same because position should be maintained.</p>
+<pre><code class="language-python">&gt;&gt;&gt; pat = regex.compile(r'(?i)(cat){s&lt;=1}')
+
+&gt;&gt;&gt; bool(pat.fullmatch('CaT'))
+True
+&gt;&gt;&gt; bool(pat.fullmatch('scat'))
+False
+&gt;&gt;&gt; bool(pat.fullmatch('ca.'))
+True
+&gt;&gt;&gt; bool(pat.fullmatch('ca#'))
+True
+&gt;&gt;&gt; bool(pat.fullmatch('c#t'))
+True
+&gt;&gt;&gt; bool(pat.fullmatch('at'))
+False
+&gt;&gt;&gt; bool(pat.fullmatch('act'))
+False
+&gt;&gt;&gt; bool(pat.fullmatch('2a1'))
+False
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="further-reading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="further-reading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

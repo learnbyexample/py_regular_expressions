@@ -1,0 +1,615 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lookarounds - Python re(gex)?</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Example based guide to mastering Python regular expressions">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="why-is-it-needed.html"><strong aria-hidden="true">2.</strong> Why is it needed?</a></li><li class="chapter-item expanded "><a href="re-introduction.html"><strong aria-hidden="true">3.</strong> re introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html" class="active"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="flags.html"><strong aria-hidden="true">14.</strong> Flags</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">15.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="regex-module.html"><strong aria-hidden="true">16.</strong> regex module</a></li><li class="chapter-item expanded "><a href="gotchas.html"><strong aria-hidden="true">17.</strong> Gotchas</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">18.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">19.</strong> Exercise Solutions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Python re(gex)?</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="https://github.com/learnbyexample/py_regular_expressions" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#lookarounds" id="lookarounds">Lookarounds</a></h1>
+<p>You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within RE definition. These assertions are also known as <strong>zero-width patterns</strong> because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.</p>
+<h2><a class="header" href="#conditional-expressions" id="conditional-expressions">Conditional expressions</a></h2>
+<p>Before you get used to lookarounds too much, it is good to remember that Python is a programming language. You have control structures and you can combine multiple conditions using logical operators, functions like <code>all/any</code>, etc. Also, do not forget that <code>re</code> is only one of the tools available for string processing.</p>
+<pre><code class="language-python">&gt;&gt;&gt; items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
+
+# filter elements containing digit and '#' characters
+&gt;&gt;&gt; [s for s in items if re.search(r'\d', s) and '#' in s]
+['#foo 123']
+
+# modify elements only if it doesn't start with '#'
+&gt;&gt;&gt; for s in items:
+...     if s[0] != '#':
+...         print(re.sub(r',.+,', ' ', s))
+... 
+1 4
+a d
+</code></pre>
+<h2><a class="header" href="#negative-lookarounds" id="negative-lookarounds">Negative lookarounds</a></h2>
+<p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code>&lt;</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose complete syntax is shown below.</p>
+<ul>
+<li><code>(?!pat)</code> for negative lookahead assertion</li>
+<li><code>(?&lt;!pat)</code> for negative lookbehind assertion</li>
+</ul>
+<p>As mentioned earlier, lookarounds are not part of matched portions and do not affect capture group numbering.</p>
+<pre><code class="language-python"># change 'foo' only if it is not followed by a digit character
+# note that end of string satisfies the given assertion
+# 'foofoo' has two matches as the assertion doesn't consume characters
+&gt;&gt;&gt; re.sub(r'foo(?!\d)', 'baz', 'hey food! foo42 foot5 foofoo')
+'hey bazd! foo42 bazt5 bazbaz'
+
+# change 'foo' only if it is not preceded by _
+# note how 'foo' at start of string is matched as well
+&gt;&gt;&gt; re.sub(r'(?&lt;!_)foo', 'baz', 'foo _foo 42foofoo')
+'baz _foo 42bazbaz'
+
+# overlap example
+# the final _ was replaced as well as played a part in the assertion
+&gt;&gt;&gt; re.sub(r'(?&lt;!_)foo.', 'baz', 'food _fool 42foo_foot')
+'baz _fool 42bazfoot'
+</code></pre>
+<p>Lookarounds can be mixed with already existing anchors and other features to define truly powerful restrictions:</p>
+<pre><code class="language-python"># change whole word only if it is not preceded by : or -
+&gt;&gt;&gt; re.sub(r'(?&lt;![:-])\b\w+\b', 'X', ':cart &lt;apple -rest ;tea')
+':cart &lt;X -rest ;X'
+
+# add space to word boundaries, but not at start or end of string
+# similar to: re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2').strip()
+&gt;&gt;&gt; re.sub(r'(?&lt;!\A)\b(?!\Z)', ' ', 'foo_baz=num1+35*42/num2')
+'foo_baz = num1 + 35 * 42 / num2'
+</code></pre>
+<p>In all the examples so far, lookahead grouping was placed as a suffix and lookbehind as a prefix. This is how they are used most of the time, but not the only way to use them. Lookarounds can be placed anywhere and multiple lookarounds can be combined in any order. They do not consume characters nor do they play a role in matched portions. They just let you know whether the condition you want to test is satisfied from the current location in the input string.</p>
+<pre><code class="language-python"># these two are equivalent
+# replace a character as long as it is not preceded by 'p' or 'r'
+&gt;&gt;&gt; re.sub(r'(?&lt;![pr]).', '*', 'spare')
+'**a*e'
+&gt;&gt;&gt; re.sub(r'.(?&lt;![pr].)', '*', 'spare')
+'**a*e'
+
+# replace 'par' as long as 's' is not present later in the input
+# this assumes that the lookaround doesn't conflict with search pattern
+# i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
+&gt;&gt;&gt; re.sub(r'par(?!.*s)', 'X', 'par spare part party')
+'par sXe Xt Xty'
+&gt;&gt;&gt; re.sub(r'(?!.*s)par', 'X', 'par spare part party')
+'par sXe Xt Xty'
+
+# since the three assertions used here are all zero-width,
+# all of the 6 possible combinations will be equivalent
+&gt;&gt;&gt; re.sub(r'(?!\Z)\b(?&lt;!\A)', ' ', 'foo_baz=num1+35*42/num2')
+'foo_baz = num1 + 35 * 42 / num2'
+</code></pre>
+<h2><a class="header" href="#positive-lookarounds" id="positive-lookarounds">Positive lookarounds</a></h2>
+<p>Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookaround can be identified by use of <code>=</code> in the grouping. The complete syntax looks like:</p>
+<ul>
+<li><code>(?=pat)</code> for positive lookahead assertion</li>
+<li><code>(?&lt;=pat)</code> for positive lookbehind assertion</li>
+</ul>
+<pre><code class="language-python"># extract digits only if it is followed by ,
+# note that end of string doesn't qualify as this is positive assertion
+&gt;&gt;&gt; re.findall(r'\d+(?=,)', '42 foo-5, baz3; x-83, y-20: f12')
+['5', '83']
+
+# extract digits only if it is preceded by - and followed by ; or :
+&gt;&gt;&gt; re.findall(r'(?&lt;=-)\d+(?=[:;])', '42 foo-5, baz3; x-83, y-20: f12')
+['20']
+
+# replace 'par' as long as 'part' occurs as a whole word later in the line
+&gt;&gt;&gt; re.sub(r'par(?=.*\bpart\b)', 'X', 'par spare part party')
+'X sXe part party'
+</code></pre>
+<p>Lookarounds can be quite handy in field based processing.</p>
+<pre><code class="language-python"># except first and last fields
+&gt;&gt;&gt; re.findall(r'(?&lt;=,)[^,]+(?=,)', '1,two,3,four,5')
+['two', '3', 'four']
+
+# replace empty fields with NA
+# note that in this case, order of lookbehind and lookahead doesn't matter
+&gt;&gt;&gt; re.sub(r'(?&lt;![^,])(?![^,])', 'NA', ',1,,,two,3,,,')
+'NA,1,NA,NA,two,3,NA,NA,NA'
+</code></pre>
+<h2><a class="header" href="#capture-groups-inside-positive-lookarounds" id="capture-groups-inside-positive-lookarounds">Capture groups inside positive lookarounds</a></h2>
+<p>Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?</p>
+<pre><code class="language-python">&gt;&gt;&gt; print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
+a b
+b c
+c d
+d e
+
+# and of course, use non-capturing group where needed
+&gt;&gt;&gt; re.findall(r'(?&lt;=(po|ca)re)\d+', 'pore42 car3 pare7 care5')
+['po', 'ca']
+&gt;&gt;&gt; re.findall(r'(?&lt;=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5')
+['42', '5']
+</code></pre>
+<h2><a class="header" href="#conditional-and-with-lookarounds" id="conditional-and-with-lookarounds">Conditional AND with lookarounds</a></h2>
+<p>As promised earlier, here's how lookarounds make it simpler to construct AND conditionals.</p>
+<pre><code class="language-python">&gt;&gt;&gt; words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
+
+# words containing 'b' and 'e' and 't' in any order
+# same as: r'b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b'
+&gt;&gt;&gt; [w for w in words if re.search(r'(?=.*b)(?=.*e).*t', w)]
+['subtle', 'questionable', 'exhibit']
+
+# words containing all lowercase vowels in any order
+&gt;&gt;&gt; [w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)]
+['sequoia', 'questionable', 'equation']
+
+# words containing 'a' and 'q' but not 'n' at the end of the element
+&gt;&gt;&gt; [w for w in words if re.search(r'(?=.*a)(?=.*q)(?!.*n\Z)', w)]
+['sequoia', 'questionable']
+</code></pre>
+<h2><a class="header" href="#variable-length-lookbehind" id="variable-length-lookbehind">Variable length lookbehind</a></h2>
+<p>With lookbehind assertion (both positive and negative), the pattern used for the assertion cannot <em>imply</em> matching variable length of text. Fixed length quantifier is allowed. Different length alternations are not allowed, even if the individual alternations are of fixed length. Here's some examples to clarify these points.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s = 'pore42 tar3 dare7 care5'
+
+# allowed
+&gt;&gt;&gt; re.findall(r'(?&lt;=(?:po|da)re)\d+', s)
+['42', '7']
+&gt;&gt;&gt; re.findall(r'(?&lt;=\b[a-z]{4})\d+', s)
+['42', '7', '5']
+
+# not allowed
+&gt;&gt;&gt; re.findall(r'(?&lt;!tar|dare)\d+', s)
+re.error: look-behind requires fixed-width pattern
+&gt;&gt;&gt; re.findall(r'(?&lt;=\b[pd][a-z]*)\d+', s)
+re.error: look-behind requires fixed-width pattern
+&gt;&gt;&gt; re.sub(r'(?&lt;=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
+re.error: look-behind requires fixed-width pattern
+</code></pre>
+<p>There are various workarounds possible depending upon the use case. See <a href="./regex-module.html#variable-length-lookbehind">Variable length lookbehind</a> section for <code>regex</code> module for the easiest and most robust solution.</p>
+<p>First up, when the lookbehind alternatives are of fixed length. In such cases, you can manually expand the alternatives into individual lookbehinds. For negatives, place them next to each other. For positives, separate them with alternation inside another grouping.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s = 'pore42 tar3 dare7 care5'
+
+# workaround for r'(?&lt;!tar|dare)\d+'
+&gt;&gt;&gt; re.findall(r'(?&lt;!tar)(?&lt;!dare)\d+', s)
+['42', '5']
+
+# workaround for r'(?&lt;=tar|dare)\d+'
+&gt;&gt;&gt; re.findall(r'(?:(?&lt;=tar)|(?&lt;=dare))\d+', s)
+['3', '7']
+
+# workaround for r'(?&lt;=\A|,)(?=,|\Z)'
+&gt;&gt;&gt; re.sub(r'((?&lt;=\A)|(?&lt;=,))(?=,|\Z)', 'NA', ',1,,,two,3,,,')
+'NA,1,NA,NA,two,3,NA,NA,NA'
+</code></pre>
+<p>For some of the positive lookbehind cases, you can skip lookbehind entirely and workaround with normal groupings. This works even when you don't know the length of patterns.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s = 'pore42 tar3 dare7 care5'
+
+# same as: re.findall(r'(?:(?&lt;=tar)|(?&lt;=dare))\d+', s)
+&gt;&gt;&gt; re.findall(r'(?:tar|dare)(\d+)', s)
+['3', '7']
+
+# delete digits only if they are preceded by 'tar' or 'dare'
+&gt;&gt;&gt; re.sub(r'(tar|dare)\d+', r'\1', s)
+'pore42 tar dare care5'
+
+# workaround for r'(?&lt;=\b[pd][a-z]*)\d+'
+# get digits only if they are preceded by a word starting with 'p' or 'd'
+&gt;&gt;&gt; re.findall(r'\b[pd][a-z]*(\d+)', s)
+['42', '7']
+
+# delete digits only if they are preceded by a word starting with 'p' or 'd'
+&gt;&gt;&gt; re.sub(r'(\b[pd][a-z]*)\d+', r'\1', s)
+'pore tar3 dare care5'
+</code></pre>
+<p>However, if you don't know the lengths for negative lookbehind, you cannot use the above workarounds. The next section will show how to negate a grouping, and that helps for some of the variable negative lookbehind cases.</p>
+<h2><a class="header" href="#negated-groups" id="negated-groups">Negated groups</a></h2>
+<p>Variable length negative lookbehind can be simulated using negative lookahead (which doesn't have restriction on variable length) inside a grouping and applying quantifier to match characters one by one. This also showcases how grouping can be negated in certain cases. Note that this will only work if you have well defined conditions before the negated group.</p>
+<pre><code class="language-python"># note the use of \A anchor to force matching all characters up to 'dog'
+&gt;&gt;&gt; bool(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot'))
+False
+&gt;&gt;&gt; bool(re.search(r'\A((?!parrot).)*dog', 'fox,cat,dog,parrot'))
+True
+# without the anchor, you'll get false matches
+&gt;&gt;&gt; bool(re.search(r'((?!cat).)*dog', 'fox,cat,dog,parrot'))
+True
+
+# easier to understand by checking matched portion
+&gt;&gt;&gt; re.search(r'\A((?!cat).)*', 'fox,cat,dog,parrot')[0]
+'fox,'
+&gt;&gt;&gt; re.search(r'\A((?!parrot).)*', 'fox,cat,dog,parrot')[0]
+'fox,cat,dog,'
+&gt;&gt;&gt; re.search(r'\A((?!(.)\2).)*', 'fox,cat,dog,parrot')[0]
+'fox,cat,dog,pa'
+</code></pre>
+<p>Here's some examples of matching two patterns with a negated group between them.</p>
+<pre><code class="language-python"># match if 'do' is not there between 'at' and 'par'
+&gt;&gt;&gt; bool(re.search(r'at((?!do).)*par', 'fox,cat,dog,parrot'))
+False
+
+# match if 'go' is not there between 'at' and 'par'
+&gt;&gt;&gt; bool(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot'))
+True
+&gt;&gt;&gt; re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot')[0]
+'at,dog,par'
+
+# use non-capturing group if required
+&gt;&gt;&gt; re.findall(r'a(?:(?!\d).)*z', 'at,baz,a2z,bad-zoo')
+['at,baz', 'ad-z']
+</code></pre>
+<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
+<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
+<tr><td>lookarounds</td><td>custom assertions, zero-width like anchors</td></tr>
+<tr><td><code>(?!pat)</code></td><td>negative lookahead assertion</td></tr>
+<tr><td><code>(?&lt;!pat)</code></td><td>negative lookbehind assertion</td></tr>
+<tr><td><code>(?=pat)</code></td><td>positive lookahead assertion</td></tr>
+<tr><td><code>(?&lt;=pat)</code></td><td>positive lookbehind assertion</td></tr>
+<tr><td><code>(?!pat1)(?=pat2)</code></td><td>multiple assertions can be specified next to each other in any order</td></tr>
+<tr><td></td><td>as they mark a matching location without consuming characters</td></tr>
+<tr><td><code>((?!pat).)*</code></td><td>Negate a grouping, similar to negated character class</td></tr>
+</tbody></table>
+<p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regular expressions have been covered. The special groupings seem never ending though, there's some more of them in coming chapters!!</p>
+<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
+<blockquote>
+<p><img src="images/info.svg" alt="info" /> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</p>
+</blockquote>
+<p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+##### add your solution here
+'(apple) X X) X (mango) (grape'
+</code></pre>
+<p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+##### add your solution here
+'(apple) X berry) X (mango) (X'
+</code></pre>
+<p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '(apple) guava berry) apple (mango) (grape'
+
+##### add your solution here
+'(apple) X berry) X (mango) (grape'
+</code></pre>
+<p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'at row on urn e note dust n'
+
+##### add your solution here
+['at', 'row', 'dust']
+</code></pre>
+<p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'at row on urn e note dust n'
+
+##### add your solution here
+['row', 'on', 'urn', 'e']
+</code></pre>
+<p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+##### add your solution here
+['poke', 'so', 'ever']
+</code></pre>
+<p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+##### add your solution here
+['so', 'is', 'sit']
+</code></pre>
+<p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+##### add your solution here
+['so', 'ink']
+</code></pre>
+<p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+
+##### add your solution here
+['so', 'vast', 'sit']
+</code></pre>
+<p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.</p>
+<pre><code class="language-python">&gt;&gt;&gt; csv1 = ' comma  ,separated ,values \t\r '
+&gt;&gt;&gt; csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
+
+&gt;&gt;&gt; remove_whitespace = re.compile()     ##### add your solution here
+
+&gt;&gt;&gt; remove_whitespace.sub('', csv1)
+'comma,separated,values'
+&gt;&gt;&gt; remove_whitespace.sub('', csv2)
+'good bad,nice  ice,42,,stall   small'
+</code></pre>
+<p><strong>k)</strong> Filter all elements that satisfy all of these rules:</p>
+<ul>
+<li>should have at least two alphabets</li>
+<li>should have at least 3 digits</li>
+<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code></li>
+<li>should not end with a whitespace character</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+
+##### add your solution here
+['F2H3u%9', 'A $B C1234']
+</code></pre>
+<p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'part; cat {super} rest_42 par scatter apple spar'
+
+##### add your solution here
+'{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
+</code></pre>
+<p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '12 ab32.4 go 5 2. 46.42 5'
+
+##### add your solution here
+['32', '46']
+</code></pre>
+<p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = 'apple'
+&gt;&gt;&gt; s2 = '1.2-3:4'
+
+&gt;&gt;&gt; pat = re.compile()       ##### add your solution here
+
+##### add your solution here for s1
+['ap', 'pp', 'pl', 'le']
+##### add your solution here for s2
+['1.', '.2', '2-', '-3', '3:', ':4']
+</code></pre>
+<p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.</p>
+<pre><code class="language-python">&gt;&gt;&gt; s1 = '42:cat'
+&gt;&gt;&gt; s2 = 'twelve:a2b'
+&gt;&gt;&gt; s3 = 'we:be:he:0:a:b:bother'
+
+&gt;&gt;&gt; pat = re.compile()      ##### add your solution here
+
+&gt;&gt;&gt; pat.sub()       ##### add your solution here for s1
+'42'
+&gt;&gt;&gt; pat.sub()       ##### add your solution here for s2
+'twelve:a2b'
+&gt;&gt;&gt; pat.sub()       ##### add your solution here for s3
+'we:be:he:0:a:b'
+</code></pre>
+<p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code>&lt;=&gt;</code> or <code>----</code> or <code>#</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = '::very--at&lt;=&gt;row|in.a_b#b2c=&gt;lion----east'
+
+##### add your solution here
+['at', 'in', 'a_b', 'lion']
+</code></pre>
+<p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.</p>
+<pre><code class="language-python">&gt;&gt;&gt; str1 = '23,qty,price,42'
+&gt;&gt;&gt; str2 = 'qty price,oh'
+&gt;&gt;&gt; str3 = '3.14,qty,6,errors,9,price,3'
+&gt;&gt;&gt; str4 = '42\nqty-6,apple-56,price-234,error'
+&gt;&gt;&gt; str5 = '4,price,3.14,qty,4'
+
+&gt;&gt;&gt; neg = re.compile()       ##### add your solution here
+
+&gt;&gt;&gt; bool(neg.search(str1))
+True
+&gt;&gt;&gt; bool(neg.search(str2))
+False
+&gt;&gt;&gt; bool(neg.search(str3))
+False
+&gt;&gt;&gt; bool(neg.search(str4))
+True
+&gt;&gt;&gt; bool(neg.search(str5))
+False
+</code></pre>
+<p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?</p>
+<pre><code class="language-python">&gt;&gt;&gt; ip = 'I have 12, he has 2!'
+
+&gt;&gt;&gt; re.sub(r'\b..\b', '{\g&lt;0&gt;}', ip)
+'{I }have {12}{, }{he} has{ 2}!'
+
+&gt;&gt;&gt; re.sub(r'(?&lt;!\w)..(?!\w)', '{\g&lt;0&gt;}', ip)
+'I have {12}, {he} has {2!}'
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="interlude-common-tasks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="flags.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="interlude-common-tasks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="flags.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
