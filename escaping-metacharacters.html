@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -250,12 +254,12 @@ re.error: bad escape \e at position 0
 <tr><td><code>\</code></td><td>prefix metacharacters with <code>\</code> to match them literally</td></tr>
 <tr><td><code>\\</code></td><td>to match <code>\</code> literally</td></tr>
 <tr><td><code>re.escape</code></td><td>automatically escape all metacharacters</td></tr>
-<tr><td></td><td>ex: <code>'\|'.join(re.escape(s) for s in iterable)</code></td></tr>
+<tr><td></td><td>ex: <code>'|'.join(re.escape(s) for s in iterable)</code></td></tr>
 <tr><td><code>\t</code></td><td>escape sequences like those supported in string literals</td></tr>
 <tr><td><code>\b</code></td><td>word boundary in RE but backspace in string literals</td></tr>
 <tr><td><code>\e</code></td><td>undefined escapes will result in an error</td></tr>
 <tr><td><code>\xNN</code></td><td>represent a character using hexadecimal value</td></tr>
-<tr><td><code>\x7c</code></td><td>will match <code>\|</code> literally</td></tr>
+<tr><td><code>\x7c</code></td><td>will match <code>|</code> literally</td></tr>
 </tbody></table>
 <p>This short chapter discussed how to match metacharacters literally. <code>re.escape</code> helps if you are using input strings sourced from elsewhere to build the final RE. You also saw how to use escape sequences to represent characters and how they differ from normal string literals.</p>
 <h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>

@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -378,7 +382,7 @@ blah \&lt; foo \&lt; bar \&lt; blah \&lt; baz
 <tr><td><code>{,n}</code></td><td>greedy quantifier, match up to <code>n</code> times (including <code>0</code> times)</td></tr>
 <tr><td><code>{n}</code></td><td>greedy quantifier, match exactly <code>n</code> times</td></tr>
 <tr><td><code>pat1.*pat2</code></td><td>any number of characters between <code>pat1</code> and <code>pat2</code></td></tr>
-<tr><td><code>pat1.*pat2\|pat2.*pat1</code></td><td>match both <code>pat1</code> and <code>pat2</code> in any order</td></tr>
+<tr><td><code>pat1.*pat2|pat2.*pat1</code></td><td>match both <code>pat1</code> and <code>pat2</code> in any order</td></tr>
 <tr><td>non-greedy</td><td>append <code>?</code> to greedy quantifier</td></tr>
 <tr><td></td><td>match as minimally as possible</td></tr>
 <tr><td><code>re.split</code></td><td>split a string using regular expressions</td></tr>

@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -513,7 +517,7 @@ True
 <tr><td><code>(?N)</code></td><td>subexpression call for Nth capture group</td></tr>
 <tr><td><code>(?&amp;name)</code></td><td>subexpression call for named capture group</td></tr>
 <tr><td></td><td>subexpression call is similar to functions, recursion also possible</td></tr>
-<tr><td></td><td><code>r'\((?:[^()]++\|(?0))++\)'</code> matches nested sets of parentheses</td></tr>
+<tr><td></td><td><code>r'\((?:[^()]++|(?0))++\)'</code> matches nested sets of parentheses</td></tr>
 <tr><td><code>pat\K</code></td><td><code>pat</code> won't be part of matching portion</td></tr>
 <tr><td></td><td><code>\K</code> is used similar to positive lookbehind</td></tr>
 <tr><td></td><td><code>regex</code> module allows variable length lookbehinds</td></tr>
@@ -524,14 +528,14 @@ True
 <tr><td><code>[[:^digit:]]</code></td><td>to indicate <code>\D</code></td></tr>
 <tr><td></td><td>See <a href="https://www.regular-expressions.info/posixbrackets.html">regular-expressions: POSIX Bracket</a> for full list</td></tr>
 <tr><td>set operations</td><td>feature for character classes, nested <code>[]</code> allowed</td></tr>
-<tr><td></td><td><code>\|\|</code> union, <code>~~</code> symmetric difference</td></tr>
+<tr><td></td><td><code>||</code> union, <code>~~</code> symmetric difference</td></tr>
 <tr><td></td><td><code>&amp;&amp;</code> intersection, <code>--</code> difference</td></tr>
 <tr><td></td><td><code>[[:punct:]--[.!?]]</code> punctuation except <code>.</code> <code>!</code> and <code>?</code></td></tr>
 <tr><td><code>\p{}</code></td><td>Unicode character sets provided by <code>regex</code> module</td></tr>
 <tr><td></td><td>see <a href="https://www.regular-expressions.info/unicode.html">regular-expressions: Unicode</a> for details</td></tr>
 <tr><td><code>\P{L}</code> or <code>\p{^L}</code></td><td>match characters other than <code>\p{L}</code> set</td></tr>
 <tr><td><code>pat(*SKIP)(*F)</code></td><td>ignore text matched by <code>pat</code></td></tr>
-<tr><td></td><td><code>&quot;[^&quot;]++&quot;(*SKIP)(*F)\|,</code> will match <code>,</code> but not inside</td></tr>
+<tr><td></td><td><code>&quot;[^&quot;]++&quot;(*SKIP)(*F)|,</code> will match <code>,</code> but not inside</td></tr>
 <tr><td></td><td>double quoted pairs</td></tr>
 <tr><td><code>\m</code> and <code>\M</code></td><td>anchors for start and end of word respectively</td></tr>
 <tr><td><code>overlapped</code></td><td>set as <code>True</code> to match overlapping portions</td></tr>

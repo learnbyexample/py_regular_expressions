@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -407,7 +411,7 @@ re.error: invalid group reference 11 at position 6
 <tr><td></td><td>can also use <code>\N</code> and <code>\g&lt;N&gt;</code> format if needed</td></tr>
 <tr><td><code>groupdict</code></td><td>method applied on a <code>re.Match</code> object</td></tr>
 <tr><td></td><td>gives named capture group portions as a <code>dict</code></td></tr>
-<tr><td><code>(?(id/name)yes\|no)</code></td><td>conditional group</td></tr>
+<tr><td><code>(?(id/name)yes|no)</code></td><td>conditional group</td></tr>
 <tr><td></td><td>match <code>yes-pattern</code> if backreferenced group succeeded</td></tr>
 <tr><td></td><td>else, match <code>no-pattern</code> which is optional</td></tr>
 <tr><td><code>expand</code></td><td>method applied on a <code>re.Match</code> object</td></tr>

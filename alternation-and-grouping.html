@@ -17,8 +17,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        
         <link rel="icon" href="favicon.svg">
+        
+        
         <link rel="shortcut icon" href="favicon.png">
+        
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
@@ -317,15 +321,15 @@ True
 </blockquote>
 <h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
 <table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>\|</code></td><td>multiple RE combined as conditional OR</td></tr>
+<tr><td><code>|</code></td><td>multiple RE combined as conditional OR</td></tr>
 <tr><td></td><td>each alternative can have independent anchors</td></tr>
-<tr><td><code>'\|'.join(iterable)</code></td><td>programmatically combine multiple RE</td></tr>
+<tr><td><code>'|'.join(iterable)</code></td><td>programmatically combine multiple RE</td></tr>
 <tr><td><code>()</code></td><td>group pattern(s)</td></tr>
-<tr><td><code>a(b\|c)d</code></td><td>same as <code>abd\|acd</code></td></tr>
+<tr><td><code>a(b|c)d</code></td><td>same as <code>abd|acd</code></td></tr>
 <tr><td>Alternation precedence</td><td>pattern which matches earliest in the input gets precedence</td></tr>
 <tr><td></td><td>tie-breaker is left to right if patterns have same starting location</td></tr>
 <tr><td></td><td>robust solution: sort the alternations based on length, longest first</td></tr>
-<tr><td></td><td><code>'\|'.join(sorted(iterable, key=len, reverse=True))</code></td></tr>
+<tr><td></td><td><code>'|'.join(sorted(iterable, key=len, reverse=True))</code></td></tr>
 </tbody></table>
 <p>So, this chapter was about specifying one or more alternate matches within the same RE using <code>|</code> metacharacter. Which can further be simplified using <code>()</code> grouping if the alternations have common aspects. Among the alternations, earliest matching pattern gets precedence. Left to right ordering is used as a tie-breaker if multiple alternations match starting from the same location. You also learnt ways to programmatically construct a RE.</p>
 <h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
