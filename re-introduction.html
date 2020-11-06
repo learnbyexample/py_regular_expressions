@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>re introduction - Python re(gex)?</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering Python regular expressions">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>re introduction - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,298 +32,143 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="why-is-it-needed.html"><strong aria-hidden="true">2.</strong> Why is it needed?</a></li><li class="chapter-item expanded "><a href="re-introduction.html" class="active"><strong aria-hidden="true">3.</strong> re introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="flags.html"><strong aria-hidden="true">14.</strong> Flags</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">15.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="regex-module.html"><strong aria-hidden="true">16.</strong> regex module</a></li><li class="chapter-item expanded "><a href="gotchas.html"><strong aria-hidden="true">17.</strong> Gotchas</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">18.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">19.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">Python re(gex)?</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/py_regular_expressions" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html class=active><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#re-introduction" id="re-introduction">re introduction</a></h1>
-<p>In this chapter, you'll get an introduction of <code>re</code> module that is part of Python's standard library. For some examples, the equivalent normal string method is shown for comparison. This chapter focuses on syntax, regular expression features will be covered next chapter onwards.</p>
-<h2><a class="header" href="#re-module-documentation" id="re-module-documentation">re module documentation</a></h2>
-<p>It is always a good idea to know where to find the documentation. The default offering for Python regular expressions is the <code>re</code> standard library module. Visit <a href="https://docs.python.org/3/library/re.html">docs.python: re</a> for information on available methods, syntax, features, examples and more. Here's a quote:</p>
-<blockquote>
-<p>A regular expression (or RE) specifies a set of strings that matches it; the functions in this module let you check if a particular string matches a given regular expression</p>
-</blockquote>
-<h2><a class="header" href="#research" id="research">re.search</a></h2>
-<p>Normally you'd use the <code>in</code> operator to test whether a string is part of another string or not. For regular expressions, use the <code>re.search</code> function whose argument list is shown below.</p>
-<blockquote>
-<p><code>re.search(pattern, string, flags=0)</code></p>
-</blockquote>
-<p>The first argument is the RE pattern you want to test against the input string, which is the second argument. <code>flags</code> is optional, it helps to change the default behavior of RE patterns.</p>
-<p>As a good practice, always use <strong>raw strings</strong> to construct the RE pattern. This will become clearer in later chapters. Here's some examples.</p>
-<pre><code class="language-python">&gt;&gt;&gt; sentence = 'This is a sample string'
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#re-introduction id=re-introduction>re introduction</a></h1><p>In this chapter, you'll get an introduction of <code>re</code> module that is part of Python's standard library. For some examples, the equivalent normal string method is shown for comparison. This chapter focuses on syntax, regular expression features will be covered next chapter onwards.<h2><a class=header href=#re-module-documentation id=re-module-documentation>re module documentation</a></h2><p>It is always a good idea to know where to find the documentation. The default offering for Python regular expressions is the <code>re</code> standard library module. Visit <a href=https://docs.python.org/3/library/re.html>docs.python: re</a> for information on available methods, syntax, features, examples and more. Here's a quote:<blockquote><p>A regular expression (or RE) specifies a set of strings that matches it; the functions in this module let you check if a particular string matches a given regular expression</blockquote><h2><a class=header href=#research id=research>re.search</a></h2><p>Normally you'd use the <code>in</code> operator to test whether a string is part of another string or not. For regular expressions, use the <code>re.search</code> function whose argument list is shown below.<blockquote><p><code>re.search(pattern, string, flags=0)</code></blockquote><p>The first argument is the RE pattern you want to test against the input string, which is the second argument. <code>flags</code> is optional, it helps to change the default behavior of RE patterns.<p>As a good practice, always use <strong>raw strings</strong> to construct the RE pattern. This will become clearer in later chapters. Here's some examples.<pre><code class=language-python>>>> sentence = 'This is a sample string'
 
 # check if 'sentence' contains the given search string
-&gt;&gt;&gt; 'is' in sentence
+>>> 'is' in sentence
 True
-&gt;&gt;&gt; 'xyz' in sentence
+>>> 'xyz' in sentence
 False
 
 # need to load the re module before use
-&gt;&gt;&gt; import re
+>>> import re
 
 # check if 'sentence' contains the pattern described by RE argument
-&gt;&gt;&gt; bool(re.search(r'is', sentence))
+>>> bool(re.search(r'is', sentence))
 True
-&gt;&gt;&gt; bool(re.search(r'xyz', sentence))
+>>> bool(re.search(r'xyz', sentence))
 False
-</code></pre>
-<p>Before using the <code>re</code> module, you need to <code>import</code> it. Further example snippets will assume that the module is already loaded. The return value of <code>re.search</code> function is a <code>re.Match</code> object when a match is found and <code>None</code> otherwise (note that I treat <code>re</code> as a word, not as <code>r</code> and <code>e</code> separately, hence the use of <em>a</em> instead of <em>an</em>). More details about the <code>re.Match</code> object will be discussed in <a href="./working-with-matched-portions.html#working-with-matched-portions">Working with matched portions</a> chapter. For presentation purposes, the examples will use <code>bool</code> function to show <code>True</code> or <code>False</code> depending on whether the RE pattern matched or not.</p>
-<p>Here's an example with <code>flags</code> optional argument. It will be discussed in detail in <a href="./flags.html#flags">Flags</a> chapter.</p>
-<pre><code class="language-python">&gt;&gt;&gt; sentence = 'This is a sample string'
+</code></pre><p>Before using the <code>re</code> module, you need to <code>import</code> it. Further example snippets will assume that the module is already loaded. The return value of <code>re.search</code> function is a <code>re.Match</code> object when a match is found and <code>None</code> otherwise (note that I treat <code>re</code> as a word, not as <code>r</code> and <code>e</code> separately, hence the use of <em>a</em> instead of <em>an</em>). More details about the <code>re.Match</code> object will be discussed in <a href=./working-with-matched-portions.html#working-with-matched-portions>Working with matched portions</a> chapter. For presentation purposes, the examples will use <code>bool</code> function to show <code>True</code> or <code>False</code> depending on whether the RE pattern matched or not.<p>Here's an example with <code>flags</code> optional argument. It will be discussed in detail in <a href=./flags.html#flags>Flags</a> chapter.<pre><code class=language-python>>>> sentence = 'This is a sample string'
 
-&gt;&gt;&gt; bool(re.search(r'this', sentence))
+>>> bool(re.search(r'this', sentence))
 False
 
 # re.IGNORECASE (or re.I) is a flag to enable case insensitive matching
-&gt;&gt;&gt; bool(re.search(r'this', sentence, flags=re.I))
+>>> bool(re.search(r'this', sentence, flags=re.I))
 True
-</code></pre>
-<h2><a class="header" href="#research-in-conditional-expressions" id="research-in-conditional-expressions">re.search in conditional expressions</a></h2>
-<p>As Python evaluates <code>None</code> as <code>False</code> in boolean context, <code>re.search</code> can be used directly in conditional expressions. See also <a href="https://docs.python.org/3/library/stdtypes.html#truth">docs.python: Truth Value Testing</a>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; sentence = 'This is a sample string'
-&gt;&gt;&gt; if re.search(r'ring', sentence):
+</code></pre><h2><a class=header href=#research-in-conditional-expressions id=research-in-conditional-expressions>re.search in conditional expressions</a></h2><p>As Python evaluates <code>None</code> as <code>False</code> in boolean context, <code>re.search</code> can be used directly in conditional expressions. See also <a href=https://docs.python.org/3/library/stdtypes.html#truth>docs.python: Truth Value Testing</a>.<pre><code class=language-python>>>> sentence = 'This is a sample string'
+>>> if re.search(r'ring', sentence):
 ...     print('mission success')
 ... 
 mission success
 
-&gt;&gt;&gt; if not re.search(r'xyz', sentence):
+>>> if not re.search(r'xyz', sentence):
 ...     print('mission failed')
 ... 
 mission failed
-</code></pre>
-<p>Here's some generator expression examples.</p>
-<pre><code class="language-python">&gt;&gt;&gt; words = ['cat', 'attempt', 'tattle']
+</code></pre><p>Here's some generator expression examples.<pre><code class=language-python>>>> words = ['cat', 'attempt', 'tattle']
 
-&gt;&gt;&gt; [w for w in words if re.search(r'tt', w)]
+>>> [w for w in words if re.search(r'tt', w)]
 ['attempt', 'tattle']
-&gt;&gt;&gt; all(re.search(r'at', w) for w in words)
+>>> all(re.search(r'at', w) for w in words)
 True
-&gt;&gt;&gt; any(re.search(r'stat', w) for w in words)
+>>> any(re.search(r'stat', w) for w in words)
 False
-</code></pre>
-<h2><a class="header" href="#resub" id="resub">re.sub</a></h2>
-<p>For normal search and replace, you'd use the <code>str.replace</code> method. For regular expressions, use the <code>re.sub</code> function, whose argument list is shown below.</p>
-<blockquote>
-<p><code>re.sub(pattern, repl, string, count=0, flags=0)</code></p>
-</blockquote>
-<p>The first argument is the RE pattern to match against the input string, which is the third argument. The second argument specifies the string which will replace the portions matched by the RE pattern. <code>count</code> and <code>flags</code> are optional arguments.</p>
-<pre><code class="language-python">&gt;&gt;&gt; greeting = 'Have a nice weekend'
+</code></pre><h2><a class=header href=#resub id=resub>re.sub</a></h2><p>For normal search and replace, you'd use the <code>str.replace</code> method. For regular expressions, use the <code>re.sub</code> function, whose argument list is shown below.<blockquote><p><code>re.sub(pattern, repl, string, count=0, flags=0)</code></blockquote><p>The first argument is the RE pattern to match against the input string, which is the third argument. The second argument specifies the string which will replace the portions matched by the RE pattern. <code>count</code> and <code>flags</code> are optional arguments.<pre><code class=language-python>>>> greeting = 'Have a nice weekend'
 
 # replace all occurrences of 'e' with 'E'
 # same as: greeting.replace('e', 'E')
-&gt;&gt;&gt; re.sub(r'e', 'E', greeting)
+>>> re.sub(r'e', 'E', greeting)
 'HavE a nicE wEEkEnd'
 
 # replace first two occurrences of 'e' with 'E'
 # same as: greeting.replace('e', 'E', 2)
-&gt;&gt;&gt; re.sub(r'e', 'E', greeting, count=2)
+>>> re.sub(r'e', 'E', greeting, count=2)
 'HavE a nicE weekend'
-</code></pre>
-<blockquote>
-<p><img src="images/warning.svg" alt="warning" /> A common mistake, not specific to <code>re.sub</code>, is forgetting that strings are immutable in Python.</p>
-</blockquote>
-<pre><code class="language-python">&gt;&gt;&gt; word = 'cater'
+</code></pre><blockquote><p><img src=images/warning.svg alt=warning> A common mistake, not specific to <code>re.sub</code>, is forgetting that strings are immutable in Python.</blockquote><pre><code class=language-python>>>> word = 'cater'
 # this will return a string object, won't modify 'word' variable
-&gt;&gt;&gt; re.sub(r'cat', 'wag', word)
+>>> re.sub(r'cat', 'wag', word)
 'wager'
-&gt;&gt;&gt; word
+>>> word
 'cater'
 
 # need to explicitly assign the result if 'word' has to be changed
-&gt;&gt;&gt; word = re.sub(r'cat', 'wag', word)
-&gt;&gt;&gt; word
+>>> word = re.sub(r'cat', 'wag', word)
+>>> word
 'wager'
-</code></pre>
-<h2><a class="header" href="#compiling-regular-expressions" id="compiling-regular-expressions">Compiling regular expressions</a></h2>
-<p>Regular expressions can be compiled using <code>re.compile</code> function, which gives back a <code>re.Pattern</code> object.</p>
-<blockquote>
-<p><code>re.compile(pattern, flags=0)</code></p>
-</blockquote>
-<p>The top level <code>re</code> module functions are all available as methods for such objects. Compiling a regular expression is useful if the RE has to be used in multiple places or called upon multiple times inside a loop (speed benefit).</p>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> By default, Python maintains a small list of recently used RE, so the speed benefit doesn't apply for trivial use cases. See also <a href="https://stackoverflow.com/questions/452104/is-it-worth-using-pythons-re-compile">stackoverflow: Is it worth using re.compile?</a></p>
-</blockquote>
-<pre><code class="language-python">&gt;&gt;&gt; pet = re.compile(r'dog')
-&gt;&gt;&gt; type(pet)
-&lt;class 're.Pattern'&gt;
+</code></pre><h2><a class=header href=#compiling-regular-expressions id=compiling-regular-expressions>Compiling regular expressions</a></h2><p>Regular expressions can be compiled using <code>re.compile</code> function, which gives back a <code>re.Pattern</code> object.<blockquote><p><code>re.compile(pattern, flags=0)</code></blockquote><p>The top level <code>re</code> module functions are all available as methods for such objects. Compiling a regular expression is useful if the RE has to be used in multiple places or called upon multiple times inside a loop (speed benefit).<blockquote><p><img src=images/info.svg alt=info> By default, Python maintains a small list of recently used RE, so the speed benefit doesn't apply for trivial use cases. See also <a href=https://stackoverflow.com/questions/452104/is-it-worth-using-pythons-re-compile>stackoverflow: Is it worth using re.compile?</a></blockquote><pre><code class=language-python>>>> pet = re.compile(r'dog')
+>>> type(pet)
+&LTclass 're.Pattern'>
 
 # note that 'search' is called upon 'pet' which is a 're.Pattern' object
 # since 'pet' has the RE information, you only need to pass input string
-&gt;&gt;&gt; bool(pet.search('They bought a dog'))
+>>> bool(pet.search('They bought a dog'))
 True
-&gt;&gt;&gt; bool(pet.search('A cat crossed their path'))
+>>> bool(pet.search('A cat crossed their path'))
 False
 
 # replace all occurrences of 'dog' with 'cat'
-&gt;&gt;&gt; pet.sub('cat', 'They bought a dog')
+>>> pet.sub('cat', 'They bought a dog')
 'They bought a cat'
-</code></pre>
-<p>Some of the methods available for compiled patterns also accept more arguments than those available for top level functions of the <code>re</code> module. For example, the <code>search</code> method on a compiled pattern has two optional arguments to specify <strong>start</strong> and <strong>end</strong> index positions. Similar to <code>range</code> function and slicing notation, the ending index has to be specified <code>1</code> greater than desired index.</p>
-<blockquote>
-<p><code>Pattern.search(string[, pos[, endpos]])</code></p>
-</blockquote>
-<p>Note that there's no <code>flags</code> option as that has to be specified with <code>re.compile</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; sentence = 'This is a sample string'
-&gt;&gt;&gt; word = re.compile(r'is')
+</code></pre><p>Some of the methods available for compiled patterns also accept more arguments than those available for top level functions of the <code>re</code> module. For example, the <code>search</code> method on a compiled pattern has two optional arguments to specify <strong>start</strong> and <strong>end</strong> index positions. Similar to <code>range</code> function and slicing notation, the ending index has to be specified <code>1</code> greater than desired index.<blockquote><p><code>Pattern.search(string[, pos[, endpos]])</code></blockquote><p>Note that there's no <code>flags</code> option as that has to be specified with <code>re.compile</code>.<pre><code class=language-python>>>> sentence = 'This is a sample string'
+>>> word = re.compile(r'is')
 
 # search for 'is' starting from 5th character of 'sentence' variable
-&gt;&gt;&gt; bool(word.search(sentence, 4))
+>>> bool(word.search(sentence, 4))
 True
 
 # search for 'is' starting from 7th character of 'sentence' variable
-&gt;&gt;&gt; bool(word.search(sentence, 6))
+>>> bool(word.search(sentence, 6))
 False
 
 # search for 'is' between 3rd and 4th characters
-&gt;&gt;&gt; bool(word.search(sentence, 2, 4))
+>>> bool(word.search(sentence, 2, 4))
 True
-</code></pre>
-<h2><a class="header" href="#bytes" id="bytes">bytes</a></h2>
-<p>To work with <code>bytes</code> data type, the RE must be of <code>bytes</code> data as well. Similar to <code>str</code> RE, use <strong>raw</strong> format to construct a <code>bytes</code> RE.</p>
-<pre><code class="language-python">&gt;&gt;&gt; byte_data = b'This is a sample string'
+</code></pre><h2><a class=header href=#bytes id=bytes>bytes</a></h2><p>To work with <code>bytes</code> data type, the RE must be of <code>bytes</code> data as well. Similar to <code>str</code> RE, use <strong>raw</strong> format to construct a <code>bytes</code> RE.<pre><code class=language-python>>>> byte_data = b'This is a sample string'
 
 # error message truncated for presentation purposes
-&gt;&gt;&gt; re.search(r'is', byte_data)
+>>> re.search(r'is', byte_data)
 TypeError: cannot use a string pattern on a bytes-like object
 
 # use rb'..' for constructing bytes pattern
-&gt;&gt;&gt; bool(re.search(rb'is', byte_data))
+>>> bool(re.search(rb'is', byte_data))
 True
-&gt;&gt;&gt; bool(re.search(rb'xyz', byte_data))
+>>> bool(re.search(rb'xyz', byte_data))
 False
-</code></pre>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><a href="https://docs.python.org/3/library/re.html">docs.python: re</a></td><td>Python standard module for regular expressions</td></tr>
-<tr><td><code>re.search</code></td><td>Check if given pattern is present anywhere in input string</td></tr>
-<tr><td></td><td><code>re.search(pattern, string, flags=0)</code></td></tr>
-<tr><td></td><td>Output is a <code>re.Match</code> object, usable in conditional expressions</td></tr>
-<tr><td></td><td>raw strings preferred to define RE</td></tr>
-<tr><td></td><td>Additionally, Python maintains a small cache of recent RE</td></tr>
-<tr><td><code>re.sub</code></td><td>search and replace using RE</td></tr>
-<tr><td></td><td><code>re.sub(pattern, repl, string, count=0, flags=0)</code></td></tr>
-<tr><td><code>re.compile</code></td><td>Compile a pattern for reuse, output is a <code>re.Pattern</code> object</td></tr>
-<tr><td></td><td><code>re.compile(pattern, flags=0)</code></td></tr>
-<tr><td><code>rb'pat'</code></td><td>Use byte pattern for byte input</td></tr>
-<tr><td><code>re.IGNORECASE</code> or <code>re.I</code></td><td>flag to ignore case while matching</td></tr>
-</tbody></table>
-<p>This chapter introduced the <code>re</code> module, which is part of the standard library. Functions <code>re.search</code> and <code>re.sub</code> were discussed as well as how to compile RE using <code>re.compile</code> function. The RE pattern is usually defined using raw strings. For byte input, the pattern has to be of byte type too. Although the <code>re</code> module is good enough for most use cases, there are situations where you need to use the third party <code>regex</code> module. To avoid mixing up features, a separate chapter is dedicated for the <a href="./regex-module.html#regex-module">regex module</a> towards the end of the book.</p>
-<p>The next section has exercises to test your understanding of the concepts introduced in this chapter. Please do solve them before moving on to the next chapter.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.</p>
-</blockquote>
-<blockquote>
-<p><img src="images/info.svg" alt="info" /> All the exercises are also collated together in one place at <a href="https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md">Exercises.md</a>. For solutions, see <a href="https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md">Exercise_solutions.md</a>.</p>
-</blockquote>
-<p><strong>a)</strong> Check whether the given strings contain <code>0xB0</code>. Display a boolean result as shown below.</p>
-<pre><code class="language-python">&gt;&gt;&gt; line1 = 'start address: 0xA0, func1 address: 0xC0'
-&gt;&gt;&gt; line2 = 'end address: 0xFF, func2 address: 0xB0'
+</code></pre><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://docs.python.org/3/library/re.html>docs.python: re</a><td>Python standard module for regular expressions<tr><td><code>re.search</code><td>Check if given pattern is present anywhere in input string<tr><td><td><code>re.search(pattern, string, flags=0)</code><tr><td><td>Output is a <code>re.Match</code> object, usable in conditional expressions<tr><td><td>raw strings preferred to define RE<tr><td><td>Additionally, Python maintains a small cache of recent RE<tr><td><code>re.sub</code><td>search and replace using RE<tr><td><td><code>re.sub(pattern, repl, string, count=0, flags=0)</code><tr><td><code>re.compile</code><td>Compile a pattern for reuse, output is a <code>re.Pattern</code> object<tr><td><td><code>re.compile(pattern, flags=0)</code><tr><td><code>rb'pat'</code><td>Use byte pattern for byte input<tr><td><code>re.IGNORECASE</code> or <code>re.I</code><td>flag to ignore case while matching</table><p>This chapter introduced the <code>re</code> module, which is part of the standard library. Functions <code>re.search</code> and <code>re.sub</code> were discussed as well as how to compile RE using <code>re.compile</code> function. The RE pattern is usually defined using raw strings. For byte input, the pattern has to be of byte type too. Although the <code>re</code> module is good enough for most use cases, there are situations where you need to use the third party <code>regex</code> module. To avoid mixing up features, a separate chapter is dedicated for the <a href=./regex-module.html#regex-module>regex module</a> towards the end of the book.<p>The next section has exercises to test your understanding of the concepts introduced in this chapter. Please do solve them before moving on to the next chapter.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><blockquote><p><img src=images/info.svg alt=info> Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.</blockquote><blockquote><p><img src=images/info.svg alt=info> All the exercises are also collated together in one place at <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md>Exercises.md</a>. For solutions, see <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md>Exercise_solutions.md</a>.</blockquote><p><strong>a)</strong> Check whether the given strings contain <code>0xB0</code>. Display a boolean result as shown below.<pre><code class=language-python>>>> line1 = 'start address: 0xA0, func1 address: 0xC0'
+>>> line2 = 'end address: 0xFF, func2 address: 0xB0'
 
-&gt;&gt;&gt; bool(re.search(r'', line1))     ##### add your solution here
+>>> bool(re.search(r'', line1))     ##### add your solution here
 False
-&gt;&gt;&gt; bool(re.search(r'', line2))     ##### add your solution here
+>>> bool(re.search(r'', line2))     ##### add your solution here
 True
-</code></pre>
-<p><strong>b)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.</p>
-<pre><code class="language-python">&gt;&gt;&gt; ip = 'They ate 5 apples and 5 oranges'
+</code></pre><p><strong>b)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
 
-&gt;&gt;&gt; re.sub()        ##### add your solution here
+>>> re.sub()        ##### add your solution here
 'They ate five apples and five oranges'
-</code></pre>
-<p><strong>c)</strong> Replace first occurrence of <code>5</code> with <code>five</code> for the given string.</p>
-<pre><code class="language-python">&gt;&gt;&gt; ip = 'They ate 5 apples and 5 oranges'
+</code></pre><p><strong>c)</strong> Replace first occurrence of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
 
-&gt;&gt;&gt; re.sub()       ##### add your solution here
+>>> re.sub()       ##### add your solution here
 'They ate five apples and 5 oranges'
-</code></pre>
-<p><strong>d)</strong> For the given list, filter all elements that do <em>not</em> contain <code>e</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>d)</strong> For the given list, filter all elements that do <em>not</em> contain <code>e</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
-&gt;&gt;&gt; [w for w in items if not re.search()]        ##### add your solution here
+>>> [w for w in items if not re.search()]        ##### add your solution here
 ['goal', 'sit']
-</code></pre>
-<p><strong>e)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; ip = 'This note should not be NoTeD'
+</code></pre><p><strong>e)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.<pre><code class=language-python>>>> ip = 'This note should not be NoTeD'
 
-&gt;&gt;&gt; re.sub()        ##### add your solution here
+>>> re.sub()        ##### add your solution here
 'This X should not be XD'
-</code></pre>
-<p><strong>f)</strong> Check if <code>at</code> is present in the given byte input data.</p>
-<pre><code class="language-python">&gt;&gt;&gt; ip = b'tiger imp goat'
+</code></pre><p><strong>f)</strong> Check if <code>at</code> is present in the given byte input data.<pre><code class=language-python>>>> ip = b'tiger imp goat'
 
-&gt;&gt;&gt; bool(re.search())     ##### add your solution here
+>>> bool(re.search())     ##### add your solution here
 True
-</code></pre>
-<p><strong>g)</strong> For the given input string, display all lines not containing <code>start</code> irrespective of case.</p>
-<pre><code class="language-python">&gt;&gt;&gt; para = '''good start
+</code></pre><p><strong>g)</strong> For the given input string, display all lines not containing <code>start</code> irrespective of case.<pre><code class=language-python>>>> para = '''good start
 ... Start working on that
 ... project you always wanted
 ... stars are shining brightly
@@ -391,8 +177,8 @@ True
 ... finish the book
 ... bye'''
 
-&gt;&gt;&gt; pat = re.compile()      ##### add your solution here
-&gt;&gt;&gt; for line in para.split('\n'):
+>>> pat = re.compile()      ##### add your solution here
+>>> for line in para.split('\n'):
 ...     if not pat.search(line):
 ...         print(line)
 ... 
@@ -401,93 +187,20 @@ stars are shining brightly
 hi there
 finish the book
 bye
-</code></pre>
-<p><strong>h)</strong> For the given list, filter all elements that contains either <code>a</code> or <code>w</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>h)</strong> For the given list, filter all elements that contains either <code>a</code> or <code>w</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 ##### add your solution here
-&gt;&gt;&gt; [w for w in items if re.search() or re.search()]
+>>> [w for w in items if re.search() or re.search()]
 ['goal', 'new', 'eat']
-</code></pre>
-<p><strong>i)</strong> For the given list, filter all elements that contains both <code>e</code> and <code>n</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>i)</strong> For the given list, filter all elements that contains both <code>e</code> and <code>n</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 ##### add your solution here
-&gt;&gt;&gt; [w for w in items if re.search() and re.search()]
+>>> [w for w in items if re.search() and re.search()]
 ['new', 'dinner']
-</code></pre>
-<p><strong>j)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; ip = 'start address: 0xA0, func1 address: 0xC0'
+</code></pre><p><strong>j)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.<pre><code class=language-python>>>> ip = 'start address: 0xA0, func1 address: 0xC0'
 
 ##### add your solution here
 'start address: 0x7F, func1 address: 0x1F'
-</code></pre>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="why-is-it-needed.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="anchors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="why-is-it-needed.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="anchors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=why-is-it-needed.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=anchors.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=why-is-it-needed.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=anchors.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>

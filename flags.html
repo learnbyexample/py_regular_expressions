@@ -1,60 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
-    <head>
-        <!-- Book generated using mdBook -->
-        <meta charset="UTF-8">
-        <title>Flags - Python re(gex)?</title>
-        
-        
-
-
-        <!-- Custom HTML head -->
-        
-
-
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="Example based guide to mastering Python regular expressions">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
-
-        
-        <link rel="icon" href="favicon.svg">
-        
-        
-        <link rel="shortcut icon" href="favicon.png">
-        
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
-        <link rel="stylesheet" href="fonts/fonts.css">
-        
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
-        
-        <link rel="stylesheet" href="custom.css">
-        
-
-        
-    </head>
-    <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Flags - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        </script><script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -67,10 +14,7 @@
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
             } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        </script><script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -79,10 +23,7 @@
             html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        </script><script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -91,221 +32,94 @@
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="cover.html">Cover</a></li><li class="chapter-item expanded affix "><a href="buy.html">Buy PDF/EPUB versions</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">1.</strong> Preface</a></li><li class="chapter-item expanded "><a href="why-is-it-needed.html"><strong aria-hidden="true">2.</strong> Why is it needed?</a></li><li class="chapter-item expanded "><a href="re-introduction.html"><strong aria-hidden="true">3.</strong> re introduction</a></li><li class="chapter-item expanded "><a href="anchors.html"><strong aria-hidden="true">4.</strong> Anchors</a></li><li class="chapter-item expanded "><a href="alternation-and-grouping.html"><strong aria-hidden="true">5.</strong> Alternation and Grouping</a></li><li class="chapter-item expanded "><a href="escaping-metacharacters.html"><strong aria-hidden="true">6.</strong> Escaping metacharacters</a></li><li class="chapter-item expanded "><a href="dot-metacharacter-and-quantifiers.html"><strong aria-hidden="true">7.</strong> Dot metacharacter and Quantifiers</a></li><li class="chapter-item expanded "><a href="interlude-tools-for-debugging-and-visualization.html"><strong aria-hidden="true">8.</strong> Interlude: Tools for debugging and visualization</a></li><li class="chapter-item expanded "><a href="working-with-matched-portions.html"><strong aria-hidden="true">9.</strong> Working with matched portions</a></li><li class="chapter-item expanded "><a href="character-class.html"><strong aria-hidden="true">10.</strong> Character class</a></li><li class="chapter-item expanded "><a href="groupings-and-backreferences.html"><strong aria-hidden="true">11.</strong> Groupings and backreferences</a></li><li class="chapter-item expanded "><a href="interlude-common-tasks.html"><strong aria-hidden="true">12.</strong> Interlude: Common tasks</a></li><li class="chapter-item expanded "><a href="lookarounds.html"><strong aria-hidden="true">13.</strong> Lookarounds</a></li><li class="chapter-item expanded "><a href="flags.html" class="active"><strong aria-hidden="true">14.</strong> Flags</a></li><li class="chapter-item expanded "><a href="unicode.html"><strong aria-hidden="true">15.</strong> Unicode</a></li><li class="chapter-item expanded "><a href="regex-module.html"><strong aria-hidden="true">16.</strong> regex module</a></li><li class="chapter-item expanded "><a href="gotchas.html"><strong aria-hidden="true">17.</strong> Gotchas</a></li><li class="chapter-item expanded "><a href="further-reading.html"><strong aria-hidden="true">18.</strong> Further Reading</a></li><li class="chapter-item expanded "><a href="Exercise_solutions.html"><strong aria-hidden="true">19.</strong> Exercise Solutions</a></li></ol>
-            </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
-                    <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                        </ul>
-                        
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        
-                    </div>
-
-                    <h1 class="menu-title">Python re(gex)?</h1>
-
-                    <div class="right-buttons">
-                        
-                        <a href="https://github.com/learnbyexample/py_regular_expressions" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
-                        </a>
-                        
-                    </div>
-                </div>
-
-                
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html class=active><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search name=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <h1><a class="header" href="#flags" id="flags">Flags</a></h1>
-<p>Just like options change the default behavior of commands used from a terminal, flags are used to change aspects of RE behavior. You have already seen flags for ignoring case and changing behavior of line anchors. Flags can be applied to entire RE using <code>flags</code> optional argument or to a particular portion of RE using special groups. And both of these forms can be mixed up as well. In regular expression parlance, flags are also known as <strong>modifiers</strong>.</p>
-<p>Flags already seen will again be discussed in this chapter for sake of completeness. You'll also see how to combine multiple flags.</p>
-<h2><a class="header" href="#reignorecase" id="reignorecase">re.IGNORECASE</a></h2>
-<p>First up, the flag to ignore case while matching alphabets. When <code>flags</code> argument is used, this can be specified as <code>re.I</code> or <code>re.IGNORECASE</code> constants.</p>
-<pre><code class="language-python">&gt;&gt;&gt; bool(re.search(r'cat', 'Cat'))
+                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1><a class=header href=#flags id=flags>Flags</a></h1><p>Just like options change the default behavior of commands used from a terminal, flags are used to change aspects of RE behavior. You have already seen flags for ignoring case and changing behavior of line anchors. Flags can be applied to entire RE using <code>flags</code> optional argument or to a particular portion of RE using special groups. And both of these forms can be mixed up as well. In regular expression parlance, flags are also known as <strong>modifiers</strong>.<p>Flags already seen will again be discussed in this chapter for sake of completeness. You'll also see how to combine multiple flags.<h2><a class=header href=#reignorecase id=reignorecase>re.IGNORECASE</a></h2><p>First up, the flag to ignore case while matching alphabets. When <code>flags</code> argument is used, this can be specified as <code>re.I</code> or <code>re.IGNORECASE</code> constants.<pre><code class=language-python>>>> bool(re.search(r'cat', 'Cat'))
 False
-&gt;&gt;&gt; bool(re.search(r'cat', 'Cat', flags=re.IGNORECASE))
+>>> bool(re.search(r'cat', 'Cat', flags=re.IGNORECASE))
 True
 
-&gt;&gt;&gt; re.findall(r'c.t', 'Cat cot CATER ScUtTLe', flags=re.I)
+>>> re.findall(r'c.t', 'Cat cot CATER ScUtTLe', flags=re.I)
 ['Cat', 'cot', 'CAT', 'cUt']
 
 # without flag, you need to use: r'[a-zA-Z]+'
 # with flag, can also use: r'[A-Z]+'
-&gt;&gt;&gt; re.findall(r'[a-z]+', 'Sample123string42with777numbers', flags=re.I)
+>>> re.findall(r'[a-z]+', 'Sample123string42with777numbers', flags=re.I)
 ['Sample', 'string', 'with', 'numbers']
-</code></pre>
-<h2><a class="header" href="#redotall" id="redotall">re.DOTALL</a></h2>
-<p>Use <code>re.S</code> or <code>re.DOTALL</code> to allow <code>.</code> metacharacter to match newline character as well.</p>
-<pre><code class="language-python"># by default, the . metacharacter doesn't match newline
-&gt;&gt;&gt; re.sub(r'the.*ice', 'X', 'Hi there\nHave a Nice Day')
+</code></pre><h2><a class=header href=#redotall id=redotall>re.DOTALL</a></h2><p>Use <code>re.S</code> or <code>re.DOTALL</code> to allow <code>.</code> metacharacter to match newline character as well.<pre><code class=language-python># by default, the . metacharacter doesn't match newline
+>>> re.sub(r'the.*ice', 'X', 'Hi there\nHave a Nice Day')
 'Hi there\nHave a Nice Day'
 
 # re.S flag will allow newline character to be matched as well
-&gt;&gt;&gt; re.sub(r'the.*ice', 'X', 'Hi there\nHave a Nice Day', flags=re.S)
+>>> re.sub(r'the.*ice', 'X', 'Hi there\nHave a Nice Day', flags=re.S)
 'Hi X Day'
-</code></pre>
-<p>Multiple flags can be combined using bitwise OR operator.</p>
-<pre><code class="language-python">&gt;&gt;&gt; re.sub(r'the.*day', 'Bye', 'Hi there\nHave a Nice Day', flags=re.S|re.I)
+</code></pre><p>Multiple flags can be combined using bitwise OR operator.<pre><code class=language-python>>>> re.sub(r'the.*day', 'Bye', 'Hi there\nHave a Nice Day', flags=re.S|re.I)
 'Hi Bye'
-</code></pre>
-<h2><a class="header" href="#remultiline" id="remultiline">re.MULTILINE</a></h2>
-<p>As seen earlier, <code>re.M</code> or <code>re.MULTILINE</code> flag would allow <code>^</code> and <code>$</code> anchors to match line wise instead of whole string.</p>
-<pre><code class="language-python"># check if any line in the string starts with 'top'
-&gt;&gt;&gt; bool(re.search(r'^top', &quot;hi hello\ntop spot&quot;, flags=re.M))
+</code></pre><h2><a class=header href=#remultiline id=remultiline>re.MULTILINE</a></h2><p>As seen earlier, <code>re.M</code> or <code>re.MULTILINE</code> flag would allow <code>^</code> and <code>$</code> anchors to match line wise instead of whole string.<pre><code class=language-python># check if any line in the string starts with 'top'
+>>> bool(re.search(r'^top', "hi hello\ntop spot", flags=re.M))
 True
 
 # check if any line in the string ends with 'ar'
-&gt;&gt;&gt; bool(re.search(r'ar$', &quot;spare\npar\ndare&quot;, flags=re.M))
+>>> bool(re.search(r'ar$', "spare\npar\ndare", flags=re.M))
 True
-</code></pre>
-<h2><a class="header" href="#reverbose" id="reverbose">re.VERBOSE</a></h2>
-<p>The <code>re.X</code> or <code>re.VERBOSE</code> flag is another provision like the named capture groups to help add clarity to RE definitions. This flag allows to use literal whitespaces for aligning purposes and add comments after the <code>#</code> character to break down complex RE into multiple lines.</p>
-<pre><code class="language-python"># same as: pat = re.compile(r'\A((?:[^,]+,){3})([^,]+)')
+</code></pre><h2><a class=header href=#reverbose id=reverbose>re.VERBOSE</a></h2><p>The <code>re.X</code> or <code>re.VERBOSE</code> flag is another provision like the named capture groups to help add clarity to RE definitions. This flag allows to use literal whitespaces for aligning purposes and add comments after the <code>#</code> character to break down complex RE into multiple lines.<pre><code class=language-python># same as: pat = re.compile(r'\A((?:[^,]+,){3})([^,]+)')
 # note the use of triple quoted string
-&gt;&gt;&gt; pat = re.compile(r'''
+>>> pat = re.compile(r'''
 ...         \A(                 # group-1, captures first 3 columns
 ...             (?:[^,]+,){3}   # non-capturing group to get the 3 columns
 ...           )
 ...         ([^,]+)             # group-2, captures 4th column
 ...         ''', flags=re.X)
 
-&gt;&gt;&gt; pat.sub(r'\1(\2)', '1,2,3,4,5,6,7')
+>>> pat.sub(r'\1(\2)', '1,2,3,4,5,6,7')
 '1,2,3,(4),5,6,7'
-</code></pre>
-<p>For precise definition, here's the relevant quote from documentation:</p>
-<blockquote>
-<p>Whitespace within the pattern is ignored, except when in a character class, or when preceded by an unescaped backslash, or within tokens like <code>*?</code>, <code>(?:</code> or <code>(?P&lt;...&gt;</code>. When a line contains a <code>#</code> that is not in a character class and is not preceded by an unescaped backslash, all characters from the leftmost such <code>#</code> through the end of the line are ignored.</p>
-</blockquote>
-<pre><code class="language-python">&gt;&gt;&gt; bool(re.search(r't a', 'cat and dog', flags=re.X))
+</code></pre><p>For precise definition, here's the relevant quote from documentation:<blockquote><p>Whitespace within the pattern is ignored, except when in a character class, or when preceded by an unescaped backslash, or within tokens like <code>*?</code>, <code>(?:</code> or <code>(?P<...></code>. When a line contains a <code>#</code> that is not in a character class and is not preceded by an unescaped backslash, all characters from the leftmost such <code>#</code> through the end of the line are ignored.</blockquote><pre><code class=language-python>>>> bool(re.search(r't a', 'cat and dog', flags=re.X))
 False
-&gt;&gt;&gt; bool(re.search(r't\ a', 'cat and dog', flags=re.X))
+>>> bool(re.search(r't\ a', 'cat and dog', flags=re.X))
 True
-&gt;&gt;&gt; bool(re.search(r't[ ]a', 'cat and dog', flags=re.X))
+>>> bool(re.search(r't[ ]a', 'cat and dog', flags=re.X))
 True
-&gt;&gt;&gt; bool(re.search(r't\x20a', 'cat and dog', flags=re.X))
+>>> bool(re.search(r't\x20a', 'cat and dog', flags=re.X))
 True
 
-&gt;&gt;&gt; re.search(r'a#b', 'foo a#b 123', flags=re.X)[0]
+>>> re.search(r'a#b', 'foo a#b 123', flags=re.X)[0]
 'a'
-&gt;&gt;&gt; re.search(r'a\#b', 'foo a#b 123', flags=re.X)[0]
+>>> re.search(r'a\#b', 'foo a#b 123', flags=re.X)[0]
 'a#b'
-</code></pre>
-<h2><a class="header" href="#inline-comments" id="inline-comments">Inline comments</a></h2>
-<p>Comments can also be added using <code>(?#comment)</code> special group. This is independent of the <code>re.X</code> flag.</p>
-<pre><code class="language-python">&gt;&gt;&gt; pat = re.compile(r'\A((?:[^,]+,){3})(?#3-cols)([^,]+)(?#4th-col)')
+</code></pre><h2><a class=header href=#inline-comments id=inline-comments>Inline comments</a></h2><p>Comments can also be added using <code>(?#comment)</code> special group. This is independent of the <code>re.X</code> flag.<pre><code class=language-python>>>> pat = re.compile(r'\A((?:[^,]+,){3})(?#3-cols)([^,]+)(?#4th-col)')
 
-&gt;&gt;&gt; pat.sub(r'\1(\2)', '1,2,3,4,5,6,7')
+>>> pat.sub(r'\1(\2)', '1,2,3,4,5,6,7')
 '1,2,3,(4),5,6,7'
-</code></pre>
-<h2><a class="header" href="#inline-flags" id="inline-flags">Inline flags</a></h2>
-<p>To apply flags to specific portions of RE, specify them inside a special grouping syntax. This will override the flags applied to entire RE definitions, if any. The syntax variations are:</p>
-<ul>
-<li><code>(?flags:pat)</code> will apply flags only for this portion</li>
-<li><code>(?-flags:pat)</code> will negate flags only for this portion</li>
-<li><code>(?flags-flags:pat)</code> will apply and negate particular flags only for this portion</li>
-<li><code>(?flags)</code> will apply flags for whole RE definition, can only be specified at the start of RE definition
-<ul>
-<li>if anchors are needed, they should be specified after <code>(?flags)</code></li>
-</ul>
-</li>
-</ul>
-<p>In these ways, flags can be specified precisely only where it is needed. The flags are to be given as single letter lowercase version of short form constants. For example, <code>i</code> for <code>re.I</code>, <code>s</code> for <code>re.S</code> and so on, except <code>L</code> for <code>re.L</code> or <code>re.LOCALE</code> (discussed in <a href="./unicode.html#reascii">re.ASCII</a> section). And as can be observed from below examples, these do not act as capture groups.</p>
-<pre><code class="language-python"># case-sensitive for whole RE definition
-&gt;&gt;&gt; re.findall(r'Cat[a-z]*\b', 'Cat SCatTeR CATER cAts')
+</code></pre><h2><a class=header href=#inline-flags id=inline-flags>Inline flags</a></h2><p>To apply flags to specific portions of RE, specify them inside a special grouping syntax. This will override the flags applied to entire RE definitions, if any. The syntax variations are:<ul><li><code>(?flags:pat)</code> will apply flags only for this portion<li><code>(?-flags:pat)</code> will negate flags only for this portion<li><code>(?flags-flags:pat)</code> will apply and negate particular flags only for this portion<li><code>(?flags)</code> will apply flags for whole RE definition, can only be specified at the start of RE definition <ul><li>if anchors are needed, they should be specified after <code>(?flags)</code></ul></ul><p>In these ways, flags can be specified precisely only where it is needed. The flags are to be given as single letter lowercase version of short form constants. For example, <code>i</code> for <code>re.I</code>, <code>s</code> for <code>re.S</code> and so on, except <code>L</code> for <code>re.L</code> or <code>re.LOCALE</code> (discussed in <a href=./unicode.html#reascii>re.ASCII</a> section). And as can be observed from below examples, these do not act as capture groups.<pre><code class=language-python># case-sensitive for whole RE definition
+>>> re.findall(r'Cat[a-z]*\b', 'Cat SCatTeR CATER cAts')
 ['Cat']
 # case-insensitive only for '[a-z]*' portion
-&gt;&gt;&gt; re.findall(r'Cat(?i:[a-z]*)\b', 'Cat SCatTeR CATER cAts')
+>>> re.findall(r'Cat(?i:[a-z]*)\b', 'Cat SCatTeR CATER cAts')
 ['Cat', 'CatTeR']
 
 # case-insensitive for whole RE definition using flags argument
-&gt;&gt;&gt; re.findall(r'Cat[a-z]*\b', 'Cat SCatTeR CATER cAts', flags=re.I)
+>>> re.findall(r'Cat[a-z]*\b', 'Cat SCatTeR CATER cAts', flags=re.I)
 ['Cat', 'CatTeR', 'CATER', 'cAts']
 # case-insensitive for whole RE definition using inline flags
-&gt;&gt;&gt; re.findall(r'(?i)Cat[a-z]*\b', 'Cat SCatTeR CATER cAts')
+>>> re.findall(r'(?i)Cat[a-z]*\b', 'Cat SCatTeR CATER cAts')
 ['Cat', 'CatTeR', 'CATER', 'cAts']
 # case-sensitive only for 'Cat' portion
-&gt;&gt;&gt; re.findall(r'(?-i:Cat)[a-z]*\b', 'Cat SCatTeR CATER cAts', flags=re.I)
+>>> re.findall(r'(?-i:Cat)[a-z]*\b', 'Cat SCatTeR CATER cAts', flags=re.I)
 ['Cat', 'CatTeR']
-</code></pre>
-<h2><a class="header" href="#cheatsheet-and-summary" id="cheatsheet-and-summary">Cheatsheet and Summary</a></h2>
-<table><thead><tr><th>Note</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>re.IGNORECASE</code> or <code>re.I</code></td><td>flag to ignore case</td></tr>
-<tr><td><code>re.DOTALL</code> or <code>re.S</code></td><td>allow <code>.</code> metacharacter to match newline character</td></tr>
-<tr><td><code>flags=re.S|re.I</code></td><td>multiple flags can be combined using <code>|</code> operator</td></tr>
-<tr><td><code>re.MULTILINE</code> or <code>re.M</code></td><td>allow <code>^</code> and <code>$</code> anchors to match line wise</td></tr>
-<tr><td><code>re.VERBOSE</code> or <code>re.X</code></td><td>allows to use literal whitespaces for aligning purposes</td></tr>
-<tr><td></td><td>and to add comments after the <code>#</code> character</td></tr>
-<tr><td></td><td>escape spaces and <code>#</code> if needed as part of actual RE</td></tr>
-<tr><td><code>(?#comment)</code></td><td>another way to add comments, not a flag</td></tr>
-<tr><td><code>(?flags:pat)</code></td><td>inline flags only for this <code>pat</code>, overrides <code>flags</code> argument</td></tr>
-<tr><td></td><td>where flags is <code>i</code> for <code>re.I</code>, <code>s</code> for <code>re.S</code>, etc</td></tr>
-<tr><td></td><td>except <code>L</code> for <code>re.L</code></td></tr>
-<tr><td><code>(?-flags:pat)</code></td><td>negate flags only for this <code>pat</code></td></tr>
-<tr><td><code>(?flags-flags:pat)</code></td><td>apply and negate particular flags only for this <code>pat</code></td></tr>
-<tr><td><code>(?flags)</code></td><td>apply flags for whole RE, can be used only at start of RE</td></tr>
-<tr><td></td><td>anchors if any, should be specified after <code>(?flags)</code></td></tr>
-</tbody></table>
-<p>This chapter showed some of the flags that can be used to change default behavior of RE definition. And more special groupings were covered.</p>
-<h2><a class="header" href="#exercises" id="exercises">Exercises</a></h2>
-<p><strong>a)</strong> Remove from first occurrence of <code>hat</code> to last occurrence of <code>ice</code> for the given input strings. Match these markers case insensitively.</p>
-<pre><code class="language-python">&gt;&gt;&gt; s1 = 'But Cool THAT\nsee What okay\nwow quite'
-&gt;&gt;&gt; s2 = 'it this hat is sliced HIT.'
+</code></pre><h2><a class=header href=#cheatsheet-and-summary id=cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>re.IGNORECASE</code> or <code>re.I</code><td>flag to ignore case<tr><td><code>re.DOTALL</code> or <code>re.S</code><td>allow <code>.</code> metacharacter to match newline character<tr><td><code>flags=re.S|re.I</code><td>multiple flags can be combined using <code>|</code> operator<tr><td><code>re.MULTILINE</code> or <code>re.M</code><td>allow <code>^</code> and <code>$</code> anchors to match line wise<tr><td><code>re.VERBOSE</code> or <code>re.X</code><td>allows to use literal whitespaces for aligning purposes<tr><td><td>and to add comments after the <code>#</code> character<tr><td><td>escape spaces and <code>#</code> if needed as part of actual RE<tr><td><code>(?#comment)</code><td>another way to add comments, not a flag<tr><td><code>(?flags:pat)</code><td>inline flags only for this <code>pat</code>, overrides <code>flags</code> argument<tr><td><td>where flags is <code>i</code> for <code>re.I</code>, <code>s</code> for <code>re.S</code>, etc<tr><td><td>except <code>L</code> for <code>re.L</code><tr><td><code>(?-flags:pat)</code><td>negate flags only for this <code>pat</code><tr><td><code>(?flags-flags:pat)</code><td>apply and negate particular flags only for this <code>pat</code><tr><td><code>(?flags)</code><td>apply flags for whole RE, can be used only at start of RE<tr><td><td>anchors if any, should be specified after <code>(?flags)</code></table><p>This chapter showed some of the flags that can be used to change default behavior of RE definition. And more special groupings were covered.<h2><a class=header href=#exercises id=exercises>Exercises</a></h2><p><strong>a)</strong> Remove from first occurrence of <code>hat</code> to last occurrence of <code>ice</code> for the given input strings. Match these markers case insensitively.<pre><code class=language-python>>>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
+>>> s2 = 'it this hat is sliced HIT.'
 
-&gt;&gt;&gt; pat = re.compile()       ##### add your solution here
+>>> pat = re.compile()       ##### add your solution here
 
-&gt;&gt;&gt; pat.sub('', s1)
+>>> pat.sub('', s1)
 'But Cool Te'
-&gt;&gt;&gt; pat.sub('', s2)
+>>> pat.sub('', s2)
 'it this .'
-</code></pre>
-<p><strong>b)</strong> Delete from <code>start</code> if it is at the beginning of a line up to the next occurrence of the <code>end</code> at the end of a line. Match these markers case insensitively.</p>
-<pre><code class="language-python">&gt;&gt;&gt; para = '''\
+</code></pre><p><strong>b)</strong> Delete from <code>start</code> if it is at the beginning of a line up to the next occurrence of the <code>end</code> at the end of a line. Match these markers case insensitively.<pre><code class=language-python>>>> para = '''\
 ... good start
 ... start working on that
 ... project you always wanted
@@ -317,9 +131,9 @@ True
 ... finish the End
 ... bye'''
 
-&gt;&gt;&gt; pat = re.compile()        ##### add your solution here
+>>> pat = re.compile()        ##### add your solution here
 
-&gt;&gt;&gt; print(pat.sub('', para))
+>>> print(pat.sub('', para))
 good start
 
 hi there
@@ -327,111 +141,30 @@ hi there
 42
 
 bye
-</code></pre>
-<p><strong>c)</strong> For the given input strings, match all of these three patterns:</p>
-<ul>
-<li><code>This</code> case sensitively</li>
-<li><code>nice</code> and <code>cool</code> case insensitively</li>
-</ul>
-<pre><code class="language-python">&gt;&gt;&gt; s1 = 'This is nice and Cool'
-&gt;&gt;&gt; s2 = 'Nice and cool this is'
-&gt;&gt;&gt; s3 = 'What is so nice and cool about This?'
+</code></pre><p><strong>c)</strong> For the given input strings, match all of these three patterns:<ul><li><code>This</code> case sensitively<li><code>nice</code> and <code>cool</code> case insensitively</ul><pre><code class=language-python>>>> s1 = 'This is nice and Cool'
+>>> s2 = 'Nice and cool this is'
+>>> s3 = 'What is so nice and cool about This?'
 
-&gt;&gt;&gt; pat = re.compile()       ##### add your solution here
+>>> pat = re.compile()       ##### add your solution here
 
-&gt;&gt;&gt; bool(pat.search(s1))
+>>> bool(pat.search(s1))
 True
-&gt;&gt;&gt; bool(pat.search(s2))
+>>> bool(pat.search(s2))
 False
-&gt;&gt;&gt; bool(pat.search(s3))
+>>> bool(pat.search(s3))
 True
-</code></pre>
-<p><strong>d)</strong> For the given input strings, match if the string begins with <code>Th</code> and also contains a line that starts with <code>There</code>.</p>
-<pre><code class="language-python">&gt;&gt;&gt; s1 = 'There there\nHave a cookie'
-&gt;&gt;&gt; s2 = 'This is a mess\nYeah?\nThereeeee'
-&gt;&gt;&gt; s3 = 'Oh\nThere goes the fun'
+</code></pre><p><strong>d)</strong> For the given input strings, match if the string begins with <code>Th</code> and also contains a line that starts with <code>There</code>.<pre><code class=language-python>>>> s1 = 'There there\nHave a cookie'
+>>> s2 = 'This is a mess\nYeah?\nThereeeee'
+>>> s3 = 'Oh\nThere goes the fun'
 
-&gt;&gt;&gt; pat = re.compile()     ##### add your solution here
+>>> pat = re.compile()     ##### add your solution here
 
-&gt;&gt;&gt; bool(pat.search(s1))
+>>> bool(pat.search(s1))
 True
-&gt;&gt;&gt; bool(pat.search(s2))
+>>> bool(pat.search(s2))
 True
-&gt;&gt;&gt; bool(pat.search(s3))
+>>> bool(pat.search(s3))
 False
-</code></pre>
-<p><strong>e)</strong> Explore what the <code>re.DEBUG</code> flag does. Here's some example patterns to check out.</p>
-<ul>
-<li><code>re.compile(r'\Aden|ly\Z', flags=re.DEBUG)</code></li>
-<li><code>re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)</code></li>
-<li><code>re.compile(r'\b(?:0x)?[\da-f]+\b', flags=re.I|re.DEBUG)</code></li>
-</ul>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="lookarounds.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
-
-                        
-                            <a rel="next" href="unicode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
-            </div>
-
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a rel="prev" href="lookarounds.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
-
-                
-                    <a rel="next" href="unicode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
-            </nav>
-
-        </div>
-
-        
-
-        
-
-        
-
-        
-        <script type="text/javascript">
+</code></pre><p><strong>e)</strong> Explore what the <code>re.DEBUG</code> flag does. Here's some example patterns to check out.<ul><li><code>re.compile(r'\Aden|ly\Z', flags=re.DEBUG)</code><li><code>re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)</code><li><code>re.compile(r'\b(?:0x)?[\da-f]+\b', flags=re.I|re.DEBUG)</code></ul></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=lookarounds.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=unicode.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=lookarounds.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=unicode.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
             window.playground_copyable = true;
-        </script>
-        
-
-        
-
-        
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
-        
-
-        
-
-    </body>
-</html>
+        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
