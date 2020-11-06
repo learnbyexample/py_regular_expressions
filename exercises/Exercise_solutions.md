@@ -1,6 +1,10 @@
-# re introduction
+# Exercise solutions
 
 >![info](../images/info.svg) Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.
+
+<br>
+
+# re introduction
 
 **a)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
 
