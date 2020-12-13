@@ -59,7 +59,7 @@ True
 **f)** Check if `at` is present in the given byte input data.
 
 ```ruby
->>> ip = b'tiger imp goat'
+>>> ip = 'tiger imp goat'
 
 >>> bool(re.search())     ##### add your solution here
 True
