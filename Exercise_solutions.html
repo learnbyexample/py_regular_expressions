@@ -429,10 +429,10 @@ mallet wallet malls
 
 >>> [m.groups(default='NA') for m in re.finditer(r'(.{4})(..)?:', ip)]
 [('TWXA', '42'), ('JWPA', 'NA'), ('NTED', '01')]
-</code></pre><blockquote><p><img src=images/info.svg alt=info> Note that this is different from <code>re.findall</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89'
->>> row2 = 'name:rose,maths:88,phy:92'
+</code></pre><blockquote><p><img src=images/info.svg alt=info> Note that this is different from <code>re.findall</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89,'
+>>> row2 = 'name:rose,maths:88,phy:92,'
 
->>> pat = re.compile(r'([^:]+):([^,]+),?')
+>>> pat = re.compile(r'(.+?):(.+?),')
 
 >>> {m[1]:m[2] for m in pat.finditer(row1)}
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
@@ -550,10 +550,10 @@ inns
 ['so', 'pole', 'lit', 'in', 'to']
 </code></pre><p><strong>p)</strong> Convert the given input string to two different lists as shown below.<pre><code class=language-python>>>> ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
->>> re.split(r'[\s^=-]+', ip)
+>>> re.split(r'\W+', ip)
 ['price_42', 'roast', 'ice', 'cat', 'east']
 
->>> re.split(r'([\s^=-]+)', ip)
+>>> re.split(r'(\W+)', ip)
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 </code></pre><p><strong>q)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.<pre><code class=language-python>>>> items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
 
@@ -759,7 +759,7 @@ False
 
 >>> re.sub(r'(?&LT!\w)..(?!\w)', '{\g&LT0>}', ip)
 'I have {12}, {he} has {2!}'
-</code></pre><br><h1><a class=header href=#flags id=flags>Flags</a></h1><p><strong>a)</strong> Remove from first occurrence of <code>hat</code> to last occurrence of <code>ice</code> for the given input strings. Match these markers case insensitively.<pre><code class=language-python>>>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
+</code></pre><br><h1><a class=header href=#flags id=flags>Flags</a></h1><p><strong>a)</strong> Remove from first occurrence of <code>hat</code> to last occurrence of <code>it</code> for the given input strings. Match these markers case insensitively.<pre><code class=language-python>>>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
 >>> s2 = 'it this hat is sliced HIT.'
 
 >>> pat = re.compile(r'hat.*it', flags=re.S|re.I)
