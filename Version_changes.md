@@ -1,5 +1,12 @@
 <br>
 
+### 3.2
+
+* Corrected typos in description, cheatsheet, exercises and solutions
+* Updated Acknowledgements section
+
+<br>
+
 ### 3.1
 
 * Added real world regular expressions usage examples and overview of book in introduction chapter

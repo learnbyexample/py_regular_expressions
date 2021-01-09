@@ -41,8 +41,6 @@ Please open an issue if you spot any typo/errors.
 
 I'd also highly appreciate your feedback about the book.
 
-Goodreads: https://www.goodreads.com/book/show/47142552-python-re-gex
-
 Twitter: https://twitter.com/learn_byexample
 
 <br>
@@ -73,13 +71,14 @@ Twitter: https://twitter.com/learn_byexample
 # Acknowledgements
 
 * [Python documentation](https://docs.python.org/3/) — manuals and tutorials
-* [/r/learnpython/](https://www.reddit.com/r/learnpython/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
+* [/r/learnpython/](https://www.reddit.com/r/learnpython/), [/r/Python/](https://www.reddit.com/r/Python/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on Python and regular expressions
 * [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
 * Cover image: [draw.io](https://about.draw.io/), [tree icon](https://www.iconfinder.com/icons/3199231/ellipse_green_nature_tree_icon) by [Gopi Doraisamy](https://www.iconfinder.com/gopidoraisamy) under [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/) and [wand icon](https://www.iconfinder.com/icons/1679640/design_magic_magician_tool_wand_icon) by [roundicons.com](https://www.iconfinder.com/roundicons)
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [pngquant](https://pngquant.org/) and [svgcleaner](https://github.com/RazrFalcon/svgcleaner) for optimizing images
 * [David Cortesi](https://leanpub.com/u/dcortesi) for helpful feedback on both the technical content and grammar issues
-* **Kye** for spotting a typo
+* **Kye** and [gmovchan](https://github.com/gmovchan) for spotting a typo
 * **Hugh**'s email exchanges helped me significantly to improve the presentation of concepts and exercises
 * [Christopher Patti](https://github.com/feoh) for reviewing the book, providing feedback and brightening the day with kind words
 * Users **73tada**, **DrBobHope**, **nlomb** and others for feedback in [this reddit thread](https://www.reddit.com/r/learnpython/comments/hmvnt1/my_python_regex_ebook_with_hundreds_of_examples/)

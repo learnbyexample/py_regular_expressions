@@ -16,18 +16,19 @@ If you have prior experience with a programming language, but new to Python, see
 * Code snippets shown are copy pasted from Python REPL shell and modified for presentation purposes. Some commands are preceded by comments to provide context and explanations. Blank lines have been added to improve readability. Error messages are shortened. `import` statements are skipped after initial use. And so on.
 * Unless otherwise noted, all examples and explanations are meant for **ASCII** characters.
 * External links are provided for further reading throughout the book. Not necessary to immediately visit them. They have been chosen with care and would help, especially during re-reads.
-* The [py_regular_expressions repo](https://github.com/learnbyexample/py_regular_expressions) has all the code snippets and files used in examples and exercises and other details related to the book. If you are not familiar with `git` command, click the **Clone** button on the webpage to get the files.
+* The [py_regular_expressions repo](https://github.com/learnbyexample/py_regular_expressions) has all the code snippets and files used in examples and exercises and other details related to the book. If you are not familiar with `git` command, click the **Code** button on the webpage to get the files.
 
 ## Acknowledgements
 
 * [Python documentation](https://docs.python.org/3/) — manuals and tutorials
-* [/r/learnpython/](https://www.reddit.com/r/learnpython/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
+* [/r/learnpython/](https://www.reddit.com/r/learnpython/), [/r/Python/](https://www.reddit.com/r/Python/) and [/r/regex/](https://www.reddit.com/r/regex/) — helpful forums for beginners and experienced programmers alike
 * [stackoverflow](https://stackoverflow.com/) — for getting answers to pertinent questions on Python and regular expressions
 * [tex.stackexchange](https://tex.stackexchange.com/) — for help on `pandoc` and `tex` related questions
 * Cover image: [draw.io](https://about.draw.io/), [tree icon](https://www.iconfinder.com/icons/3199231/ellipse_green_nature_tree_icon) by [Gopi Doraisamy](https://www.iconfinder.com/gopidoraisamy) under [Creative Commons Attribution 3.0 Unported](https://creativecommons.org/licenses/by/3.0/) and [wand icon](https://www.iconfinder.com/icons/1679640/design_magic_magician_tool_wand_icon) by [roundicons.com](https://www.iconfinder.com/roundicons)
 * [Warning](https://commons.wikimedia.org/wiki/File:Warning_icon.svg) and [Info](https://commons.wikimedia.org/wiki/File:Info_icon_002.svg) icons by [Amada44](https://commons.wikimedia.org/wiki/User:Amada44) under public domain
+* [pngquant](https://pngquant.org/) and [svgcleaner](https://github.com/RazrFalcon/svgcleaner) for optimizing images
 * [David Cortesi](https://leanpub.com/u/dcortesi) for helpful feedback on both the technical content and grammar issues
-* **Kye** for spotting a typo
+* **Kye** and [gmovchan](https://github.com/gmovchan) for spotting a typo
 * **Hugh**'s email exchanges helped me significantly to improve the presentation of concepts and exercises
 * [Christopher Patti](https://github.com/feoh) for reviewing the book, providing feedback and brightening the day with kind words
 * Users **73tada**, **DrBobHope**, **nlomb** and others for feedback in [this reddit thread](https://www.reddit.com/r/learnpython/comments/hmvnt1/my_python_regex_ebook_with_hundreds_of_examples/)
@@ -40,8 +41,6 @@ Special thanks to Al Sweigart, for introducing me to Python with his awesome
 I would highly appreciate if you'd let me know how you felt about this book, it would help to improve this book as well as my future attempts. Also, please do let me know if you spot any error or typo.
 
 Issue Manager: [https://github.com/learnbyexample/py_regular_expressions/issues](https://github.com/learnbyexample/py_regular_expressions/issues)
-
-Goodreads: https://www.goodreads.com/book/show/47142552-python-re-gex
 
 E-mail: learnbyexample.net@gmail.com
 
@@ -63,7 +62,8 @@ Resources mentioned in Acknowledgements section above are available under origin
 
 ## Book version
 
-3.1  
+3.2
+
 See [Version_changes.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/Version_changes.md) to track changes across book versions.
 
 # Why is it needed?
@@ -2322,8 +2322,8 @@ This chapter introduced different ways to work with various matching portions of
 **n)** Convert the comma separated strings to corresponding `dict` objects as shown below.
 
 ```ruby
->>> row1 = 'name:rohan,maths:75,phy:89'
->>> row2 = 'name:rose,maths:88,phy:92'
+>>> row1 = 'name:rohan,maths:75,phy:89,'
+>>> row2 = 'name:rose,maths:88,phy:92,'
 
 >>> pat = re.compile()      ##### add your solution here
 
@@ -2831,7 +2831,7 @@ Here's some examples for using backreferences within **RE definition**. Only `\N
 'aa a 42 f_1 f_13.14'
 ```
 
->![info](images/info.svg) Since `\g<N>` syntax is not available in RE definition, use octal escapes to avoid ambiguity between normal digit characters and backreferences.
+>![info](images/info.svg) Since `\g<N>` syntax is not available in RE definition, use formats like hexadecimal escapes to avoid ambiguity between normal digit characters and backreferences.
 
 ```ruby
 >>> s = 'abcdefghijklmna1d'
@@ -2852,7 +2852,7 @@ re.error: invalid group reference 11 at position 6
 'Xd'
 ```
 
->![warning](images/warning.svg) It may be obvious, but it should be noted that backreference will provide the string that was matched, not the RE that was inside the capture group. For example, if `([0-9][a-f])` matches `3b`, then backreferencing will give `3b` and not any other valid match of RE like `8f`, `0a` etc. This is akin to how variables behave in programming, only the result of expression stays after variable assignment, not the expression itself. `regex` module supports [Subexpression calls](#subexpression-calls) to refer to the RE itself.
+>![warning](images/warning.svg) It may be obvious, but it should be noted that backreference will provide the string that was matched, not the RE that was inside the capture group. For example, if `(\d[a-f])` matches `3b`, then backreferencing will give `3b` and not any other valid match of RE like `8f`, `0a` etc. This is akin to how variables behave in programming, only the result of expression stays after variable assignment, not the expression itself. `regex` module supports [Subexpression calls](#subexpression-calls) to refer to the RE itself.
 
 ## Non-capturing groups
 
@@ -3028,7 +3028,7 @@ The `expand` method on `re.Match` objects accepts syntax similar to the replacem
 |  | `\0` and `\NNN` will be treated as octal escapes |
 | `\g<N>` | backreference, gives matched portion of Nth capture group |
 |  | applies only to replacement section |
-|  | use octal escapes to prevent ambiguity in RE definition |
+|  | use escapes to prevent ambiguity in RE definition |
 |  | possible values: `\g<0>`, `\g<1>`, etc (not limited to 99) |
 |  | `\g<0>` refers to entire matched portion |
 | `(?:pat)` | non-capturing group |
@@ -3900,7 +3900,7 @@ This chapter showed some of the flags that can be used to change default behavio
 
 ## Exercises
 
-**a)** Remove from first occurrence of `hat` to last occurrence of `ice` for the given input strings. Match these markers case insensitively.
+**a)** Remove from first occurrence of `hat` to last occurrence of `it` for the given input strings. Match these markers case insensitively.
 
 ```ruby
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
@@ -4109,7 +4109,7 @@ False
 
 # regex module
 
-The third party `regex` module (https://pypi.org/project/regex/) offers advanced features like those found in Perl language and other regular expression implementations. To install the module from command line, you can use either of these depending on your usage:
+The third party `regex` module ([https://pypi.org/project/regex/](https://pypi.org/project/regex/)) offers advanced features like those found in Perl language and other regular expression implementations. To install the module from command line, you can use either of these depending on your usage:
 
 * `pip install regex` in a virtual environment
 * `python3.8 -m pip install --user regex` for system wide accessibility

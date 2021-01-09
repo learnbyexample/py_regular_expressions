@@ -709,8 +709,8 @@ mallet wallet malls
 **n)** Convert the comma separated strings to corresponding `dict` objects as shown below.
 
 ```ruby
->>> row1 = 'name:rohan,maths:75,phy:89'
->>> row2 = 'name:rose,maths:88,phy:92'
+>>> row1 = 'name:rohan,maths:75,phy:89,'
+>>> row2 = 'name:rose,maths:88,phy:92,'
 
 >>> pat = re.compile()      ##### add your solution here
 
@@ -1297,7 +1297,7 @@ False
 
 # Flags
 
-**a)** Remove from first occurrence of `hat` to last occurrence of `ice` for the given input strings. Match these markers case insensitively.
+**a)** Remove from first occurrence of `hat` to last occurrence of `it` for the given input strings. Match these markers case insensitively.
 
 ```ruby
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'

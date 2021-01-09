@@ -713,10 +713,10 @@ The use of `.+` quantifier after `<` means that `<>` cannot be a possible match 
 **n)** Convert the comma separated strings to corresponding `dict` objects as shown below.
 
 ```ruby
->>> row1 = 'name:rohan,maths:75,phy:89'
->>> row2 = 'name:rose,maths:88,phy:92'
+>>> row1 = 'name:rohan,maths:75,phy:89,'
+>>> row2 = 'name:rose,maths:88,phy:92,'
 
->>> pat = re.compile(r'([^:]+):([^,]+),?')
+>>> pat = re.compile(r'(.+?):(.+?),')
 
 >>> {m[1]:m[2] for m in pat.finditer(row1)}
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
@@ -920,10 +920,10 @@ inns
 ```ruby
 >>> ip = 'price_42 roast^\t\n^-ice==cat\neast'
 
->>> re.split(r'[\s^=-]+', ip)
+>>> re.split(r'\W+', ip)
 ['price_42', 'roast', 'ice', 'cat', 'east']
 
->>> re.split(r'([\s^=-]+)', ip)
+>>> re.split(r'(\W+)', ip)
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 ```
 
@@ -1324,7 +1324,7 @@ In contrast, the negative lookarounds only ensure that there are no word charact
 
 # Flags
 
-**a)** Remove from first occurrence of `hat` to last occurrence of `ice` for the given input strings. Match these markers case insensitively.
+**a)** Remove from first occurrence of `hat` to last occurrence of `it` for the given input strings. Match these markers case insensitively.
 
 ```ruby
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
