@@ -29,15 +29,17 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 For a preview of the book, see [sample chapters](./sample_chapters/Python_Regex_sample.pdf)
 
-The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/) if you are interested in the ebook creation process.
+The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/customizing-pandoc/) if you are interested in the ebook creation process.
 
 For web version of the book, visit https://learnbyexample.github.io/py_regular_expressions/
 
 <br>
 
-# Feedback
+# Feedback and Contributing
 
-Please open an issue if you spot any typo/errors.
+[Open an issue](https://github.com/learnbyexample/py_regular_expressions/issues) if you spot any typo/errors.
+
+:warning: :warning: Please DO NOT submit pull requests. Main reason being any modification requires changes in multiple places.
 
 I'd also highly appreciate your feedback about the book.
 
@@ -87,12 +89,6 @@ Twitter: https://twitter.com/learn_byexample
     * [minify-html](https://github.com/wilsonzlin/minify-html) — for minifying html files
 
 Special thanks to Al Sweigart, for introducing me to Python with his awesome [automatetheboringstuff](https://automatetheboringstuff.com/) book and video course.
-
-<br>
-
-# Contributing
-
-* Open an issue for suggestions, bugs, typos, etc
 
 <br>
 
