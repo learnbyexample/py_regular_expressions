@@ -21,8 +21,9 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
         * You might find reduced price using this coupon: https://leanpub.com/py_regex/c/P7erPYAm1386
     * https://learnbyexample.gumroad.com/l/py_regex
 * You can also get the book as a bundle:
-    *  [Python 101 + Python re(gex)?](https://leanpub.com/b/python101pythonregex) or [Python 201: Intermediate Python + Python re(gex)?](https://leanpub.com/b/python201_and_regex)
+    * [Python 101 + Python re(gex)?](https://leanpub.com/b/python101pythonregex) or [Python 201: Intermediate Python + Python re(gex)?](https://leanpub.com/b/python201_and_regex)
         * Python 101/201 is authored by [Michael Driscoll](https://www.blog.pythonlibrary.org/)
+    * **Learn by example Python bundle** from https://leanpub.com/b/python-bundle or https://learnbyexample.gumroad.com/l/python-bundle
     * **Awesome Regex** bundle from https://leanpub.com/b/regex or https://learnbyexample.gumroad.com/l/regex
 * See https://learnbyexample.github.io/books/ for list of other books
 
