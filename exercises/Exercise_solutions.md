@@ -174,7 +174,12 @@ False
 ... wall mall ball fall
 ... mallet wallet malls'''
 
->>> print(re.sub(r'^mall\b', '1234', para, flags=re.M))
+>>> lines = re.compile(r'^mall\b',flags=re.M)
+>>> line  = [re.sub(r'\n','',w) for w in para.split('... ')]
+
+>>> for w in line:
+    print(re.sub(lines,'1234',w))
+    
 ball fall wall tall
 1234 call ball pall
 wall mall ball fall
