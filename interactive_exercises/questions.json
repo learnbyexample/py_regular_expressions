@@ -1,0 +1,242 @@
+{
+    "0": {
+        "question": "Match `is` anywhere in the given input strings.",
+        "Should match": [
+            "Regex is awesome",
+            "Thistle",
+            "This should also match"
+        ],
+        "Should NOT match": [
+            "IS",
+            "grep sed awk ls ip",
+            "Th1s should not match"
+        ],
+        "Reference solution": "is"
+    },
+    "1": {
+        "question": "Match lines only if they start with `be`.",
+        "Should match": [
+            "be nice",
+            "better?",
+            "best\nview",
+            "nice\nbell"
+        ],
+        "Should NOT match": [
+            "\"best!\"",
+            "abetter",
+            "oh no\na bear spotted",
+            "ball\ntell"
+        ],
+        "Reference solution": "^be"
+    },
+    "2": {
+        "question": "Match strings only if they start with `be`.",
+        "Should match": [
+            "be nice",
+            "better?",
+            "best\nview",
+            "bell"
+        ],
+        "Should NOT match": [
+            "\"best!\"",
+            "abetter",
+            "oh no\nbear spotted",
+            "ball"
+        ],
+        "Reference solution": "\\Abe"
+    },
+    "3": {
+        "question": "Match `to` or `an` anywhere in the given input strings.",
+        "Should match": [
+            "collaborator",
+            "tool",
+            "transistor",
+            "androids"
+        ],
+        "Should NOT match": [
+            "tea",
+            "past",
+            "about",
+            "Anvil"
+        ],
+        "Reference solution": "to|an"
+    },
+    "4": {
+        "question": "Match strings that start with `den` or end with `ly`.",
+        "Should match": [
+            "lovely",
+            "2 lonely",
+            "dent"
+        ],
+        "Should NOT match": [
+            "1\ndentist",
+            "eden",
+            "fly\n"
+        ],
+        "Reference solution": "\\Aden|ly\\Z"
+    },
+    "5": {
+        "question": "Match `42` only if it is surrounded by word characters.",
+        "Should match": [
+            "hi42bye",
+            "nice1423",
+            "cool_42a",
+            "_42_"
+        ],
+        "Should NOT match": [
+            "bad42",
+            "fa42-fa",
+            "42cool",
+            ":42z"
+        ],
+        "Reference solution": "\\B42\\B"
+    },
+    "6": {
+        "question": "Match `hand` at the start of a word followed immediately by at least one word character.",
+        "Should match": [
+            "handle",
+            "this is handy",
+            "un-handed",
+            "over:hands"
+        ],
+        "Should NOT match": [
+            "hand",
+            "unhanded",
+            "hand-2",
+            "short-hand"
+        ],
+        "Reference solution": "\\bhand\\B"
+    },
+    "7": {
+        "question": "Match `removed` or `reed` or `received` or `refused`.",
+        "Should match": [
+            "creed",
+            "removed",
+            "received",
+            "refused",
+            "reedy",
+            "they refused"
+        ],
+        "Should NOT match": [
+            "redo",
+            "apple",
+            "roceived",
+            "defused",
+            "resolved",
+            "reel"
+        ],
+        "Reference solution": "re(mov|ceiv|fus)?ed"
+    },
+    "8": {
+        "question": "Match whole words `late` or `later` or `slated`.",
+        "Should match": [
+            "don't be late",
+            "see you later today",
+            "slated for tomorrow",
+            "%late.",
+            "plate (later)"
+        ],
+        "Should NOT match": [
+            "slate",
+            "liter",
+            "plated",
+            "slates",
+            "equilateral"
+        ],
+        "Reference solution": "\\b(later?|slated)\\b"
+    },
+    "9": {
+        "question": "Match `(9-2)*5` anywhere in the given input strings.",
+        "Should match": [
+            "(9-2)*5+qty/3",
+            "(qty+4)/2-(9-2)*5+pq/4",
+            "3*(9-2)*55"
+        ],
+        "Should NOT match": [
+            "(8-2)*5",
+            "9-25",
+            "(9-2)*15"
+        ],
+        "Reference solution": "\\(9-2\\)\\*5"
+    },
+    "10": {
+        "question": "Match `(4)\\|` only at the start or end of given input strings.",
+        "Should match": [
+            "2+(4)\\|",
+            "good\n5.3-(4)\\|",
+            "(4)\\|42 - (4)\\|3",
+            "(4)\\| - 3\nnot bad"
+        ],
+        "Should NOT match": [
+            "2+(4)\\|a",
+            "one - (4)\\|\ntwo",
+            "b(4)\\|42 - (4)\\|3",
+            "oops\n(4)\\|42"
+        ],
+        "Reference solution": "\\A\\(4\\)\\\\\\||\\(4\\)\\\\\\|\\Z"
+    },
+    "11": {
+        "question": "Match strings starting with `hand` and followed immediately by at most one more character or `le`.",
+        "Should match": [
+            "hand",
+            "handy",
+            "hands",
+            "handle"
+        ],
+        "Should NOT match": [
+            "unhand",
+            "handled",
+            "handed",
+            "no hands"
+        ],
+        "Reference solution": "\\Ahand(.|le)?\\Z"
+    },
+    "12": {
+        "question": "Match strings starting with `s` and containing `e` and `t` in any order.",
+        "Should match": [
+            "subtle",
+            "sets",
+            "site",
+            "so this matches"
+        ],
+        "Should NOT match": [
+            "sequoia",
+            "exhibits",
+            "stop",
+            "tested"
+        ],
+        "Reference solution": "\\As.*(e.*t|t.*e)"
+    },
+    "13": {
+        "question": "Match strings containing at least 6 characters.",
+        "Should match": [
+            "sequoia",
+            "subtle",
+            "exhibit",
+            "so this matches"
+        ],
+        "Should NOT match": [
+            "tests",
+            "set",
+            "site",
+            "on"
+        ],
+        "Reference solution": ".{6,}"
+    },
+    "14": {
+        "question": "Match all strings containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.",
+        "Should match": [
+            "surrender",
+            "unicorn",
+            "eel",
+            "silk"
+        ],
+        "Should NOT match": [
+            "newer",
+            "door",
+            "empty",
+            "list"
+        ],
+        "Reference solution": "[ei].*[ln]"
+    }
+}
