@@ -4,7 +4,11 @@ This is a **work-in-progress** GUI app to help you practice Python regular expre
 
 The script has been tested for `python3.9` version on Linux.
 
-Currently, only a few questions for `re.search()` function have been added. `flags=re.M` is enabled to differentiate line and string anchors.
+Currently, only a few questions for `re.search()` function have been added. `flags=re.M` is enabled to differentiate line and string anchors. Here's a screenshot:
+
+<p align="center">
+    <img src="./regex_practice_example.png" />
+</p>
 
 See [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md) for exercise questions from the **Python re(gex)?** book.
 
