@@ -1,6 +1,7 @@
 import json
 import re
 import tkinter as tk
+from tkinter import ttk
 
 class Root(tk.Tk):
     def __init__(self):
@@ -8,6 +9,8 @@ class Root(tk.Tk):
 
         self.title('Python Regex Practice')
         self.geometry('800x600')
+
+        self.styling()
 
         self.create_question_frame()
         self.create_pattern_frame()
@@ -18,71 +21,80 @@ class Root(tk.Tk):
 
         self.initialize()
 
+    def styling(self):
+        ttk.Style().theme_use('alt')
+
+        ttk.Style().configure('Q.TLabel', foreground='#a52a2a')
+
+        ttk.Style().configure('DF.TLabel')
+        ttk.Style().configure('SM.TLabel', background='#24ff24')
+        ttk.Style().configure('SNM.TLabel', background='#ff2424')
+        ttk.Style().configure('CS.TLabel', background='#a3ffa3')
+        ttk.Style().configure('WS.TLabel', background='#ffa3a3')
+
     def create_question_frame(self):
-        self.question_frame = tk.Frame()
+        self.question_frame = ttk.Frame()
         self.question_frame.pack(side=tk.TOP, pady=5)
 
-        self.l_question = tk.Label(self.question_frame, wraplength=500,
-                                   justify='left', fg='#a52a2a',
-                                   font='TkFixedFont')
+        self.l_question = ttk.Label(self.question_frame, wraplength=500,
+                                    justify='left', font='TkFixedFont',
+                                    style='Q.TLabel')
         self.l_question.pack()
 
     def create_pattern_frame(self):
-        self.pattern_frame = tk.Frame()
+        self.pattern_frame = ttk.Frame()
         self.pattern_frame.pack(side=tk.TOP, pady=5)
 
-        label = tk.Label(self.pattern_frame, text='Search Pattern: ',
-                         pady=10, font='TkFixedFont')
-        label.pack(side=tk.LEFT)
-        self.l_default_bg = label['bg']
+        label = ttk.Label(self.pattern_frame, text='Search Pattern: ',
+                          font='TkFixedFont')
+        label.pack(side=tk.LEFT, pady=10)
 
         self.user_input = tk.StringVar()
         self.user_input.trace_add('write', self.update_display)
-        self.e_pattern = tk.Entry(self.pattern_frame,
-                                  textvariable=self.user_input,
-                                  width=35, font='TkFixedFont')
+        self.e_pattern = ttk.Entry(self.pattern_frame,
+                                   textvariable=self.user_input,
+                                   width=35, font='TkFixedFont')
         self.e_pattern.pack(side=tk.RIGHT)
 
     def create_format_frame(self):
-        self.format_frame = tk.Frame()
+        self.format_frame = ttk.Frame()
         self.format_frame.pack(side=tk.TOP, pady=5)
 
         self.test_string_format = tk.IntVar()
         self.test_string_format.set(0)
-        tk.Radiobutton(self.format_frame, text='visual string',
-                       variable=self.test_string_format, value=0,
-                       command=self.change_format
-                      ).pack(side=tk.LEFT)
-        tk.Radiobutton(self.format_frame, text='representation',
-                       variable=self.test_string_format, value=1,
-                       command=self.change_format
-                      ).pack(side=tk.RIGHT)
+        ttk.Radiobutton(self.format_frame, text='visual string',
+                        variable=self.test_string_format, value=0,
+                        command=self.change_format
+                       ).pack(side=tk.LEFT)
+        ttk.Radiobutton(self.format_frame, text='representation',
+                        variable=self.test_string_format, value=1,
+                        command=self.change_format
+                       ).pack(side=tk.RIGHT)
 
     def create_test_frame(self):
-        self.test_frame = tk.Frame()
+        self.test_frame = ttk.Frame()
         self.test_frame.pack()
 
     def create_solution_frame(self):
-        self.solution_frame = tk.Frame()
+        self.solution_frame = ttk.Frame()
         self.solution_frame.pack()
 
-        self.l_solution = tk.Label(self.solution_frame,
-                                   pady=10, font='TkFixedFont')
-        self.l_solution.pack()
+        self.l_solution = ttk.Label(self.solution_frame, font='TkFixedFont')
+        self.l_solution.pack(pady=10)
 
     def create_button_frame(self):
-        self.button_frame = tk.Frame()
+        self.button_frame = ttk.Frame()
         self.button_frame.pack()
 
-        tk.Button(self.button_frame, text='Quit', command=self.quit
-                 ).pack(side=tk.LEFT)
+        ttk.Button(self.button_frame, text='Quit', command=self.quit
+                  ).pack(side=tk.LEFT)
 
-        tk.Button(self.button_frame, text='Previous',
-                  command=lambda: self.next(previous=True)
-                 ).pack(side=tk.LEFT)
+        ttk.Button(self.button_frame, text='Previous',
+                   command=lambda: self.next(previous=True)
+                  ).pack(side=tk.LEFT)
 
-        tk.Button(self.button_frame, text='Next', command=self.next
-                 ).pack(side=tk.RIGHT)
+        ttk.Button(self.button_frame, text='Next', command=self.next
+                  ).pack(side=tk.RIGHT)
 
     def initialize(self):
         self.format = {0: str, 1: repr}
@@ -114,11 +126,11 @@ class Root(tk.Tk):
 
     def display_question(self, question):
         def create_label(s):
-            return tk.Label(self.test_frame, text=s,
-                            bg=self.l_default_bg, highlightthickness=1,
-                            highlightbackground='black',
-                            width=35, justify=tk.LEFT, anchor='w',
-                            padx=10, pady=10, font='TkFixedFont')
+            return ttk.Label(self.test_frame, text=s,
+                             width=35, justify=tk.LEFT,
+                             anchor='w', font='TkFixedFont',
+                             borderwidth=2, relief='raised',
+                             padding=10, style='DF.TLabel')
 
         self.l_question['text'] = f"Q{self.question_idx+1}) {question['question']}"
         self.should_match = ['Should match', *question['Should match']]
@@ -132,7 +144,7 @@ class Root(tk.Tk):
             label = create_label(fmt_func(sm))
             label.grid(row=row, column=0)
             if row == 0:
-                label['bg'] = '#24ff24'
+                label['style'] = 'SM.TLabel'
                 label['justify'] = tk.CENTER
                 label['anchor'] = 'center'
             self.l_test_strings[row * 2] = label
@@ -140,7 +152,7 @@ class Root(tk.Tk):
             label = create_label(fmt_func(snm))
             label.grid(row=row, column=1)
             if row == 0:
-                label['bg'] = '#ff2424'
+                label['style'] = 'SNM.TLabel'
                 label['justify'] = tk.CENTER
                 label['anchor'] = 'center'
             self.l_test_strings[row * 2 + 1] = label
@@ -185,12 +197,12 @@ class Root(tk.Tk):
         except re.error:
             for label in self.l_test_strings[2:]:
                 label['state'] = 'disable'
-                label['bg'] = self.l_default_bg
+                label['style'] = 'DF.TLabel'
             return
         else:
             for label in self.l_test_strings[2:]:
                 label['state'] = 'normal'
-                label['bg'] = self.l_default_bg
+                label['style'] = 'DF.TLabel'
             if pat.pattern == '':
                 return
 
@@ -198,12 +210,12 @@ class Root(tk.Tk):
         self.correct_solution = True
         for sm, snm in zip(self.should_match[1:], self.should_not_match[1:]):
             if pat.search(sm):
-                self.l_test_strings[row * 2]['bg'] = '#a3ffa3'
+                self.l_test_strings[row * 2]['style'] = 'CS.TLabel'
             else:
                 self.correct_solution = False
 
             if not pat.search(snm):
-                self.l_test_strings[row * 2 + 1]['bg'] = '#ffa3a3'
+                self.l_test_strings[row * 2 + 1]['style'] = 'WS.TLabel'
             else:
                 self.correct_solution = False
 

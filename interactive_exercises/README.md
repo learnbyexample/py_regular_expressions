@@ -30,7 +30,7 @@ Your progress will be saved in a new file named `user_progress.json`. If you clo
 ## TODO
 
 * Add many more questions
-* Use `ttk`
 * Refactor
 * Add tests?
 * Etc
+
