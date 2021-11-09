@@ -1,6 +1,7 @@
 {
     "0": {
         "question": "Match `is` anywhere in the given input strings.",
+        "flags": "0",
         "Should match": [
             "Regex is awesome",
             "Thistle",
@@ -15,6 +16,7 @@
     },
     "1": {
         "question": "Match lines only if they start with `be`.",
+        "flags": "0",
         "Should match": [
             "be nice",
             "better?",
@@ -31,6 +33,7 @@
     },
     "2": {
         "question": "Match strings only if they start with `be`.",
+        "flags": "8",
         "Should match": [
             "be nice",
             "better?",
@@ -47,6 +50,7 @@
     },
     "3": {
         "question": "Match `to` or `an` anywhere in the given input strings.",
+        "flags": "0",
         "Should match": [
             "collaborator",
             "tool",
@@ -63,6 +67,7 @@
     },
     "4": {
         "question": "Match strings that start with `den` or end with `ly`.",
+        "flags": "8",
         "Should match": [
             "lovely",
             "2 lonely",
@@ -77,6 +82,7 @@
     },
     "5": {
         "question": "Match `42` only if it is surrounded by word characters.",
+        "flags": "0",
         "Should match": [
             "hi42bye",
             "nice1423",
@@ -93,6 +99,7 @@
     },
     "6": {
         "question": "Match `hand` at the start of a word followed immediately by at least one word character.",
+        "flags": "0",
         "Should match": [
             "handle",
             "this is handy",
@@ -109,6 +116,7 @@
     },
     "7": {
         "question": "Match `removed` or `reed` or `received` or `refused`.",
+        "flags": "0",
         "Should match": [
             "creed",
             "removed",
@@ -129,6 +137,7 @@
     },
     "8": {
         "question": "Match whole words `late` or `later` or `slated`.",
+        "flags": "0",
         "Should match": [
             "don't be late",
             "see you later today",
@@ -147,6 +156,7 @@
     },
     "9": {
         "question": "Match `(9-2)*5` anywhere in the given input strings.",
+        "flags": "0",
         "Should match": [
             "(9-2)*5+qty/3",
             "(qty+4)/2-(9-2)*5+pq/4",
@@ -161,6 +171,7 @@
     },
     "10": {
         "question": "Match `(4)\\|` only at the start or end of given input strings.",
+        "flags": "8",
         "Should match": [
             "2+(4)\\|",
             "good\n5.3-(4)\\|",
@@ -177,6 +188,7 @@
     },
     "11": {
         "question": "Match strings starting with `hand` and followed immediately by at most one more character or `le`.",
+        "flags": "8",
         "Should match": [
             "hand",
             "handy",
@@ -193,6 +205,7 @@
     },
     "12": {
         "question": "Match strings starting with `s` and containing `e` and `t` in any order.",
+        "flags": "8",
         "Should match": [
             "subtle",
             "sets",
@@ -209,6 +222,7 @@
     },
     "13": {
         "question": "Match strings containing at least 6 characters.",
+        "flags": "0",
         "Should match": [
             "sequoia",
             "subtle",
@@ -225,6 +239,7 @@
     },
     "14": {
         "question": "Match all strings containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.",
+        "flags": "0",
         "Should match": [
             "surrender",
             "unicorn",

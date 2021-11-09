@@ -14,6 +14,7 @@ class Root(tk.Tk):
 
         self.create_question_frame()
         self.create_pattern_frame()
+        self.create_flags_frame()
         self.create_format_frame()
         self.create_test_frame()
         self.create_solution_frame()
@@ -45,23 +46,40 @@ class Root(tk.Tk):
         self.pattern_frame = ttk.Frame()
         self.pattern_frame.pack(side=tk.TOP, pady=5)
 
-        label = ttk.Label(self.pattern_frame, text='Search Pattern: ',
+        label = ttk.Label(self.pattern_frame, text='Pattern: ',
                           font='TkFixedFont')
-        label.pack(side=tk.LEFT, pady=10)
+        label.grid(row=0, column=0)
 
-        self.user_input = tk.StringVar()
-        self.user_input.trace_add('write', self.update_display)
+        self.user_pattern = tk.StringVar()
+        self.user_pattern.trace_add('write', self.update_display)
         self.e_pattern = ttk.Entry(self.pattern_frame,
-                                   textvariable=self.user_input,
-                                   width=35, font='TkFixedFont')
-        self.e_pattern.pack(side=tk.RIGHT)
+                                   textvariable=self.user_pattern,
+                                   width=53, font='TkFixedFont')
+        self.e_pattern.grid(row=0, column=1)
+
+    def create_flags_frame(self):
+        self.flags_frame = ttk.Frame()
+        self.flags_frame.pack(side=tk.TOP, pady=5)
+
+        label = ttk.Label(self.flags_frame, text='   Flags: ',
+                          font='TkFixedFont')
+        label.grid(row=0, column=0)
+
+        self.flags = (re.I, re.M, re.S, re.A)
+        self.user_flags = []
+        for idx, flag in enumerate(self.flags, 1):
+            var = tk.IntVar(value=0)
+            self.user_flags.append(var)
+            ttk.Checkbutton(self.flags_frame, text=flag,
+                            variable=var, onvalue=int(flag), offvalue=0,
+                            command=self.update_display
+                           ).grid(row=0, column=idx, padx=5)
 
     def create_format_frame(self):
         self.format_frame = ttk.Frame()
         self.format_frame.pack(side=tk.TOP, pady=5)
 
-        self.test_string_format = tk.IntVar()
-        self.test_string_format.set(0)
+        self.test_string_format = tk.IntVar(value=0)
         ttk.Radiobutton(self.format_frame, text='visual string',
                         variable=self.test_string_format, value=0,
                         command=self.change_format
@@ -119,7 +137,7 @@ class Root(tk.Tk):
         # skip already answered questions
         for idx in range(self.question_count):
             progress_key = str(idx)
-            if self.user_progress.get(progress_key, ('', False))[1]:
+            if self.user_progress.get(progress_key, ('', 0, False))[2]:
                 self.next()
             else:
                 break
@@ -133,8 +151,8 @@ class Root(tk.Tk):
                              padding=10, style='DF.TLabel')
 
         self.l_question['text'] = f"Q{self.question_idx+1}) {question['question']}"
-        self.should_match = ['Should match', *question['Should match']]
-        self.should_not_match = ['Should NOT match', *question['Should NOT match']]
+        self.should_match = ('Should match', *question['Should match'])
+        self.should_not_match = ('Should NOT match', *question['Should NOT match'])
         self.ref_solution = question['Reference solution']
 
         self.l_test_strings = [None] * (len(self.should_match) * 2)
@@ -161,8 +179,19 @@ class Root(tk.Tk):
         
         progress_key = str(self.question_idx)
         if progress_key in self.user_progress:
-            user_answer, already_solved = self.user_progress[progress_key]
-            self.user_input.set(user_answer)
+            user_answer, flag_value, _ = self.user_progress[progress_key]
+            self.set_flags(flag_value)
+            self.user_pattern.set(user_answer)
+        else:
+            flag_value = int(question['flags'])
+            self.set_flags(flag_value)
+
+    def set_flags(self, flag_value):
+        for idx, flag in enumerate(self.flags):
+            if flag_value & flag:
+                self.user_flags[idx].set(int(flag))
+            else:
+                self.user_flags[idx].set(0)
 
     def change_format(self):
         new_format = self.test_string_format.get()
@@ -185,7 +214,7 @@ class Root(tk.Tk):
         else:
             return
 
-        self.user_input.set('')
+        self.user_pattern.set('')
         for label in self.l_test_strings:
             label.destroy()
         self.l_solution['text'] = ''
@@ -193,7 +222,8 @@ class Root(tk.Tk):
 
     def update_display(self, *_):
         try:
-            pat = re.compile(self.e_pattern.get(), flags=re.M)
+            self.flag_value = sum(f.get() for f in self.user_flags)
+            pat = re.compile(self.e_pattern.get(), flags=self.flag_value)
         except re.error:
             for label in self.l_test_strings[2:]:
                 label['state'] = 'disable'
@@ -230,11 +260,13 @@ class Root(tk.Tk):
 
         # don't overwrite a correct solution with newer incorrect solution
         if progress_key in self.user_progress:
-            if self.user_progress[progress_key][1] and not self.correct_solution:
+            if self.user_progress[progress_key][2] and not self.correct_solution:
                 return
 
         if pat := self.e_pattern.get():
-            self.user_progress[progress_key] = (pat, self.correct_solution)
+            self.user_progress[progress_key] = (pat,
+                                                self.flag_value,
+                                                self.correct_solution)
             with open(self.progress_file, 'w') as f:
                 f.write(json.dumps(self.user_progress, indent=4))
 
