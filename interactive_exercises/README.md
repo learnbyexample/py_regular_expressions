@@ -4,7 +4,14 @@ This is a **work-in-progress** GUI app to help you practice Python regular expre
 
 The script has been tested for `python3.9` version on Linux.
 
-Currently, only a few questions for `re.search()` function have been added. Here's a screenshot:
+Currently, only a few questions have been added for the following functions:
+
+* `re.search()`
+* `re.sub()`
+* `re.findall()`
+* `re.split()`
+
+Here's a screenshot:
 
 <p align="center">
     <img src="./regex_practice_example.png" />
@@ -30,7 +37,6 @@ Your progress will be saved in a new file named `user_progress.json`. If you clo
 ## TODO
 
 * Add many more questions
-* Support `re.sub()` function
 * Refactor
 * Add tests?
 * Etc

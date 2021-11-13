@@ -14,6 +14,7 @@ class Root(tk.Tk):
 
         self.create_question_frame()
         self.create_pattern_frame()
+        self.create_replace_frame()
         self.create_flags_frame()
         self.create_format_frame()
         self.create_test_frame()
@@ -28,8 +29,8 @@ class Root(tk.Tk):
         ttk.Style().configure('Q.TLabel', foreground='#a52a2a')
 
         ttk.Style().configure('DF.TLabel')
-        ttk.Style().configure('SM.TLabel', background='#24ff24')
-        ttk.Style().configure('SNM.TLabel', background='#ff2424')
+        ttk.Style().configure('LC.TLabel', background='#24ff24')
+        ttk.Style().configure('RC.TLabel', background='#ff2424')
         ttk.Style().configure('CS.TLabel', background='#a3ffa3')
         ttk.Style().configure('WS.TLabel', background='#ffa3a3')
 
@@ -56,6 +57,20 @@ class Root(tk.Tk):
                                    textvariable=self.user_pattern,
                                    width=53, font='TkFixedFont')
         self.e_pattern.grid(row=0, column=1)
+
+    def create_replace_frame(self):
+        self.replace_frame = ttk.Frame()
+
+        label = ttk.Label(self.replace_frame, text='Replace: ',
+                          font='TkFixedFont')
+        label.grid(row=0, column=0)
+
+        self.user_replace = tk.StringVar()
+        self.user_replace.trace_add('write', self.update_display)
+        self.e_replace = ttk.Entry(self.replace_frame,
+                                   textvariable=self.user_replace,
+                                   width=53, font='TkFixedFont')
+        self.e_replace.grid(row=0, column=1)
 
     def create_flags_frame(self):
         self.flags_frame = ttk.Frame()
@@ -137,7 +152,7 @@ class Root(tk.Tk):
         # skip already answered questions
         for idx in range(self.question_count):
             progress_key = str(idx)
-            if self.user_progress.get(progress_key, ('', 0, False))[2]:
+            if self.user_progress.get(progress_key, ('', '', 0, False))[3]:
                 self.next()
             else:
                 break
@@ -145,32 +160,44 @@ class Root(tk.Tk):
     def display_question(self, question):
         def create_label(s):
             return ttk.Label(self.test_frame, text=s,
-                             width=35, justify=tk.LEFT,
+                             width=40, justify=tk.LEFT,
                              anchor='w', font='TkFixedFont',
                              borderwidth=2, relief='raised',
                              padding=10, style='DF.TLabel')
 
         self.l_question['text'] = f"Q{self.question_idx+1}) {question['question']}"
-        self.should_match = ('Should match', *question['Should match'])
-        self.should_not_match = ('Should NOT match', *question['Should NOT match'])
+        self.function = question['function']
         self.ref_solution = question['Reference solution']
 
-        self.l_test_strings = [None] * (len(self.should_match) * 2)
+        self.replace_frame.pack_forget()
+        if self.function == 're.search':
+            self.left_col = ('Should match', *question['left column'])
+            self.right_col = ('Should NOT match', *question['right column'])
+        else:
+            if self.function == 're.sub':
+                self.replace_frame.pack(after=self.pattern_frame, pady=5)
+            self.left_col = ('Input', *question['left column'])
+            self.right_col = ('Output', *question['right column'])
+
+        self.l_test_strings = [None] * (len(self.left_col) * 2)
         row = 0
         fmt_func = self.format[self.test_string_format.get()]
-        for sm, snm in zip(self.should_match, self.should_not_match):
-            label = create_label(fmt_func(sm))
+        for lc, rc in zip(self.left_col, self.right_col):
+            label = create_label(fmt_func(lc))
             label.grid(row=row, column=0)
             if row == 0:
-                label['style'] = 'SM.TLabel'
+                label['style'] = 'LC.TLabel'
                 label['justify'] = tk.CENTER
                 label['anchor'] = 'center'
             self.l_test_strings[row * 2] = label
 
-            label = create_label(fmt_func(snm))
+            label = create_label(fmt_func(rc))
             label.grid(row=row, column=1)
             if row == 0:
-                label['style'] = 'SNM.TLabel'
+                if self.function == 're.search':
+                    label['style'] = 'RC.TLabel'
+                else:
+                    label['style'] = 'LC.TLabel'
                 label['justify'] = tk.CENTER
                 label['anchor'] = 'center'
             self.l_test_strings[row * 2 + 1] = label
@@ -179,9 +206,10 @@ class Root(tk.Tk):
         
         progress_key = str(self.question_idx)
         if progress_key in self.user_progress:
-            user_answer, flag_value, _ = self.user_progress[progress_key]
+            pat, repl, flag_value, _ = self.user_progress[progress_key]
             self.set_flags(flag_value)
-            self.user_pattern.set(user_answer)
+            self.user_pattern.set(pat)
+            self.user_replace.set(repl)
         else:
             flag_value = int(question['flags'])
             self.set_flags(flag_value)
@@ -215,6 +243,7 @@ class Root(tk.Tk):
             return
 
         self.user_pattern.set('')
+        self.user_replace.set('')
         for label in self.l_test_strings:
             label.destroy()
         self.l_solution['text'] = ''
@@ -238,21 +267,41 @@ class Root(tk.Tk):
 
         row = 1
         self.correct_solution = True
-        for sm, snm in zip(self.should_match[1:], self.should_not_match[1:]):
-            if pat.search(sm):
-                self.l_test_strings[row * 2]['style'] = 'CS.TLabel'
-            else:
-                self.correct_solution = False
+        for lc, rc in zip(self.left_col[1:], self.right_col[1:]):
+            if self.function == 're.search':
+                if pat.search(lc):
+                    self.l_test_strings[row * 2]['style'] = 'CS.TLabel'
+                else:
+                    self.correct_solution = False
 
-            if not pat.search(snm):
-                self.l_test_strings[row * 2 + 1]['style'] = 'WS.TLabel'
+                if not pat.search(rc):
+                    self.l_test_strings[row * 2 + 1]['style'] = 'WS.TLabel'
+                else:
+                    self.correct_solution = False
             else:
-                self.correct_solution = False
+                try:
+                    if self.function == 're.sub':
+                        op = pat.sub(self.e_replace.get(), lc)
+                    elif self.function == 're.findall':
+                        op = str(pat.findall(lc))
+                    elif self.function == 're.split':
+                        op = str(pat.split(lc))
+                except re.error:
+                    for label in self.l_test_strings[2:]:
+                        label['state'] = 'disable'
+                        label['style'] = 'DF.TLabel'
+                    return
+                else:
+                    if op == rc:
+                        self.l_test_strings[row * 2]['style'] = 'CS.TLabel'
+                        self.l_test_strings[row * 2 + 1]['style'] = 'CS.TLabel'
+                    else:
+                        self.correct_solution = False
 
             row += 1
 
         if self.correct_solution:
-            self.l_solution['text'] = f'Reference solution: {self.ref_solution}'
+            self.l_solution['text'] = f'Reference solution(s):\n{self.ref_solution}'
             self.save_progress()
 
     def save_progress(self):
@@ -260,11 +309,14 @@ class Root(tk.Tk):
 
         # don't overwrite a correct solution with newer incorrect solution
         if progress_key in self.user_progress:
-            if self.user_progress[progress_key][2] and not self.correct_solution:
+            if self.user_progress[progress_key][3] and not self.correct_solution:
                 return
 
-        if pat := self.e_pattern.get():
+        pat = self.e_pattern.get()
+        repl = self.e_replace.get()
+        if pat or repl:
             self.user_progress[progress_key] = (pat,
+                                                repl,
                                                 self.flag_value,
                                                 self.correct_solution)
             with open(self.progress_file, 'w') as f:

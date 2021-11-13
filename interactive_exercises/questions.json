@@ -2,122 +2,166 @@
     "0": {
         "question": "Match `is` anywhere in the given input strings.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "Regex is awesome",
             "Thistle",
             "This should also match"
         ],
-        "Should NOT match": [
+        "right column": [
             "IS",
             "grep sed awk ls ip",
             "Th1s should not match"
         ],
-        "Reference solution": "is"
+        "Reference solution": "re.search(r'is', s)"
     },
     "1": {
+        "question": "Replace all occurrences of `5` with `five` for the given strings.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "They ate 5 apples and 5 oranges",
+            "515515",
+            "1) 3) 5) 7)"
+        ],
+        "right column": [
+            "They ate five apples and five oranges",
+            "five1fivefive1five",
+            "1) 3) five) 7)"
+        ],
+        "Reference solution": "re.sub('5', 'five', s)"
+    },
+    "2": {
         "question": "Match lines only if they start with `be`.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "be nice",
             "better?",
             "best\nview",
             "nice\nbell"
         ],
-        "Should NOT match": [
+        "right column": [
             "\"best!\"",
             "abetter",
             "oh no\na bear spotted",
             "ball\ntell"
         ],
-        "Reference solution": "^be"
+        "Reference solution": "re.search(r'^be', s)"
     },
-    "2": {
+    "3": {
         "question": "Match strings only if they start with `be`.",
         "flags": "8",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "be nice",
             "better?",
             "best\nview",
             "bell"
         ],
-        "Should NOT match": [
+        "right column": [
             "\"best!\"",
             "abetter",
             "oh no\nbear spotted",
             "ball"
         ],
-        "Reference solution": "\\Abe"
+        "Reference solution": "re.search(r'\\Abe', s, flags=re.M)"
     },
-    "3": {
+    "4": {
         "question": "Match `to` or `an` anywhere in the given input strings.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "collaborator",
             "tool",
             "transistor",
             "androids"
         ],
-        "Should NOT match": [
+        "right column": [
             "tea",
             "past",
             "about",
             "Anvil"
         ],
-        "Reference solution": "to|an"
+        "Reference solution": "re.search(r'to|an', s)"
     },
-    "4": {
+    "5": {
+        "question": "Change only whole word `red` to `brown`.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "bred",
+            "light red.",
+            "reddish leaf",
+            "credible",
+            "red"
+        ],
+        "right column": [
+            "bred",
+            "light brown.",
+            "reddish leaf",
+            "credible",
+            "brown"
+        ],
+        "Reference solution": "re.sub(r'\\bred\\b', 'brown', s)"
+    },
+    "6": {
         "question": "Match strings that start with `den` or end with `ly`.",
         "flags": "8",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "lovely",
             "2 lonely",
             "dent"
         ],
-        "Should NOT match": [
+        "right column": [
             "1\ndentist",
             "eden",
             "fly\n"
         ],
-        "Reference solution": "\\Aden|ly\\Z"
+        "Reference solution": "re.search(r'\\Aden|ly\\Z', s, flags=re.M)"
     },
-    "5": {
+    "7": {
         "question": "Match `42` only if it is surrounded by word characters.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "hi42bye",
             "nice1423",
             "cool_42a",
             "_42_"
         ],
-        "Should NOT match": [
+        "right column": [
             "bad42",
             "fa42-fa",
             "42cool",
             ":42z"
         ],
-        "Reference solution": "\\B42\\B"
+        "Reference solution": "re.search(r'\\B42\\B', s)"
     },
-    "6": {
+    "8": {
         "question": "Match `hand` at the start of a word followed immediately by at least one word character.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "handle",
             "this is handy",
             "un-handed",
             "over:hands"
         ],
-        "Should NOT match": [
+        "right column": [
             "hand",
             "unhanded",
             "hand-2",
             "short-hand"
         ],
-        "Reference solution": "\\bhand\\B"
+        "Reference solution": "re.search(r'\\bhand\\B', s)"
     },
-    "7": {
+    "9": {
         "question": "Match `removed` or `reed` or `received` or `refused`.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "creed",
             "removed",
             "received",
@@ -125,7 +169,7 @@
             "reedy",
             "they refused"
         ],
-        "Should NOT match": [
+        "right column": [
             "redo",
             "apple",
             "roceived",
@@ -133,125 +177,170 @@
             "resolved",
             "reel"
         ],
-        "Reference solution": "re(mov|ceiv|fus)?ed"
+        "Reference solution": "re.search(r're(mov|ceiv|fus)?ed', s)"
     },
-    "8": {
+    "10": {
         "question": "Match whole words `late` or `later` or `slated`.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "don't be late",
             "see you later today",
             "slated for tomorrow",
             "%late.",
-            "plate (later)"
+            "plate (later)",
+            "slated"
         ],
-        "Should NOT match": [
+        "right column": [
             "slate",
             "liter",
+            "latent",
             "plated",
             "slates",
             "equilateral"
         ],
-        "Reference solution": "\\b(later?|slated)\\b"
+        "Reference solution": "re.search(r'\\b(later?|slated)\\b', s)"
     },
-    "9": {
+    "11": {
         "question": "Match `(9-2)*5` anywhere in the given input strings.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "(9-2)*5+qty/3",
             "(qty+4)/2-(9-2)*5+pq/4",
             "3*(9-2)*55"
         ],
-        "Should NOT match": [
+        "right column": [
             "(8-2)*5",
             "9-25",
             "(9-2)*15"
         ],
-        "Reference solution": "\\(9-2\\)\\*5"
+        "Reference solution": "re.search(r'\\(9-2\\)\\*5', s)"
     },
-    "10": {
+    "12": {
         "question": "Match `(4)\\|` only at the start or end of given input strings.",
         "flags": "8",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "2+(4)\\|",
             "good\n5.3-(4)\\|",
             "(4)\\|42 - (4)\\|3",
             "(4)\\| - 3\nnot bad"
         ],
-        "Should NOT match": [
+        "right column": [
             "2+(4)\\|a",
             "one - (4)\\|\ntwo",
             "b(4)\\|42 - (4)\\|3",
             "oops\n(4)\\|42"
         ],
-        "Reference solution": "\\A\\(4\\)\\\\\\||\\(4\\)\\\\\\|\\Z"
+        "Reference solution": "re.search(r'\\A\\(4\\)\\\\\\||\\(4\\)\\\\\\|\\Z', s, flags=re.M)"
     },
-    "11": {
+    "13": {
         "question": "Match strings starting with `hand` and followed immediately by at most one more character or `le`.",
         "flags": "8",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "hand",
             "handy",
             "hands",
             "handle"
         ],
-        "Should NOT match": [
+        "right column": [
             "unhand",
             "handled",
             "handed",
             "no hands"
         ],
-        "Reference solution": "\\Ahand(.|le)?\\Z"
+        "Reference solution": "re.search(r'\\Ahand(.|le)?\\Z', s, flags=re.M)"
     },
-    "12": {
+    "14": {
         "question": "Match strings starting with `s` and containing `e` and `t` in any order.",
         "flags": "8",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "subtle",
             "sets",
             "site",
             "so this matches"
         ],
-        "Should NOT match": [
+        "right column": [
             "sequoia",
             "exhibits",
             "stop",
             "tested"
         ],
-        "Reference solution": "\\As.*(e.*t|t.*e)"
+        "Reference solution": "re.search(r'\\As.*(e.*t|t.*e)', s, flags=re.M)\nre.search(r'\\As.*(?=.*e)(?=.*t)', s, flags=re.M)"
     },
-    "13": {
+    "15": {
         "question": "Match strings containing at least 6 characters.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "sequoia",
             "subtle",
             "exhibit",
-            "so this matches"
+            "so this matches",
+            "12\n345"
         ],
-        "Should NOT match": [
+        "right column": [
             "tests",
             "set",
             "site",
-            "on"
+            "on",
+            "do\nto"
         ],
-        "Reference solution": ".{6,}"
+        "Reference solution": "re.search(r'.{6}', s, flags=re.S)"
     },
-    "14": {
+    "16": {
         "question": "Match all strings containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.",
         "flags": "0",
-        "Should match": [
+        "function": "re.search",
+        "left column": [
             "surrender",
             "unicorn",
             "eel",
             "silk"
         ],
-        "Should NOT match": [
+        "right column": [
             "newer",
             "door",
             "empty",
             "list"
         ],
-        "Reference solution": "[ei].*[ln]"
+        "Reference solution": "re.search(r'[ei].*[ln]', s)"
+    },
+    "17": {
+        "question": "Extract all whole words that do not end with `e` or `n`.",
+        "flags": "0",
+        "function": "re.findall",
+        "left column": [
+            "a_t Row on urn e",
+            "note dust n",
+            "a2-e.i)o|u",
+            "* cool tool."
+        ],
+        "right column": [
+            "['a_t', 'Row']",
+            "['dust']",
+            "['a2', 'i', 'o', 'u']",
+            "['cool', 'tool']"
+        ],
+        "Reference solution": "re.findall(r'\\b\\w+\\b(?<![en])', s)"
+    },
+    "18": {
+        "question": "Split the given input strings to get the corresponding output as shown below.",
+        "flags": "0",
+        "function": "re.split",
+        "left column": [
+            "a+42//5-c",
+            "pressure*3+42/5-14256",
+            "r*42-5/3+42///5-42/53+a"
+        ],
+        "right column": [
+            "['a+', '-c']",
+            "['pressure*3+', '-14256']",
+            "['r*42-5/3+42///5-', '3+a']"
+        ],
+        "Reference solution": "re.split(r'42//?5', s)"
     }
 }
