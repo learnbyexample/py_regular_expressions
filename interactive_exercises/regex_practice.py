@@ -8,7 +8,8 @@ class Root(tk.Tk):
         super().__init__()
 
         self.title('Python Regex Practice')
-        self.geometry('800x600')
+        self.dimensions()
+        self.geometry(self.xy)
 
         self.styling()
 
@@ -23,11 +24,20 @@ class Root(tk.Tk):
 
         self.initialize()
 
+    def dimensions(self):
+        self.xy = '800x650'
+        self.question_width = 82
+        self.question_wraplength = 650
+        self.entry_width = 53
+        self.test_width = 40
+
     def styling(self):
         ttk.Style().theme_use('alt')
 
-        ttk.Style().configure('Q.TLabel', foreground='#a52a2a')
+        ttk.Style().configure('QA.TFrame', borderwidth=5, relief='groove')
+        ttk.Style().configure('DF.TFrame')
 
+        ttk.Style().configure('QA.TLabel', foreground='#a52a2a')
         ttk.Style().configure('DF.TLabel')
         ttk.Style().configure('LC.TLabel', background='#24ff24')
         ttk.Style().configure('RC.TLabel', background='#ff2424')
@@ -35,12 +45,13 @@ class Root(tk.Tk):
         ttk.Style().configure('WS.TLabel', background='#ffa3a3')
 
     def create_question_frame(self):
-        self.question_frame = ttk.Frame()
-        self.question_frame.pack(side=tk.TOP, pady=5)
+        self.question_frame = ttk.Frame(style='QA.TFrame', padding=15)
+        self.question_frame.pack(side=tk.TOP, pady=15)
 
-        self.l_question = ttk.Label(self.question_frame, wraplength=500,
+        self.l_question = ttk.Label(self.question_frame, style='QA.TLabel',
                                     justify='left', font='TkFixedFont',
-                                    style='Q.TLabel')
+                                    width=self.question_width,
+                                    wraplength=self.question_wraplength)
         self.l_question.pack()
 
     def create_pattern_frame(self):
@@ -53,9 +64,9 @@ class Root(tk.Tk):
 
         self.user_pattern = tk.StringVar()
         self.user_pattern.trace_add('write', self.update_display)
-        self.e_pattern = ttk.Entry(self.pattern_frame,
+        self.e_pattern = ttk.Entry(self.pattern_frame, font='TkFixedFont',
                                    textvariable=self.user_pattern,
-                                   width=53, font='TkFixedFont')
+                                   width=self.entry_width)
         self.e_pattern.grid(row=0, column=1)
 
     def create_replace_frame(self):
@@ -67,9 +78,9 @@ class Root(tk.Tk):
 
         self.user_replace = tk.StringVar()
         self.user_replace.trace_add('write', self.update_display)
-        self.e_replace = ttk.Entry(self.replace_frame,
+        self.e_replace = ttk.Entry(self.replace_frame, font='TkFixedFont',
                                    textvariable=self.user_replace,
-                                   width=53, font='TkFixedFont')
+                                   width=self.entry_width)
         self.e_replace.grid(row=0, column=1)
 
     def create_flags_frame(self):
@@ -106,28 +117,28 @@ class Root(tk.Tk):
 
     def create_test_frame(self):
         self.test_frame = ttk.Frame()
-        self.test_frame.pack()
+        self.test_frame.pack(pady=5)
 
     def create_solution_frame(self):
-        self.solution_frame = ttk.Frame()
-        self.solution_frame.pack()
+        self.solution_frame = ttk.Frame(padding=5)
+        self.solution_frame.pack(pady=5)
 
-        self.l_solution = ttk.Label(self.solution_frame, font='TkFixedFont')
-        self.l_solution.pack(pady=10)
+        self.l_solution = ttk.Label(self.solution_frame, font='TkFixedFont',
+                                    style='QA.TLabel')
+        self.l_solution.pack(padx=10, pady=10)
 
     def create_button_frame(self):
         self.button_frame = ttk.Frame()
-        self.button_frame.pack()
+        self.button_frame.pack(pady=5)
 
-        ttk.Button(self.button_frame, text='Quit', command=self.quit
-                  ).pack(side=tk.LEFT)
+        buttons = {'Quit': self.quit,
+                   'Solution': self.solution,
+                   'Previous': lambda: self.next(previous=True),
+                   'Next': self.next}
 
-        ttk.Button(self.button_frame, text='Previous',
-                   command=lambda: self.next(previous=True)
-                  ).pack(side=tk.LEFT)
-
-        ttk.Button(self.button_frame, text='Next', command=self.next
-                  ).pack(side=tk.RIGHT)
+        for t, c in buttons.items():
+            ttk.Button(self.button_frame, text=t, command=c
+                      ).pack(side=tk.LEFT, padx=2)
 
     def initialize(self):
         self.format = {0: str, 1: repr}
@@ -160,7 +171,7 @@ class Root(tk.Tk):
     def display_question(self, question):
         def create_label(s):
             return ttk.Label(self.test_frame, text=s,
-                             width=40, justify=tk.LEFT,
+                             width=self.test_width, justify=tk.LEFT,
                              anchor='w', font='TkFixedFont',
                              borderwidth=2, relief='raised',
                              padding=10, style='DF.TLabel')
@@ -244,6 +255,7 @@ class Root(tk.Tk):
 
         self.user_pattern.set('')
         self.user_replace.set('')
+        self.solution_frame['style'] = 'DF.TFrame'
         for label in self.l_test_strings:
             label.destroy()
         self.l_solution['text'] = ''
@@ -301,8 +313,7 @@ class Root(tk.Tk):
             row += 1
 
         if self.correct_solution:
-            self.l_solution['text'] = f'Reference solution(s):\n{self.ref_solution}'
-            self.save_progress()
+            self.solution()
 
     def save_progress(self):
         progress_key = str(self.question_idx)
@@ -321,6 +332,11 @@ class Root(tk.Tk):
                                                 self.correct_solution)
             with open(self.progress_file, 'w') as f:
                 f.write(json.dumps(self.user_progress, indent=4))
+
+    def solution(self):
+        self.l_solution['text'] = f'Reference solution(s):\n{self.ref_solution}'
+        self.solution_frame['style'] = 'QA.TFrame'
+        self.save_progress()
 
     def quit(self):
         self.save_progress()
