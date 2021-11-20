@@ -1,5 +1,6 @@
 import json
 import re
+import sys
 import tkinter as tk
 from tkinter import ttk
 
@@ -156,8 +157,19 @@ class Root(tk.Tk):
         with open('questions.json') as f:
             all_questions = json.load(f)
         self.questions = tuple(v for k, v in all_questions.items())
-        self.question_idx = 0
         self.question_count = len(self.questions)
+
+        self.question_idx = 0
+        try:
+            self.question_idx = int(sys.argv[1]) - 1
+        except (IndexError, ValueError):
+            # todo: find a better way
+            pass
+        else:
+            if self.question_idx < 0:
+                self.question_idx = 0
+            elif self.question_idx >= self.question_count:
+                self.question_idx = self.question_count - 1
 
         self.display_question(self.questions[self.question_idx])
         # skip already answered questions
