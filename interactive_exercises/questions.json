@@ -247,7 +247,7 @@
             "always X",
             "a X"
         ],
-        "Reference solution": "re.sub(r'test.+', r'X', flags=re.I)"
+        "Reference solution": "re.sub(r'test.+', r'X', s, flags=re.I)"
     },
     "15": {
         "question": "Split the given input strings to get the corresponding output as shown below.",
@@ -423,7 +423,7 @@
         "right column": [
             "redo X credible :X: rod X"
         ],
-        "Reference solution": "re.sub(r'\\bre[ae]?d\\b', 'X', s)"
+        "Reference solution": "re.sub(r'\\bre[ae]?d\\b', r'X', s)"
     },
     "25": {
         "question": "Change whole words starting with `hand` and ending with `s` or `y` or `le` to `X.",
@@ -540,9 +540,15 @@
         "flags": "0",
         "function": "re.split",
         "left column": [
+            "food:good",
+            "food:good-cool",
+            "food:good-cool;tool",
             "42:no-op;10:car-tr:u-ck;SQ1"
         ],
         "right column": [
+            "['food:good']",
+            "['food:good-cool']",
+            "['food', 'cool', 'tool']",
             "['42', 'op', '10', 'tr:u-ck', 'SQ1']"
         ],
         "Reference solution": "re.split(r':[^-]+-([^;]+);', s)"
@@ -557,7 +563,7 @@
         "right column": [
             "a\n1<> b 2<>"
         ],
-        "Reference solution": "re.sub(r'<[^>]+>', s)"
+        "Reference solution": "re.sub(r'<[^>]+>', r'', s)"
     },
     "34": {
         "question": "Match strings whose first non-whitespace character is not a `#` character. Any string made up of only whitespace characters should not be matched.",
@@ -611,7 +617,7 @@
         "right column": [
             "X not X X X took X"
         ],
-        "Reference solution": "re.sub(r'\\b(\\w|(\\w)\\w*\\2)\\b', 'X', s, flags=re.I)"
+        "Reference solution": "re.sub(r'\\b(\\w|(\\w)\\w*\\2)\\b', r'X', s, flags=re.I)"
     },
     "38": {
         "question": "Convert the given markdown anchors to hyperlinks as shown below.",
@@ -729,7 +735,7 @@
             "{{cherry-200",
             "2-42"
         ],
-        "Reference solution": "re.search(r'\\A({{)?[a-z]+-\\d+(?(1)}})\\Z', w)"
+        "Reference solution": "re.search(r'\\A({{)?[a-z]+-\\d+(?(1)}})\\Z', s)"
     },
     "46": {
         "question": "Replace all whole words with `X` unless it is preceded by `(` character.",
@@ -743,7 +749,7 @@
             "(apple) X X)",
             "X (mango) (grape"
         ],
-        "Reference solution": "re.sub(r'(?<!\\()\\b\\w+', 'X', s)"
+        "Reference solution": "re.sub(r'(?<!\\()\\b\\w+', r'X', s)"
     },
     "47": {
         "question": "Replace all whole words with `X` unless it is followed by `)` character.",
@@ -757,7 +763,7 @@
             "(apple) X berry)",
             "X (mango) (X"
         ],
-        "Reference solution": "re.sub(r'\\b\\w+\\b(?!\\))', 'X', s)"
+        "Reference solution": "re.sub(r'\\b\\w+\\b(?!\\))', r'X', s)"
     },
     "48": {
         "question": "Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.",
@@ -771,7 +777,7 @@
             "(apple) X berry)",
             "X (mango) (grape"
         ],
-        "Reference solution": "re.sub(r'(?<!\\()\\b\\w+\\b(?!\\))', 'X', s)"
+        "Reference solution": "re.sub(r'(?<!\\()\\b\\w+\\b(?!\\))', r'X', s)"
     },
     "49": {
         "question": "Extract all whole words that do not end with `e` or `n`.",
@@ -875,7 +881,7 @@
             "hello,nice   ice,42,2",
             "1,,stall   small"
         ],
-        "Reference solution": "re.sub(r'(?<![^,])\\s+|\\s+(?![^,])', s)"
+        "Reference solution": "re.sub(r'(?<![^,])\\s+|\\s+(?![^,])', r'', s)"
     },
     "56": {
         "question": "Match strings that satisfy all of these rules:\n* at least two alphabets\n* at least 3 digits\n* doesn't end with a whitespace character",
@@ -995,7 +1001,7 @@
             "But Cool Te",
             "it this ."
         ],
-        "Reference solution": "re.sub(r'hat.*it', r'', flags=re.S|re.I)"
+        "Reference solution": "re.sub(r'hat.*it', r'', s, flags=re.S|re.I)"
     },
     "64": {
         "question": "Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.",

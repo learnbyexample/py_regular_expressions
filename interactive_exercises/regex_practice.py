@@ -1,8 +1,10 @@
 import json
+import os
 import re
 import sys
 import tkinter as tk
 from tkinter import ttk
+from tkinter.messagebox import showwarning, showerror
 
 class Root(tk.Tk):
     def __init__(self):
@@ -143,7 +145,6 @@ class Root(tk.Tk):
 
     def initialize(self):
         self.format = {0: str, 1: repr}
-        self.format_change = {0: eval, 1: repr}
         self.previous_format = self.test_string_format.get()
 
         self.progress_file = 'user_progress.json'
@@ -153,27 +154,29 @@ class Root(tk.Tk):
         except FileNotFoundError:
             self.user_progress = {}
 
-        # todo: handle FileNotFoundError
         with open('questions.json') as f:
             all_questions = json.load(f)
         self.questions = tuple(v for k, v in all_questions.items())
         self.question_count = len(self.questions)
 
         self.question_idx = 0
-        try:
-            self.question_idx = int(sys.argv[1]) - 1
-        except (IndexError, ValueError):
-            # todo: find a better way
-            pass
-        else:
-            if self.question_idx < 0:
-                self.question_idx = 0
-            elif self.question_idx >= self.question_count:
-                self.question_idx = self.question_count - 1
+        if len(sys.argv) == 2:
+            try:
+                self.question_idx = int(sys.argv[1]) - 1
+            except ValueError:
+                showwarning("Warning!",
+                            ("Couldn't convert cli argument to integer!"
+                             "\n\nDefault question will be shown"))
+            else:
+                if self.question_idx < 0:
+                    self.question_idx = 0
+                elif self.question_idx >= self.question_count:
+                    self.question_idx = self.question_count - 1
 
         self.display_question(self.questions[self.question_idx])
         # skip already answered questions
-        for idx in range(self.question_count):
+        # selecting already answered question (via sys.argv[1]) is also skipped!
+        for idx in range(self.question_idx, self.question_count):
             progress_key = str(idx)
             if self.user_progress.get(progress_key, ('', '', 0, False))[3]:
                 self.next()
@@ -248,8 +251,11 @@ class Root(tk.Tk):
         new_format = self.test_string_format.get()
         if new_format != self.previous_format:
             self.previous_format = new_format
-            for label in self.l_test_strings:
-                label['text'] = self.format_change[new_format](label['text'])
+            fmt_func = self.format[new_format]
+            for row, t in enumerate(zip(self.left_col, self.right_col)):
+                idx = row * 2
+                self.l_test_strings[idx]['text'] = fmt_func(t[0])
+                self.l_test_strings[idx + 1]['text'] = fmt_func(t[1])
 
     def next(self, previous=False):
         self.save_progress()
@@ -355,7 +361,10 @@ class Root(tk.Tk):
         self.destroy()
 
 if __name__ == '__main__':
-    root = Root()
-    root.protocol('WM_DELETE_WINDOW', root.quit)
-    root.mainloop()
+    if not os.path.isfile('questions.json'):
+        showerror("Error!", "questions.json not found!")
+    else:
+        root = Root()
+        root.protocol('WM_DELETE_WINDOW', root.quit)
+        root.mainloop()
 
