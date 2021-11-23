@@ -148,10 +148,10 @@ class Root(tk.Tk):
         self.previous_format = self.test_string_format.get()
 
         self.progress_file = 'user_progress.json'
-        try:
+        if os.path.isfile(self.progress_file):
             with open(self.progress_file) as f:
                 self.user_progress = json.load(f)
-        except FileNotFoundError:
+        else:
             self.user_progress = {}
 
         with open('questions.json') as f:

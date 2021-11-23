@@ -366,6 +366,32 @@
         "Reference solution": "re.search(r'.{6}', s, flags=re.S)"
     },
     "21": {
+        "question": "Remove from first occurrence of `hat` to last occurrence of `it` for the given input strings. Match these markers case insensitively.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "But Cool THAT\nsee What ok\nwow quite",
+            "it this hat is sliced HIT."
+        ],
+        "right column": [
+            "But Cool Te",
+            "it this ."
+        ],
+        "Reference solution": "re.sub(r'hat.*it', r'', s, flags=re.S|re.I)"
+    },
+    "22": {
+        "question": "Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "good start\nstart working on that\nproject you always wanted\nto, do not let it end\nhi there\nstart and end the end\n42\nStart and try to\nfinish the End\nbye"
+        ],
+        "right column": [
+            "good start\n\nhi there\n\n42\n\nbye"
+        ],
+        "Reference solution": "re.sub(r'(?ims)^start.*?end$', r'', s)\nre.sub(r'^start.*?end$', r'', s, flags=re.I|re.M|re.S)"
+    },
+    "23": {
         "question": "Construct a pattern that splits the given input strings to get the output as shown below.",
         "flags": "0",
         "function": "re.split",
@@ -381,7 +407,7 @@
         ],
         "Reference solution": "re.split(r' +// +', s)"
     },
-    "22": {
+    "24": {
         "question": "Extract all occurrences of `<` up to next occurrence of `>`, provided there is at least one character in between `<` and `>`.",
         "flags": "0",
         "function": "re.findall",
@@ -393,7 +419,7 @@
         ],
         "Reference solution": "re.findall(r'<.+?>', s, flags=re.S)"
     },
-    "23": {
+    "25": {
         "question": "Match all strings containing `e` or `i` followed by `l` or `n`.",
         "flags": "0",
         "function": "re.search",
@@ -413,7 +439,7 @@
         ],
         "Reference solution": "re.search(r'[ei].*[ln]', s, flags=re.S)"
     },
-    "24": {
+    "26": {
         "question": "Replace all whole words `reed` or `read` or `red` with `X`.",
         "flags": "0",
         "function": "re.sub",
@@ -425,7 +451,7 @@
         ],
         "Reference solution": "re.sub(r'\\bre[ae]?d\\b', r'X', s)"
     },
-    "25": {
+    "27": {
         "question": "Change whole words starting with `hand` and ending with `s` or `y` or `le` to `X.",
         "flags": "0",
         "function": "re.sub",
@@ -437,7 +463,7 @@
         ],
         "Reference solution": "re.sub(r'\\bhand([sy]|le)\\b', r'X', s)"
     },
-    "26": {
+    "28": {
         "question": "Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.",
         "flags": "0",
         "function": "re.sub",
@@ -453,7 +479,7 @@
         ],
         "Reference solution": "re.sub(r'\\([^()]*\\)', r'', s)"
     },
-    "27": {
+    "29": {
         "question": "Match strings not starting with `e` or `p` or `u`.",
         "flags": "0",
         "function": "re.search",
@@ -471,7 +497,7 @@
         ],
         "Reference solution": "re.search(r'\\A[^epu]', s)"
     },
-    "28": {
+    "30": {
         "question": "Match strings containing `u` or `w` or `ee` or `-`.",
         "flags": "0",
         "function": "re.search",
@@ -491,7 +517,7 @@
         ],
         "Reference solution": "re.search(r'[uw-]|ee', s)"
     },
-    "29": {
+    "31": {
         "question": "The given input strings contain fields separated by `,` and fields can be empty too. Replace last three fields with `WHTSZ323`.",
         "flags": "0",
         "function": "re.sub",
@@ -505,7 +531,7 @@
         ],
         "Reference solution": "re.sub(r'(,[^,]*){3}\\Z', r',WHTSZ323', s)"
     },
-    "30": {
+    "32": {
         "question": "Extract whole words starting with `r` or `s` or `t` and having a maximum of `6` word characters.",
         "flags": "0",
         "function": "re.findall",
@@ -521,7 +547,7 @@
         ],
         "Reference solution": "re.findall(r'\\b[rst]\\w{,5}\\b', s)"
     },
-    "31": {
+    "33": {
         "question": "Split the given strings based on consecutive sequence of digit or whitespace characters.",
         "flags": "0",
         "function": "re.split",
@@ -535,7 +561,7 @@
         ],
         "Reference solution": "re.split(r'[\\d\\s]+', s)"
     },
-    "32": {
+    "34": {
         "question": "Construct a pattern that splits the given input string to get the output as shown below.",
         "flags": "0",
         "function": "re.split",
@@ -553,7 +579,7 @@
         ],
         "Reference solution": "re.split(r':[^-]+-([^;]+);', s)"
     },
-    "33": {
+    "35": {
         "question": "Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters.",
         "flags": "0",
         "function": "re.sub",
@@ -565,7 +591,7 @@
         ],
         "Reference solution": "re.sub(r'<[^>]+>', r'', s)"
     },
-    "34": {
+    "36": {
         "question": "Match strings whose first non-whitespace character is not a `#` character. Any string made up of only whitespace characters should not be matched.",
         "flags": "0",
         "function": "re.search",
@@ -581,7 +607,21 @@
         ],
         "Reference solution": "re.search(r'\\A\\s*[^#\\s]', s)"
     },
-    "35": {
+    "37": {
+        "question": "Extract all numbers greater than or equal to `100`. Numbers can have leading zeros as well.",
+        "flags": "0",
+        "function": "re.findall",
+        "left column": [
+            "0501 035 154 12 26 98234",
+            "099 000100 4567"
+        ],
+        "right column": [
+            "['0501', '154', '98234']",
+            "['000100', '4567']"
+        ],
+        "Reference solution": "re.findall(r'\\b0*[1-9]\\d{2,}', s)"
+    },
+    "38": {
         "question": "Replace the space character that occurs after a word ending with `a` or `r` with a newline character.",
         "flags": "0",
         "function": "re.sub",
@@ -593,7 +633,21 @@
         ],
         "Reference solution": "re.sub(r'([ar]) ', r'\\1\\n', s)"
     },
-    "36": {
+    "39": {
+        "question": "Swap words that are separated by a comma.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "good,bad (42,24)",
+            "report_log,power_report"
+        ],
+        "right column": [
+            "bad,good (24,42)",
+            "power_report,report_log"
+        ],
+        "Reference solution": "re.sub(r'(\\w+),(\\w+)', r'\\2,\\1', s)"
+    },
+    "40": {
         "question": "Add `[]` around words starting with `s` and containing `e` and `t` in any order.",
         "flags": "0",
         "function": "re.sub",
@@ -607,7 +661,21 @@
         ],
         "Reference solution": "re.sub(r'\\bs\\w*(e\\w*t|t\\w*e)\\w*', r'[\\g<0>]', s)"
     },
-    "37": {
+    "41": {
+        "question": "Change `[digits]` to `(digits0)`. For example, `[10]` should be changed to `(100)`.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "[apple] [5] [ball] [0]",
+            "[20] pens and (3) pencils"
+        ],
+        "right column": [
+            "[apple] (50) [ball] (00)",
+            "(200) pens and (3) pencils"
+        ],
+        "Reference solution": "re.sub(r'\\[(\\d+)]', r'(\\g<1>0)', s)\nre.sub(r'\\[(\\d+)]', r'(\\1\\060)', s)"
+    },
+    "42": {
         "question": "Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.",
         "flags": "0",
         "function": "re.sub",
@@ -619,7 +687,7 @@
         ],
         "Reference solution": "re.sub(r'\\b(\\w|(\\w)\\w*\\2)\\b', r'X', s, flags=re.I)"
     },
-    "38": {
+    "43": {
         "question": "Convert the given markdown anchors to hyperlinks as shown below.",
         "flags": "0",
         "function": "re.sub",
@@ -633,8 +701,26 @@
         ],
         "Reference solution": "re.sub(r'[^\"]+\"([^\"]+)\"></a>(.+)', r'[\\2](#\\1)', s)"
     },
-    "39": {
-        "question": "Match strings with words that have at least two occurrences of consecutive repeated alphabets. For example, words like `stillness` and `Committee` should be matched but not words like `root` or `readable` or `rotational`.",
+    "44": {
+        "question": "Duplicate first field and add it as the last field. Consider comma as the field separator and fields other than the first field could be empty too.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "fork,42,nice,3.14",
+            "good,food",
+            "2",
+            "(a^b),#hi#,,"
+        ],
+        "right column": [
+            "fork,42,nice,3.14,fork",
+            "good,food,good",
+            "2,2",
+            "(a^b),#hi#,,,(a^b)"
+        ],
+        "Reference solution": "re.sub(r'\\A([^,]+),?.*', r'\\g<0>,\\1', s)"
+    },
+    "45": {
+        "question": "Match strings with words that have at least two occurrences of consecutive repeated word characters. For example, words like `stillness` and `Committee` should be matched but not words like `root` or `readable` or `rotational`.",
         "flags": "0",
         "function": "re.search",
         "left column": [
@@ -651,7 +737,19 @@
         ],
         "Reference solution": "re.search(r'(\\w*(\\w)\\2){2}', s)\nre.search(r'(\\w)\\1\\w*(\\w)\\2', s)"
     },
-    "40": {
+    "46": {
+        "question": "Replace all consecutive occurrences of duplicate words with a single copy. Consider the words to be separated by a single space character only.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "aa a a a 42 f_1 f_1 f_13.14 a"
+        ],
+        "right column": [
+            "aa a 42 f_1 f_13.14 a"
+        ],
+        "Reference solution": "re.sub(r'\\b(\\w+)( \\1)+\\b', r'\\1', s)"
+    },
+    "47": {
         "question": "For the given input strings, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.",
         "flags": "0",
         "function": "re.sub",
@@ -665,7 +763,7 @@
         ],
         "Reference solution": "re.sub(r'\\b(\\d+)\\1+\\b', r'\\1', s)"
     },
-    "41": {
+    "48": {
         "question": "Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.",
         "flags": "0",
         "function": "re.sub",
@@ -679,7 +777,7 @@
         ],
         "Reference solution": "re.sub(r'(\\w+)[:.](\\w+[:.])+', r'\\1', s)"
     },
-    "42": {
+    "49": {
         "question": "Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.",
         "flags": "0",
         "function": "re.sub",
@@ -693,7 +791,7 @@
         ],
         "Reference solution": "re.sub(r'((\\w+)[:.])+', r'\\2', s)"
     },
-    "43": {
+    "50": {
         "question": "Split the given input string on one or more repeated sequence of `cat`.",
         "flags": "0",
         "function": "re.split",
@@ -705,22 +803,22 @@
         ],
         "Reference solution": "re.split(r'(?:cat)+', s)"
     },
-    "44": {
+    "51": {
         "question": "Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them.",
         "flags": "0",
         "function": "re.sub",
         "left column": [
-            "Tiger imp goat ANT",
+            "Tiger-imp goat ANT",
             "2_eagle ant important"
         ],
         "right column": [
-            "(Tiger) () (goat) (ANT)",
+            "(Tiger)-() (goat) (ANT)",
             "(2_eagle) () (important)"
         ],
         "Reference solution": "re.sub(r'\\b(?:imp|ant|(\\w+))\\b', r'(\\1)', s)"
     },
-    "45": {
-        "question": "Match entire strings that is made up of a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by `{{` and `}}`.",
+    "52": {
+        "question": "Match entire strings that is made up of a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by both `{{` and `}}`.",
         "flags": "0",
         "function": "re.search",
         "left column": [
@@ -737,7 +835,7 @@
         ],
         "Reference solution": "re.search(r'\\A({{)?[a-z]+-\\d+(?(1)}})\\Z', s)"
     },
-    "46": {
+    "53": {
         "question": "Replace all whole words with `X` unless it is preceded by `(` character.",
         "flags": "0",
         "function": "re.sub",
@@ -751,7 +849,7 @@
         ],
         "Reference solution": "re.sub(r'(?<!\\()\\b\\w+', r'X', s)"
     },
-    "47": {
+    "54": {
         "question": "Replace all whole words with `X` unless it is followed by `)` character.",
         "flags": "0",
         "function": "re.sub",
@@ -765,7 +863,7 @@
         ],
         "Reference solution": "re.sub(r'\\b\\w+\\b(?!\\))', r'X', s)"
     },
-    "48": {
+    "55": {
         "question": "Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.",
         "flags": "0",
         "function": "re.sub",
@@ -779,7 +877,7 @@
         ],
         "Reference solution": "re.sub(r'(?<!\\()\\b\\w+\\b(?!\\))', r'X', s)"
     },
-    "49": {
+    "56": {
         "question": "Extract all whole words that do not end with `e` or `n`.",
         "flags": "0",
         "function": "re.findall",
@@ -797,7 +895,7 @@
         ],
         "Reference solution": "re.findall(r'\\w+\\b(?<![en])', s)"
     },
-    "50": {
+    "57": {
         "question": "Extract all whole words that do not start with `a` or `d` or `n`.",
         "flags": "0",
         "function": "re.findall",
@@ -811,7 +909,7 @@
         ],
         "Reference solution": "re.findall(r'(?![adn])\\b\\w+', s)"
     },
-    "51": {
+    "58": {
         "question": "Extract all whole words only if they are followed by `:` or `,` or `-`.",
         "flags": "0",
         "function": "re.findall",
@@ -825,7 +923,7 @@
         ],
         "Reference solution": "re.findall(r'\\w+(?=[:,-])', s)"
     },
-    "52": {
+    "59": {
         "question": "Extract all whole words only if they are preceded by `=` or `/` or `-`.",
         "flags": "0",
         "function": "re.findall",
@@ -839,7 +937,7 @@
         ],
         "Reference solution": "re.findall(r'(?<=[=/-])\\w+', s)"
     },
-    "53": {
+    "60": {
         "question": "Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.",
         "flags": "0",
         "function": "re.findall",
@@ -853,7 +951,7 @@
         ],
         "Reference solution": "re.findall(r'(?<=[=:])\\w+(?=[:.])', s)"
     },
-    "54": {
+    "61": {
         "question": "Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.",
         "flags": "0",
         "function": "re.findall",
@@ -867,7 +965,7 @@
         ],
         "Reference solution": "re.findall(r'(?<=[=:.(-])\\w+\\b(?![./])', s)"
     },
-    "55": {
+    "62": {
         "question": "Remove leading and trailing whitespaces from all the individual fields where `,` is the field separator.",
         "flags": "0",
         "function": "re.sub",
@@ -883,8 +981,44 @@
         ],
         "Reference solution": "re.sub(r'(?<![^,])\\s+|\\s+(?![^,])', r'', s)"
     },
-    "56": {
-        "question": "Match strings that satisfy all of these rules:\n* at least two alphabets\n* at least 3 digits\n* doesn't end with a whitespace character",
+    "63": {
+        "question": "Replace all occurrences of `par` with `X` as long as whole word `par` isn't present later in the string.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "apartment parking spot",
+            "parse and par and sparse",
+            "par not but this par",
+            "_par2 spark parpar_"
+        ],
+        "right column": [
+            "aXtment Xking spot",
+            "parse and X and sXse",
+            "par not but this X",
+            "_X2 sXk XX_"
+        ],
+        "Reference solution": "re.sub(r'par(?!.*\\bpar\\b)', r'X', s)"
+    },
+    "64": {
+        "question": "Replace all occurrences of `par` with `X` as long as `par` is present later in the string.",
+        "flags": "0",
+        "function": "re.sub",
+        "left column": [
+            "apartment parking spot",
+            "parse and par and sparse",
+            "par not but this par",
+            "_par2 spark parpar_"
+        ],
+        "right column": [
+            "aXtment parking spot",
+            "Xse and X and sparse",
+            "X not but this par",
+            "_X2 sXk Xpar_"
+        ],
+        "Reference solution": "re.sub(r'par(?=.*par)', r'X', s)"
+    },
+    "65": {
+        "question": "Match strings that satisfy all of these rules:\n     * at least two alphabets\n     * at least 3 digits\n     * doesn't end with a whitespace character",
         "flags": "0",
         "function": "re.search",
         "left column": [
@@ -901,7 +1035,7 @@
         ],
         "Reference solution": "re.search(r'\\A(?=(.*[a-zA-Z]){2})(?=(.*\\d){3})(?!.+\\s\\Z)', s)\nre.search(r'\\A(?=(.*[a-z]){2})(?=(.*\\d){3})(?!.+\\s\\Z)', s, flags=re.I)"
     },
-    "57": {
+    "66": {
         "question": "For the given strings, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.",
         "flags": "0",
         "function": "re.sub",
@@ -917,7 +1051,7 @@
         ],
         "Reference solution": "re.sub(r'\\b(?!(?:par|cat|apple)\\b)\\w+', r'{\\g<0>}', s)"
     },
-    "58": {
+    "67": {
         "question": "Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with `.` but no further digits should not be considered.",
         "flags": "0",
         "function": "re.findall",
@@ -929,7 +1063,7 @@
         ],
         "Reference solution": "re.findall(r'\\d+(?=\\.\\d+)', s)"
     },
-    "59": {
+    "68": {
         "question": "Convert the given input strings to the corresponding output as shown below.",
         "flags": "0",
         "function": "re.sub",
@@ -943,7 +1077,7 @@
         ],
         "Reference solution": "re.sub(r'.(?=(.).)', r'\\g<0>\\1\\n', s)\nre.sub(r'(?<=.(.)).', r'\\n\\1\\g<0>', s)"
     },
-    "60": {
+    "69": {
         "question": "The given input strings contain fields separated by `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.",
         "flags": "0",
         "function": "re.sub",
@@ -959,7 +1093,7 @@
         ],
         "Reference solution": "re.sub(r'(\\d.*):.*', r'\\1', s)"
     },
-    "61": {
+    "70": {
         "question": "Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.",
         "flags": "0",
         "function": "re.findall",
@@ -973,7 +1107,7 @@
         ],
         "Reference solution": "re.findall(r'(?<![:#])(?<!<=>)(?<!-{4})\\b\\w+', s)"
     },
-    "62": {
+    "71": {
         "question": "Match strings if it contains `qty` followed by `price` but not if there is whitespace or the string `error` between them.",
         "flags": "0",
         "function": "re.search",
@@ -989,34 +1123,8 @@
         ],
         "Reference solution": "re.search(r'qty((?!\\s|error).)*price', s)"
     },
-    "63": {
-        "question": "Remove from first occurrence of `hat` to last occurrence of `it` for the given input strings. Match these markers case insensitively.",
-        "flags": "0",
-        "function": "re.sub",
-        "left column": [
-            "But Cool THAT\nsee What ok\nwow quite",
-            "it this hat is sliced HIT."
-        ],
-        "right column": [
-            "But Cool Te",
-            "it this ."
-        ],
-        "Reference solution": "re.sub(r'hat.*it', r'', s, flags=re.S|re.I)"
-    },
-    "64": {
-        "question": "Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.",
-        "flags": "0",
-        "function": "re.sub",
-        "left column": [
-            "good start\nstart working on that\nproject you always wanted\nto, do not let it end\nhi there\nstart and end the end\n42\nStart and try to\nfinish the End\nbye"
-        ],
-        "right column": [
-            "good start\n\nhi there\n\n42\n\nbye"
-        ],
-        "Reference solution": "re.sub(r'(?ims)^start.*?end$', r'', s)\nre.sub(r'^start.*?end$', r'', s, flags=re.I|re.M|re.S)"
-    },
-    "65": {
-        "question": "For the given input strings, match all of these three patterns:\n* `This` case sensitively\n* `nice` and `cool` case insensitively",
+    "72": {
+        "question": "For the given input strings, match all of these three patterns:\n     * `This` case sensitively\n     * `nice` and `cool` case insensitively",
         "flags": "0",
         "function": "re.search",
         "left column": [
@@ -1031,7 +1139,7 @@
         ],
         "Reference solution": "re.search(r'(?i)\\A(?=.*nice)(?=.*cool).*(?-i:This)', s)\nre.search(r'\\A(?=.*nice)(?=.*cool).*(?-i:This)', s, flags=re.I)"
     },
-    "66": {
+    "73": {
         "question": "For the given input strings, match if the string begins with `Th` and also contains a line that starts with `There`.",
         "flags": "0",
         "function": "re.search",
@@ -1045,7 +1153,7 @@
         ],
         "Reference solution": "re.search(r'\\A(?=Th)(?ms:.*^There)', s)\nre.search(r'\\A(?=Th).*^There', s, flags=re.M|re.S)"
     },
-    "67": {
+    "74": {
         "question": "Extract all consecutive word characters made up of ASCII characters only.",
         "flags": "0",
         "function": "re.findall",
