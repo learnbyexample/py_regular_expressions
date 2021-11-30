@@ -16,7 +16,7 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 # E-book
 
-* You can purchase the pdf/epub versions of the book using these links
+* You can purchase the pdf/epub versions of the book using these links (**currently FREE to download till 31-Dec-2021**)
     * https://leanpub.com/py_regex
         * You might find reduced price using this coupon: https://leanpub.com/py_regex/c/P7erPYAm1386
     * https://learnbyexample.gumroad.com/l/py_regex

@@ -48,7 +48,7 @@ Here's a screenshot to show the difference between these two options:
 
 * Backticks are used in the question descriptions to highlight search and replace terms.
 * User input entered via **Pattern** and **Replace** boxes will always be treated as raw-strings. For this reason, raw-strings are used for the reference solutions as well.
-* These exercise questions have been adapted from my [Python re(gex)?](https://github.com/learnbyexample/py_regular_expressions) ebook (free to read online). See [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md) for all the exercise questions from this book.
+* These exercise questions have been adapted from my [Python re(gex)?](https://github.com/learnbyexample/py_regular_expressions) ebook (free to read online and PDF/EPUB versions are currently free to download till 31-Dec-2021). See [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md) for all the exercise questions from this book.
 
 ## TODO
 
