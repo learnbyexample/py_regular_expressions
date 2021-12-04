@@ -60,3 +60,8 @@ Here's a screenshot to show the difference between these two options:
 * Add tests?
 * Etc
 
+## License
+
+The [regex_practice.py](https://github.com/learnbyexample/py_regular_expressions/raw/master/interactive_exercises/regex_practice.py) file is licensed under [MIT LICENSE](../LICENSE)
+
+Rest of the content is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
