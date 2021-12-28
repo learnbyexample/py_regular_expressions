@@ -39,6 +39,14 @@ For web version of the book, visit https://learnbyexample.github.io/py_regular_e
 
 <br>
 
+# Testimonials
+
+>I love your books on regex...As a student from the Digital VLSI space, it is indeed useful now and definitely in the future. It's really well written and really easy to understand the examples.
+>
+> — [feedback on reddit](https://old.reddit.com/r/Python/comments/i0m2sy/i_know_python_basics_what_next/fzql5gh/)
+
+<br>
+
 # Feedback and Contributing
 
 [Open an issue](https://github.com/learnbyexample/py_regular_expressions/issues) if you spot any typo/errors.
