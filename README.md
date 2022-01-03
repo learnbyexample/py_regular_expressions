@@ -10,13 +10,15 @@ The book also includes exercises to test your understanding, which is presented 
 
 For solutions to the exercises, see [Exercise_solutions.md](./exercises/Exercise_solutions.md).
 
+You can also use [this interactive GUI app](https://github.com/learnbyexample/py_regular_expressions/tree/master/interactive_exercises) to practice a subset of the exercises from the book.
+
 See [Version_changes.md](./Version_changes.md) to keep track of changes made to the book.
 
 <br>
 
 # E-book
 
-* You can purchase the pdf/epub versions of the book using these links (**currently FREE to download till 31-Dec-2021**)
+* You can purchase the pdf/epub versions of the book using these links
     * https://leanpub.com/py_regex
         * You might find reduced price using this coupon: https://leanpub.com/py_regex/c/P7erPYAm1386
     * https://learnbyexample.gumroad.com/l/py_regex
