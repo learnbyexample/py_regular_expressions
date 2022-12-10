@@ -50,6 +50,12 @@ Here's a screenshot to show the difference between these two options:
 * User input entered via **Pattern** and **Replace** boxes will always be treated as raw-strings. For this reason, raw-strings are used for the reference solutions as well.
 * These exercise questions have been adapted from my [Python re(gex)?](https://github.com/learnbyexample/py_regular_expressions) ebook (free to read online). See [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md) for all the exercise questions from this book.
 
+## Video demo
+
+https://user-images.githubusercontent.com/17766317/206862542-63aa0c23-90d9-4a1a-b1a2-384c40397868.mp4
+
+You can also view the [video demo on youtube](https://youtu.be/Ytz-E-rRdX4)
+
 ## TODO
 
 * Highlight portion of test strings that match the user pattern and show live output — these features will help in debugging solutions
