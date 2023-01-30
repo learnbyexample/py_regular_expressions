@@ -1,12 +1,14 @@
 ## Alternation
 
-bool(re.search(r'cat|dog', 'I like cats'))
+pet = re.compile(r'cat|dog')
 
-bool(re.search(r'cat|dog', 'I like dogs'))
+bool(pet.search('I like cats'))
 
-bool(re.search(r'cat|dog', 'I like parrots'))
+bool(pet.search('I like dogs'))
 
-re.sub(r'\Acat|cat\b', 'X', 'catapults concatenate cat scat')
+bool(pet.search('I like parrots'))
+
+re.sub(r'\Acat|cat\b', 'X', 'catapults concatenate cat scat cater')
 
 re.sub(r'cat|dog|fox', 'mammal', 'cat dog bee parrot fox')
 
@@ -36,7 +38,7 @@ words = ['cat', 'par']
 
 re.sub('|'.join(words), 'X', 'cater cat concatenate par spare')
 
-alt = re.compile(r'\b(' + '|'.join(words) + r')\b')
+alt = re.compile(rf"\b({'|'.join(words)})\b")
 
 alt.sub('X', 'cater cat concatenate par spare')
 

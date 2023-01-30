@@ -1,4 +1,4 @@
-## Escaping with \
+## Escaping with backslash
 
 bool(re.search(r'b^2', 'a^2 + b^2 - C*3'))
 
@@ -12,7 +12,7 @@ eqn = 'f*(a^b) - 3*(a^b)'
 
 eqn.replace('(a^b)', 'c')
 
-## re.escape
+## re.escape()
 
 expr = '(a^b)'
 

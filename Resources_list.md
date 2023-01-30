@@ -4,7 +4,7 @@
 * [softwareengineering: Is it a must for every programmer to learn regular expressions?](https://softwareengineering.stackexchange.com/questions/133968/is-it-a-must-for-every-programmer-to-learn-regular-expressions)
 * [softwareengineering: When you should NOT use Regular Expressions?](https://softwareengineering.stackexchange.com/questions/113237/when-you-should-not-use-regular-expressions)
 * [codinghorror: Now You Have Two Problems](https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/) — demystifies the often (mis)quoted meme
-* [wikipedia: Regular expression](https://en.wikipedia.org/wiki/Regular_expression) — this article includes discussion on regular expressions as a formal language as well as details on various implementations
+* [wikipedia: Regular expression](https://en.wikipedia.org/wiki/Regular_expression) — this article includes discussion on regular expressions as a formal language as well as details about various implementations
 * [swtch](https://swtch.com/~rsc/regexp/regexp1.html) — stuff about regular expression implementation engines
 
 <br>
@@ -31,6 +31,7 @@
 ## Specific topics
 
 * [rexegg: best regex trick](https://www.rexegg.com/regex-best-trick.html)
+* [rexegg: Backtracking Control Verbs](https://www.rexegg.com/backtracking-control-verbs.html)
 * [regular-expressions: matching numeric ranges](https://www.regular-expressions.info/numericranges.html)
 * [regular-expressions: Continuing at The End of The Previous Match](https://www.regular-expressions.info/continue.html)
 * [regular-expressions: Zero-Length Matches](https://www.regular-expressions.info/zerolength.html)

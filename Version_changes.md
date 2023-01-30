@@ -1,5 +1,22 @@
 <br>
 
+### 4.0
+
+* Python version updated to 3.11
+    * Possessive quantifiers and Atomic grouping are now supported by the `re` module
+* `regex` module
+    * corrected examples and descriptions for `\G` and `\K` features
+    * added railroad diagram for the recursive matching section
+* In general, many of the examples, exercises, solutions, descriptions and external links were updated/corrected
+* Updated Acknowledgements section
+* Code snippets related to info/warning sections will now appear as a single block
+* New section added for [re(gex)? playground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground)
+* Book title changed to **Understanding Python re(gex)?**
+* New cover image
+* Images centered for EPUB format
+
+<br>
+
 ### 3.2
 
 * Corrected typos in description, cheatsheet, exercises and solutions

@@ -12,7 +12,7 @@ bool(re.search(r'are\Z', 'spare'))
 
 bool(re.search(r'are\Z', 'nearest'))
 
-words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+words = ['surrender', 'unicorn', 'newer', 'door', 'erase', 'eel', 'pest']
 
 [w for w in words if re.search(r'er\Z', w)]
 
@@ -32,7 +32,7 @@ bool(word_pat.search('cater', 1))
 
 bool(word_pat.search('cater'[1:]))
 
-## re.fullmatch
+## re.fullmatch()
 
 word_pat = re.compile(r'\Acat\Z')
 
@@ -102,9 +102,9 @@ print(re.sub(r'\b', '"', words).replace(' ', ','))
 
 re.sub(r'\b', ' ', '-----hello-----')
 
-re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2')
+re.sub(r'\b', ' ', 'output=num1+35*42/num2')
 
-re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2').strip()
+re.sub(r'\b', ' ', 'output=num1+35*42/num2').strip()
 
 words = 'par spar apparent spare part'
 

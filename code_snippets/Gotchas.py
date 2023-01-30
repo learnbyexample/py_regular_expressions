@@ -10,17 +10,17 @@ re.sub(r',', r'\174', '1,2')
 
 re.sub(r',', '\x7c', '1,2')
 
-## Line anchors with \n as last character
+## Line anchors with \n as the last character
 
-print(re.sub(r'(?m)^', 'foo ', '1\n2\n'))
+print(re.sub(r'(?m)^', 'apple ', '1\n2\n'))
 
-print(re.sub(r'(?m)$', ' baz', '1\n2\n'))
+print(re.sub(r'(?m)$', ' banana', '1\n2\n'))
 
-## Zero length matches
+## Zero-length matches
 
 re.sub(r'[^,]*', r'{\g<0>}', ',cat,tiger')
 
-regex.sub(r'[^,]*+', r'{\g<0>}', ',cat,tiger')
+re.sub(r'[^,]*+', r'{\g<0>}', ',cat,tiger')
 
 re.sub(r'(?<![^,])[^,]*', r'{\g<0>}', ',cat,tiger')
 
@@ -50,7 +50,9 @@ regex.findall(r'(?a)[[:word:]]+', 'fox:αλεπού,eagle:αετός')
 
 re.findall(r'key', 'KEY portkey oKey Keyed', re.I)
 
-re.sub(r'key', 'X', 'KEY portkey oKey Keyed', re.I)
+re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', re.I)
 
-re.sub(r'key', 'X', 'KEY portkey oKey Keyed', flags=re.I)
+re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', flags=re.I)
+
+re.sub(r'(?i)key', r'(\g<0>)', 'KEY portkey oKey Keyed')
 

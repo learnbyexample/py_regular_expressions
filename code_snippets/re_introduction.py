@@ -1,4 +1,4 @@
-## re.search
+## re.search()
 
 sentence = 'This is a sample string'
 
@@ -18,7 +18,7 @@ bool(re.search(r'this', sentence))
 
 bool(re.search(r'this', sentence, flags=re.I))
 
-## re.search in conditional expressions
+## re.search() in conditional expressions
 
 sentence = 'This is a sample string'
 
@@ -36,7 +36,7 @@ all(re.search(r'at', w) for w in words)
 
 any(re.search(r'stat', w) for w in words)
 
-## re.sub
+## re.sub()
 
 greeting = 'Have a nice weekend'
 

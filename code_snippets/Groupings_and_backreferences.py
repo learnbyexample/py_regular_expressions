@@ -1,8 +1,8 @@
 ## Backreference
 
-re.sub(r'\[(\d+)\]', r'\1', '[52] apples and [31] mangoes')
+re.sub(r'\[(\d+)\]', r'\1', '[52] apples [and] [31] mangoes')
 
-re.sub(r'(_)?_', r'\1', '_foo_ __123__ _baz_')
+re.sub(r'(_)?_', r'\1', '_apple_ __123__ _banana_')
 
 re.sub(r'(\w+),(\w+)', r'\2,\1', 'good,bad 42,24')
 
@@ -18,9 +18,9 @@ re.sub(r'.+', r'Hi. \g<0>. Have a nice day', 'Hello world')
 
 re.sub(r'\A([^,]+),.+', r'\g<0>,\1', 'fork,42,nice,3.14')
 
-words = ['effort', 'flee', 'facade', 'oddball', 'rat', 'tool']
+words = ['effort', 'FLEE', 'facade', 'oddball', 'rat', 'tool', 'a22b']
 
-[w for w in words if re.search(r'\b\w*(\w)\1\w*\b', w)]
+[w for w in words if re.search(r'(\w)\1', w)]
 
 re.sub(r'\b(\w+)( \1)+\b', r'\1', 'aa a a a 42 f_1 f_1 f_13.14')
 
@@ -58,13 +58,13 @@ re.sub(r'\A([^,]+,){3}([^,]+)', r'\1"\2"', row)
 
 re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1"\2"', row)
 
-words = 'effort flee facade oddball rat tool'
+s = 'effort flee facade oddball rat tool a22b'
 
 repeat_char = re.compile(r'\b\w*(\w)\1\w*\b')
 
-repeat_char.findall(words)
+repeat_char.findall(s)
 
-m_iter = repeat_char.finditer(words)
+m_iter = repeat_char.finditer(s)
 
 [m[0] for m in m_iter]
 
@@ -96,6 +96,18 @@ s = 'good,bad 42,24'
 
 [m.groupdict() for m in re.finditer(r'(?P<fw>\w+),(?P<sw>\w+)', s)]
 
+## Atomic grouping
+
+numbers = '42 314 001 12 00984'
+
+re.findall(r'(?>0*)\d{3,}', numbers)
+
+ip = 'fig::mango::pineapple::guava::apples::orange'
+
+re.search(r'::.*?::apple', ip)[0]
+
+re.search(r'(?>::.*?::)apple', ip)[0]
+
 ## Conditional groups
 
 words = ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
@@ -110,19 +122,19 @@ pat = re.compile(r'(")?\w+(?(1)")')
 
 [w for w in words if pat.search(w)]
 
-words = ['(hi)', 'good-bye', 'bad', '(42)', '-oh', 'i-j', '(-)']
+words = ['(hi)', 'good-bye', 'bad', '(42)', '-oh', 'i-j', '(-)', '(oh-no)']
 
 pat = re.compile(r'(\()?\w+(?(1)\)|-\w+)')
 
 [w for w in words if pat.fullmatch(w)]
 
-## Match.expand
+## Match.expand()
 
 re.sub(r'w(.*)m', r'[\1]', 'awesome')
 
 re.search(r'w(.*)m', 'awesome').expand(r'[\1]')
 
-dates = '2020/04/25,1986/03/02,77/12/31'
+dates = '2023/04/25,1986/03/02,77/12/31'
 
 m_iter = re.finditer(r'([^/]+)/([^/]+)/[^,]+,?', dates)
 

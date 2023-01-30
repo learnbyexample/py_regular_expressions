@@ -8,13 +8,17 @@ re.sub(r'2.3', '8', '42\t35')
 
 bool(re.search(r'a.b', 'a\nb'))
 
-## re.split
+re.sub(r'a.e', 'o', 'cag̈ed')
+
+re.sub(r'a..e', 'o', 'cag̈ed')
+
+## re.split()
 
 re.split(r'-', 'apple-85-mango-70')
 
 re.split(r'-', 'apple-85-mango-70', maxsplit=1)
 
-re.split(r':.:', 'bus:3:car:5:van')
+re.split(r':.:', 'bus:3:car:-:van')
 
 ## Greedy quantifiers
 
@@ -52,15 +56,19 @@ re.split(r'1+', '3111111111125111142')
 
 re.split(r'u+', 'cloudy')
 
-demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
+repeats = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
 
-[w for w in demo if re.search(r'ab{1,4}c', w)]
+[w for w in repeats if re.search(r'ab{1,4}c', w)]
 
-[w for w in demo if re.search(r'ab{3,}c', w)]
+[w for w in repeats if re.search(r'ab{3,}c', w)]
 
-[w for w in demo if re.search(r'ab{,2}c', w)]
+[w for w in repeats if re.search(r'ab{,2}c', w)]
 
-[w for w in demo if re.search(r'ab{3}c', w)]
+[w for w in repeats if re.search(r'ab{3}c', w)]
+
+re.sub(r'a\{5}', 'a{6}', 'a{5} = 10')
+
+re.sub(r'_{a,b}', '-{c,d}', 'report_{a,b}.txt')
 
 ## Conditional AND
 
@@ -68,51 +76,89 @@ bool(re.search(r'Error.*valid', 'Error: not a valid input'))
 
 bool(re.search(r'Error.*valid', 'Error: key not found'))
 
-seq1 = 'cat and dog'
+s1 = 'cat and dog and parrot'
 
-seq2 = 'dog and cat'
+s2 = 'dog and cat and parrot'
 
-bool(re.search(r'cat.*dog|dog.*cat', seq1))
+pat = re.compile(r'cat.*dog|dog.*cat')
 
-bool(re.search(r'cat.*dog|dog.*cat', seq2))
+pat.sub('X', s1)
+
+pat.sub('X', s2)
+
+s1 = 'cat and dog and parrot'
+
+s2 = 'dog and cat and parrot'
 
 patterns = (r'cat', r'dog')
 
-all(re.search(p, seq1) for p in patterns)
+all(re.search(p, s1) for p in patterns)
 
-all(re.search(p, seq2) for p in patterns)
+all(re.search(p, s2) for p in patterns)
 
 ## What does greedy mean?
 
 re.sub(r'f.?o', 'X', 'foot')
 
-print(re.sub(r'\\?<', r'\<', r'blah \< foo < bar \< blah < baz'))
+print(re.sub(r'\\?<', r'\<', r'table \< fig < bat \< box < cake'))
 
 re.sub(r'hand(y|ful)?', 'X', 'hand handy handful')
 
 sentence = 'that is quite a fabricated tale'
 
-re.sub(r't.*a', 'X', sentence, count=1)
+re.sub(r't.*a', 'X', sentence)
 
-re.sub(r't.*a', 'X', 'star', count=1)
+re.sub(r't.*a', 'X', 'star')
 
-re.sub(r't.*a.*q.*f', 'X', sentence, count=1)
+re.sub(r't.*a.*q.*f', 'X', sentence)
 
-re.sub(r't.*a.*u', 'X', sentence, count=1)
+re.sub(r't.*a.*u', 'X', sentence)
 
 ## Non-greedy quantifiers
 
-re.sub(r'f.??o', 'X', 'foot', count=1)
+re.sub(r'f.??o', 'X', 'foot')
 
-re.sub(r'f.??o', 'X', 'frost', count=1)
+re.sub(r'f.??o', 'X', 'frost')
 
 re.sub(r'.{2,5}?', 'X', '123456789', count=1)
 
+re.split(r':.*:', 'green:3.14:teal::brown:oh!:blue')
+
 re.split(r':.*?:', 'green:3.14:teal::brown:oh!:blue')
 
-sentence = 'that is quite a fabricated tale'
+## Possessive quantifiers
 
-re.sub(r't.*?a', 'X', sentence, count=1)
+ip = 'fig:mango:pineapple:guava:apples:orange'
 
-re.sub(r't.*?a.*?f', 'X', sentence, count=1)
+re.sub(r':.*+', 'X', ip)
+
+bool(re.search(r':.*+apple', ip))
+
+numbers = '42 314 001 12 00984'
+
+re.findall(r'0*\d{3,}', numbers)
+
+re.findall(r'0*+\d{3,}', numbers)
+
+re.findall(r'0*[1-9]\d{2,}', numbers)
+
+## Catastrophic Backtracking
+
+from timeit import timeit
+
+greedy = re.compile(r'(a+|\w+)*:')
+
+possessive = re.compile(r'(a+|\w+)*+:')
+
+s1 = 'aaaaaaaaaaaaaaaa:123'
+
+s2 = 'aaaaaaaaaaaaaaaa-123'
+
+timeit('greedy.search(s1)', number=10000, globals=globals())
+
+timeit('possessive.search(s1)', number=10000, globals=globals())
+
+timeit('greedy.search(s2)', number=10, globals=globals())
+
+timeit('possessive.search(s2)', number=10, globals=globals())
 

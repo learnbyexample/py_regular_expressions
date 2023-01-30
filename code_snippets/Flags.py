@@ -18,9 +18,9 @@ re.sub(r'the.*day', 'Bye', 'Hi there\nHave a Nice Day', flags=re.S|re.I)
 
 ## re.MULTILINE
 
-bool(re.search(r'^top', "hi hello\ntop spot", flags=re.M))
+bool(re.search(r'^top', 'hi hello\ntop spot', flags=re.M))
 
-bool(re.search(r'ar$', "spare\npar\ndare", flags=re.M))
+bool(re.search(r'ar$', 'spare\npar\ndare', flags=re.M))
 
 ## re.VERBOSE
 
@@ -41,9 +41,9 @@ bool(re.search(r't[ ]a', 'cat and dog', flags=re.X))
 
 bool(re.search(r't\x20a', 'cat and dog', flags=re.X))
 
-re.search(r'a#b', 'foo a#b 123', flags=re.X)[0]
+re.search(r'a#b', 'apple a#b 123', flags=re.X)[0]
 
-re.search(r'a\#b', 'foo a#b 123', flags=re.X)[0]
+re.search(r'a\#b', 'apple a#b 123', flags=re.X)[0]
 
 ## Inline comments
 

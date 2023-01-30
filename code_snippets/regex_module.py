@@ -6,22 +6,6 @@ sentence = 'This is a sample string'
 
 bool(regex.search(r'is', sentence))
 
-## Possessive quantifiers
-
-demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
-
-[w for w in demo if regex.search(r'ab*c', w)]
-
-[w for w in demo if regex.search(r'ab*+c', w)]
-
-regex.findall(r'\b0*\d{3,}\b', '0501 035 154 12 26 98234')
-
-regex.findall(r'\b0*+\d{3,}\b', '0501 035 154 12 26 98234')
-
-regex.sub(r'(?>[bo]+)', 'X', 'abbbc foooooot')
-
-regex.findall(r'\b(?>0*)\d{3,}\b', '0501 035 154 12 26 98234')
-
 ## Subexpression calls
 
 row = 'today,2008-03-24,food,2012-08-12,nice,5632'
@@ -34,18 +18,20 @@ row = 'today,2008-03-24,food,2012-08-12,nice,5632'
 
 regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', row)[0]
 
-## Positive lookbehind with \K
+## Set start of matching portion with \K
 
 regex.sub(r'\b\w\K\w*\W*', '', 'sea eat car rat eel tea')
 
-regex.sub(r'(cat.*?){2}\Kcat', 'X', 'cat scatter cater scat', count=1)
+s = 'cat scatter cater scat concatenate catastrophic catapult duplicate'
 
-row = '421,foo,2425,42,5,foo,6,6,42'
+regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s, count=1)
 
-while True:
-    row, cnt = regex.subn(r'(?<![^,])([^,]++).*\K,\1(?![^,])', r'', row)
-    if cnt == 0:
-        break
+regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s)
+
+row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,6,6,4'
+
+while (op := regex.subn(r'(?<![^,])([^,]++).*\K,\1(?![^,])', '', row))[1]:
+    row = op[0]
 
 row
 
@@ -71,19 +57,45 @@ bool(regex.search(r'at((?!go).)*par', 'fox,cat,dog,parrot'))
 
 ## \G anchor
 
-regex.findall(r'\G\S', '123-87-593 42 foo')
+record = '123-456-7890 Joe (30-40) years'
 
-regex.sub(r'\G\S', '*', '123-87-593 42 foo')
+regex.sub(r'\S', '*', record)
 
-regex.findall(r'\G\d+-?', '123-87-593 42 foo')
+regex.sub(r'\A\S', '*', record)
 
-regex.sub(r'\G(\d+)(-?)', r'(\1)\2', '123-87-593 42 foo')
+regex.sub(r'(?<=\A\S*)\S', '*', record)
 
-regex.findall(r'\G\w(?=\w)', 'cat12 bat pin')
+regex.sub(r'\G\S', '*', record)
 
-regex.sub(r'\G\w(?=\w)', r'\g<0>:', 'cat12 bat pin')
+regex.findall(r'\G\S', record)
+
+record = '123-456-7890 Joe (30-40) years'
+
+regex.findall(r'\G\d+-?', record)
+
+regex.sub(r'\G(\d+)(-?)', r'(\1)\2', record)
+
+regex.findall(r'\G\w(?=\w)', 'cat_12 bat_100 kite_42')
+
+regex.sub(r'\G\w\K(?=\w)', ':', 'cat_12 bat_100 kite_42')
 
 regex.sub(r'\G[a-z ]', r'(\g<0>)', 'par tar-den hen-food mood')
+
+marks = 'Joe 75 88 Mina 89 85 84 John 90'
+
+regex.findall(r'(?:Mina|\G) \K\d+', marks)
+
+regex.findall(r'(?:Joe|\G) \K\d+', marks)
+
+regex.findall(r'(?:John|\G) \K\d+', marks)
+
+passwords = 'Rohit:hunter2 Ram:123456 Ranjit:abcdef'
+
+regex.sub(r'(?:Ram:\K|\G)\S', '*', passwords)
+
+regex.sub(r'(?:Ram:\K|\G(?!\A))\S', '*', passwords)
+
+regex.sub(r'(?:Rohit:\K|\G(?!\A))\S', '*', passwords)
 
 ## Recursive matching
 
@@ -167,15 +179,15 @@ regex.findall(r'\p{L}+', 'fox:αλεπού,eagle:αετός')
 
 regex.findall(r'\p{Greek}+', 'fox:αλεπού,eagle:αετός')
 
-regex.findall(r'\p{Word}+', 'φοο12,βτ_4,foo')
+regex.findall(r'\p{Word}+', 'φοο12,βτ_4;cat')
 
-regex.sub(r'\P{L}+', '', 'φοο12,βτ_4,foo')
+regex.sub(r'\P{L}+', '', 'φοο12,βτ_4;cat')
 
 ## Skipping matches
 
-words = 'tiger imp goat eagle rat'
+words = 'tiger imp goat eagle ant important imp2 Cat'
 
-regex.sub(r'\b(?:imp|rat)\b(*SKIP)(*F)|[a-z]++', r'(\g<0>)', words)
+regex.sub(r'\b(?:imp|ant)\b(*SKIP)(*F)|\w++', r'(\g<0>)', words)
 
 row = '1,"cat,12",nice,two,"dog,5"'
 
@@ -207,11 +219,19 @@ regex.findall(r'\w{2}', 'apple', overlapped=True)
 
 words = 'par spare lion part cool'
 
-regex.sub(r'par', 'co', words, count=1)
+regex.sub(r'par', 'X', words, count=1)
 
-regex.sub(r'par', 'co', words, count=1, flags=regex.R)
+regex.sub(r'par', 'X', words, count=1, flags=regex.R)
 
 regex.findall(r'(?r)\w+', words)
+
+ip = 'fig::mango::pineapple::guava::apples::orange'
+
+regex.search(r'(?r)::.*?::apple', ip)[0]
+
+ip = 'and this book is good and those are okay and that movie is bad'
+
+regex.search(r'(?r)th.*?\bis bad', ip)[0]
 
 ## \X vs dot metacharacter
 
@@ -223,7 +243,5 @@ regex.sub(r'a..e', 'o', 'cag̈ed')
 
 regex.sub(r'a\Xe', 'o', 'cag̈ed')
 
-regex.sub(r'e.a', 'ea', 'he\nat', flags=regex.S)
-
-regex.sub(r'e\Xa', 'ea', 'he\nat')
+regex.sub(r'e\Xa', 'i', 'nice he\nat')
 
