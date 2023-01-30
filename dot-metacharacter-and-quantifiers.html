@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Dot metacharacter and Quantifiers - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Dot metacharacter and Quantifiers - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,32 +10,25 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html class=active><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a class=active href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=dot-metacharacter-and-quantifiers><a class=header href=#dot-metacharacter-and-quantifiers>Dot metacharacter and Quantifiers</a></h1><p>This chapter introduces dot metacharacter and metacharacters related to quantifiers. As the name implies, quantifiers allows you to specify how many times a character or grouping should be matched. With <code>*</code> string operator, you can do something like <code>'no' * 5</code> to get <code>'nonononono'</code>. This saves you manual repetition as well as gives the ability to programmatically repeat a string object as many times as you need. Quantifiers support this simple repetition as well as ways to specify a range of repetition. This range has the flexibility of being bounded or unbounded with respect to start and end values. Combined with dot metacharacter (and alternation if needed), quantifiers allow you to construct conditional AND logic between patterns.<h2 id=dot-metacharacter><a class=header href=#dot-metacharacter>Dot metacharacter</a></h2><p>The dot metacharacter serves as a placeholder to match any character except the newline character.<pre><code class=language-python># matches character 'c', any character and then character 't'
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=dot-metacharacter-and-quantifiers><a class=header href=#dot-metacharacter-and-quantifiers>Dot metacharacter and Quantifiers</a></h1><p>This chapter introduces the dot metacharacter and metacharacters related to quantifiers. As the name implies, quantifiers allows you to specify how many times a character or grouping should be matched. With the <code>*</code> string operator, you can do something like <code>'no' * 5</code> to get <code>'nonononono'</code>. This saves you manual repetition as well as gives the ability to programmatically repeat a string object as many times as you need. Quantifiers support this simple repetition as well as ways to specify a range of repetition. This range has the flexibility of being bounded or unbounded with respect to the start and end values. Combined with the dot metacharacter (and alternation if needed), quantifiers allow you to construct conditional AND logic between patterns.<h2 id=dot-metacharacter><a class=header href=#dot-metacharacter>Dot metacharacter</a></h2><p>The dot metacharacter serves as a placeholder to match any character except the newline character.<pre><code class=language-python># matches character 'c', any character and then character 't'
 >>> re.sub(r'c.t', 'X', 'tac tin cat abc;tuv acute')
 'taXin X abXuv aXe'
 
@@ -50,10 +40,14 @@
 >>> re.sub(r'2.3', '8', '42\t35')
 '485'
 
-# by default, dot metacharacter doesn't match newline character
+# by default, dot metacharacter doesn't match the newline character
 >>> bool(re.search(r'a.b', 'a\nb'))
 False
-</code></pre><p>See <a href=./flags.html#redotall>re.DOTALL</a> section to know how <code>.</code> metacharacter can match newline as well. Chapter <a href=./character-class.html#character-class>Character class</a> will discuss how to define your own custom placeholder for limited set of characters.<h2 id=resplit><a class=header href=#resplit>re.split</a></h2><p>This chapter will additionally use <code>re.split</code> function to illustrate examples. For normal strings, you'd use the <code>str.split</code> method. For regular expressions, use the <code>re.split</code> function, whose argument list is shown below.<blockquote><p><code>re.split(pattern, string, maxsplit=0, flags=0)</code></blockquote><p>The first argument is the RE pattern to be used for splitting the input string, which is the second argument. <code>maxsplit</code> and <code>flags</code> are optional arguments. Output is a list of strings.<pre><code class=language-python># same as: 'apple-85-mango-70'.split('-')
+</code></pre><p>See the <a href=./flags.html#redotall>re.DOTALL</a> section to know how <code>.</code> metacharacter can match newline as well. The <a href=./character-class.html#character-class>Character class</a> chapter will discuss how to define your own custom placeholder for limited set of characters.<blockquote><p><img alt=warning src=images/warning.svg> Some characters like <code>g̈</code> have more than one codepoint (numerical value of a character). You'll need to use multiple <code>.</code> metacharacters to match such characters (equal to the number of codepoints). Or, you can use the <code>regex</code> module to handle such cases — see the <a href=./regex-module.html#x-vs-dot-metacharacter>\X vs dot metacharacter</a> section for more details.<pre><code class=language-python>>>> re.sub(r'a.e', 'o', 'cag̈ed')
+'cag̈ed'
+>>> re.sub(r'a..e', 'o', 'cag̈ed')
+'cod'
+</code></pre></blockquote><h2 id=resplit><a class=header href=#resplit>re.split()</a></h2><p>This chapter will additionally use the <code>re.split()</code> function to illustrate examples. For normal strings, you'd use the <code>str.split()</code> method. For regular expressions, use the <code>re.split()</code> function, whose argument list is shown below.<blockquote><p><code>re.split(pattern, string, maxsplit=0, flags=0)</code></blockquote><p>The first argument is the RE pattern to be used for splitting the input string, which is the second argument. <code>maxsplit</code> and <code>flags</code> are optional arguments. Output is a list of strings.<pre><code class=language-python># same as: 'apple-85-mango-70'.split('-')
 >>> re.split(r'-', 'apple-85-mango-70')
 ['apple', '85', 'mango', '70']
 
@@ -62,9 +56,9 @@ False
 ['apple', '85-mango-70']
 
 # example with dot metacharacter
->>> re.split(r':.:', 'bus:3:car:5:van')
+>>> re.split(r':.:', 'bus:3:car:-:van')
 ['bus', 'car', 'van']
-</code></pre><p>See <a href=./working-with-matched-portions.html#resplit-with-capture-groups>re.split with capture groups</a> section for details of how capture groups affect the output of <code>re.split</code>.<h2 id=greedy-quantifiers><a class=header href=#greedy-quantifiers>Greedy quantifiers</a></h2><p>Quantifiers have functionality like the string repetition operator and range function. They can be applied to characters and groupings (and more, as you'll see in later chapters). Apart from the ability to specify exact quantity and bounded range, these can also match unbounded varying quantities. If the input string can satisfy a pattern with varying quantities in multiple ways, you can choose among two types of quantifiers to narrow down possibilities. In this section, <strong>greedy</strong> type of quantifiers is covered.<p>First up, the <code>?</code> metacharacter which quantifies a character or group to match <code>0</code> or <code>1</code> times. In other words, you make that character or group as something to be optionally matched. This leads to a terser RE compared to alternation and grouping.<pre><code class=language-python># same as: r'ear|ar'
+</code></pre><p>See the <a href=./working-with-matched-portions.html#resplit-with-capture-groups>re.split() with capture groups</a> section for details of how capture groups affect the output of <code>re.split()</code>.<h2 id=greedy-quantifiers><a class=header href=#greedy-quantifiers>Greedy quantifiers</a></h2><p>Quantifiers have functionality like the string repetition operator and the <code>range()</code> function. They can be applied to characters and groupings (and more, as you'll see in later chapters). Apart from the ability to specify exact quantity and bounded range, these can also match unbounded varying quantities. If the input string can satisfy a pattern with varying quantities in multiple ways, you can choose among three types of quantifiers to narrow down possibilities. In this section, <strong>greedy</strong> type of quantifiers is covered.<p>First up, the <code>?</code> metacharacter which quantifies a character or group to match <code>0</code> or <code>1</code> times. In other words, you make that character or group as something to be optionally matched. This leads to a terser RE compared to alternation and grouping.<pre><code class=language-python># same as: r'ear|ar'
 >>> re.sub(r'e?ar', 'X', 'far feat flare fear')
 'fX feat flXe fX'
 
@@ -92,19 +86,19 @@ False
 # match zero or more of '1' followed by '2'
 >>> re.sub(r'1*2', 'X', '3111111111125111142')
 '3X511114X'
-</code></pre><p>Here's some more examples with <code>re.split</code> function.<pre><code class=language-python># last element is empty because there is nothing after 2 at the end of string
+</code></pre><p>Here are some more examples with the <code>re.split()</code> function.<pre><code class=language-python># last element is empty because there is nothing after 2 at the end of string
 >>> re.split(r'1*2', '3111111111125111142')
 ['3', '511114', '']
 # later, you'll see how maxsplit helps to get behavior like str.partition
 >>> re.split(r'1*2', '3111111111125111142', maxsplit=1)
 ['3', '5111142']
 
-# empty string matches at start and end of string
+# empty string matches at the start and end of string
 # it matches between every character
 # and, there is an empty match after the split at u
 >>> re.split(r'u*', 'cloudy')
 ['', 'c', 'l', 'o', '', 'd', 'y', '']
-</code></pre><p>The <code>+</code> metacharacter quantifies a character or group to match <code>1</code> or more times. Similar to <code>*</code> quantifier, there is no upper bound. More importantly, this doesn't have surprises like matching empty string in between patterns or at the start/end of string.<pre><code class=language-python>>>> re.sub(r'ta+r', 'X', 'tr tear tare steer sitaara')
+</code></pre><p>The <code>+</code> metacharacter quantifies a character or group to match <code>1</code> or more times. Similar to the <code>*</code> quantifier, there is no upper bound. More importantly, this doesn't have surprises like matching empty string in between patterns or at the start/end of string.<pre><code class=language-python>>>> re.sub(r'ta+r', 'X', 'tr tear tare steer sitaara')
 'tr tear Xe steer siXa'
 >>> re.sub(r't(e|a)+r', 'X', 'tr tear tare steer sitaara')
 'tr X Xe sX siXa'
@@ -116,92 +110,137 @@ False
 ['3', '25', '42']
 >>> re.split(r'u+', 'cloudy')
 ['clo', 'dy']
-</code></pre><p>You can specify a range of integer numbers, both bounded and unbounded, using <code>{}</code> metacharacters. There are four ways to use this quantifier as shown below:<table><thead><tr><th>Pattern<th>Description<tbody><tr><td><code>{m,n}</code><td>match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>match at least <code>m</code> times<tr><td><code>{,n}</code><td>match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>match exactly <code>n</code> times</table><pre><code class=language-python>>>> demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
+</code></pre><p>You can specify a range of integer numbers, both bounded and unbounded, using the <code>{}</code> metacharacters. There are four ways to use this quantifier as shown below:<div class=table-wrapper><table><thead><tr><th>Pattern<th>Description<tbody><tr><td><code>{m,n}</code><td>match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>match at least <code>m</code> times<tr><td><code>{,n}</code><td>match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>match exactly <code>n</code> times</table></div><pre><code class=language-python>>>> repeats = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
 
->>> [w for w in demo if re.search(r'ab{1,4}c', w)]
+>>> [w for w in repeats if re.search(r'ab{1,4}c', w)]
 ['abc', 'abbc', 'xabbbcz']
->>> [w for w in demo if re.search(r'ab{3,}c', w)]
+>>> [w for w in repeats if re.search(r'ab{3,}c', w)]
 ['xabbbcz', 'abbbbbc']
->>> [w for w in demo if re.search(r'ab{,2}c', w)]
+>>> [w for w in repeats if re.search(r'ab{,2}c', w)]
 ['abc', 'ac', 'abbc']
->>> [w for w in demo if re.search(r'ab{3}c', w)]
+>>> [w for w in repeats if re.search(r'ab{3}c', w)]
 ['xabbbcz']
-</code></pre><blockquote><p><img src=images/info.svg alt=info> The <code>{}</code> metacharacters have to be escaped to match them literally. However, unlike <code>()</code> metacharacters, these have lot more leeway. For example, escaping <code>{</code> alone is enough, or if it doesn't conform strictly to any of the four forms listed above, escaping is not needed at all.</blockquote><h2 id=conditional-and><a class=header href=#conditional-and>Conditional AND</a></h2><p>Next up, how to construct conditional AND using dot metacharacter and quantifiers.<pre><code class=language-python># match 'Error' followed by zero or more characters followed by 'valid'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> The <code>{}</code> metacharacters have to be escaped to match them literally. However, unlike the <code>()</code> metacharacters, these have more leeway. For example, escaping <code>{</code> alone is enough, or if it doesn't conform strictly to any of the four forms listed above, escaping is not needed at all.<pre><code class=language-python>>>> re.sub(r'a\{5}', 'a{6}', 'a{5} = 10')
+'a{6} = 10'
+
+>>> re.sub(r'_{a,b}', '-{c,d}', 'report_{a,b}.txt')
+'report-{c,d}.txt'
+</code></pre></blockquote><h2 id=conditional-and><a class=header href=#conditional-and>Conditional AND</a></h2><p>Next up, how to construct conditional AND using the dot metacharacter and quantifiers.<pre><code class=language-python># match 'Error' followed by zero or more characters followed by 'valid'
 >>> bool(re.search(r'Error.*valid', 'Error: not a valid input'))
 True
 
 >>> bool(re.search(r'Error.*valid', 'Error: key not found'))
 False
-</code></pre><p>To allow matching in any order, you'll have to bring in alternation as well. That is somewhat manageable for 2 or 3 patterns. See <a href=./lookarounds.html#conditional-and-with-lookarounds>Conditional AND with lookarounds</a> section for an easier approach.<pre><code class=language-python>>>> seq1 = 'cat and dog'
->>> seq2 = 'dog and cat'
->>> bool(re.search(r'cat.*dog|dog.*cat', seq1))
-True
->>> bool(re.search(r'cat.*dog|dog.*cat', seq2))
-True
+</code></pre><p>To allow matching in any order, you'll have to bring in alternation as well. That is somewhat manageable for 2 or 3 patterns. See the <a href=./lookarounds.html#conditional-and-with-lookarounds>Conditional AND with lookarounds</a> section for an easier approach.<pre><code class=language-python>>>> s1 = 'cat and dog and parrot'
+>>> s2 = 'dog and cat and parrot'
+>>> pat = re.compile(r'cat.*dog|dog.*cat')
 
-# if you just need True/False result, this would be a scalable approach
+>>> pat.sub('X', s1)
+'X and parrot'
+>>> pat.sub('X', s2)
+'X and parrot'
+</code></pre><p>If you just need a boolean result, the <code>all()</code> function would be scalable and easier to use.<pre><code class=language-python>>>> s1 = 'cat and dog and parrot'
+>>> s2 = 'dog and cat and parrot'
 >>> patterns = (r'cat', r'dog')
->>> all(re.search(p, seq1) for p in patterns)
+
+>>> all(re.search(p, s1) for p in patterns)
 True
->>> all(re.search(p, seq2) for p in patterns)
+>>> all(re.search(p, s2) for p in patterns)
 True
-</code></pre><h2 id=what-does-greedy-mean><a class=header href=#what-does-greedy-mean>What does greedy mean?</a></h2><p>When you are using the <code>?</code> quantifier, how does Python decide to match <code>0</code> or <code>1</code> times, if both quantities can satisfy the RE? For example, consider the expression <code>re.sub(r'f.?o', 'X', 'foot')</code> — should <code>foo</code> be replaced or <code>fo</code>? It will always replace <code>foo</code>, because these are <strong>greedy</strong> quantifiers, meaning they try to match as much as possible.<pre><code class=language-python>>>> re.sub(r'f.?o', 'X', 'foot')
+</code></pre><h2 id=what-does-greedy-mean><a class=header href=#what-does-greedy-mean>What does greedy mean?</a></h2><p>When you use the <code>?</code> quantifier, how does Python decide to match <code>0</code> or <code>1</code> times, if both quantities can satisfy the RE? For example, consider the expression <code>re.sub(r'f.?o', 'X', 'foot')</code> — should <code>foo</code> be replaced or <code>fo</code>? It will always replace <code>foo</code>, because these are <strong>greedy</strong> quantifiers, i.e. they try to match as much as possible.<pre><code class=language-python>>>> re.sub(r'f.?o', 'X', 'foot')
 'Xt'
 
 # a more practical example
 # prefix '<' with '\' if it is not already prefixed
 # both '<' and '\<' will get replaced with '\<'
 # note the use of raw string for all the three arguments
->>> print(re.sub(r'\\?<', r'\<', r'blah \< foo < bar \< blah < baz'))
-blah \< foo \< bar \< blah \< baz
+>>> print(re.sub(r'\\?<', r'\<', r'table \< fig < bat \< box < cake'))
+table \< fig \< bat \< box \< cake
 
 # say goodbye to r'handful|handy|hand' shenanigans
 >>> re.sub(r'hand(y|ful)?', 'X', 'hand handy handful')
 'X X X'
-</code></pre><p>But wait, how did the <code>r'Error.*valid'</code> example work? Shouldn't <code>.*</code> consume all the characters after <code>Error</code>? Good question. The regular expression engine actually does consume all the characters. Then realizing that the match failed, it gives back one character from end of string and checks again if the overall RE is satisfied. This process is repeated until a match is found or failure is confirmed. In regular expression parlance, this is called <strong>backtracking</strong>.<pre><code class=language-python>>>> sentence = 'that is quite a fabricated tale'
+</code></pre><p>But wait, how did the <code>r'Error.*valid'</code> example work? Shouldn't <code>.*</code> consume all the characters after <code>Error</code>? Good question. The regular expression engine actually does consume all the characters. Then realizing that the match failed, it gives back one character from the end of string and checks again if the overall RE is satisfied. This process is repeated until a match is found or failure is confirmed. This is known as <strong>backtracking</strong>.<pre><code class=language-python>>>> sentence = 'that is quite a fabricated tale'
 
-# r't.*a' will always match from first 't' to last 'a'
-# also, note that count argument is set to 1 for illustration purposes
->>> re.sub(r't.*a', 'X', sentence, count=1)
+# r't.*a' will always match from the first 't' to the last 'a'
+# which implies that there cannot be more than one match for such patterns
+>>> re.sub(r't.*a', 'X', sentence)
 'Xle'
->>> re.sub(r't.*a', 'X', 'star', count=1)
+>>> re.sub(r't.*a', 'X', 'star')
 'sXr'
 
-# matching first 't' to last 'a' for t.*a won't work for these cases
-# the engine backtracks until .*q matches and so on
->>> re.sub(r't.*a.*q.*f', 'X', sentence, count=1)
+# matching first 't' to last 'a' for 't.*a' won't work for these cases
+# so, the engine backtracks until the overall RE can be matched
+>>> re.sub(r't.*a.*q.*f', 'X', sentence)
 'Xabricated tale'
->>> re.sub(r't.*a.*u', 'X', sentence, count=1)
+>>> re.sub(r't.*a.*u', 'X', sentence)
 'Xite a fabricated tale'
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> Backtracking can be quite time consuming for certain corner cases. Or even catastrophic — see <a href=https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/>cloudflare: Details of the Cloudflare outage on July 2, 2019</a>.</blockquote><h2 id=non-greedy-quantifiers><a class=header href=#non-greedy-quantifiers>Non-greedy quantifiers</a></h2><p>As the name implies, these quantifiers will try to match as minimally as possible. Also known as <strong>lazy</strong> or <strong>reluctant</strong> quantifiers. Appending a <code>?</code> to greedy quantifiers makes them non-greedy.<pre><code class=language-python>>>> re.sub(r'f.??o', 'X', 'foot', count=1)
+</code></pre><h2 id=non-greedy-quantifiers><a class=header href=#non-greedy-quantifiers>Non-greedy quantifiers</a></h2><p>As the name implies, these quantifiers will try to match as minimally as possible. Also known as <strong>lazy</strong> or <strong>reluctant</strong> quantifiers. Appending a <code>?</code> to greedy quantifiers makes them non-greedy.<pre><code class=language-python>>>> re.sub(r'f.??o', 'X', 'foot')
 'Xot'
->>> re.sub(r'f.??o', 'X', 'frost', count=1)
+>>> re.sub(r'f.??o', 'X', 'frost')
 'Xst'
 
 >>> re.sub(r'.{2,5}?', 'X', '123456789', count=1)
 'X3456789'
+</code></pre><p>Like greedy quantifiers, lazy quantifiers will try to satisfy the overall RE. For example, <code>.*?</code> will first start with an empty match and then move forward one character at a time until a match is found.<pre><code class=language-python># r':.*:' will match from the first ':' to the last ':'
+>>> re.split(r':.*:', 'green:3.14:teal::brown:oh!:blue')
+['green', 'blue']
 
+# r':.*?:' will match from ':' to the very next ':'
 >>> re.split(r':.*?:', 'green:3.14:teal::brown:oh!:blue')
 ['green', 'teal', 'brown', 'blue']
-</code></pre><p>Like greedy quantifiers, lazy quantifiers will try to satisfy the overall RE.<pre><code class=language-python>>>> sentence = 'that is quite a fabricated tale'
+</code></pre><h2 id=possessive-quantifiers><a class=header href=#possessive-quantifiers>Possessive quantifiers</a></h2><p>Before Python 3.11, you had to use alternatives like the third-party <a href=https://pypi.org/project/regex/>regex module</a> for possessive quantifiers. The difference between greedy and possessive quantifiers is that possessive will not backtrack to find a match. In other words, possessive quantifiers will always consume every character that matches the pattern on which it is applied. Syntax wise, you need to append <code>+</code> to greedy quantifiers to make it possessive, similar to adding <code>?</code> for the non-greedy case.<p>Unlike greedy and non-greedy quantifiers, a pattern like <code>:.*+apple</code> will never result in a match because <code>.*+</code> will consume rest of the line, leaving no way to match <code>apple</code>.<pre><code class=language-python>>>> ip = 'fig:mango:pineapple:guava:apples:orange'
 
-# r't.*?a' will always match from first 't' to first 'a'
->>> re.sub(r't.*?a', 'X', sentence, count=1)
-'Xt is quite a fabricated tale'
+>>> re.sub(r':.*+', 'X', ip)
+'figX'
 
-# matching first 't' to first 'a' for t.*?a won't work for this case
-# so, engine will move forward until .*?f matches and so on
->>> re.sub(r't.*?a.*?f', 'X', sentence, count=1)
-'Xabricated tale'
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>.</code><td>match any character except the newline character<tr><td>greedy<td>match as much as possible<tr><td><code>?</code><td>greedy quantifier, match <code>0</code> or <code>1</code> times<tr><td><code>*</code><td>greedy quantifier, match <code>0</code> or more times<tr><td><code>+</code><td>greedy quantifier, match <code>1</code> or more times<tr><td><code>{m,n}</code><td>greedy quantifier, match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>greedy quantifier, match at least <code>m</code> times<tr><td><code>{,n}</code><td>greedy quantifier, match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>greedy quantifier, match exactly <code>n</code> times<tr><td><code>pat1.*pat2</code><td>any number of characters between <code>pat1</code> and <code>pat2</code><tr><td><code>pat1.*pat2|pat2.*pat1</code><td>match both <code>pat1</code> and <code>pat2</code> in any order<tr><td>non-greedy<td>append <code>?</code> to greedy quantifier<tr><td><td>match as minimally as possible<tr><td><code>re.split</code><td>split a string using regular expressions<tr><td><td><code>re.split(pattern, string, maxsplit=0, flags=0)</code><tr><td><td><code>maxsplit</code> and <code>flags</code> are optional arguments</table><p>This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide range of text. In coming chapters, you'll learn how to create your own restricted set of placeholder characters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img src=images/info.svg alt=info> Since <code>.</code> metacharacter doesn't match newline character by default, assume that the input strings in the following exercises will not contain newline characters.</blockquote><p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.<pre><code class=language-python>>>> ip = 'a+42//5-c pressure*3+42/5-14256'
+>>> bool(re.search(r':.*+apple', ip))
+False
+</code></pre><p>Here's a more practical example. Suppose you want to match integer numbers greater than or equal to <code>100</code> where these numbers can optionally have leading zeros. This illustration will use features yet to introduced. <code>[1-9]</code> matches any of the digits from <code>1</code> to <code>9</code> and <code>\d</code> matches digits <code>0</code> to <code>9</code>. See the <a href=./character-class.html#character-class>Character class</a> chapter for more details and the <a href=./character-class.html#escape-sequence-sets>Escape sequence sets</a> section for another practical example.<pre><code class=language-python>>>> numbers = '42 314 001 12 00984'
+
+# this solution fails because 0* and \d{3,} can both match leading zeros
+# and greedy quantifiers will give up characters to help the overall RE succeed
+>>> re.findall(r'0*\d{3,}', numbers)
+['314', '001', '00984']
+
+# here 0*+ will never give back leading zeros
+>>> re.findall(r'0*+\d{3,}', numbers)
+['314', '00984']
+
+# workaround if you can only use greedy quantifiers
+>>> re.findall(r'0*[1-9]\d{2,}', numbers)
+['314', '00984']
+</code></pre><p>See the <a href=./groupings-and-backreferences.html#atomic-grouping>Atomic grouping</a> section for another way to safeguard a pattern from backtracking.<h2 id=catastrophic-backtracking><a class=header href=#catastrophic-backtracking>Catastrophic Backtracking</a></h2><p>Backtracking can become significantly time consuming for certain corner cases. Which is why some regular expression engines do not use them, at the cost of not supporting some features like lookarounds. If your application accepts user defined RE, you might need to protect against such catastrophic patterns. From <a href=https://en.wikipedia.org/wiki/Redos>wikipedia: ReDoS</a>:<blockquote><p>A regular expression denial of service (ReDoS) is an algorithmic complexity attack that produces a denial-of-service by providing a regular expression and/or an input that takes a long time to evaluate. The attack exploits the fact that many regular expression implementations have super-linear worst-case complexity; on certain regex-input pairs, the time taken can grow polynomially or exponentially in relation to the input size. An attacker can thus cause a program to spend substantial time by providing a specially crafted regular expression and/or input. The program will then slow down or becoming unresponsive.</blockquote><p>Here's an example. <code>\w</code> matches a word character once (see the <a href=./character-class.html#character-class>Character class</a> chapter for more details).<pre><code class=language-python>>>> from timeit import timeit
+
+>>> greedy = re.compile(r'(a+|\w+)*:')
+>>> possessive = re.compile(r'(a+|\w+)*+:')
+
+# string that'll match the above patterns
+>>> s1 = 'aaaaaaaaaaaaaaaa:123'
+# string that does NOT match the above patterns
+>>> s2 = 'aaaaaaaaaaaaaaaa-123'
+
+# no issues when input string has a match
+>>> timeit('greedy.search(s1)', number=10000, globals=globals())
+0.016464739997900324
+>>> timeit('possessive.search(s1)', number=10000, globals=globals())
+0.016358205997676123
+
+# if input doesn't match, greedy version suffers from catastrophic backtracking
+# note that 'number' parameter is reduced to 10 since it takes a long time
+>>> timeit('greedy.search(s2)', number=10, globals=globals())
+53.71723825200024
+>>> timeit('possessive.search(s2)', number=10, globals=globals())
+0.00019008600065717474
+</code></pre><p><code>(a+|\w+)*:</code> is a silly pattern, since it can be rewritten as <code>\w*:</code> which will not suffer from catastrophic backtracking. But this example shows how quantifiers applied to a group with multiple alternatives using quantifiers can lead to explosive results. More such patterns and mitigation strategies can be found in the following links:<ul><li><a href=https://www.rexegg.com/regex-explosive-quantifiers.html>The Explosive Quantifier Trap</a><li><a href=https://www.regular-expressions.info/catastrophic.html>Runaway Regular Expressions: Catastrophic Backtracking</a><li><a href=https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/>Details of the Cloudflare outage on July 2, 2019</a></ul><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>.</code><td>match any character except the newline character<tr><td>greedy<td>match as much as possible<tr><td><code>?</code><td>greedy quantifier, match <code>0</code> or <code>1</code> times<tr><td><code>*</code><td>greedy quantifier, match <code>0</code> or more times<tr><td><code>+</code><td>greedy quantifier, match <code>1</code> or more times<tr><td><code>{m,n}</code><td>greedy quantifier, match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>greedy quantifier, match at least <code>m</code> times<tr><td><code>{,n}</code><td>greedy quantifier, match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>greedy quantifier, match exactly <code>n</code> times<tr><td><code>pat1.*pat2</code><td>any number of characters between <code>pat1</code> and <code>pat2</code><tr><td><code>pat1.*pat2|pat2.*pat1</code><td>match both <code>pat1</code> and <code>pat2</code> in any order<tr><td>non-greedy<td>append <code>?</code> to greedy quantifiers<tr><td><td>match as minimally as possible<tr><td>possessive<td>append <code>+</code> to greedy quantifiers<tr><td><td>like greedy, but no backtracking<tr><td><code>re.split()</code><td>split a string using regular expressions<tr><td><td><code>re.split(pattern, string, maxsplit=0, flags=0)</code><tr><td><td><code>maxsplit</code> and <code>flags</code> are optional arguments</table></div><p>This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide ranges of text. In the coming chapters, you'll learn how to create your own restricted set of placeholder characters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Since the <code>.</code> metacharacter doesn't match the newline character by default, assume that the input strings in the following exercises will not contain newline characters.</blockquote><p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.<pre><code class=language-python>>>> ip = 'a+42//5-c pressure*3+42/5-14256'
 
 >>> re.sub()      ##### add your solution here
 'a+8-c pressure*3+8-14256'
-</code></pre><p><strong>b)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending with at most one more character or <code>le</code>.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+</code></pre><p><strong>b)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending immediately with at most one more character or <code>le</code>.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
 
 ##### add your solution here
 ['hand', 'handy', 'hands', 'handle']
-</code></pre><p><strong>c)</strong> Use <code>re.split</code> to get the output as shown for the given input strings.<pre><code class=language-python>>>> eqn1 = 'a+42//5-c'
+</code></pre><p><strong>c)</strong> Use <code>re.split()</code> to get the output as shown for the given input strings.<pre><code class=language-python>>>> eqn1 = 'a+42//5-c'
 >>> eqn2 = 'pressure*3+42/5-14256'
 >>> eqn3 = 'r*42-5/3+42///5-42/53+a'
 
@@ -211,8 +250,9 @@ blah \< foo \< bar \< blah \< baz
 ['pressure*3+', '-14256']
 ##### add your solution here for eqn3
 ['r*42-5/3+42///5-', '3+a']
-</code></pre><p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till end of the string.<pre><code class=language-python>>>> s1 = 'remove the special meaning of such constructs'
+</code></pre><p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till the end of the string.<pre><code class=language-python>>>> s1 = 'remove the special meaning of such constructs'
 >>> s2 = 'characters while constructing'
+>>> s3 = 'input output'
 
 >>> pat = re.compile()        ##### add your solution here
 
@@ -220,7 +260,9 @@ blah \< foo \< bar \< blah \< baz
 'remove the spec'
 >>> pat.sub('', s2)
 'characters wh'
-</code></pre><p><strong>e)</strong> For the given strings, construct a RE to get output as shown.<pre><code class=language-python>>>> str1 = 'a+b(addition)'
+>>> pat.sub('', s3)
+''
+</code></pre><p><strong>e)</strong> For the given strings, construct a RE to get the output as shown below.<pre><code class=language-python>>>> str1 = 'a+b(addition)'
 >>> str2 = 'a/b(division) + c%d(#modulo)'
 >>> str3 = 'Hi there(greeting). Nice day(a(b)'
 
@@ -243,7 +285,7 @@ blah \< foo \< bar \< blah \< baz
 >>> change = re.compile()       ##### add your solution here
 >>> change.sub('X', words)
 'plX XmX tX wX X cautX sentient'
-</code></pre><p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using <code>{m,n}</code> representation?<ul><li><code>?</code> is same as<li><code>*</code> is same as<li><code>+</code> is same as</ul><p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — True or False?<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till end of the string, provided <code>test</code> isn't at the end of the string.<pre><code class=language-python>>>> s1 = 'this is a Test'
+</code></pre><p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using the <code>{m,n}</code> representation?<ul><li><code>?</code> is same as<li><code>*</code> is same as<li><code>+</code> is same as</ul><p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — True or False?<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till the end of the string, provided <code>test</code> isn't at the end of the string.<pre><code class=language-python>>>> s1 = 'this is a Test'
 >>> s2 = 'always test your RE for corner cases'
 >>> s3 = 'a TEST of skill tests?'
 
@@ -255,7 +297,7 @@ blah \< foo \< bar \< blah \< baz
 'always '
 >>> pat.sub('', s3)
 'a '
-</code></pre><p><strong>j)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+</code></pre><p><strong>j)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
 
 ##### add your solution here
 ['subtle', 'sets', 'site']
@@ -263,19 +305,19 @@ blah \< foo \< bar \< blah \< baz
 
 ##### add your solution here
 ['sequoia', 'subtle', 'exhibit']
-</code></pre><p><strong>l)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+</code></pre><p><strong>l)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
 
 ##### add your solution here
-['subtle', 'sets', 'tests', 'site']
+['subtle', 'sets', 't set', 'site']
 </code></pre><p><strong>m)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&LTcharacters></code> patterns but not the <code><></code> ones. The expected result was <code>'a 1<> b 2<> c'</code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 >>> re.sub(r'<.+?>', '', ip)
 'a 1 2'
-</code></pre><p><strong>n)</strong> Use <code>re.split</code> to get the output as shown below for given input strings.<pre><code class=language-python>>>> s1 = 'go there  //   "this // that"'
+</code></pre><p><strong>n)</strong> Use <code>re.split()</code> to get the output as shown below for given input strings.<pre><code class=language-python>>>> s1 = 'go there  //   "this // that"'
 >>> s2 = 'a//b // c//d e//f // 4//5'
 >>> s3 = '42// hi//bye//see // carefully'
 
->>> pat = re.compile()     ##### add your solution here
+>>> pat = re.compile()      ##### add your solution here
 
 >>> pat.split()     ##### add your solution here for s1
 ['go there', '"this // that"']
@@ -283,6 +325,31 @@ blah \< foo \< bar \< blah \< baz
 ['a//b', 'c//d e//f // 4//5']
 >>> pat.split()     ##### add your solution here for s3
 ['42// hi//bye//see', 'carefully']
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=escaping-metacharacters.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-tools-for-debugging-and-visualization.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=escaping-metacharacters.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-tools-for-debugging-and-visualization.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre><p><strong>o)</strong> Modify the given regular expression such that it gives the expected results.<pre><code class=language-python>>>> s1 = 'appleabcabcabcapricot'
+>>> s2 = 'bananabcabcabcdelicious'
+
+# wrong output
+>>> pat = re.compile(r'(abc)+a')
+>>> bool(pat.search(s1))
+True
+>>> bool(pat.search(s2))
+True
+
+# expected output
+# 'abc' shouldn't be considered when trying to match 'a' at the end
+>>> pat = re.compile()      ##### add your solution here
+>>> bool(pat.search(s1))
+True
+>>> bool(pat.search(s2))
+False
+</code></pre><p><strong>p)</strong> Modify the given regular expression such that it gives the expected result.<pre><code class=language-python>>>> cast = 'dragon-unicorn--centaur---mage----healer'
+>>> c = '-'
+
+# wrong output
+>>> re.sub(rf'{c}{3,}', c, cast)
+'dragon-unicorn--centaur---mage----healer'
+
+# expected output
+>>> re.sub(rf'', c, cast)   ##### add your solution here
+'dragon-unicorn--centaur-mage-healer'
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=escaping-metacharacters.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-tools-for-debugging-and-visualization.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=escaping-metacharacters.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-tools-for-debugging-and-visualization.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

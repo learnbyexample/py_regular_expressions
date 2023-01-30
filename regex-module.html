@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>regex module - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>regex module - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,58 +10,31 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html class=active><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a class=active href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=regex-module><a class=header href=#regex-module>regex module</a></h1><p>The third party <code>regex</code> module (<a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>) offers advanced features like those found in Perl language and other regular expression implementations. To install the module from command line, you can use either of these depending on your usage:<ul><li><code>pip install regex</code> in a virtual environment<li><code>python3.8 -m pip install --user regex</code> for system wide accessibility</ul><p>By default, <code>regex</code> module uses <code>VERSION0</code> which is compatible with the <code>re</code> module. If you want all the features, <code>VERSION1</code> should be used. For example, set operators is a feature available only with <code>VERSION1</code>. You can choose the version to be used in two ways. Setting <code>regex.DEFAULT_VERSION</code> to <code>regex.VERSION0</code> or <code>regex.VERSION1</code> is a global option. <code>(?V0)</code> and <code>(?V1)</code> are inline flag options.<blockquote><p><img src=images/info.svg alt=info> The examples in this chapter are presented assuming <code>VERSION1</code> is enabled.</blockquote><pre><code class=language-python>>>> import regex
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=regex-module><a class=header href=#regex-module>regex module</a></h1><p>The third-party <code>regex</code> module (<a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>) offers advanced features like those found in the Perl language and other regular expression implementations. To install the module from the command line, you can use either of these depending on your usage:<ul><li><code>pip install regex</code> in a virtual environment<li><code>python3.11 -m pip install --user regex</code> for normal environments <ul><li>you might need to use <code>py</code> instead of <code>python3.11</code> on Windows</ul></ul><p>By default, <code>regex</code> module uses <code>VERSION0</code> which is compatible with the <code>re</code> module. If you want all the features, <code>VERSION1</code> should be used. For example, set operators is a feature available only if you use <code>VERSION1</code>. You can choose the version to be used in two ways. Setting <code>regex.DEFAULT_VERSION</code> to <code>regex.VERSION0</code> or <code>regex.VERSION1</code> is a global option. <code>(?V0)</code> and <code>(?V1)</code> are inline flag options.<blockquote><p><img alt=info src=images/info.svg> The examples in this chapter are presented assuming <code>VERSION1</code> is enabled.<pre><code class=language-python>>>> import regex
 >>> regex.DEFAULT_VERSION = regex.VERSION1
 
 >>> sentence = 'This is a sample string'
 >>> bool(regex.search(r'is', sentence))
 True
-</code></pre><h2 id=possessive-quantifiers><a class=header href=#possessive-quantifiers>Possessive quantifiers</a></h2><p>Appending a <code>+</code> to greedy quantifiers makes them possessive. These behave like greedy quantifiers, but without the backtracking. So, something like <code>r'Error.*+valid'</code> will never match because <code>.*+</code> will consume all the remaining characters. If both greedy and possessive quantifier versions are functionally equivalent, then possessive is preferred because it will fail faster for non-matching cases.<pre><code class=language-python># functionally equivalent greedy and possessive versions
->>> demo = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
->>> [w for w in demo if regex.search(r'ab*c', w)]
-['abc', 'ac', 'abbc', 'xabbbcz', 'abbbbbc']
->>> [w for w in demo if regex.search(r'ab*+c', w)]
-['abc', 'ac', 'abbc', 'xabbbcz', 'abbbbbc']
-
-# different results
-# numbers >= 100 if there are leading zeros
->>> regex.findall(r'\b0*\d{3,}\b', '0501 035 154 12 26 98234')
-['0501', '035', '154', '98234']
->>> regex.findall(r'\b0*+\d{3,}\b', '0501 035 154 12 26 98234')
-['0501', '154', '98234']
-</code></pre><p>The effect of possessive quantifier can also be expressed using <strong>atomic grouping</strong>. The syntax is <code>(?>pat)</code>, where <code>pat</code> is the portion you want to match possessively.<pre><code class=language-python># same as: r'[bo]++'
->>> regex.sub(r'(?>[bo]+)', 'X', 'abbbc foooooot')
-'aXc fXt'
-
-# same as: r'\b0*+\d{3,}\b'
->>> regex.findall(r'\b(?>0*)\d{3,}\b', '0501 035 154 12 26 98234')
-['0501', '154', '98234']
-</code></pre><h2 id=subexpression-calls><a class=header href=#subexpression-calls>Subexpression calls</a></h2><p>If backreferences are like variables, then subexpression calls are like functions. Backreferences allow you to reuse the portion matched by the capture group. Subexpression calls allow you to reuse the pattern that was used inside the capture group. You can call subexpressions recursively too, see <a href=./regex-module.html#recursive-matching>Recursive matching</a> section for details.<p>The syntax is <code>(?N)</code> where <code>N</code> is the capture group you want to call. This is applicable only in RE definition, not in replacement sections.<pre><code class=language-python>>>> row = 'today,2008-03-24,food,2012-08-12,nice,5632'
+</code></pre></blockquote><h2 id=subexpression-calls><a class=header href=#subexpression-calls>Subexpression calls</a></h2><p>If backreferences are like variables, then subexpression calls are like functions. Backreferences allow you to reuse the portion matched by the capture group. Subexpression calls allow you to reuse the pattern that was used inside the capture group. You can call subexpressions recursively too, see the <a href=./regex-module.html#recursive-matching>Recursive matching</a> section for examples.<p>Subexpression syntax is <code>(?N)</code> where <code>N</code> is the capture group you want to call. This is applicable only in the RE definition, it wouldn't make sense in replacement sections.<pre><code class=language-python>>>> row = 'today,2008-03-24,food,2012-08-12,nice,5632'
 
 # with re module and manually repeating the pattern
 >>> re.search(r'\d{4}-\d{2}-\d{2}.*\d{4}-\d{2}-\d{2}', row)[0]
@@ -77,28 +47,30 @@ True
 
 >>> regex.search(r'(?P&LTdate>\d{4}-\d{2}-\d{2}).*(?&date)', row)[0]
 '2008-03-24,food,2012-08-12'
-</code></pre><h2 id=positive-lookbehind-with-k><a class=header href=#positive-lookbehind-with-k>Positive lookbehind with \K</a></h2><p>Most (but not all) of the positive lookbehind cases can be solved by adding <code>\K</code> as a suffix to the pattern to be tested. This will work for variable length patterns as well.<pre><code class=language-python># similar to: r'(?<=\b\w)\w*\W*'
+</code></pre><h2 id=set-start-of-matching-portion-with-k><a class=header href=#set-start-of-matching-portion-with-k>Set start of matching portion with \K</a></h2><p>Some of the positive lookbehind cases can be solved by adding <code>\K</code> as a suffix to the pattern to be asserted. The text consumed until <code>\K</code> won't be part of the matching portion. In other words, <code>\K</code> determines the starting point. The pattern before <code>\K</code> can be variable length too.<pre><code class=language-python># similar to: r'(?<=\b\w)\w*\W*'
 # text matched before \K won't be replaced
 >>> regex.sub(r'\b\w\K\w*\W*', '', 'sea eat car rat eel tea')
 'secret'
 
 # variable length example
-# replace only 3rd occurrence of 'cat'
->>> regex.sub(r'(cat.*?){2}\Kcat', 'X', 'cat scatter cater scat', count=1)
-'cat scatter Xer scat'
-</code></pre><p>Here's another example that won't work if greedy quantifier is used instead of possessive quantifier.<pre><code class=language-python>>>> row = '421,foo,2425,42,5,foo,6,6,42'
+>>> s = 'cat scatter cater scat concatenate catastrophic catapult duplicate'
+# replace only the third occurrence of 'cat'
+>>> regex.sub(r'(cat.*?){2}\Kcat', '[\g&LT0>]', s, count=1)
+'cat scatter [cat]er scat concatenate catastrophic catapult duplicate'
+# replace every third occurrence
+>>> regex.sub(r'(cat.*?){2}\Kcat', '[\g&LT0>]', s)
+'cat scatter [cat]er scat concatenate [cat]astrophic catapult duplicate'
+</code></pre><p>Here's another example that won't work if greedy quantifier is used instead of possessive.<pre><code class=language-python>>>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,6,6,4'
 
-# lookarounds used to ensure start/end of column matching
+# lookarounds used to ensure start and end of columns
 # possessive quantifier used to ensure partial column is not captured
 # if a column has same text as another column, the latter column is deleted
->>> while True:
-...     row, cnt = regex.subn(r'(?&LT![^,])([^,]++).*\K,\1(?![^,])', r'', row)
-...     if cnt == 0:
-...         break
+>>> while (op := regex.subn(r'(?&LT![^,])([^,]++).*\K,\1(?![^,])', '', row))[1]:
+...     row = op[0]
 ... 
 >>> row
-'421,foo,2425,42,5,6'
-</code></pre><h2 id=variable-length-lookbehind><a class=header href=#variable-length-lookbehind>Variable length lookbehind</a></h2><p>The <code>regex</code> module allows using variable length lookbehind without needing any change.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
+'421,cat,2425,42,5,6,61,4'
+</code></pre><h2 id=variable-length-lookbehind><a class=header href=#variable-length-lookbehind>Variable length lookbehind</a></h2><p>The <code>regex</code> module allows variable length lookbehind without needing any special settings.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
 >>> regex.findall(r'(?&LT!tar|dare)\d+', s)
 ['42', '5']
 >>> regex.findall(r'(?<=\b[pd][a-z]*)\d+', s)
@@ -113,46 +85,80 @@ True
 False
 >>> bool(regex.search(r'(?&LT!parrot.*)dog', 'fox,cat,dog,parrot'))
 True
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> As lookarounds do not consume characters, don't use variable length lookbehind between two patterns. Use negated groups instead.</blockquote><pre><code class=language-python># match if 'go' is not there between 'at' and 'par'
-
-# wrong use of lookaround
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> As lookarounds do not consume characters, don't use variable length lookbehind between two patterns. Use negated groups instead.<pre><code class=language-python># match if 'go' is not there between 'at' and 'par'
+# lookaround won't work here
 >>> bool(regex.search(r'at(?&LT!go.*)par', 'fox,cat,dog,parrot'))
 False
 
-# correct use of negated group
+# use negated group instead
 >>> bool(regex.search(r'at((?!go).)*par', 'fox,cat,dog,parrot'))
 True
-</code></pre><h2 id=g-anchor><a class=header href=#g-anchor>\G anchor</a></h2><p>The <code>\G</code> anchor restricts matching from start of string like the <code>\A</code> anchor. In addition, after a match is done, ending of that match is considered as the new anchor location. This process is repeated again and continues until the given RE fails to match (assuming multiple matches with <code>sub</code>, <code>findall</code> etc).<pre><code class=language-python># all non-whitespace characters from start of string
->>> regex.findall(r'\G\S', '123-87-593 42 foo')
-['1', '2', '3', '-', '8', '7', '-', '5', '9', '3']
->>> regex.sub(r'\G\S', '*', '123-87-593 42 foo')
-'********** 42 foo'
+</code></pre></blockquote><h2 id=g-anchor><a class=header href=#g-anchor>\G anchor</a></h2><p>The <code>\G</code> anchor matches the start of the input string, just like the <code>\A</code> anchor. In addition, it will also match at the end of the previous match. This helps you to mark a particular location in the input string and continue from there instead of having the pattern to always check for the specific location. This is best understood with examples.<p>First, a simple example of using <code>\G</code> without alternations. The goal is to replace every character of the first field with <code>*</code> where whitespace is the field separator.<pre><code class=language-python>>>> record = '123-456-7890 Joe (30-40) years'
 
-# all digits and optional hyphen combo from start of string
->>> regex.findall(r'\G\d+-?', '123-87-593 42 foo')
-['123-', '87-', '593']
->>> regex.sub(r'\G(\d+)(-?)', r'(\1)\2', '123-87-593 42 foo')
-'(123)-(87)-(593) 42 foo'
+# simply using \S will replace all the non-whitespace characters
+>>> regex.sub(r'\S', '*', record)
+'************ *** ******* *****'
+# naively adding the \A anchor replaces only the first one
+>>> regex.sub(r'\A\S', '*', record)
+'*23-456-7890 Joe (30-40) years'
 
-# all word characters from start of string
-# only if it is followed by word character
->>> regex.findall(r'\G\w(?=\w)', 'cat12 bat pin')
-['c', 'a', 't', '1']
->>> regex.sub(r'\G\w(?=\w)', r'\g&LT0>:', 'cat12 bat pin')
-'c:a:t:1:2 bat pin'
+# one workaround is to continuously assert the matching condition
+# here, it is non-whitespace characters from the start of the string
+>>> regex.sub(r'(?<=\A\S*)\S', '*', record)
+'************ Joe (30-40) years'
 
-# all lowercase alphabets or space from start of string
+# \G is a simpler solution for such cases
+>>> regex.sub(r'\G\S', '*', record)
+'************ Joe (30-40) years'
+>>> regex.findall(r'\G\S', record)
+['1', '2', '3', '-', '4', '5', '6', '-', '7', '8', '9', '0']
+</code></pre><p>In the above example, <code>\G</code> will first match the start of the string. So, the first character is replaced with <code>*</code> since <code>\S</code> matches the non-whitespace character <code>1</code>. The ending of <code>1</code> will now be considered as the new anchor for <code>\G</code>. The second character will then match because <code>2</code> is a non-whitespace character and <code>\G</code> assertion is satisfied due to the previous match. This will continue until the end of the field, which is <code>0</code> in the above example. When the next character is considered, <code>\G</code> assertion is still satisfied but <code>\S</code> fails due to the space character. Because the matching failed, <code>\G</code> will <em>not</em> be satisfied when the next character <code>J</code> is considered. So, no more characters can match since this particular example doesn't provide an alternate way for <code>\G</code> to be reactivated.<p>Here are some more examples of using <code>\G</code> without alternations:<pre><code class=language-python># all digits and optional hyphen combo from the start of string
+>>> record = '123-456-7890 Joe (30-40) years'
+>>> regex.findall(r'\G\d+-?', record)
+['123-', '456-', '7890']
+>>> regex.sub(r'\G(\d+)(-?)', r'(\1)\2', record)
+'(123)-(456)-(7890) Joe (30-40) years'
+
+# all word characters from the start of string
+# only if it is followed by a word character
+>>> regex.findall(r'\G\w(?=\w)', 'cat_12 bat_100 kite_42')
+['c', 'a', 't', '_', '1']
+>>> regex.sub(r'\G\w\K(?=\w)', ':', 'cat_12 bat_100 kite_42')
+'c:a:t:_:1:2 bat_100 kite_42'
+
+# all lowercase alphabets or space from the start of string
 >>> regex.sub(r'\G[a-z ]', r'(\g&LT0>)', 'par tar-den hen-food mood')
 '(p)(a)(r)( )(t)(a)(r)-den hen-food mood'
-</code></pre><h2 id=recursive-matching><a class=header href=#recursive-matching>Recursive matching</a></h2><p>The subexpression call special group was introduced as analogous to function call. And in typical function fashion, it does support recursion. Useful to match nested patterns, which is usually not recommended to be done with regular expressions. Indeed, use a proper parser library if you are looking to parse file formats like html, xml, json, csv, etc. But for some cases, a parser might not be available and using RE might be simpler than writing a parser from scratch.<p>First up, a RE to match a set of parentheses that is not nested (termed as <strong>level-one</strong> RE for reference).<pre><code class=language-python># note the use of possessive quantifier
->>> eqn0 = 'a + (b * c) - (d / e)'
+</code></pre><p>Next, using <code>\G</code> as part of alternations so that it can be activated anywhere in the input string. Suppose you need to extract one or more numbers that follow a particular name. Here's one way to solve it:<pre><code class=language-python>>>> marks = 'Joe 75 88 Mina 89 85 84 John 90'
+
+# you can also use ' (\d+)' instead of ' \K\d+'
+>>> regex.findall(r'(?:Mina|\G) \K\d+', marks)
+['89', '85', '84']
+
+>>> regex.findall(r'(?:Joe|\G) \K\d+', marks)
+['75', '88']
+
+>>> regex.findall(r'(?:John|\G) \K\d+', marks)
+['90']
+</code></pre><p><code>\G</code> matches the start of the string but the input string doesn't start with a space character. So the regular expression can be satisfied only after the other alternative is matched. Consider the first pattern where <code>Mina</code> is the other alternative. Once that string is found, a space and digit characters will satisfy the rest of the RE. Ending of the match, i.e. <code>Mina 89</code> in this case, will now be the <code>\G</code> anchoring position. This will allow <code>85</code> and <code>84</code> to be matched subsequently. After that, <code>J</code> fails the <code>\d</code> pattern and no more matches are possible (as <code>Mina</code> isn't found another time).<p>In some cases, <code>\G</code> anchoring at the start of the string will cause issues. One workaround is to add a negative lookaround assertion. Here's an example. Goal is to mask the password only for the given name.<pre><code class=language-python>>>> passwords = 'Rohit:hunter2 Ram:123456 Ranjit:abcdef'
+
+# the first space separated field is also getting masked here
+>>> regex.sub(r'(?:Ram:\K|\G)\S', '*', passwords)
+'************* Ram:****** Ranjit:abcdef'
+
+# adding a negative assertion helps
+>>> regex.sub(r'(?:Ram:\K|\G(?!\A))\S', '*', passwords)
+'Rohit:hunter2 Ram:****** Ranjit:abcdef'
+>>> regex.sub(r'(?:Rohit:\K|\G(?!\A))\S', '*', passwords)
+'Rohit:******* Ram:123456 Ranjit:abcdef'
+</code></pre><h2 id=recursive-matching><a class=header href=#recursive-matching>Recursive matching</a></h2><p>The subexpression call special group was introduced as analogous to function calls. And similar to functions, it does support recursion. Useful to match nested patterns, which is usually <em>not</em> recommended to be done with regular expressions. Indeed, you should use a proper parser library for file formats like html, xml, json, csv, etc. But for some cases, a parser might not be available and using RE might be simpler than writing one from scratch.<p>First up, a RE to match a set of parentheses that is not nested (termed as <strong>level-one</strong> RE for reference).<pre><code class=language-python>>>> eqn0 = 'a + (b * c) - (d / e)'
 >>> regex.findall(r'\([^()]++\)', eqn0)
 ['(b * c)', '(d / e)']
 
 >>> eqn1 = '((f+x)^y-42)*((3-g)^z+2)'
 >>> regex.findall(r'\([^()]++\)', eqn1)
 ['(f+x)', '(3-g)']
-</code></pre><p>Next, matching a set of parentheses which may optionally contain any number of non-nested sets of parentheses (termed as <strong>level-two</strong> RE for reference). See <a href=https://www.debuggex.com/r/SMLRfiyt0Ag2hXu5>debuggex</a> for a railroad diagram, which visually shows the recursive nature of this RE.<pre><code class=language-python>>>> eqn1 = '((f+x)^y-42)*((3-g)^z+2)'
+</code></pre><p>Next, matching a set of parentheses which may optionally contain any number of non-nested sets of parentheses (termed as <strong>level-two</strong> RE for reference). Visual railroad diagram shows the recursive nature of this RE (generated via <a href=https://www.debuggex.com/r/SMLRfiyt0Ag2hXu5>debuggex</a>):<p align=center><img alt="debuggex level-two RE"src=images/level_two.png><pre><code class=language-python>>>> eqn1 = '((f+x)^y-42)*((3-g)^z+2)'
 # note the use of non-capturing group
 >>> regex.findall(r'\((?:[^()]++|\([^()]++\))++\)', eqn1)
 ['((f+x)^y-42)', '((3-g)^z+2)']
@@ -160,7 +166,7 @@ True
 >>> eqn2 = 'a + (b) + ((c)) + (((d)))'
 >>> regex.findall(r'\((?:[^()]++|\([^()]++\))++\)', eqn2)
 ['(b)', '((c))', '((d))']
-</code></pre><p>That looks very cryptic. Better to use <code>regex.X</code> flag for clarity as well as for comparing against the recursive version. Breaking down the RE, you can see <code>(</code> and <code>)</code> have to be matched literally. Inside that, valid string is made up of either non-parentheses characters or a non-nested parentheses sequence (level-one RE).<pre><code class=language-python>>>> lvl2 = regex.compile('''
+</code></pre><p>That looks very cryptic. Better to use the <code>regex.X</code> flag for clarity as well as for comparing against the recursive version. Breaking down the RE, you can see that <code>(</code> and <code>)</code> have to be matched literally. Inside that, valid string is made up of either non-parentheses characters or a non-nested parentheses sequence (level-one RE).<pre><code class=language-python>>>> lvl2 = regex.compile('''
 ...          \(              #literal (
 ...            (?:           #start of non-capturing group
 ...             [^()]++      #non-parentheses characters
@@ -175,7 +181,7 @@ True
 
 >>> lvl2.findall(eqn2)
 ['(b)', '((c))', '((d))']
-</code></pre><p>To recursively match any number of nested sets of parentheses, use a capture group and call it within the capture group itself. Since entire RE needs to be called here, you can use the default zeroth capture group (this also helps to avoid having to use <code>finditer</code>). Comparing with level-two RE, the only change is that <code>(?0)</code> is used instead of the level-one RE in the second alternation.<pre><code class=language-python>>>> lvln = regex.compile('''
+</code></pre><p>To recursively match any number of nested sets of parentheses, use a capture group and call it within the capture group itself. Since entire RE needs to be called here, you can use the default zeroth capture group (this also helps to avoid having to use <code>finditer()</code>). Comparing with the level-two RE, the only change is that <code>(?0)</code> is used instead of the level-one RE in the second alternation.<pre><code class=language-python>>>> lvln = regex.compile('''
 ...          \(           #literal (
 ...            (?:        #start of non-capturing group
 ...             [^()]++   #non-parentheses characters
@@ -214,12 +220,13 @@ True
 # words not surrounded by punctuation characters
 >>> regex.findall(r'(?&LT![[:punct:]])\b\w+\b(?![[:punct:]])', 'tie. ink eat;')
 ['ink']
-</code></pre><h2 id=set-operations><a class=header href=#set-operations>Set operations</a></h2><p>Set operators can be used inside character class between sets. Mostly used to get intersection or difference between two sets, where one/both of them is a character range or a predefined character set. To aid in such definitions, you can use <code>[]</code> in nested fashion. The four operators, in increasing order of precedence, are:<ul><li><code>||</code> union<li><code>~~</code> symmetric difference<li><code>&&</code> intersection<li><code>--</code> difference</ul><pre><code class=language-python># [^aeiou] will match any non-vowel character
+</code></pre><h2 id=set-operations><a class=header href=#set-operations>Set operations</a></h2><p>Set operators can be used inside character class between sets. Mostly used to get intersection or difference between two sets, where one/both of them is a character range or a predefined character set. To aid in such definitions, you can use <code>[]</code> in nested fashion. The four operators, in increasing order of precedence, are:<ul><li><code>||</code> union<li><code>~~</code> symmetric difference<li><code>&&</code> intersection<li><code>--</code> difference</ul><p>As mentioned at the start of this chapter, <code>VERSION1</code> is needed for this feature to work. Here are some examples:<pre><code class=language-python># [^aeiou] will match any non-vowel character
 # which means space is also a valid character to be matched
 >>> regex.findall(r'\b[^aeiou]+\b', 'tryst glyph pity why')
 ['tryst glyph ', ' why']
 # intersection or difference can be used here
 # to get a positive definition of characters to match
+# same as: r'\b[a-z--[aeiou]]+\b'
 >>> regex.findall(r'\b[a-z&&[^aeiou]]+\b', 'tryst glyph pity why')
 ['tryst', 'glyph', 'why']
 
@@ -231,7 +238,7 @@ True
 >>> para = '"Hi", there! How *are* you? All fine here.'
 >>> regex.sub(r'[[:punct:]--[.!?]]+', '', para)
 'Hi there! How are you? All fine here.'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> These set operators may get added to <code>re</code> module in future.</blockquote><h2 id=unicode-character-sets><a class=header href=#unicode-character-sets>Unicode character sets</a></h2><p>Similar to named character classes and escape sequence character sets, the <code>regex</code> module also supports <code>\p{}</code> construct that offers various predefined sets to work with Unicode strings. See <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for details.<pre><code class=language-python># extract all consecutive letters
+</code></pre><blockquote><p><img alt=info src=images/info.svg> These set operators may get added to the <code>re</code> module in future.</blockquote><h2 id=unicode-character-sets><a class=header href=#unicode-character-sets>Unicode character sets</a></h2><p>Similar to named character classes and escape sequence character sets, the <code>regex</code> module also supports <code>\p{}</code> construct that offers various predefined sets to work with Unicode strings. See <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for more details.<pre><code class=language-python># extract all consecutive letters
 >>> regex.findall(r'\p{L}+', 'fox:αλεπού,eagle:αετός')
 ['fox', 'αλεπού', 'eagle', 'αετός']
 # extract all consecutive Greek letters
@@ -239,23 +246,22 @@ True
 ['αλεπού', 'αετός']
 
 # extract all words
->>> regex.findall(r'\p{Word}+', 'φοο12,βτ_4,foo')
-['φοο12', 'βτ_4', 'foo']
-
-# delete all characters other than letters
-# \p{^L} can also be used instead of \P{L}
->>> regex.sub(r'\P{L}+', '', 'φοο12,βτ_4,foo')
-'φοοβτfoo'
-</code></pre><h2 id=skipping-matches><a class=header href=#skipping-matches>Skipping matches</a></h2><p>Sometimes, you want to change or extract all matches except particular matches. Usually, there are common characteristics between the two types of matches that makes it hard or impossible to define RE only for the required matches. For example, changing field values unless it is a particular name, or perhaps don't touch double quoted values and so on. To use the skipping feature, define the matches to be ignored suffixed by <code>(*SKIP)(*FAIL)</code> and then define the matches required as part of alternation. <code>(*F)</code> can also be used instead of <code>(*FAIL)</code>.<pre><code class=language-python># change lowercase whole words other than imp or rat
->>> words = 'tiger imp goat eagle rat'
->>> regex.sub(r'\b(?:imp|rat)\b(*SKIP)(*F)|[a-z]++', r'(\g&LT0>)', words)
-'(tiger) imp (goat) (eagle) rat'
+>>> regex.findall(r'\p{Word}+', 'φοο12,βτ_4;cat')
+['φοο12', 'βτ_4', 'cat']
+</code></pre><p>Use the uppercase format <code>\P{}</code> or use <code>^</code> immediately after <code>\p{</code> for negation:<pre><code class=language-python># delete all characters other than letters
+# \p{^L} can also be used
+>>> regex.sub(r'\P{L}+', '', 'φοο12,βτ_4;cat')
+'φοοβτcat'
+</code></pre><h2 id=skipping-matches><a class=header href=#skipping-matches>Skipping matches</a></h2><p>Sometimes, you want to change or extract all matches except particular portions. Usually, there are common characteristics between the two types of matches that makes it hard or impossible to define a RE only for the required matches. For example, changing field values unless it is a particular name, or perhaps don't touch double quoted values and so on. To use the skipping feature, define the matches to be ignored suffixed by <code>(*SKIP)(*FAIL)</code> and then put the required matches as part of an alternation list. <code>(*F)</code> can also be used instead of <code>(*FAIL)</code>.<pre><code class=language-python># change whole words other than 'imp' or 'ant'
+>>> words = 'tiger imp goat eagle ant important imp2 Cat'
+>>> regex.sub(r'\b(?:imp|ant)\b(*SKIP)(*F)|\w++', r'(\g&LT0>)', words)
+'(tiger) imp (goat) (eagle) ant (important) (imp2) (Cat)'
 
 # change all commas other than those inside double quotes
 >>> row = '1,"cat,12",nice,two,"dog,5"'
 >>> regex.sub(r'"[^"]++"(*SKIP)(*F)|,', '|', row)
 '1|"cat,12"|nice|two|"dog,5"'
-</code></pre><h2 id=m-and-m-word-anchors><a class=header href=#m-and-m-word-anchors>\m and \M word anchors</a></h2><p><code>\m</code> and <code>\M</code> anchors match only the start and end of word respectively.<pre><code class=language-python>>>> regex.sub(r'\b', ':', 'hi log_42 12b')
+</code></pre><h2 id=m-and-m-word-anchors><a class=header href=#m-and-m-word-anchors>\m and \M word anchors</a></h2><p><code>\b</code> matches both the start and end of words. In some cases, that can cause issues. You can use the <code>\m</code> and <code>\M</code> anchors to match only the start and end of word respectively.<pre><code class=language-python>>>> regex.sub(r'\b', ':', 'hi log_42 12b')
 ':hi: :log_42: :12b:'
 >>> regex.sub(r'\m', ':', 'hi log_42 12b')
 ':hi :log_42 :12b'
@@ -266,7 +272,7 @@ True
 '[I ]have [12][, ][he] has[ 2]!'
 >>> regex.sub(r'\m..\M', r'[\g&LT0>]', 'I have 12, he has 2!')
 'I have [12], [he] has 2!'
-</code></pre><h2 id=overlapped-matches><a class=header href=#overlapped-matches>Overlapped matches</a></h2><p><code>findall</code> and <code>finditer</code> support <code>overlapped</code> optional argument. Setting it to <code>True</code> gives you overlapped matches.<pre><code class=language-python>>>> words = 'on vast ever road lane at peak'
+</code></pre><h2 id=overlapped-matches><a class=header href=#overlapped-matches>Overlapped matches</a></h2><p>You can use <code>overlapped=True</code> to get overlapped matches.<pre><code class=language-python>>>> words = 'on vast ever road lane at peak'
 >>> regex.findall(r'\b\w+ \w+\b', words)
 ['on vast', 'ever road', 'lane at']
 >>> regex.findall(r'\b\w+ \w+\b', words, overlapped=True)
@@ -277,15 +283,26 @@ True
 </code></pre><h2 id=regexreverse-flag><a class=header href=#regexreverse-flag>regex.REVERSE flag</a></h2><p>The <code>regex.R</code> or <code>regex.REVERSE</code> flag will result in right-to-left processing instead of the usual left-to-right order.<pre><code class=language-python>>>> words = 'par spare lion part cool'
 
 # replaces first match
->>> regex.sub(r'par', 'co', words, count=1)
-'co spare lion part cool'
+>>> regex.sub(r'par', 'X', words, count=1)
+'X spare lion part cool'
 # replaces last match
->>> regex.sub(r'par', 'co', words, count=1, flags=regex.R)
-'par spare lion cot cool'
+>>> regex.sub(r'par', 'X', words, count=1, flags=regex.R)
+'par spare lion Xt cool'
 
+# get matches in reversed order
 >>> regex.findall(r'(?r)\w+', words)
 ['cool', 'part', 'lion', 'spare', 'par']
-</code></pre><h2 id=x-vs-dot-metacharacter><a class=header href=#x-vs-dot-metacharacter>\X vs dot metacharacter</a></h2><p>Some characters have more than one codepoint. These are handled in Unicode with <strong>grapheme clusters</strong>. The dot metacharacter will only match one codepoint at a time. You can use <code>\X</code> to match any character (including newline), even if it has multiple codepoints.<pre><code class=language-python>>>> [c.encode('unicode_escape') for c in 'g̈']
+
+# alternate to atomic grouping example seen earlier
+>>> ip = 'fig::mango::pineapple::guava::apples::orange'
+>>> regex.search(r'(?r)::.*?::apple', ip)[0]
+'::guava::apple'
+
+# this won't be possible with just atomic grouping
+>>> ip = 'and this book is good and those are okay and that movie is bad'
+>>> regex.search(r'(?r)th.*?\bis bad', ip)[0]
+'that movie is bad'
+</code></pre><h2 id=x-vs-dot-metacharacter><a class=header href=#x-vs-dot-metacharacter>\X vs dot metacharacter</a></h2><p>Some characters have more than one codepoint. These are handled in Unicode with <strong>grapheme clusters</strong>. The dot metacharacter will only match one codepoint at a time. You can use <code>\X</code> to match any character even if it has multiple codepoints. Another difference from dot metacharacter is that <code>\X</code> will always match newline characters too.<pre><code class=language-python>>>> [c.encode('unicode_escape') for c in 'g̈']
 [b'g', b'\\u0308']
 
 >>> regex.sub(r'a.e', 'o', 'cag̈ed')
@@ -295,40 +312,40 @@ True
 >>> regex.sub(r'a\Xe', 'o', 'cag̈ed')
 'cod'
 
-# \X will match newline character as well
->>> regex.sub(r'e.a', 'ea', 'he\nat', flags=regex.S)
-'heat'
->>> regex.sub(r'e\Xa', 'ea', 'he\nat')
-'heat'
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://pypi.org/project/regex/>pypi: regex</a><td>third party module, has lots advanced features<tr><td><td>default is <code>VERSION0</code> which is compatible with <code>re</code> module<tr><td><code>(?V1)</code><td>inline flag to enable version 1 for <code>regex</code> module<tr><td><td><code>regex.DEFAULT_VERSION=regex.VERSION1</code> can also be used<tr><td><td><code>(?V0)</code> or <code>regex.VERSION0</code> to get back default version<tr><td>possessive<td>enabled by appending <code>+</code> to greedy quantifier<tr><td><td>like greedy, but no backtracking<tr><td><code>(?>pat)</code><td>atomic grouping, similar to possessive quantifier<tr><td><code>(?N)</code><td>subexpression call for Nth capture group<tr><td><code>(?&name)</code><td>subexpression call for named capture group<tr><td><td>subexpression call is similar to functions, recursion also possible<tr><td><td><code>r'\((?:[^()]++|(?0))++\)'</code> matches nested sets of parentheses<tr><td><code>pat\K</code><td><code>pat</code> won't be part of matching portion<tr><td><td><code>\K</code> is used similar to positive lookbehind<tr><td><td><code>regex</code> module allows variable length lookbehinds<tr><td><code>\G</code><td>restricts matching from start of string like <code>\A</code><tr><td><td>continues matching from end of match as new anchor until it fails<tr><td><td><code>regex.findall(r'\G\d+-?', '12-34 42')</code> gives <code>['12-', '34']</code><tr><td><code>[[:digit:]]</code><td>named character set for <code>\d</code><tr><td><code>[[:^digit:]]</code><td>to indicate <code>\D</code><tr><td><td>See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for full list<tr><td>set operations<td>feature for character classes, nested <code>[]</code> allowed<tr><td><td><code>||</code> union, <code>~~</code> symmetric difference<tr><td><td><code>&&</code> intersection, <code>--</code> difference<tr><td><td><code>[[:punct:]--[.!?]]</code> punctuation except <code>.</code> <code>!</code> and <code>?</code><tr><td><code>\p{}</code><td>Unicode character sets provided by <code>regex</code> module<tr><td><td>see <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for details<tr><td><code>\P{L}</code> or <code>\p{^L}</code><td>match characters other than <code>\p{L}</code> set<tr><td><code>pat(*SKIP)(*F)</code><td>ignore text matched by <code>pat</code><tr><td><td><code>"[^"]++"(*SKIP)(*F)|,</code> will match <code>,</code> but not inside<tr><td><td>double quoted pairs<tr><td><code>\m</code> and <code>\M</code><td>anchors for start and end of word respectively<tr><td><code>overlapped</code><td>set as <code>True</code> to match overlapping portions<tr><td><code>regex.R</code><td><code>REVERSE</code> flag to match from right-to-left<tr><td><code>\X</code><td>matches any character even if it has multiple codepoints<tr><td><td><code>\X</code> will also match newline characters by default<tr><td><td>whereas <code>.</code> requires <code>re.S</code> flag to match newline character</table><p>There's lots and lots of features provided by <code>regex</code> module. Some of them have not been covered in this chapter — for example, fuzzy matching and <code>splititer</code>. See <a href=https://pypi.org/project/regex/>pypi: regex</a> for details and examples. For those familiar with Perl style regular expressions, this module offers easier transition compared to <code>re</code> module.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.<pre><code class=language-python>>>> items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+# \X will always match newline character, DOTALL flag won't be needed
+>>> regex.sub(r'e\Xa', 'i', 'nice he\nat')
+'nice hit'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://pypi.org/project/regex/>pypi: regex</a><td>third-party module, has many advanced features<tr><td><td>default is <code>VERSION0</code> which is compatible with <code>re</code> module<tr><td><code>(?V1)</code><td>inline flag to enable version 1 for <code>regex</code> module<tr><td><td><code>regex.DEFAULT_VERSION=regex.VERSION1</code> can also be used<tr><td><td><code>(?V0)</code> or <code>regex.VERSION0</code> to get back default version<tr><td><code>(?N)</code><td>subexpression call for Nth capture group<tr><td><code>(?&name)</code><td>subexpression call for named capture group<tr><td><td>subexpression call is similar to functions, recursion also possible<tr><td><td><code>r'\((?:[^()]++|(?0))++\)'</code> matches nested sets of parentheses<tr><td><code>pat\K</code><td><code>pat</code> won't be part of matching portion<tr><td><td><code>\K</code> can be used for some of the positive lookbehind cases<tr><td><td><code>regex</code> module also supports variable length lookbehinds<tr><td><code>\G</code><td>restricts matching from the start of string like <code>\A</code><tr><td><td>continues matching from the end of previous match as the new anchor<tr><td><td><code>regex.findall(r'\G\d+-?', '12-34 42')</code> gives <code>['12-', '34']</code><tr><td><td><code>findall(r'(?:M|\G) \K\d+', 'J 75 M 8 5')</code> gives <code>['8', '5']</code><tr><td><code>[[:digit:]]</code><td>named character set for <code>\d</code><tr><td><code>[[:^digit:]]</code><td>to indicate <code>\D</code><tr><td><td>See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for full list<tr><td>set operations<td>feature for character classes, nested <code>[]</code> allowed<tr><td><td><code>||</code> union, <code>~~</code> symmetric difference<tr><td><td><code>&&</code> intersection, <code>--</code> difference<tr><td><td><code>[[:punct:]--[.!?]]</code> punctuation except <code>.</code> <code>!</code> and <code>?</code><tr><td><code>\p{}</code><td>Unicode character sets<tr><td><td>see <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for details<tr><td><code>\P{L}</code> or <code>\p{^L}</code><td>match characters other than the <code>\p{L}</code> set<tr><td><code>pat(*SKIP)(*F)</code><td>ignore text matched by <code>pat</code><tr><td><td><code>"[^"]++"(*SKIP)(*F)|,</code> will match <code>,</code> but not inside<tr><td><td>double quoted pairs<tr><td><code>\m</code> and <code>\M</code><td>anchors for the start and end of word respectively<tr><td><code>overlapped</code><td>set as <code>True</code> to match overlapping portions<tr><td><code>regex.R</code><td><code>REVERSE</code> flag to match from right-to-left<tr><td><code>\X</code><td>matches any character even if it has multiple codepoints<tr><td><td><code>\X</code> will also match newline characters by default<tr><td><td>whereas <code>.</code> requires the <code>DOTALL</code> flag to match newline characters</table></div><p>There are plenty of features provided by the <code>regex</code> module. Some of them have not been covered in this chapter — for example, fuzzy matching and <code>splititer()</code>. See <a href=https://pypi.org/project/regex/>pypi: regex</a> for details and examples. For those familiar with Perl style regular expressions, this module offers easier transition compared to the builtin <code>re</code> module.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> List the two <code>regex</code> module constants that affect the compatibility with the <code>re</code> module. Also specify their corresponding inline flags.<p><strong>b)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence and the separator. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 ##### add your solution here
-['\t\napple #42', 'sure', 'no#1']
-</code></pre><p><strong>b)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence and the separator. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two:five: hi bye kite.777.water.'
+'wow: hi-2 bye kite.'
+</code></pre><p><strong>c)</strong> The given list of strings has fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother', 'fig-42:cherry:']
 
 ##### add your solution here
-'wow: hi bye kite.'
-</code></pre><p><strong>c)</strong> The given list of strings has fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother']
-
-##### add your solution here
-['42', 'twelve:a2b', 'we:be:he:0:a:b']
+['42', 'twelve:a2b', 'we:be:he:0:a:b', 'fig-42:cherry']
 </code></pre><p><strong>d)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 ##### add your solution here
 ['at', 'in', 'a_b', 'lion']
-</code></pre><p><strong>e)</strong> The given input string has fields separated by <code>:</code> character. Extract all fields if the previous field contains a digit character.<pre><code class=language-python>>>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+</code></pre><p><strong>e)</strong> The given input string has fields separated by the <code>:</code> character. Extract field contents only if the previous field contains a digit character.<pre><code class=language-python>>>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 
 ##### add your solution here
 ['ride', '3list', 'end']
-</code></pre><p><strong>f)</strong> The given input string has fields separated by <code>:</code> character. Delete all fields, including the separator, unless the field contains a digit character. Stop deleting once a field with digit character is found.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+</code></pre><p><strong>f)</strong> The given input strings have fields separated by the <code>:</code> character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 >>> row2 = 'um:no:low:3e:s4w:seer'
+>>> row3 = 'oh100:apple:banana:fig'
+>>> row4 = 'Dragon:Unicorn:Wizard-Healer'
 
 >>> pat = regex.compile()      ##### add your solution here
 
->>> pat.sub('', row1)
-'a2b2:ride:in:awe:b2b:3list:end'
->>> pat.sub('', row2)
-'3e:s4w:seer'
+>>> pat.findall(row1)
+['vast']
+>>> pat.findall(row2)
+['um', 'no', 'low']
+>>> pat.findall(row3)
+[]
+>>> pat.findall(row4)
+['Dragon', 'Unicorn', 'Wizard-Healer']
 </code></pre><p><strong>g)</strong> For the given input strings, extract <code>if</code> followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.<pre><code class=language-python>>>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
 >>> ip2 = 'if+while if(a(b)c(d(e(f)1)2)3) for(i=1)'
 
@@ -338,27 +355,30 @@ True
 'if(3-(k*3+4)/12-(r+2/3))'
 >>> pat.search(ip2)[0]
 'if(a(b)c(d(e(f)1)2)3)'
-</code></pre><p><strong>h)</strong> Read about <code>POSIX</code> flag from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. Is the following code snippet showing the correct output?<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
+</code></pre><p><strong>h)</strong> Read about the <code>POSIX</code> flag from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. Is the following code snippet showing the correct output?<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
 
 >>> change = regex.compile(r'int|in|ion|ing|inco|inter|ink', flags=regex.POSIX)
 
 >>> change.sub('X', words)
 'plX XmX tX wX X cautX sentient'
-</code></pre><p><strong>i)</strong> Extract all whole words for the given input strings. However, based on user input <code>ignore</code>, do not match words if they contain any character present in the <code>ignore</code> variable.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
+</code></pre><p><strong>i)</strong> Extract all whole words for the given input strings. However, based on the user input <code>ignore</code>, do not match words if they contain any character present in the <code>ignore</code> variable.<pre><code class=language-python>>>> s1 = 'match after the last new_line character A2'
 >>> s2 = 'and then you want to test'
 
 >>> ignore = 'aty'
->>> regex.findall()     ##### add your solution here for s1
-['newline']
->>> regex.findall()     ##### add your solution here for s2
+>>> pat = regex.compile()       ##### add your solution here
+>>> pat.findall(s1)
+['new_line', 'A2']
+>>> pat.findall(s2)
 []
 
 >>> ignore = 'esw'
->>> regex.findall()     ##### add your solution here for s1
-['match']
->>> regex.findall()     ##### add your solution here for s2
+# should be the same solution used above
+>>> pat = regex.compile()       ##### add your solution here
+>>> pat.findall(s1)
+['match', 'A2']
+>>> pat.findall(s2)
 ['and', 'you', 'to']
-</code></pre><p><strong>j)</strong> Retain only punctuation characters for the given strings (generated from codepoints). Use Unicode character set definition for punctuation for solving this exercise.<pre><code class=language-python>>>> s1 = ''.join(chr(c) for c in range(0, 0x80))
+</code></pre><p><strong>j)</strong> Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set <code>\p{P}</code> as punctuations for this exercise.<pre><code class=language-python>>>> s1 = ''.join(chr(c) for c in range(0, 0x80))
 >>> s2 = ''.join(chr(c) for c in range(0x80, 0x100))
 >>> s3 = ''.join(chr(c) for c in range(0x2600, 0x27ec))
 
@@ -370,15 +390,15 @@ True
 '¡§«¶·»¿'
 >>> pat.sub('', s3)
 '❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪⟫'
-</code></pre><p><strong>k)</strong> For the given <strong>markdown</strong> file, replace all occurrences of the string <code>python</code> (irrespective of case) with the string <code>Python</code>. However, any match within code blocks that start with whole line <code>```python</code> and end with whole line <code>```</code> shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.<p>Refer to <a href=https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises>github: exercises folder</a> for files <code>sample.md</code> and <code>expected.md</code> required to solve this exercise.<pre><code class=language-python>>>> ip_str = open('sample.md', 'r').read()
+</code></pre><p><strong>k)</strong> For the given <strong>markdown</strong> file, replace all occurrences of the string <code>python</code> (irrespective of case) with the string <code>Python</code>. However, any match within code blocks that starts with the whole line <code>```python</code> and ends with the whole line <code>```</code> shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.<p>Refer to the <a href=https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises>exercises folder</a> for the files <code>sample.md</code> and <code>expected.md</code> required to solve this exercise.<pre><code class=language-python>>>> ip_str = open('sample.md', 'r').read()
 >>> pat = regex.compile()      ##### add your solution here
 >>> with open('sample_mod.md', 'w') as op_file:
 ...     ##### add your solution here
 ... 
 305
 >>> assert open('sample_mod.md').read() == open('expected.md').read()
-</code></pre><p><strong>l)</strong> For the given input strings, construct a word that is made up of last characters of all the words in the input. Use last character of last word as first character, last character of last but one word as second character and so on.<pre><code class=language-python>>>> s1 = 'knack tic pi roar what'
->>> s2 = '42;rod;t2t2;car'
+</code></pre><p><strong>l)</strong> For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.<pre><code class=language-python>>>> s1 = 'knack tic pi roar what'
+>>> s2 = ':42;rod;t2t2;car--'
 
 >>> pat = regex.compile()       ##### add your solution here
 
@@ -386,14 +406,16 @@ True
 'trick'
 ##### add your solution here for s2
 'r2d2'
-</code></pre><p><strong>m)</strong> Replicate <code>str.rpartition</code> functionality with regular expressions. Split into three parts based on last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'Sample123string42with777numbers'
+</code></pre><p><strong>m)</strong> Replicate <code>str.rpartition()</code> functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'Sample123string42with777numbers'
 >>> s2 = '12apples'
 
-##### add your solution here for s1
+>>> pat = regex.compile()       ##### add your solution here
+
+>>> pat.split(s1)
 ['Sample123string42with', '777', 'numbers']
-##### add your solution here for s2
+>>> pat.split(s2)
 ['', '12', 'apples']
-</code></pre><p><strong>n)</strong> Read about fuzzy matching on <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. For the given input strings, return <code>True</code> if they are exactly same as <code>cat</code> or there is exactly one character difference. Ignore case when comparing differences. For example, <code>Ca2</code> should give <code>True</code>. <code>act</code> will be <code>False</code> even though the characters are same because position should be maintained.<pre><code class=language-python>>>> pat = regex.compile()       ##### add your solution here
+</code></pre><p><strong>n)</strong> Read about fuzzy matching from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. For the given input strings, return <code>True</code> if they are exactly the same as <code>cat</code> or there is exactly one character difference. Ignore case differences. For example, <code>Ca2</code> should give <code>True</code>. <code>act</code> will be <code>False</code> even though the characters are same because position should also be considered.<pre><code class=language-python>>>> pat = regex.compile()       ##### add your solution here
 
 >>> bool(pat.fullmatch('CaT'))
 True
@@ -411,6 +433,19 @@ False
 False
 >>> bool(pat.fullmatch('2a1'))
 False
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=unicode.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=gotchas.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=unicode.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=gotchas.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre><p><strong>o)</strong> The given input strings have fields separated by the <code>:</code> character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+>>> row2 = 'um:no:low:3e:s4w:seer'
+>>> row3 = 'oh100:apple:banana:fig'
+>>> row4 = 'Dragon:Unicorn:Wizard-Healer'
+
+>>> pat = regex.compile()       ##### add your solution here
+
+>>> pat.findall(row1)
+['ride', 'in', 'awe', 'b2b', '3list', 'end']
+>>> pat.findall(row2)
+['s4w', 'seer']
+>>> pat.findall(row3)
+['apple', 'banana', 'fig']
+>>> pat.findall(row4)
+[]
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=unicode.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=gotchas.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=unicode.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=gotchas.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

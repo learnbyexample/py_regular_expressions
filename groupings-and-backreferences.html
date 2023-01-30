@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Groupings and backreferences - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Groupings and backreferences - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,50 +10,43 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html class=active><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a class=active href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=groupings-and-backreferences><a class=header href=#groupings-and-backreferences>Groupings and backreferences</a></h1><p>This chapter will show how to reuse portion matched by capture groups via backreferences within RE definition and replacement section. You'll also learn some of the special grouping syntax for cases where plain capture groups isn't enough.<h2 id=backreference><a class=header href=#backreference>Backreference</a></h2><p>Backreferences are like variables in a programming language. You have already seen how to use <code>re.Match</code> object to refer to the text captured by groups. Backreferences provide the same functionality, with the advantage that these can be directly used in RE definition as well as replacement section without having to invoke <code>re.Match</code> objects. Another advantage is that you can apply quantifiers to backreferences.<p>The syntax is <code>\N</code> or <code>\g&LTN></code> where <code>N</code> is the capture group you want. The below syntax variations is applicable for <strong>replacement section</strong>, assuming they are used within raw strings.<ul><li><code>\1</code>, <code>\2</code> up to <code>\99</code> to refer to the corresponding capture group <ul><li>provided there are no digit characters after<li><code>\0</code> and <code>\NNN</code> will be interpreted as octal value</ul><li><code>\g&LT1></code>, <code>\g&LT2></code> etc (not limited to 99) to refer to the corresponding capture group <ul><li>this also helps to avoid ambiguity between backreference and digits that follow</ul><li><code>\g&LT0></code> to refer to entire matched portion, similar to index <code>0</code> of <code>re.Match</code> objects <ul><li><code>\0</code> cannot be used because numbers starting with <code>0</code> are treated as octal value</ul></ul><p>Here's some examples with <code>\N</code> syntax.<pre><code class=language-python># remove square brackets that surround digit characters
-# note that use of raw strings for replacement string
->>> re.sub(r'\[(\d+)\]', r'\1', '[52] apples and [31] mangoes')
-'52 apples and 31 mangoes'
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=groupings-and-backreferences><a class=header href=#groupings-and-backreferences>Groupings and backreferences</a></h1><p>This chapter will show how to reuse portions matched by capture groups via backreferences. These can be used within the RE definition as well as the replacement section. You'll also learn some of the special grouping features for cases where plain capture groups aren't enough.<h2 id=backreference><a class=header href=#backreference>Backreference</a></h2><p>Backreferences are like variables in a programming language. You have already seen how to use <code>re.Match</code> object to refer to the text captured by groups. Backreferences provide the same functionality, with the advantage that these can be directly used in RE definition as well as the replacement section without having to invoke <code>re.Match</code> objects. Another advantage is that you can apply quantifiers to backreferences.<p>The syntax is <code>\N</code> or <code>\g&LTN></code> where <code>N</code> is the capture group you want. The below syntax variations are applicable in the <strong>replacement section</strong>, assuming they are used within raw strings.<ul><li><code>\1</code>, <code>\2</code> up to <code>\99</code> to refer to the corresponding capture group <ul><li>provided there are no digit characters after<li><code>\0</code> and <code>\NNN</code> will be interpreted as octal value</ul><li><code>\g&LT1></code>, <code>\g&LT2></code> etc (not limited to 99) to refer to the corresponding capture group <ul><li>this also helps to avoid ambiguity between backreferences and digits that follow</ul><li><code>\g&LT0></code> to refer to the entire matched portion, similar to index <code>0</code> of <code>re.Match</code> objects <ul><li><code>\0</code> cannot be used because numbers starting with <code>0</code> are treated as octal value</ul></ul><p>Here are some examples with <code>\N</code> syntax.<pre><code class=language-python># remove square brackets that surround digit characters
+# note that use of raw strings for the replacement string
+>>> re.sub(r'\[(\d+)\]', r'\1', '[52] apples [and] [31] mangoes')
+'52 apples [and] 31 mangoes'
 
 # replace __ with _ and delete _ if it is alone
->>> re.sub(r'(_)?_', r'\1', '_foo_ __123__ _baz_')
-'foo _123_ baz'
+>>> re.sub(r'(_)?_', r'\1', '_apple_ __123__ _banana_')
+'apple _123_ banana'
 
 # swap words that are separated by a comma
 >>> re.sub(r'(\w+),(\w+)', r'\2,\1', 'good,bad 42,24')
 'bad,good 24,42'
-</code></pre><p>Here's some examples with <code>\g&LTN></code> syntax.<pre><code class=language-python># ambiguity between \N and digit characters part of replacement string
+</code></pre><p>And here are some examples with <code>\g&LTN></code> syntax.<pre><code class=language-python># ambiguity between \N and digit characters part of the replacement string
 >>> re.sub(r'\[(\d+)\]', r'(\15)', '[52] apples and [31] mangoes')
 re.error: invalid group reference 15 at position 2
-# \g&LTN> solves this issue
+# \g&LTN> is helpful in such cases
 >>> re.sub(r'\[(\d+)\]', r'(\g&LT1>5)', '[52] apples and [31] mangoes')
 '(525) apples and (315) mangoes'
-# you can also use octal escapes
+# or, you can use octal escapes
 >>> re.sub(r'\[(\d+)\]', r'(\1\065)', '[52] apples and [31] mangoes')
 '(525) apples and (315) mangoes'
 
@@ -64,24 +54,24 @@ re.error: invalid group reference 15 at position 2
 >>> re.sub(r'[a-z]+', r'{\g&LT0>}', '[52] apples and [31] mangoes')
 '[52] {apples} {and} [31] {mangoes}'
 
-# note the use of '+' instead of '*' quantifier to avoid empty matching
+# note the use of '+' instead of '*' quantifier to avoid empty matches
 >>> re.sub(r'.+', r'Hi. \g&LT0>. Have a nice day', 'Hello world')
 'Hi. Hello world. Have a nice day'
 
-# duplicate first field and add it as last field
+# capture the first field and duplicate it as the last field
 >>> re.sub(r'\A([^,]+),.+', r'\g&LT0>,\1', 'fork,42,nice,3.14')
 'fork,42,nice,3.14,fork'
-</code></pre><p>Here's some examples for using backreferences within <strong>RE definition</strong>. Only <code>\N</code> syntax is available for use.<pre><code class=language-python># whole words that have at least one consecutive repeated character
->>> words = ['effort', 'flee', 'facade', 'oddball', 'rat', 'tool']
->>> [w for w in words if re.search(r'\b\w*(\w)\1\w*\b', w)]
-['effort', 'flee', 'oddball', 'tool']
+</code></pre><p>Here are some examples for using backreferences within <strong>RE definition</strong>. Only <code>\N</code> syntax is available for use.<pre><code class=language-python># words that have at least one consecutive repeated character
+>>> words = ['effort', 'FLEE', 'facade', 'oddball', 'rat', 'tool', 'a22b']
+>>> [w for w in words if re.search(r'(\w)\1', w)]
+['effort', 'FLEE', 'oddball', 'tool', 'a22b']
 
 # remove any number of consecutive duplicate words separated by space
 # note the use of quantifier on backreferences
 # use \W+ instead of space to cover cases like 'a;a&LT-;a'
 >>> re.sub(r'\b(\w+)( \1)+\b', r'\1', 'aa a a a 42 f_1 f_1 f_13.14')
 'aa a 42 f_1 f_13.14'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> Since <code>\g&LTN></code> syntax is not available in RE definition, use formats like hexadecimal escapes to avoid ambiguity between normal digit characters and backreferences.</blockquote><pre><code class=language-python>>>> s = 'abcdefghijklmna1d'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Since <code>\g&LTN></code> syntax is not available in RE definition, use formats like hexadecimal escapes to avoid ambiguity between normal digit characters and backreferences.<pre><code class=language-python>>>> s = 'abcdefghijklmna1d'
 
 # even though there's only one capture group, \11 will give an error
 >>> re.sub(r'(.).*\11', 'X', s)
@@ -97,7 +87,7 @@ re.error: invalid group reference 11 at position 6
 # use escapes again
 >>> re.sub(r'(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.)(.).*\1\x31', 'X', s)
 'Xd'
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> It may be obvious, but it should be noted that backreference will provide the string that was matched, not the RE that was inside the capture group. For example, if <code>(\d[a-f])</code> matches <code>3b</code>, then backreferencing will give <code>3b</code> and not any other valid match of RE like <code>8f</code>, <code>0a</code> etc. This is akin to how variables behave in programming, only the result of expression stays after variable assignment, not the expression itself. <code>regex</code> module supports <a href=./regex-module.html#subexpression-calls>Subexpression calls</a> to refer to the RE itself.</blockquote><h2 id=non-capturing-groups><a class=header href=#non-capturing-groups>Non-capturing groups</a></h2><p>Grouping has many uses like applying quantifier on a RE portion, creating terse RE by factoring common portions and so on. It also affects behavior of functions like <code>re.findall</code> and <code>re.split</code> as seen in <a href=./working-with-matched-portions.html#working-with-matched-portions>Working with matched portions</a> chapter.<p>When backreferencing is not required, you can use a non-capturing group to avoid undesired behavior. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is <code>(?:pat)</code> to define a non-capturing group. You'll see many more of such special groups starting with <code>(?</code> syntax later on.<pre><code class=language-python># normal capture group will hinder ability to get whole match
+</code></pre></blockquote><blockquote><p><img alt=warning src=images/warning.svg> It may be obvious, but it should be noted that backreference will provide the string that was matched, not the RE that was inside the capture group. For example, if <code>(\d[a-f])</code> matches <code>3b</code>, then backreferencing will give <code>3b</code> and not any other valid match of RE like <code>8f</code>, <code>0a</code> etc. This is akin to how variables behave in programming, only the result of expression stays after variable assignment, not the expression itself. The <code>regex</code> module supports <a href=./regex-module.html#subexpression-calls>Subexpression calls</a> to refer to the RE itself.</blockquote><h2 id=non-capturing-groups><a class=header href=#non-capturing-groups>Non-capturing groups</a></h2><p>Grouping has many uses like applying quantifiers on a RE portion, creating terse RE by factoring common portions and so on. It also affects the behavior of functions like <code>re.findall()</code> and <code>re.split()</code> as seen in the <a href=./working-with-matched-portions.html#working-with-matched-portions>Working with matched portions</a> chapter.<p>When backreferencing is not required, you can use a non-capturing group to avoid undesired behavior. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is <code>(?:pat)</code> to define a non-capturing group. You'll see many more of such special groups starting with <code>(?</code> syntax later on.<pre><code class=language-python># normal capture group will hinder ability to get whole match
 # non-capturing group to the rescue
 >>> re.findall(r'\b\w*(?:st|in)\b', 'cost akin more east run against')
 ['cost', 'akin', 'east', 'against']
@@ -112,7 +102,7 @@ re.error: invalid group reference 11 at position 6
 # using non-capturing groups, only relevant groups have to be tracked
 >>> re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1(\2)', '1,2,3,4,5,6,7')
 '1,2,3,(4),5,6,7'
-</code></pre><p>Referring to text matched by a capture group with a quantifier will give only the last match, not entire match. Use a capture group around the grouping and quantifier together to get the entire matching portion. In such cases, the inner grouping is an ideal candidate to use non-capturing group.<pre><code class=language-python>>>> s = 'hi 123123123 bye 456123456'
+</code></pre><p>Referring to the text matched by a capture group with a quantifier will give only the last match, not the entire match. Use a capture group around the grouping and quantifier together to get the entire matching portion. In such cases, the inner grouping is an ideal candidate to be specified as non-capturing.<pre><code class=language-python>>>> s = 'hi 123123123 bye 456123456'
 >>> re.findall(r'(123)+', s)
 ['123', '123']
 >>> re.findall(r'(?:123)+', s)
@@ -122,23 +112,23 @@ re.error: invalid group reference 11 at position 6
 'hi X bye 456X456'
 
 >>> row = 'one,2,3.14,42,five'
-# surround only fourth column with double quotes
+# surround only the fourth column with double quotes
 # note the loss of columns in the first case
 >>> re.sub(r'\A([^,]+,){3}([^,]+)', r'\1"\2"', row)
 '3.14,"42",five'
 >>> re.sub(r'\A((?:[^,]+,){3})([^,]+)', r'\1"\2"', row)
 'one,2,3.14,"42",five'
-</code></pre><p>However, there are situations where capture groups cannot be avoided. In such cases, you'd need to manually work with <code>re.Match</code> objects to get desired results.<pre><code class=language-python>>>> words = 'effort flee facade oddball rat tool'
+</code></pre><p>However, there are situations where capture groups cannot be avoided. In such cases, you'll have to manually work with <code>re.Match</code> objects to get the desired results.<pre><code class=language-python>>>> s = 'effort flee facade oddball rat tool a22b'
 # whole words containing at least one consecutive repeated character
 >>> repeat_char = re.compile(r'\b\w*(\w)\1\w*\b')
 
-# () in findall will only return text matched by capture groups
->>> repeat_char.findall(words)
-['f', 'e', 'l', 'o']
+# () in findall will only return the text matched by capture groups
+>>> repeat_char.findall(s)
+['f', 'e', 'l', 'o', '2']
 # finditer to the rescue
->>> m_iter = repeat_char.finditer(words)
+>>> m_iter = repeat_char.finditer(s)
 >>> [m[0] for m in m_iter]
-['effort', 'flee', 'oddball', 'tool']
+['effort', 'flee', 'oddball', 'tool', 'a22b']
 </code></pre><h2 id=named-capture-groups><a class=header href=#named-capture-groups>Named capture groups</a></h2><p>RE can get cryptic and difficult to maintain, even for seasoned programmers. There are a few constructs to help add clarity. One such is naming the capture groups and using that name for backreferencing instead of plain numbers. The syntax is <code>(?P&LTname>pat)</code> for naming the capture groups. The name used should be a valid Python identifier. Use <code>'name'</code> for <code>re.Match</code> objects, <code>\g&LTname></code> in replacement section and <code>(?P=name)</code> for backreferencing in RE definition. These will still behave as normal capture groups, so <code>\N</code> or <code>\g&LTN></code> numbering can be used as well.<pre><code class=language-python># giving names to first and second captured words
 >>> re.sub(r'(?P&LTfw>\w+),(?P&LTsw>\w+)', r'\g&LTsw>,\g&LTfw>', 'good,bad 42,24')
 'bad,good 24,42'
@@ -155,7 +145,7 @@ re.error: invalid group reference 11 at position 6
 'apple'
 >>> m.group('fruit')
 'apple'
-</code></pre><p>You can use <code>groupdict</code> method on the <code>re.Match</code> object to extract the portions matched by named capture groups as a <code>dict</code> object. The capture group name will be the <strong>key</strong> and the portion matched by the group will be the <strong>value</strong>.<pre><code class=language-python># single match
+</code></pre><p>You can use the <code>groupdict()</code> method on the <code>re.Match</code> object to extract the portions matched by named capture groups as a <code>dict</code> object. The capture group name will be the <strong>key</strong> and the portion matched by the group will be the <strong>value</strong>.<pre><code class=language-python># single match
 >>> details = '2018-10-25,car,2346'
 >>> re.search(r'(?P&LTdate>[^,]+),(?P&LTproduct>[^,]+)', details).groupdict()
 {'date': '2018-10-25', 'product': 'car'}
@@ -168,7 +158,25 @@ re.error: invalid group reference 11 at position 6
 >>> s = 'good,bad 42,24'
 >>> [m.groupdict() for m in re.finditer(r'(?P&LTfw>\w+),(?P&LTsw>\w+)', s)]
 [{'fw': 'good', 'sw': 'bad'}, {'fw': '42', 'sw': '24'}]
-</code></pre><h2 id=conditional-groups><a class=header href=#conditional-groups>Conditional groups</a></h2><p>This special grouping allows you to add a condition that depends on whether a capture group succeeded in matching. You can also add an optional else condition. The syntax as per the docs is shown below.<blockquote><p><code>(?(id/name)yes-pattern|no-pattern)</code></blockquote><p>Here <code>id</code> means the <code>N</code> used to backreference a capture group and <code>name</code> refers to the identifier used for a named capture group. Here's an example with <strong>yes-pattern</strong> alone being used. The task is to match elements containing word characters only or if it additionally starts with a double quote, it must end with a double quote.<pre><code class=language-python>>>> words = ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
+</code></pre><h2 id=atomic-grouping><a class=header href=#atomic-grouping>Atomic grouping</a></h2><p><code>(?>pat)</code> is an atomic group, where <code>pat</code> is the pattern you want to safeguard from further backtracking. You can think of it as a special group that is isolated from the other parts of the regular expression.<p>Here's an example with greedy quantifier:<pre><code class=language-python>>>> numbers = '42 314 001 12 00984'
+
+# 0* is greedy and the (?>) grouping prevents backtracking
+# same as: re.findall(r'0*+\d{3,}', numbers)
+>>> re.findall(r'(?>0*)\d{3,}', numbers)
+['314', '00984']
+</code></pre><p>Here's an example with non-greedy quantifier:<pre><code class=language-python>>>> ip = 'fig::mango::pineapple::guava::apples::orange'
+
+# this matches from the first '::' to the first occurrence of '::apple'
+>>> re.search(r'::.*?::apple', ip)[0]
+'::mango::pineapple::guava::apple'
+
+# '(?>::.*?::)' will match only from '::' to the very next '::'
+# '::mango::' fails because 'apple' isn't found afterwards
+# similarly '::pineapple::' fails
+# '::guava::' succeeds because it is followed by 'apple'
+>>> re.search(r'(?>::.*?::)apple', ip)[0]
+'::guava::apple'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> The <code>regex</code> module has a feature to match from right-to-left making it better suited than atomic grouping for certain cases. See the <a href=./regex-module.html#regexreverse-flag>regex.REVERSE flag</a> section for some examples.</blockquote><h2 id=conditional-groups><a class=header href=#conditional-groups>Conditional groups</a></h2><p>This special grouping allows you to add a condition that depends on whether a capture group succeeded in matching. You can also add an optional else condition. The syntax as per the docs is shown below.<blockquote><p><code>(?(id/name)yes-pattern|no-pattern)</code></blockquote><p>Here <code>id</code> means the <code>N</code> used to backreference a capture group and <code>name</code> refers to the identifier used for a named capture group. Here's an example with <strong>yes-pattern</strong> alone being used. The task is to match elements containing word characters only or if it additionally starts with a double quote, it must end with a double quote.<pre><code class=language-python>>>> words = ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
 >>> pat = re.compile(r'(")?\w+(?(1)")')
 >>> [w for w in words if pat.fullmatch(w)]
 ['"hi"', 'bye', '"good"', '42']
@@ -182,52 +190,52 @@ re.error: invalid group reference 11 at position 6
 # cannot simply use ? quantifier as they are independent, not constrained
 >>> [w for w in words if re.fullmatch(r'"?\w+"?', w)]
 ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
-# also, fullmatch plays a big role in avoiding partial match
+# also, fullmatch plays a big role in avoiding partial matches
 >>> [w for w in words if pat.search(w)]
 ['"hi"', 'bye', 'bad"', '"good"', '42', '"3']
 </code></pre><p>Here's an example with <strong>no-pattern</strong> as well.<pre><code class=language-python># filter elements containing word characters surrounded by ()
 # or, containing word characters separated by a hyphen
->>> words = ['(hi)', 'good-bye', 'bad', '(42)', '-oh', 'i-j', '(-)']
+>>> words = ['(hi)', 'good-bye', 'bad', '(42)', '-oh', 'i-j', '(-)', '(oh-no)']
 
 # same as: r'\(\w+\)|\w+-\w+'
 >>> pat = re.compile(r'(\()?\w+(?(1)\)|-\w+)')
 >>> [w for w in words if pat.fullmatch(w)]
 ['(hi)', 'good-bye', '(42)', 'i-j']
-</code></pre><p>Conditional groups have a very specific use case, and it is generally helpful for those cases. The main advantage is that it prevents pattern duplication, although that can also be achieved using <a href=./regex-module.html#subexpression-calls>Subexpression calls</a> with <code>regex</code> module. Another advantage is that if the common pattern uses capture groups, then the duplication alternation method will need different backreference numbers.<h2 id=matchexpand><a class=header href=#matchexpand>Match.expand</a></h2><p>The <code>expand</code> method on <code>re.Match</code> objects accepts syntax similar to the replacement section of <code>re.sub</code> function. The difference is that <code>expand</code> method returns only the string after backreference expansion, instead of entire input string with modified content.<pre><code class=language-python># re.sub vs Match.expand
+</code></pre><p>Conditional groups have a very specific use case, and it is generally helpful for those cases. The main advantage is that it prevents pattern duplication, although that can also be achieved using <a href=./regex-module.html#subexpression-calls>Subexpression calls</a> if you use the <code>regex</code> module.<p>Another issue with the duplication alternation method is that you'll have to deal with different backreference numbers if the common pattern uses capture groups.<h2 id=matchexpand><a class=header href=#matchexpand>Match.expand()</a></h2><p>The <code>expand()</code> method on <code>re.Match</code> objects accepts syntax similar to the replacement section of the <code>re.sub()</code> function. The difference is that the <code>expand()</code> method returns only the string after backreference expansion, instead of the entire input string with the modified content.<pre><code class=language-python># re.sub vs Match.expand
 >>> re.sub(r'w(.*)m', r'[\1]', 'awesome')
 'a[eso]e'
 >>> re.search(r'w(.*)m', 'awesome').expand(r'[\1]')
 '[eso]'
 
 # example with re.finditer
->>> dates = '2020/04/25,1986/03/02,77/12/31'
+>>> dates = '2023/04/25,1986/03/02,77/12/31'
 >>> m_iter = re.finditer(r'([^/]+)/([^/]+)/[^,]+,?', dates)
 # same as: [f'Month:{m[2]}, Year:{m[1]}' for m in m_iter]
 >>> [m.expand(r'Month:\2, Year:\1') for m in m_iter]
-['Month:04, Year:2020', 'Month:03, Year:1986', 'Month:12, Year:77']
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\N</code><td>backreference, gives matched portion of Nth capture group<tr><td><td>applies to both RE definition and replacement section<tr><td><td>possible values: <code>\1</code>, <code>\2</code> up to <code>\99</code> provided no more digits<tr><td><td><code>\0</code> and <code>\NNN</code> will be treated as octal escapes<tr><td><code>\g&LTN></code><td>backreference, gives matched portion of Nth capture group<tr><td><td>applies only to replacement section<tr><td><td>use escapes to prevent ambiguity in RE definition<tr><td><td>possible values: <code>\g&LT0></code>, <code>\g&LT1></code>, etc (not limited to 99)<tr><td><td><code>\g&LT0></code> refers to entire matched portion<tr><td><code>(?:pat)</code><td>non-capturing group<tr><td><td>useful wherever grouping is required, but not backreference<tr><td><code>(?P&LTname>pat)</code><td>named capture group<tr><td><td>refer as <code>'name'</code> in <code>re.Match</code> object<tr><td><td>refer as <code>(?P=name)</code> in RE definition<tr><td><td>refer as <code>\g&LTname></code> in replacement section<tr><td><td>can also use <code>\N</code> and <code>\g&LTN></code> format if needed<tr><td><code>groupdict</code><td>method applied on a <code>re.Match</code> object<tr><td><td>gives named capture group portions as a <code>dict</code><tr><td><code>(?(id/name)yes|no)</code><td>conditional group<tr><td><td>match <code>yes-pattern</code> if backreferenced group succeeded<tr><td><td>else, match <code>no-pattern</code> which is optional<tr><td><code>expand</code><td>method applied on a <code>re.Match</code> object<tr><td><td>accepts syntax like replacement section of <code>re.sub</code><tr><td><td>gives back only string after backreference expansion</table><p>This chapter showed how to use backreferences to refer to portion matched by capture groups in both RE definition and replacement section. When capture groups results in unwanted behavior change (ex: <code>re.findall</code> and <code>re.split</code>), you can use non-capturing groups instead. Named capture groups add clarity to patterns and you can use <code>groupdict</code> method on a <code>re.Match</code> object to get a <code>dict</code> of matched portions. Conditional groups allows you to take an action based on another capture group succeeding or failing to match. There are more special groups to be discussed in coming chapters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.<pre><code class=language-python>>>> ip = 'area not a _a2_ roar took 22'
+['Month:04, Year:2023', 'Month:03, Year:1986', 'Month:12, Year:77']
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\N</code><td>backreference, gives the matched portion of Nth capture group<tr><td><td>applies to both RE definition and replacement section<tr><td><td>possible values: <code>\1</code>, <code>\2</code> up to <code>\99</code> provided no more digits<tr><td><td><code>\0</code> and <code>\NNN</code> will be treated as octal escapes<tr><td><code>\g&LTN></code><td>backreference, gives the matched portion of Nth capture group<tr><td><td>applies only to replacement section<tr><td><td>use escapes to prevent ambiguity in RE definition<tr><td><td>possible values: <code>\g&LT0></code>, <code>\g&LT1></code>, etc (not limited to 99)<tr><td><td><code>\g&LT0></code> refers to the entire matched portion<tr><td><code>(?:pat)</code><td>non-capturing group<tr><td><td>useful wherever grouping is required, but not backreference<tr><td><code>(?P&LTname>pat)</code><td>named capture group<tr><td><td>refer as <code>'name'</code> in <code>re.Match</code> object<tr><td><td>refer as <code>(?P=name)</code> in RE definition<tr><td><td>refer as <code>\g&LTname></code> in replacement section<tr><td><td>can also use <code>\N</code> and <code>\g&LTN></code> format if needed<tr><td><code>groupdict()</code><td>method applied on a <code>re.Match</code> object<tr><td><td>gives named capture group portions as a <code>dict</code><tr><td><code>(?>pat)</code><td>atomic grouping, protects a pattern from backtracking<tr><td><code>(?(id/name)yes|no)</code><td>conditional group<tr><td><td>match <code>yes-pattern</code> if backreferenced group succeeded<tr><td><td>else, match <code>no-pattern</code> which is optional<tr><td><code>expand()</code><td>method applied on a <code>re.Match</code> object<tr><td><td>accepts syntax like replacement section of <code>re.sub()</code><tr><td><td>gives back only the string after backreference expansion</table></div><p>This chapter showed how to use backreferences to refer to the portion matched by capture groups in both RE definition and replacement sections. When capture groups lead to unwanted behavior change (ex: <code>re.findall()</code> and <code>re.split()</code>), you can use non-capturing groups instead. Named capture groups add clarity to patterns and you can use the <code>groupdict()</code> method on a <code>re.Match</code> object to get a <code>dict</code> of matched portions. Atomic groups help you to isolate a pattern from backtracking effects. Conditional groups allows you to take an action based on another capture group succeeding or failing to match. There are more special groups to be discussed in the coming chapters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Replace the space character that occurs after a word ending with <code>a</code> or <code>r</code> with a newline character.<pre><code class=language-python>>>> ip = 'area not a _a2_ roar took 22'
 
 >>> print(re.sub())      ##### add your solution here
 area
 not a
 _a2_ roar
 took 22
-</code></pre><p><strong>b)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> ip = 'sequoia subtle exhibit asset sets tests site'
+</code></pre><p><strong>b)</strong> Add <code>[]</code> around words starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> ip = 'sequoia subtle exhibit asset sets2 tests si_te'
 
 ##### add your solution here
-'sequoia [subtle] exhibit asset [sets] tests [site]'
-</code></pre><p><strong>c)</strong> Replace all whole words with <code>X</code> that start and end with the same word character. Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.<pre><code class=language-python>>>> ip = 'oreo not a _a2_ roar took 22'
+'sequoia [subtle] exhibit asset [sets2] tests [si_te]'
+</code></pre><p><strong>c)</strong> Replace all whole words with <code>X</code> that start and end with the same word character (irrespective of case). Single character word should get replaced with <code>X</code> too, as it satisfies the stated condition.<pre><code class=language-python>>>> ip = 'oreo not a _a2_ Roar took 22'
 
 ##### add your solution here
 'X not X X X took X'
-</code></pre><p><strong>d)</strong> Convert the given <strong>markdown</strong> headers to corresponding <strong>anchor</strong> tag. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?<pre><code class=language-python>>>> header1 = '# Regular Expressions'
+</code></pre><p><strong>d)</strong> Convert the given <em>markdown</em> headers to corresponding <em>anchor</em> tags. Consider the input to start with one or more <code>#</code> characters followed by space and word characters. The <code>name</code> attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?<pre><code class=language-python>>>> header1 = '# Regular Expressions'
 >>> header2 = '## Compiling regular expressions'
 
 ##### add your solution here for header1
 '# &LTa name="regular-expressions">&LT/a>Regular Expressions'
 ##### add your solution here for header2
 '## &LTa name="compiling-regular-expressions">&LT/a>Compiling regular expressions'
-</code></pre><p><strong>e)</strong> Convert the given <strong>markdown</strong> anchors to corresponding <strong>hyperlinks</strong>.<pre><code class=language-python>>>> anchor1 = '# &LTa name="regular-expressions">&LT/a>Regular Expressions'
+</code></pre><p><strong>e)</strong> Convert the given <em>markdown</em> anchors to corresponding <em>hyperlinks</em>.<pre><code class=language-python>>>> anchor1 = '# &LTa name="regular-expressions">&LT/a>Regular Expressions'
 >>> anchor2 = '## &LTa name="subexpression-calls">&LT/a>Subexpression calls'
 
 ##### add your solution here for anchor1
@@ -242,15 +250,15 @@ took 22
 
 ##### add your solution here
 13
-</code></pre><p><strong>g)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.<pre><code class=language-python>>>> ip = '1234 2323 453545354535 9339 11 60260260'
+</code></pre><p><strong>g)</strong> For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, <code>232323</code> should be changed to <code>23</code> and <code>897897</code> should be changed to <code>897</code>. If there are no repeats (for example <code>1234</code>) or if the repeats end prematurely (for example <code>12121</code>), it should not be changed.<pre><code class=language-python>>>> ip = '1234 2323 453545354535 9339 11 60260260'
 
 ##### add your solution here
 '1234 23 4535 9339 1 60260260'
-</code></pre><p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+</code></pre><p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 ##### add your solution here
 'wow hi-2 bye kite'
-</code></pre><p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+</code></pre><p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 ##### add your solution here
 'five hi-2 bye water'
@@ -278,18 +286,25 @@ took 22
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
 ##### add your solution here for row2
 {'name': 'rose', 'maths': '88', 'phy': '92'}
-</code></pre><p><strong>m)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with single substitution?<pre><code class=language-python>>>> ip = 'tiger imp goat eagle ant important'
+</code></pre><p><strong>m)</strong> Surround all whole words with <code>()</code>. Additionally, if the whole word is <code>imp</code> or <code>ant</code>, delete them. Can you do it with just a single substitution?<pre><code class=language-python>>>> ip = 'tiger imp goat eagle ant important'
 
 ##### add your solution here
 '(tiger) () (goat) (eagle) () (important)'
-</code></pre><p><strong>n)</strong> Filter all elements that contains a sequence of lowercase alphabets followed by <code>-</code> followed by digits. They can be optionally surrounded by <code>{{</code> and <code>}}</code>. Any partial match shouldn't be part of the output.<pre><code class=language-python>>>> ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
+</code></pre><p><strong>n)</strong> Filter all elements that contain a sequence of lowercase alphabets followed by <code>-</code> followed by digits. They can be optionally surrounded by <code>{{</code> and <code>}}</code>. Any partial match shouldn't be part of the output.<pre><code class=language-python>>>> ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
 
 ##### add your solution here
 ['{{apple-150}}', 'grape-87']
-</code></pre><p><strong>o)</strong> The given input string has sequences made up of words separated by <code>:</code> or <code>.</code> and such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character. For all such sequences, display only the last word followed by <code>-</code> followed by first word.<pre><code class=language-python>>>> ip = 'wow:Good:2_two:five: hi-2 bye kite.777.water.'
+</code></pre><p><strong>o)</strong> The given input string has sequences made up of words separated by <code>:</code> or <code>.</code> and such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character. For all such sequences, display only the last word followed by <code>-</code> followed by the first word.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 ##### add your solution here
 ['five-wow', 'water-kite']
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=character-class.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-common-tasks.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=character-class.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=interlude-common-tasks.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre><p><strong>p)</strong> Modify the given regular expression such that it gives the expected result.<pre><code class=language-python>>>> ip = '( S:12 E:5 S:4 and E:123 ok S:100 & E:10 S:1 - E:2 S:42 E:43 )'
+
+# wrong output
+>>> re.findall(r'S:\d+.*?E:\d{2,}', ip)
+['S:12 E:5 S:4 and E:123', 'S:100 & E:10', 'S:1 - E:2 S:42 E:43']
+
+# expected output
+##### add your solution here
+['S:4 and E:123', 'S:100 & E:10', 'S:42 E:43']
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=character-class.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-common-tasks.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=character-class.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=interlude-common-tasks.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

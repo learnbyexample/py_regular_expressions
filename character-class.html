@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Character class - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Character class - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,121 +10,134 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html class=active><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a class=active href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=character-class><a class=header href=#character-class>Character class</a></h1><p>This chapter will discuss how to create your own custom placeholders to match limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.<h2 id=custom-character-sets><a class=header href=#custom-character-sets>Custom character sets</a></h2><p>Characters enclosed inside <code>[]</code> metacharacters is a character class (or set). It will result in matching any one of those characters once. It is similar to using single character alternations inside a grouping, but without the drawbacks of a capture group. In addition, character classes have their own versions of metacharacters and provide special predefined sets for common use cases. Quantifiers are applicable to character classes as well.<pre><code class=language-python>>>> words = ['cute', 'cat', 'cot', 'coat', 'cost', 'scuttle']
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=character-class><a class=header href=#character-class>Character class</a></h1><p>This chapter will discuss how to create your own custom placeholders to match limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.<h2 id=custom-character-sets><a class=header href=#custom-character-sets>Custom character sets</a></h2><p>Characters enclosed inside <code>[]</code> metacharacters is a character class (or set). It will result in matching any one of those characters once. It is similar to using single character alternations inside a grouping, but terser and without the drawbacks of a capture group. In addition, character classes have their own versions of metacharacters and provide special predefined sets for common use cases. Quantifiers are applicable to character classes as well.<pre><code class=language-python>>>> words = ['cute', 'cat', 'cot', 'coat', 'cost', 'scuttle']
 
 # same as: r'cot|cut' or r'c(o|u)t'
 >>> [w for w in words if re.search(r'c[ou]t', w)]
 ['cute', 'cot', 'scuttle']
 
-# same as: r'(a|e|o)+t'
->>> re.sub(r'[aeo]+t', 'X', 'meeting cute boat site foot')
-'mXing cute bX site fX'
-</code></pre><h2 id=range-of-characters><a class=header href=#range-of-characters>Range of characters</a></h2><p>Character classes have their own metacharacters to help define the sets succinctly. Metacharacters outside of character classes like <code>^</code>, <code>$</code>, <code>()</code> etc either don't have special meaning or have completely different one inside the character classes. First up, the <code>-</code> metacharacter that helps to define a range of characters instead of having to specify them all individually.<pre><code class=language-python># all digits
+# r'.(a|e|o)+t' won't work as capture group prevents getting the entire match
+>>> re.findall(r'.[aeo]+t', 'meeting cute boat site foot cat net')
+['meet', 'boat', 'foot', 'cat', 'net']
+</code></pre><h2 id=range-of-characters><a class=header href=#range-of-characters>Range of characters</a></h2><p>Character classes have their own metacharacters to help define the sets succinctly. Metacharacters outside of character classes like <code>^</code>, <code>$</code>, <code>()</code> etc either don't have special meaning or have a completely different one inside the character classes. First up, the <code>-</code> metacharacter that helps to define a range of characters instead of having to specify them all individually.<pre><code class=language-python># all digits
 >>> re.findall(r'[0-9]+', 'Sample123string42with777numbers')
 ['123', '42', '777']
 
 # whole words made up of lowercase alphabets and digits only
->>> re.findall(r'\b[a-z0-9]+\b', 'coat Bin food tar12 best')
+>>> re.findall(r'\b[a-z0-9]+\b', 'coat Bin food tar12 best Apple fig_42')
 ['coat', 'food', 'tar12', 'best']
 
-# whole words made up of lowercase alphabets, but starting with 'p' to 'z'
->>> re.findall(r'\b[p-z][a-z]*\b', 'coat tin food put stoop best')
+# whole words starting with 'p' to 'z' and having lowercase alphabets only
+>>> re.findall(r'\b[p-z][a-z]*\b', 'coat tin food put stoop best fig_42 Pet')
 ['tin', 'put', 'stoop']
 
 # whole words made up of only 'a' to 'f' and 'p' to 't' lowercase alphabets
->>> re.findall(r'\b[a-fp-t]+\b', 'coat tin food put stoop best')
+>>> re.findall(r'\b[a-fp-t]+\b', 'coat tin food put stoop best fig_42 Pet')
 ['best']
 </code></pre><h2 id=negating-character-sets><a class=header href=#negating-character-sets>Negating character sets</a></h2><p>Next metacharacter is <code>^</code> which has to specified as the first character of the character class. It negates the set of characters, so all characters other than those specified will be matched. As highlighted earlier, handle negative logic with care, you might end up matching more than you wanted.<pre><code class=language-python># all non-digits
 >>> re.findall(r'[^0-9]+', 'Sample123string42with777numbers')
 ['Sample', 'string', 'with', 'numbers']
 
-# remove first two columns where : is delimiter
->>> re.sub(r'\A([^:]+:){2}', '', 'foo:123:bar:baz', count=1)
-'bar:baz'
+# remove the first two columns where : is delimiter
+>>> re.sub(r'\A([^:]+:){2}', '', 'apple:123:banana:cherry')
+'banana:cherry'
 
-# deleting characters at end of string based on a delimiter
->>> re.sub(r'=[^=]+\Z', '', 'foo=42; baz=123', count=1)
-'foo=42; baz'
+# deleting characters at the end of string based on a delimiter
+>>> re.sub(r'=[^=]+\Z', '', 'apple=42; cherry=123')
+'apple=42; cherry'
 
->>> dates = '2020/04/25,1986/Mar/02,77/12/31'
-# Note that the third character set negates comma as well
+>>> dates = '2023/04/25,1986/Mar/02,77/12/31'
+# note that the third character set negates comma
 # and comma is matched optionally outside the capture groups
->>> re.findall(r'([^/]+)/([^/]+)/([^/,]+),?', dates)
-[('2020', '04', '25'), ('1986', 'Mar', '02'), ('77', '12', '31')]
-</code></pre><p>Sometimes, it is easier to use positive character class and negate the <code>re.search</code> result instead of using negated character class.<pre><code class=language-python>>>> words = ['tryst', 'fun', 'glyph', 'pity', 'why']
+>>> re.findall(r'([^/]+)/([^/]+)/([^,]+),?', dates)
+[('2023', '04', '25'), ('1986', 'Mar', '02'), ('77', '12', '31')]
+</code></pre><p>Sometimes, it is easier to use positive character class and negate the <code>re.search()</code> result instead of using a negated character class.<pre><code class=language-python>>>> words = ['tryst', 'fun', 'glyph', 'pity', 'why']
 
 # words not containing vowel characters
 >>> [w for w in words if re.search(r'\A[^aeiou]+\Z', w)]
 ['tryst', 'glyph', 'why']
 
-# easier to write and maintain, note the 'not' logical operator
+# easier to write and maintain, note the use of 'not' logical operator
 # but this'll match empty strings too unlike the previous solution
+# you can add ' and w' to the 'if' expression to avoid empty matches
 >>> [w for w in words if not re.search(r'[aeiou]', w)]
 ['tryst', 'glyph', 'why']
-</code></pre><h2 id=matching-metacharacters-literally><a class=header href=#matching-metacharacters-literally>Matching metacharacters literally</a></h2><p>Similar to other metacharacters, prefix <code>\</code> to character class metacharacters to match them literally. Some of them can be achieved by different placement as well.<p><code>-</code> should be first or last character or escaped using <code>\</code>.<pre><code class=language-python>>>> re.findall(r'\b[a-z-]{2,}\b', 'ab-cd gh-c 12-423')
+</code></pre><h2 id=matching-metacharacters-literally><a class=header href=#matching-metacharacters-literally>Matching metacharacters literally</a></h2><p>You can prefix a <code>\</code> to metacharacters to match them literally. Some of them can be achieved by different placement as well.<p><code>-</code> should be the first or the last character or escaped using <code>\</code>.<pre><code class=language-python>>>> re.findall(r'\b[a-z-]{2,}\b', 'ab-cd gh-c 12-423')
 ['ab-cd', 'gh-c']
 
 >>> re.findall(r'\b[a-z\-0-9]{2,}\b', 'ab-cd gh-c 12-423')
 ['ab-cd', 'gh-c', '12-423']
-</code></pre><p><code>^</code> should be other than first character or escaped using <code>\</code>.<pre><code class=language-python>>>> re.findall(r'a[+^]b', 'f*(a^b) - 3*(a+b)')
+</code></pre><p><code>^</code> should be other than the first character or escaped using <code>\</code>.<pre><code class=language-python>>>> re.findall(r'a[+^]b', 'f*(a^b) - 3*(a+b)')
 ['a^b', 'a+b']
 
 >>> re.findall(r'a[\^+]b', 'f*(a^b) - 3*(a+b)')
 ['a^b', 'a+b']
-</code></pre><p><code>[</code> can be escaped with <code>\</code> or placed as last character. <code>]</code> can be escaped with <code>\</code> or placed as first character.<pre><code class=language-python>>>> re.search(r'[]a-z0-9[]+', 'words[5] = tea')[0]
+</code></pre><p><code>[</code> can be escaped with <code>\</code> or placed as the last character. <code>]</code> can be escaped with <code>\</code> or placed as the first character.<pre><code class=language-python>>>> s = 'words[5] = tea'
+
+>>> re.search(r'[]a-z0-9[]+', s)[0]
 'words[5]'
 
->>> re.search(r'[a-z\[\]0-9]+', 'words[5] = tea')[0]
+>>> re.search(r'[a-z\[\]0-9]+', s)[0]
 'words[5]'
-</code></pre><p><code>\</code> should be escaped using <code>\</code>.<pre><code class=language-python># note that the input string is using raw-string format
+
+>>> re.sub(r'[][]', '', s)
+'words5 = tea'
+</code></pre><p><code>\</code> should be escaped using <code>\</code>.<pre><code class=language-python># note that the input string is also using the raw-string format
 >>> print(re.search(r'[a\\b]+', r'5ba\babc2')[0])
 ba\bab
 </code></pre><h2 id=escape-sequence-sets><a class=header href=#escape-sequence-sets>Escape sequence sets</a></h2><p>Commonly used character sets have predefined escape sequences:<ul><li><code>\w</code> is similar to <code>[a-zA-Z0-9_]</code> for matching word characters (recall the definition for word boundaries)<li><code>\d</code> is similar to <code>[0-9]</code> for matching digit characters<li><code>\s</code> is similar to <code>[ \t\n\r\f\v]</code> for matching whitespace characters</ul><p>These escape sequences can be used as a standalone sequence or inside a character class.<pre><code class=language-python>>>> re.split(r'\d+', 'Sample123string42with777numbers')
 ['Sample', 'string', 'with', 'numbers']
 
->>> re.findall(r'\d+', 'foo=5, bar=3; x=83, y=120')
+>>> re.findall(r'\d+', 'apple=5, banana=3; x=83, y=120')
 ['5', '3', '83', '120']
 
 >>> ''.join(re.findall(r'\b\w', 'sea eat car rat eel tea'))
 'secret'
 
->>> re.findall(r'[\w\s]+', 'tea sea-pit sit-lean\tbean')
-['tea sea', 'pit sit', 'lean\tbean']
+>>> re.findall(r'[\w\s]+', 'tea sea-Pit Sit;(lean_2\tbean_3)')
+['tea sea', 'Pit Sit', 'lean_2\tbean_3']
 </code></pre><p>And negative logic strikes again. Use <code>\W</code>, <code>\D</code>, and <code>\S</code> respectively for their negated sets.<pre><code class=language-python>>>> re.sub(r'\D+', '-', 'Sample123string42with777numbers')
 '-123-42-777-'
 
->>> re.sub(r'\W+', '', 'foo=5, bar=3; x=83, y=120')
-'foo5bar3x83y120'
+>>> re.sub(r'\W+', ':', 'apple=5, banana=3; x=83, y=120')
+'apple:5:banana:3:x:83:y:120'
 
-# this output can be achieved with normal string method too, guess which one!
->>> re.findall(r'\S+', '   1..3  \v\f  foo_baz 42\tzzz   \r\n1-2-3  ')
-['1..3', 'foo_baz', '42', 'zzz', '1-2-3']
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> As mentioned before, the examples and description assume input made up of ASCII characters only, unless otherwise specified. These sets would behave differently depending on flags used. See <a href=./unicode.html#unicode>Unicode</a> chapter for more details.</blockquote><h2 id=numeric-ranges><a class=header href=#numeric-ranges>Numeric ranges</a></h2><p>Character classes can also be used to construct numeric ranges. However, it is easy to miss corner cases and some ranges are complicated to design.<pre><code class=language-python># numbers between 10 to 29
+# this output can be achieved with normal string method too, guess which one?!
+>>> re.findall(r'\S+', '   7..9  \v\f  fig_tea 42\tzzz   \r\n1-2-3  ')
+['7..9', 'fig_tea', '42', 'zzz', '1-2-3']
+</code></pre><p>Here's an example with possessive quantifiers. The goal is to match strings whose first non-whitespace character is not a <code>#</code> character. A matching string should have at least one non-<code>#</code> character, so empty strings and those with only whitespace characters should not match.<pre><code class=language-python>>>> ip = ['#comment', 'c = "#"', '\t #comment', 'fig', '', ' \t ']
+
+# this solution with greedy quantifiers fails because \s* can backtrack
+# and [^#] can match a whitespace character as well
+>>> [s for s in ip if re.search(r'\A\s*[^#]', s)]
+['c = "#"', '\t #comment', 'fig', ' \t ']
+
+# this works because \s*+ will not give back any whitespace characters
+>>> [s for s in ip if re.search(r'\A\s*+[^#]', s)]
+['c = "#"', 'fig']
+
+# workaround if possessive quantifiers are not supported
+>>> [s for s in ip if re.search(r'\A\s*[^#\s]', s)]
+['c = "#"', 'fig']
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> As mentioned before, the examples and description assume input made up of ASCII characters only, unless otherwise specified. These sets would behave differently depending on the flags used. See the <a href=./unicode.html#unicode>Unicode</a> chapter for more details.</blockquote><h2 id=numeric-ranges><a class=header href=#numeric-ranges>Numeric ranges</a></h2><p>Character classes can also be used to construct numeric ranges. However, it is easy to miss corner cases and some ranges are complicated to design.<pre><code class=language-python># numbers between 10 to 29
 >>> re.findall(r'\b[12]\d\b', '23 154 12 26 98234')
 ['23', '12', '26']
 
@@ -136,24 +146,25 @@ ba\bab
 ['154', '98234']
 
 # numbers >= 100 if there are leading zeros
->>> re.findall(r'\b0*[1-9]\d{2,}\b', '0501 035 154 12 26 98234')
+>>> re.findall(r'\b0*+\d{3,}\b', '0501 035 154 12 26 98234')
 ['0501', '154', '98234']
-</code></pre><p>If numeric range is difficult to construct, better to convert the matched portion to appropriate numeric format first.<pre><code class=language-python># numbers < 350
->>> m_iter = re.finditer(r'\d+', '45 349 651 593 4 204')
+</code></pre><p>If a numeric range is difficult to construct, one alternative is to convert the matched portion to the appropriate numeric format first.<pre><code class=language-python># numbers < 350
+>>> m_iter = re.finditer(r'\d+', '45 349 651 593 4 204 350')
 >>> [m[0] for m in m_iter if int(m[0]) < 350]
 ['45', '349', '4', '204']
 
-# note that return value is string and s[0] is used to get matched portion
+# s is a re.Match object, so s[0] gives the matched portion
+# note that the return value is a string
 >>> def num_range(s):
 ...     return '1' if 200 <= int(s[0]) <= 650 else '0'
 ... 
 
 # numbers between 200 and 650
-# note that only function name is supplied, () is not used
-# re.Match object is automatically passed as argument
+# recall that only the function name should be supplied
+# re.Match object is automatically passed as the argument
 >>> re.sub(r'\d+', num_range, '45 349 651 593 4 204')
 '0 1 0 1 0 1'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> See <a href=https://www.regular-expressions.info/numericranges.html>regular-expressions: matching numeric ranges</a> for more examples.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>[ae;o]</code><td>match any of these characters once<tr><td><td>quantifiers are applicable to character classes too<tr><td><code>[3-7]</code><td>range of characters from <code>3</code> to <code>7</code><tr><td><code>[^=b2]</code><td>match other than <code>=</code> or <code>b</code> or <code>2</code><tr><td><code>[a-z-]</code><td><code>-</code> should be first/last or escaped using <code>\</code> to match literally<tr><td><code>[+^]</code><td><code>^</code> shouldn't be first character or escaped using <code>\</code><tr><td><code>[a\[\]]</code><td><code>[</code> can be escaped with <code>\</code> or placed as last character<tr><td><code>[a\[\]]</code><td><code>]</code> can be escaped with <code>\</code> or placed as first character<tr><td><code>[a\\b]</code><td><code>\</code> should be escaped using <code>\</code><tr><td><code>\w</code><td>similar to <code>[a-zA-Z0-9_]</code> for matching word characters<tr><td><code>\d</code><td>similar to <code>[0-9]</code> for matching digit characters<tr><td><code>\s</code><td>similar to <code>[ \t\n\r\f\v]</code> for matching whitespace characters<tr><td><td><code>\W</code>, <code>\D</code>, and <code>\S</code> for their opposites respectively</table><p>This chapter focused on how to create custom placeholders for limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside <code>[]</code> and on the other, you can have multiple alternations grouped inside <code>()</code> including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending with <code>s</code> or <code>y</code> or <code>le</code>.<pre><code class=language-python>>>> items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'handle']
+</code></pre><blockquote><p><img alt=info src=images/info.svg> See <a href=https://www.regular-expressions.info/numericranges.html>regular-expressions: matching numeric ranges</a> for more examples.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>[ae;o]</code><td>match any of these characters once<tr><td><td>quantifiers are applicable to character classes too<tr><td><code>[3-7]</code><td>range of characters from <code>3</code> to <code>7</code><tr><td><code>[^=b2]</code><td>match other than <code>=</code> or <code>b</code> or <code>2</code><tr><td><code>[a-z-]</code><td><code>-</code> should be the first/last or escaped using <code>\</code> to match literally<tr><td><code>[+^]</code><td><code>^</code> shouldn't be the first character or escaped using <code>\</code><tr><td><code>[a\[\]]</code><td><code>[</code> can be escaped with <code>\</code> or placed as the last character<tr><td><code>[a\[\]]</code><td><code>]</code> can be escaped with <code>\</code> or placed as the first character<tr><td><code>[a\\b]</code><td><code>\</code> should be escaped using <code>\</code><tr><td><code>\w</code><td>similar to <code>[a-zA-Z0-9_]</code> for matching word characters<tr><td><code>\d</code><td>similar to <code>[0-9]</code> for matching digit characters<tr><td><code>\s</code><td>similar to <code>[ \t\n\r\f\v]</code> for matching whitespace characters<tr><td><td><code>\W</code>, <code>\D</code>, and <code>\S</code> for their opposites respectively</table></div><p>This chapter focused on how to create custom placeholders for limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside <code>[]</code> and on the other, you can have multiple alternations grouped inside <code>()</code> including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending immediately with <code>s</code> or <code>y</code> or <code>le</code>.<pre><code class=language-python>>>> items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'hand-icy', 'handle']
 
 ##### add your solution here
 ['handy', 'hands', 'handle']
@@ -191,10 +202,10 @@ ba\bab
 'a/b + c%d - (e+*4)'
 >>> remove_parentheses.sub('', str3)
 'Hi there. Nice day(a'
-</code></pre><p><strong>g)</strong> For the list <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.<pre><code class=language-python>>>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+</code></pre><p><strong>g)</strong> For the list <code>words</code>, filter all elements not starting with <code>e</code> or <code>p</code> or <code>u</code>.<pre><code class=language-python>>>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', '(pest)']
 
 ##### add your solution here
-['surrender', 'newer', 'door']
+['surrender', 'newer', 'door', '(pest)']
 </code></pre><p><strong>h)</strong> For the list <code>words</code>, filter all elements not containing <code>u</code> or <code>w</code> or <code>ee</code> or <code>-</code>.<pre><code class=language-python>>>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
 
 ##### add your solution here
@@ -217,7 +228,7 @@ ba\bab
 ['lion', 'Ink', 'onion', 'Nice']
 >>> pat.split(str2)
 ['**', 'star', '**']
-</code></pre><p><strong>k)</strong> Delete all occurrences of the sequence <code>&LTcharacters></code> where <code>characters</code> is one or more non <code>></code> characters and cannot be empty.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
+</code></pre><p><strong>k)</strong> Delete all occurrences of the sequence <code>&LTcharacters></code> where <code>characters</code> is one or more non <code>></code> characters and cannot be empty.<pre><code class=language-python>>>> ip = 'a&LTap\nple> 1<> b&LTbye> 2<> c&LTcat>'
 
 ##### add your solution here
 'a 1<> b 2<> c'
@@ -248,7 +259,7 @@ inns
 4
 >>> max_nested_braces('a*{b+c*{e*3.14}}}')
 -1
-</code></pre><p><strong>o)</strong> By default, <code>str.split</code> method will split on whitespace and remove empty strings from the result. Which <code>re</code> module function would you use to replicate this functionality?<pre><code class=language-python>>>> ip = ' \t\r  so  pole\t\t\t\n\nlit in to \r\n\v\f  '
+</code></pre><p><strong>o)</strong> By default, the <code>str.split()</code> method will split on whitespace and remove empty strings from the result. Which <code>re</code> module function would you use to replicate this functionality?<pre><code class=language-python>>>> ip = ' \t\r  so  pole\t\t\t\n\nlit in to \r\n\v\f  '
 
 >>> ip.split()
 ['so', 'pole', 'lit', 'in', 'to']
@@ -261,10 +272,8 @@ inns
 
 ##### add your solution here
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
-</code></pre><p><strong>q)</strong> Filter all elements whose first non-whitespace character is not a <code>#</code> character. Any element made up of only whitespace characters should be ignored as well.<pre><code class=language-python>>>> items = ['    #comment', '\t\napple #42', '#oops', 'sure', 'no#1', '\t\r\f']
+</code></pre><p><strong>q)</strong> Filter all whole elements with optional whitespaces at the start followed by three to five non-digit characters. Whitespaces at the start should not be part of the calculation for non-digit characters.<pre><code class=language-python>>>> items = ['\t \ncat', 'goal', ' oh', 'he-he', 'goal2', 'ok ', 'sparrow']
 
 ##### add your solution here
-['\t\napple #42', 'sure', 'no#1']
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=working-with-matched-portions.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=groupings-and-backreferences.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=working-with-matched-portions.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=groupings-and-backreferences.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+['\t \ncat', 'goal', 'he-he', 'ok ']
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=working-with-matched-portions.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=groupings-and-backreferences.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=working-with-matched-portions.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=groupings-and-backreferences.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

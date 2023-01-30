@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Anchors - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Anchors - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,32 +10,25 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html class=active><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a class=active href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=anchors><a class=header href=#anchors>Anchors</a></h1><p>Now that you're familiar with RE syntax and couple of <code>re</code> module functions, the next step is to know about the special features of regular expressions. In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of <code>re</code> module. In later chapters, you'll learn how to define your own rules for restriction.<p>These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as <strong>metacharacters</strong> in regular expressions parlance. In case you need to match those characters literally, you need to escape them with a <code>\</code> character (discussed in <a href=./escaping-metacharacters.html#escaping-metacharacters>Escaping metacharacters</a> chapter).<h2 id=string-anchors><a class=header href=#string-anchors>String anchors</a></h2><p>This restriction is about qualifying a RE to match only at the start or the end of an input string. These provide functionality similar to the <code>str</code> methods <code>startswith</code> and <code>endswith</code>. First up, the escape sequence <code>\A</code> which restricts the matching to the start of string.<pre><code class=language-python># \A is placed as a prefix to the search term
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=anchors><a class=header href=#anchors>Anchors</a></h1><p>Now that you're familiar with RE syntax and couple of <code>re</code> module functions, the next step is to know about the special features of regular expressions. In this chapter, you'll be learning about qualifying a pattern. Instead of matching anywhere in the given input string, restrictions can be specified. For now, you'll see the ones that are already part of the <code>re</code> module. In later chapters, you'll learn how to define custom rules.<p>These restrictions are made possible by assigning special meaning to certain characters and escape sequences. The characters with special meaning are known as <strong>metacharacters</strong> in regular expressions parlance. In case you need to match those characters literally, you need to escape them with a <code>\</code> character (discussed in the <a href=./escaping-metacharacters.html#escaping-metacharacters>Escaping metacharacters</a> chapter).<h2 id=string-anchors><a class=header href=#string-anchors>String anchors</a></h2><p>This restriction is about qualifying a RE to match only at the start or the end of an input string. These provide functionality similar to the <code>str</code> methods <code>startswith()</code> and <code>endswith()</code>. First up, the escape sequence <code>\A</code> which restricts the matching to the start of string.<pre><code class=language-python># \A is placed as a prefix to the search term
 >>> bool(re.search(r'\Acat', 'cater'))
 True
 >>> bool(re.search(r'\Acat', 'concatenation'))
@@ -54,7 +44,7 @@ True
 >>> bool(re.search(r'are\Z', 'nearest'))
 False
 
->>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
+>>> words = ['surrender', 'unicorn', 'newer', 'door', 'erase', 'eel', 'pest']
 >>> [w for w in words if re.search(r'er\Z', w)]
 ['surrender', 'newer']
 >>> [w for w in words if re.search(r't\Z', w)]
@@ -70,25 +60,25 @@ False
 'cater'
 >>> re.sub(r'\Z', 'er', 'hack')
 'hacker'
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> Use the optional start and end index arguments for <code>Pattern.search</code> method with caution. They are not equivalent to string slicing. For example, specifying a greater than <code>0</code> start index when using <code>\A</code> is always going to return <code>False</code>. This is because, as far as the <code>search</code> method is concerned, only the search space is narrowed and the anchor positions haven't changed. When slicing is used, you are creating an entirely new string object with new anchor positions.</blockquote><pre><code class=language-python>>>> word_pat = re.compile(r'\Aat')
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> Use the optional start and end index arguments of the <code>Pattern.search()</code> method with caution. They are not equivalent to string slicing. For example, specifying a greater than <code>0</code> start index when using <code>\A</code> is always going to return <code>False</code>. This is because, as far as the <code>search()</code> method is concerned, only the search space has been narrowed — the anchor positions haven't changed. When slicing is used, you are creating an entirely new string object with new anchor positions.<pre><code class=language-python>>>> word_pat = re.compile(r'\Aat')
 
 >>> bool(word_pat.search('cater', 1))
 False
 >>> bool(word_pat.search('cater'[1:]))
 True
-</code></pre><h2 id=refullmatch><a class=header href=#refullmatch>re.fullmatch</a></h2><p>Combining both the start and end string anchors, you can restrict the matching to the whole string. Similar to comparing strings using the <code>==</code> operator.<pre><code class=language-python>>>> word_pat = re.compile(r'\Acat\Z')
+</code></pre></blockquote><h2 id=refullmatch><a class=header href=#refullmatch>re.fullmatch()</a></h2><p>Combining both the start and end string anchors, you can restrict the matching to the whole string. The effect is similar to comparing strings using the <code>==</code> operator.<pre><code class=language-python>>>> word_pat = re.compile(r'\Acat\Z')
 
 >>> bool(word_pat.search('cat'))
 True
 >>> bool(word_pat.search('concatenation'))
 False
-</code></pre><p>You can also use <code>re.fullmatch</code> function to ensure the pattern matches only the whole input string and not just a part of the input. This may not seem useful with features introduced so far, but when you have a complex RE pattern with multiple alternatives, this function is quite handy. The argument list is same as the <code>re.search</code> function.<blockquote><p><code>re.fullmatch(pattern, string, flags=0)</code></blockquote><pre><code class=language-python>>>> word_pat = re.compile(r'cat', flags=re.I)
+</code></pre><p>You can also use the <code>re.fullmatch()</code> function to ensure the pattern matches only the whole input string and not just a part of the input. This may not seem useful with features introduced so far, but when you have a complex RE pattern with multiple alternatives, this function is quite handy. The argument list is same as the <code>re.search()</code> function.<blockquote><p><code>re.fullmatch(pattern, string, flags=0)</code></blockquote><pre><code class=language-python>>>> word_pat = re.compile(r'cat', flags=re.I)
 
 >>> bool(word_pat.fullmatch('Cat'))
 True
 >>> bool(word_pat.fullmatch('Scatter'))
 False
-</code></pre><h2 id=line-anchors><a class=header href=#line-anchors>Line anchors</a></h2><p>A string input may contain single or multiple lines. The newline character <code>\n</code> is used as the line separator. There are two line anchors, <code>^</code> metacharacter for matching the start of line and <code>$</code> for matching the end of line. If there are no newline characters in the input string, these will behave same as <code>\A</code> and <code>\Z</code> respectively.<pre><code class=language-python>>>> pets = 'cat and dog'
+</code></pre><h2 id=line-anchors><a class=header href=#line-anchors>Line anchors</a></h2><p>A string input may contain single or multiple lines. The newline character <code>\n</code> is considered as the line separator. There are two line anchors. <code>^</code> metacharacter for matching the start of line and <code>$</code> for matching the end of line. If there are no newline characters in the input string, these will behave exactly the same as <code>\A</code> and <code>\Z</code> respectively.<pre><code class=language-python>>>> pets = 'cat and dog'
 
 >>> bool(re.search(r'^cat', pets))
 True
@@ -99,7 +89,7 @@ False
 True
 >>> bool(re.search(r'^dog$', pets))
 False
-</code></pre><p>By default, the input string is considered as a single line, even if multiple newline characters are present. In such cases, the <code>$</code> metacharacter can match both the end of string and just before <code>\n</code> if it is the last character. However, <code>\Z</code> will always match the end of string, irrespective of the characters present.<pre><code class=language-python>>>> greeting = 'hi there\nhave a nice day\n'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> <img alt=warning src=images/warning.svg> By default, the input string is considered as a single line, even if multiple newline characters are present. In such cases, the <code>$</code> metacharacter can match both the end of string and just before <code>\n</code> if it is the last character. However, <code>\Z</code> will always match the end of string, irrespective of the characters present.<pre><code class=language-python>>>> greeting = 'hi there\nhave a nice day\n'
 
 >>> bool(re.search(r'day$', greeting))
 True
@@ -110,7 +100,7 @@ True
 False
 >>> bool(re.search(r'day\n\Z', greeting))
 True
-</code></pre><p>To indicate that the input string should be treated as multiple lines, you need to enable the <code>re.MULTILINE</code> flag (or <code>re.M</code> short form).<pre><code class=language-python># check if any line in the string starts with 'top'
+</code></pre></blockquote><p>To indicate that the input string should be treated as multiple lines, you need to enable the <code>re.MULTILINE</code> flag (<code>re.M</code> for short).<pre><code class=language-python># check if any line in the string starts with 'top'
 >>> bool(re.search(r'^top', 'hi hello\ntop spot', flags=re.M))
 True
 
@@ -123,11 +113,10 @@ True
 >>> [e for e in elements if re.search(r'are$', e, flags=re.M)]
 ['spare\ntool', 'dare']
 
-# check if any complete line in the string is 'par'
+# check if any whole line in the string is 'par'
 >>> bool(re.search(r'^par$', 'spare\npar\ndare', flags=re.M))
 True
-</code></pre><p>Just like string anchors, you can use the line anchors by themselves as a pattern.<pre><code class=language-python># note that there is no \n at the end of this input string
->>> ip_lines = 'catapults\nconcatenate\ncat'
+</code></pre><p>Just like string anchors, you can use the line anchors by themselves as a pattern.<pre><code class=language-python>>>> ip_lines = 'catapults\nconcatenate\ncat'
 >>> print(re.sub(r'^', '* ', ip_lines, flags=re.M))
 * catapults
 * concatenate
@@ -137,21 +126,21 @@ True
 catapults.
 concatenate.
 cat.
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> If you are dealing with Windows OS based text files, you'll have to convert <code>\r\n</code> line endings to <code>\n</code> first. Which is easily handled by many of the Python functions and methods. For example, you can specify which line ending to use for <code>open</code> function, the <code>split</code> string method handles all whitespaces by default and so on. Or, you can handle <code>\r</code> as optional character with quantifiers (see <a href=./dot-metacharacter-and-quantifiers.html#dot-metacharacter-and-quantifiers>Dot metacharacter and Quantifiers</a> chapter).</blockquote><h2 id=word-anchors><a class=header href=#word-anchors>Word anchors</a></h2><p>The third type of restriction is word anchors. Alphabets (irrespective of case), digits and the underscore character qualify as word characters. You might wonder why there are digits and underscores as well, why not only alphabets? This comes from variable and function naming conventions — typically alphabets, digits and underscores are allowed. So, the definition is more oriented to programming languages than natural ones.<p>The escape sequence <code>\b</code> denotes a word boundary. This works for both the start of word and end of word anchoring. Start of word means either the character prior to the word is a non-word character or there is no character (start of string). Similarly, end of word means the character after the word is a non-word character or no character (end of string). This implies that you cannot have word boundary <code>\b</code> without a word character.<pre><code class=language-python>>>> words = 'par spar apparent spare part'
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> If you are dealing with Windows OS based text files, you may have to convert <code>\r\n</code> line endings to <code>\n</code> first. Python functions and methods make it easier to handle such situations. For example, you can specify which line ending to use for the <code>open()</code> function, the <code>split()</code> string method handles all whitespaces by default and so on. Or, you can handle <code>\r</code> as an optional character with quantifiers (see the <a href=./dot-metacharacter-and-quantifiers.html#dot-metacharacter-and-quantifiers>Dot metacharacter and Quantifiers</a> chapter for details).</blockquote><h2 id=word-anchors><a class=header href=#word-anchors>Word anchors</a></h2><p>The third type of restriction is word anchors. Alphabets (irrespective of case), digits and the underscore character qualify as word characters. You might wonder why there are digits and underscores as well, why not just alphabets? This comes from variable and function naming conventions — typically alphabets, digits and underscores are allowed. So, the definition is more oriented to programming languages than natural ones.<p>The escape sequence <code>\b</code> denotes a word boundary. This works for both the start and end of word anchoring. Start of word means either the character prior to the word is a non-word character or there is no character (start of string). Similarly, end of word means the character after the word is a non-word character or no character (end of string). This implies that you cannot have word boundary <code>\b</code> without a word character.<pre><code class=language-python>>>> words = 'par spar apparent spare part'
 
 # replace 'par' irrespective of where it occurs
 >>> re.sub(r'par', 'X', words)
 'X sX apXent sXe Xt'
-# replace 'par' only at start of word
+# replace 'par' only at the start of word
 >>> re.sub(r'\bpar', 'X', words)
 'X spar apparent spare Xt'
-# replace 'par' only at end of word
+# replace 'par' only at the end of word
 >>> re.sub(r'par\b', 'X', words)
 'X sX apparent spare part'
 # replace 'par' only if it is not part of another word
 >>> re.sub(r'\bpar\b', 'X', words)
 'X spar apparent spare part'
-</code></pre><p>You can get lot more creative with using word boundary as a pattern by itself:<pre><code class=language-python># space separated words to double quoted csv
+</code></pre><p>Using word boundary as a pattern by itself can yield creative solutions:<pre><code class=language-python># space separated words to double quoted csv
 # note the use of 'replace' string method for normal string replacement
 # 'translate' method can also be used
 >>> words = 'par spar apparent spare part'
@@ -163,27 +152,27 @@ cat.
 
 # make a programming statement more readable
 # shown for illustration purpose only, won't work for all cases
->>> re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2')
-' foo_baz = num1 + 35 * 42 / num2 '
+>>> re.sub(r'\b', ' ', 'output=num1+35*42/num2')
+' output = num1 + 35 * 42 / num2 '
 # excess space at start/end of string can be stripped off
 # later you'll learn how to add a qualifier so that strip is not needed
->>> re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2').strip()
-'foo_baz = num1 + 35 * 42 / num2'
+>>> re.sub(r'\b', ' ', 'output=num1+35*42/num2').strip()
+'output = num1 + 35 * 42 / num2'
 </code></pre><p>The word boundary has an opposite anchor too. <code>\B</code> matches wherever <code>\b</code> doesn't match. This duality will be seen with some other escape sequences too. Negative logic is handy in many text processing situations. But use it with care, you might end up matching things you didn't intend!<pre><code class=language-python>>>> words = 'par spar apparent spare part'
 
-# replace 'par' if it is not start of word
+# replace 'par' if it is not at the start of word
 >>> re.sub(r'\Bpar', 'X', words)
 'par sX apXent sXe part'
-# replace 'par' at end of word but not whole word 'par'
+# replace 'par' at the end of word but not the whole word 'par'
 >>> re.sub(r'\Bpar\b', 'X', words)
 'par sX apparent spare part'
-# replace 'par' if it is not end of word
+# replace 'par' if it is not at the end of word
 >>> re.sub(r'par\B', 'X', words)
 'par spar apXent sXe Xt'
 # replace 'par' if it is surrounded by word characters
 >>> re.sub(r'\Bpar\B', 'X', words)
 'par spar apXent sXe part'
-</code></pre><p>Here's some standalone pattern usage to compare and contrast the two word anchors.<pre><code class=language-python>>>> re.sub(r'\b', ':', 'copper')
+</code></pre><p>Here are some standalone pattern usage to compare and contrast the two word anchors.<pre><code class=language-python>>>> re.sub(r'\b', ':', 'copper')
 ':copper:'
 >>> re.sub(r'\B', ':', 'copper')
 'c:o:p:p:e:r'
@@ -192,7 +181,7 @@ cat.
 '----- hello -----'
 >>> re.sub(r'\B', ' ', '-----hello-----')
 ' - - - - -h e l l o- - - - - '
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\A</code><td>restricts the match to the start of string<tr><td><code>\Z</code><td>restricts the match to the end of string<tr><td><code>re.fullmatch</code><td>ensures pattern matches the entire input string<tr><td><td><code>re.fullmatch(pattern, string, flags=0)</code><tr><td><code>\n</code><td>line separator, dos-style files need special attention<tr><td>metacharacter<td>characters with special meaning in RE<tr><td><code>^</code><td>restricts the match to the start of line<tr><td><code>$</code><td>restricts the match to the end of line<tr><td><code>re.MULTILINE</code> or <code>re.M</code><td>flag to treat input as multiline string<tr><td><code>\b</code><td>restricts the match to the start/end of words<tr><td><td>word characters: alphabets, digits, underscore<tr><td><code>\B</code><td>matches wherever <code>\b</code> doesn't match</table><p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with other string methods and generator expressions. Practice, experience and imagination would help you construct creative solutions. In coming chapters, you'll see more applications of anchors. The <code>regex</code> module also supports <a href=./regex-module.html#g-anchor>\G anchor</a> which is best understood in combination with other regular expression features.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Check if the given strings start with <code>be</code>.<pre><code class=language-python>>>> line1 = 'be nice'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\A</code><td>restricts the match to the start of string<tr><td><code>\Z</code><td>restricts the match to the end of string<tr><td><code>re.fullmatch()</code><td>ensures pattern matches the entire input string<tr><td><td><code>re.fullmatch(pattern, string, flags=0)</code><tr><td><code>\n</code><td>line separator, dos-style files may need special attention<tr><td>metacharacter<td>characters with special meaning in RE<tr><td><code>^</code><td>restricts the match to the start of line<tr><td><code>$</code><td>restricts the match to the end of line<tr><td><code>re.MULTILINE</code> or <code>re.M</code><td>flag to treat input as multiline string<tr><td><code>\b</code><td>restricts the match to the start and end of words<tr><td><td>word characters: alphabets, digits, underscore<tr><td><code>\B</code><td>matches wherever <code>\b</code> doesn't match</table></div><p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with other string methods and expressions. Practice, experience and imagination would help you construct creative solutions. In the coming chapters, you'll see examples for anchors in combination with other features.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Check if the given strings start with <code>be</code>.<pre><code class=language-python>>>> line1 = 'be nice'
 >>> line2 = '"best!"'
 >>> line3 = 'better?'
 >>> line4 = 'oh no\nbear spotted'
@@ -207,44 +196,47 @@ False
 True
 >>> bool(pat.search(line4))
 False
-</code></pre><p><strong>b)</strong> For the given input string, change only whole word <code>red</code> to <code>brown</code><pre><code class=language-python>>>> words = 'bred red spread credible'
+</code></pre><p><strong>b)</strong> For the given input string, change only the whole word <code>red</code> to <code>brown</code>.<pre><code class=language-python>>>> words = 'bred red spread credible red.'
 
 >>> re.sub()     ##### add your solution here
-'bred brown spread credible'
-</code></pre><p><strong>c)</strong> For the given input list, filter all elements that contains <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake4b']
+'bred brown spread credible brown.'
+</code></pre><p><strong>c)</strong> For the given input list, filter all elements that contain <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake42', '_42_']
 
 >>> [w for w in words if re.search()]   ##### add your solution here
-['hi42bye', 'nice1423', 'cool_42a']
+['hi42bye', 'nice1423', 'cool_42a', '_42_']
 </code></pre><p><strong>d)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 >>> [e for e in items if ]        ##### add your solution here
 ['lovely', '2 lonely', 'dent']
 </code></pre><p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of a line.<pre><code class=language-python>>>> para = '''\
+... (mall) call ball pall
 ... ball fall wall tall
 ... mall call ball pall
 ... wall mall ball fall
-... mallet wallet malls'''
+... mallet wallet malls
+... mall:call:ball:pall'''
 
 >>> print(re.sub())    ##### add your solution here
+(mall) call ball pall
 ball fall wall tall
 1234 call ball pall
 wall mall ball fall
 mallet wallet malls
+1234:call:ball:pall
 </code></pre><p><strong>f)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
 ##### add your solution here
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 </code></pre><p><strong>g)</strong> For the given input list, filter all whole elements <code>12\nthree</code> irrespective of case.<pre><code class=language-python>>>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
-##### add your solution here
-['12\nThree', '12\nthree']
-</code></pre><p><strong>h)</strong> For the given input list, replace <code>hand</code> with <code>X</code> for all elements that start with <code>hand</code> followed by at least one word character.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
 ##### add your solution here
-['Xed', 'hand', 'Xy', 'unhanded', 'Xle', 'hand-2']
+['12\nThree', '12\nthree']
+</code></pre><p><strong>h)</strong> For the given input list, replace <code>hand</code> with <code>X</code> for all elements that start with <code>hand</code> followed by at least one word character.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
+
+##### add your solution here
+['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
 </code></pre><p><strong>i)</strong> For the given input list, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
 ##### add your solution here
 ['handXd', 'hand', 'handy', 'handlX', 'hand-2']
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=re-introduction.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=alternation-and-grouping.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=re-introduction.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=alternation-and-grouping.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=re-introduction.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=alternation-and-grouping.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=re-introduction.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=alternation-and-grouping.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

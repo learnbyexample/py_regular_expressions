@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Working with matched portions - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Working with matched portions - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,80 +10,74 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html class=active><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a class=active href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=working-with-matched-portions><a class=header href=#working-with-matched-portions>Working with matched portions</a></h1><p>Having seen a few features that can match varying text, you'll learn how to extract and work with those matching portions in this chapter. First, you'll learn in detail about <code>re.Match</code> object. And then you'll learn about <code>re.findall</code> and <code>re.finditer</code> functions to get all the matches instead of just the first match. You'll also learn a few tricks like using functions in replacement section of <code>re.sub</code> and the use of <code>re.subn</code> function.<h2 id=rematch-object><a class=header href=#rematch-object>re.Match object</a></h2><p>The <code>re.search</code> and <code>re.fullmatch</code> functions return a <code>re.Match</code> object from which various details can be extracted like the matched portion of string, location of matched portion, etc. Note that you get the details only for the first match, you'll see multiple matches later in this chapter. Here's some example with <code>re.Match</code> output.<pre><code class=language-python>>>> re.search(r'ab*c', 'abc ac adc abbbc')
-&LTre.Match object; span=(0, 3), match='abc'>
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=working-with-matched-portions><a class=header href=#working-with-matched-portions>Working with matched portions</a></h1><p>You have already seen a few features that can match varying text. In this chapter, you'll learn how to extract and work with those matching portions. First, the <code>re.Match</code> object will be discussed in detail. And then you'll learn about <code>re.findall()</code> and <code>re.finditer()</code> functions to get all the matches instead of just the first match. You'll also learn a few tricks like using functions in the replacement section of <code>re.sub()</code>. And finally, some examples for the <code>re.subn()</code> function.<h2 id=rematch-object><a class=header href=#rematch-object>re.Match object</a></h2><p>The <code>re.search()</code> and <code>re.fullmatch()</code> functions return a <code>re.Match</code> object from which various details can be extracted like the matched portion of string, location of the matched portion, etc. Note that you'll get the details only for the first match. Working with multiple matches will be covered later in this chapter. Here are some examples with <code>re.Match</code> output.<pre><code class=language-python>>>> re.search(r'so+n', 'too soon a song snatch')
+&LTre.Match object; span=(4, 8), match='soon'>
 
 >>> re.fullmatch(r'1(2|3)*4', '1233224')
 &LTre.Match object; span=(0, 7), match='1233224'>
-</code></pre><p>The details in the output above are for quick reference only. There are methods and attributes that you can apply on the <code>re.Match</code> object to get only the exact information you need. Use <code>span</code> method to get the <strong>starting</strong> and <strong>ending + 1</strong> indexes of the matching portion.<pre><code class=language-python>>>> sentence = 'that is quite a fabricated tale'
+</code></pre><p>The details in the output above are for quick reference only. There are methods and attributes that you can apply on the <code>re.Match</code> object to get only the exact information you need. Use the <code>span()</code> method to get the <strong>starting</strong> and <strong>ending + 1</strong> indexes of the matching portion.<pre><code class=language-python>>>> sentence = 'that is quite a fabricated tale'
 >>> m = re.search(r'q.*?t', sentence)
 >>> m.span()
 (8, 12)
 >>> m.span()[0]
 8
 
-# you can also directly use the method without using intermediate variable
+# you can also directly apply the method instead of intermediate variables
 >>> re.search(r'q.*?t', sentence).span()
 (8, 12)
-</code></pre><p>The <code>()</code> grouping is also known as a <strong>capture group</strong>. It has multiple uses, one of which is the ability to work with matched portions of those groups. When capture groups are used with <code>re.search</code> or <code>re.fullmatch</code>, they can be retrieved using an index or <code>group</code> method on the <code>re.Match</code> object. The first element is always the entire matched portion and rest of the elements are for capture groups if they are present. The leftmost <code>(</code> in the pattern will get group number <code>1</code>, second leftmost <code>(</code> will get group number <code>2</code> and so on. Use <code>groups</code> method to get a tuple of only the capture group portions.<pre><code class=language-python>>>> re.search(r'b.*d', 'abc ac adc abbbc')
-&LTre.Match object; span=(1, 9), match='bc ac ad'>
+</code></pre><p>The <code>()</code> grouping is also known as a <strong>capture group</strong>. It has multiple uses, one of which is the ability to work with matched portions of those groups. When capture groups are used with <code>re.search()</code> or <code>re.fullmatch()</code>, they can be retrieved using an index or the <code>group()</code> method on the <code>re.Match</code> object. The first element is always the entire matched portion and the rest of the elements are for capture groups (if they are present).<pre><code class=language-python>>>> motivation = 'Doing is often better than thinking of doing.'
+
+>>> re.search(r'of.*ink', motivation)
+&LTre.Match object; span=(9, 32), match='often better than think'>
+
 # retrieving entire matched portion using index
->>> re.search(r'b.*d', 'abc ac adc abbbc')[0]
-'bc ac ad'
-# retrieving entire matched portion using 'group' method
-# you can also skip passing '0' as that is the default value
->>> re.search(r'b.*d', 'abc ac adc abbbc').group(0)
-'bc ac ad'
+>>> re.search(r'of.*ink', motivation)[0]
+'often better than think'
 
-# capture group example
->>> m = re.fullmatch(r'a(.*?) (.*)d(.*)c', 'abc ac adc abbbc')
-# to get matched portion of second capture group, can also use m.group(2)
+# retrieving the entire matched portion using the 'group' method
+# passing '0' is optional as that is the default value
+>>> re.search(r'of.*ink', motivation).group(0)
+'often better than think'
+</code></pre><p>Here's an example with capture groups. The leftmost <code>(</code> in the pattern will get group number <code>1</code>, second leftmost <code>(</code> will get group number <code>2</code> and so on. Use the <code>groups()</code> method to get a tuple of only the capture group portions.<pre><code class=language-python>>>> purchase = 'coffee:100g tea:250g sugar:75g chocolate:50g'
+>>> m = re.search(r':(.*?)g.*?:(.*?)g.*?chocolate:(.*?)g', purchase)
+
+# matched portion of the second capture group, can also use m.group(2)
 >>> m[2]
-'ac a'
-# to get matched portion of third and first capture groups
+'250'
+# matched portion of third and first capture groups
 >>> m.group(3, 1)
-('c abbb', 'bc')
-# to get a tuple of all the capture groups
-# note that this will not have the entire matched portion
+('50', '100')
+# tuple of all the capture groups (entire matched portion won't be present)
 >>> m.groups()
-('bc', 'ac a', 'c abbb')
-</code></pre><p>To get the matching locations for the capture groups, pass the group number to <code>span</code> method. You can also use <code>start</code> and <code>end</code> methods to get either of those locations. Passing <code>0</code> is optional when you need the information for the entire matched portion.<pre><code class=language-python>>>> m = re.search(r'w(.*)me', 'awesome')
+('100', '250', '50')
+</code></pre><p>To get the matching locations for the capture groups, pass the group number to the <code>span()</code> method. You can also use the <code>start()</code> and <code>end()</code> methods to get either of those locations. Passing <code>0</code> is optional when you need the information for the entire matched portion.<pre><code class=language-python>>>> m = re.fullmatch(r'aw(.*)me', 'awesome')
 
->>> m.span()
-(1, 7)
 >>> m.span(1)
 (2, 5)
 
 >>> m.start()
-1
+0
 >>> m.end(1)
 5
-</code></pre><blockquote><p><img src=images/info.svg alt=info> There are many more methods and attributes available. See <a href=https://docs.python.org/3/library/re.html#match-objects>docs.python: Match Objects</a> for details.</blockquote><pre><code class=language-python>>>> pat = re.compile(r'hi.*bye')
+</code></pre><blockquote><p><img alt=info src=images/info.svg> There are many more methods and attributes available. See <a href=https://docs.python.org/3/library/re.html#match-objects>docs.python: Match Objects</a> for details.<pre><code class=language-python>>>> pat = re.compile(r'hi.*bye')
 >>> m = pat.search('This is goodbye then', 1, 15)
 >>> m.pos
 1
@@ -96,120 +87,131 @@
 re.compile('hi.*bye')
 >>> m.string
 'This is goodbye then'
-</code></pre><p><code>groupdict</code> method will be covered in <a href=./groupings-and-backreferences.html#named-capture-groups>Named capture groups</a> section and <code>expand</code> method will be covered in <a href=./groupings-and-backreferences.html#matchexpand>Match.expand</a> section.<h2 id=assignment-expressions><a class=header href=#assignment-expressions>Assignment expressions</a></h2><p>Since Python 3.8 introduced assignment expressions, it has become easier to work with matched portions in conditional statements.<pre><code class=language-python># print capture group content only if the pattern matches
+</code></pre></blockquote><p><code>groupdict()</code> method will be covered in the <a href=./groupings-and-backreferences.html#named-capture-groups>Named capture groups</a> section and the <code>expand()</code> method will be covered in the <a href=./groupings-and-backreferences.html#matchexpand>Match.expand()</a> section.<h2 id=assignment-expressions><a class=header href=#assignment-expressions>Assignment expressions</a></h2><p>Introduced in Python 3.8, assignment expressions has made it easier to work with matched portions in conditional structures. Here's an example to print the capture group content only if the pattern matches:<pre><code class=language-python># no output since there's no match
 >>> if m := re.search(r'(.*)s', 'oh!'):
 ...     print(m[1])
 ... 
+
+# a match is found in this case
 >>> if m := re.search(r'(.*)s', 'awesome'):
 ...     print(m[1])
 ... 
 awe
-</code></pre><p>This comes up often when you are processing a text file and the instructions depend on which pattern matches.<pre><code class=language-python>>>> text = ['type: fruit', 'date: 2020/04/28']
+</code></pre><p>Here's a practical example that comes up often when you are processing a text file.<pre><code class=language-python>>>> text = ['type: fruit', 'date: 2023/04/28']
 >>> for ip in text:
-...     if m := re.search(r'type: (.*)', ip):
+...     if m := re.search(r'type: (.+)', ip):
 ...         print(m[1])
 ...     elif m := re.search(r'date: (.*?)/(.*?)/', ip):
 ...         print(f'month: {m[2]}, year: {m[1]}')
 ... 
 fruit
-month: 04, year: 2020
-</code></pre><blockquote><p><img src=images/info.svg alt=info> Did you know that <a href=https://www.python.org/dev/peps/pep-0572/#capturing-condition-values>PEP 572</a> uses <code>re</code> module as one of the examples for assignment expressions?</blockquote><h2 id=using-functions-in-replacement-section><a class=header href=#using-functions-in-replacement-section>Using functions in replacement section</a></h2><p>Functions can be used in replacement section of <code>re.sub</code> instead of a string. A <code>re.Match</code> object will be passed to the function as argument. In <a href=./groupings-and-backreferences.html#backreference>Backreference</a> section, you'll also learn how to directly reference the matching portions in replacement section.<pre><code class=language-python># m[0] will contain entire matched portion
+month: 04, year: 2023
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Did you know that <a href=https://peps.python.org/pep-0572/#capturing-condition-values>PEP 572</a> gives <code>re</code> module as one of the use cases for assignment expressions?</blockquote><h2 id=using-functions-in-the-replacement-section><a class=header href=#using-functions-in-the-replacement-section>Using functions in the replacement section</a></h2><p>Functions can be used in the replacement section of <code>re.sub()</code> instead of a string. A <code>re.Match</code> object will be passed to the function as argument. In the <a href=./groupings-and-backreferences.html#backreference>Backreference</a> section, you'll learn an easier way to directly reference the matching portions in the replacement section.<pre><code class=language-python># m[0] will contain entire matched portion
 # a^2 and b^2 for the two matches in this example
->>> re.sub(r'(a|b)\^2', lambda m: m[0].upper(), 'a^2 + b^2 - C*3')
-'A^2 + B^2 - C*3'
+>>> re.sub(r'(a|b)\^2', lambda m: m[0].upper(), 'a^2 + b^2 - c*3')
+'A^2 + B^2 - c*3'
 
->>> re.sub(r'2|3', lambda m: str(int(m[0])**2), 'a^2 + b^2 - C*3')
-'a^4 + b^4 - C*9'
-</code></pre><p>Note that the output of the function has to be a string, otherwise you'll get an error. You'll see more examples with <code>lambda</code> and user defined functions in coming sections (for example, see <a href=./character-class.html#numeric-ranges>Numeric ranges</a> section).<h2 id=using-dict-in-replacement-section><a class=header href=#using-dict-in-replacement-section>Using dict in replacement section</a></h2><p>Using a function in replacement section, you can specify a <code>dict</code> variable to determine the replacement string based on the matched text.<pre><code class=language-python># one to one mappings
->>> d = { '1': 'one', '2': 'two', '4': 'four' }
+>>> re.sub(r'2|3', lambda m: str(int(m[0])**2), 'a^2 + b^2 - c*3')
+'a^4 + b^4 - c*9'
+
+>>> re.sub(r'a|b|c', lambda m: m[0]*4, 'a^2 + b^2 - c*3')
+'aaaa^2 + bbbb^2 - cccc*3'
+</code></pre><p>Note that the output of the function has to be a string, otherwise you'll get an error. You'll see more examples with <code>lambda</code> and user defined functions in the coming sections (for example, see the <a href=./character-class.html#numeric-ranges>Numeric ranges</a> section).<h2 id=using-dict-in-the-replacement-section><a class=header href=#using-dict-in-the-replacement-section>Using dict in the replacement section</a></h2><p>Using a function in the replacement section, you can specify a <code>dict</code> variable to determine the replacement string based on the matched text.<pre><code class=language-python># one to one mappings
+>>> d = {'1': 'one', '2': 'two', '4': 'four'}
 >>> re.sub(r'1|2|4', lambda m: d[m[0]], '9234012')
 '9two3four0onetwo'
 
-# if the matched text doesn't exist as a key, default value will be used
-# you'll later learn a much easier way to specify all digits
->>> re.sub(r'0|1|2|3|4|5|6|7|8|9', lambda m: d.get(m[0], 'X'), '9234012')
+# if the matched text doesn't exist as a key, the default value will be used
+# recall that \d matches all the digit characters
+>>> re.sub(r'\d', lambda m: d.get(m[0], 'X'), '9234012')
 'XtwoXfourXonetwo'
-</code></pre><p>For swapping two or more portions without using intermediate result, using a <code>dict</code> object is recommended.<pre><code class=language-python>>>> swap = { 'cat': 'tiger', 'tiger': 'cat' }
+</code></pre><p>For swapping two or more portions without using intermediate results, using a <code>dict</code> object is recommended.<pre><code class=language-python>>>> swap = {'cat': 'tiger', 'tiger': 'cat'}
 >>> words = 'cat tiger dog tiger cat'
 
 >>> re.sub(r'cat|tiger', lambda m: swap[m[0]], words)
 'tiger cat dog cat tiger'
 </code></pre><p>For <code>dict</code> objects that have many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first.<pre><code class=language-python># note that numbers have been converted to strings here
 # otherwise, you'd need to convert it in the lambda code
->>> d = { 'hand': '1', 'handy': '2', 'handful': '3', 'a^b': '4' }
+>>> d = {'hand': '1', 'handy': '2', 'handful': '3', 'a^b': '4'}
 
 # sort the keys to handle precedence rules
->>> words = sorted(d.keys(), key=len, reverse=True)
+>>> words = sorted(d, key=len, reverse=True)
 # add anchors and flags if needed
 >>> pat = re.compile('|'.join(re.escape(s) for s in words))
 >>> pat.pattern
 'handful|handy|hand|a\\^b'
 >>> pat.sub(lambda m: d[m[0]], 'handful hand pin handy (a^b)')
 '3 1 pin 2 (4)'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> If you have thousands of key-value pairs, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>github: flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=refindall><a class=header href=#refindall>re.findall</a></h2><p>The <code>re.findall</code> function returns all the matched portions as a list of strings.<blockquote><p><code>re.findall(pattern, string, flags=0)</code></blockquote><p>The first argument is the RE pattern you want to test and extract against the input string, which is the second argument. <code>flags</code> is optional. Here's some examples.<pre><code class=language-python>>>> re.findall(r'ab*c', 'abc ac adc abbbc')
-['abc', 'ac', 'abbbc']
+</code></pre><blockquote><p><img alt=info src=images/info.svg> If you have thousands of key-value pairs, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=refindall><a class=header href=#refindall>re.findall()</a></h2><p>The <code>re.findall()</code> function returns all the matched portions as a list of strings.<blockquote><p><code>re.findall(pattern, string, flags=0)</code></blockquote><p>The first argument is the RE pattern you want to test and extract against the input string, which is the second argument. <code>flags</code> is optional. Here are some examples.<pre><code class=language-python>>>> re.findall(r'so*n', 'too soon a song snatch')
+['soon', 'son', 'sn']
 
->>> re.findall(r'ab+c', 'abc ac adc abbbc')
-['abc', 'abbbc']
+>>> re.findall(r'so+n', 'too soon a song snatch')
+['soon', 'son']
 
 >>> s = 'PAR spar apparent SpArE part pare'
 >>> re.findall(r'\bs?pare?\b', s, flags=re.I)
 ['PAR', 'spar', 'SpArE', 'pare']
-</code></pre><p>It is useful for debugging purposes as well, for example to see the potential matches before applying substitution.<pre><code class=language-python>>>> re.findall(r't.*a', 'that is quite a fabricated tale')
-['that is quite a fabricated ta']
+</code></pre><p>It is useful for debugging purposes as well. For example, to see the potential matches before applying substitution.<pre><code class=language-python>>>> s = 'green:3.14:teal::brown:oh!:blue'
 
->>> re.findall(r't.*?a', 'that is quite a fabricated tale')
-['tha', 't is quite a', 'ted ta']
-</code></pre><p>Presence of capture groups affects <code>re.findall</code> in different ways depending on number of groups used.<ul><li>If a single capture group is used, output will be a list of strings. Each element will have only the portion matched by the capture group<li>If more than one capture group is used, output will be a list of tuples. Each element will be a tuple containing portions matched by all the capturing groups</ul><p>For both cases, any pattern outside the capture groups will not be represented in the output. Also, you'll get an empty string if a particular capture group didn't match any character.<pre><code class=language-python># without capture groups
->>> re.findall(r'ab*c', 'abc ac adc abbc xabbbcz bbb bc abbbbbc')
-['abc', 'ac', 'abbc', 'abbbc', 'abbbbbc']
-# with single capture group
->>> re.findall(r'a(b*)c', 'abc ac adc abbc xabbbcz bbb bc abbbbbc')
-['b', '', 'bb', 'bbb', 'bbbbb']
+>>> re.findall(r':.*:', s)
+[':3.14:teal::brown:oh!:']
+
+>>> re.findall(r':.*?:', s)
+[':3.14:', '::', ':oh!:']
+
+>>> re.findall(r':.*+:', s)
+[]
+</code></pre><p>Presence of capture groups affects <code>re.findall()</code> in different ways depending on the number of groups used:<ul><li>If a single capture group is used, output will be a list of strings. Each element will have only the portion matched by the capture group<li>If more than one capture group is used, output will be a list of tuples. Each element will be a tuple containing portions matched by all the capturing groups</ul><p>For both cases, any pattern outside the capture groups will not be represented in the output. Also, you'll get an empty string if a particular capture group didn't match any character.<pre><code class=language-python>>>> purchase = 'coffee:100g tea:250g sugar:75g chocolate:50g salt:g'
+# without capture groups
+>>> re.findall(r':.*?g', purchase)
+[':100g', ':250g', ':75g', ':50g', ':g']
+# single capture group
+>>> re.findall(r':(.*?)g', purchase)
+['100', '250', '75', '50', '']
 
 # multiple capture groups
-# note that last date didn't match because there's no comma at the end
+# note that the last date didn't match because there's no comma at the end
 # you'll later learn better ways to match such patterns
->>> re.findall(r'(.*?)/(.*?)/(.*?),', '2020/04/25,1986/Mar/02,77/12/31')
-[('2020', '04', '25'), ('1986', 'Mar', '02')]
-</code></pre><p>See <a href=./groupings-and-backreferences.html#non-capturing-groups>Non-capturing groups</a> section if you need to use groupings without affecting <code>re.findall</code> output.<h2 id=refinditer><a class=header href=#refinditer>re.finditer</a></h2><p>Use <code>re.finditer</code> to get an iterator object with each element as <code>re.Match</code> objects for each matched portion.<blockquote><p><code>re.finditer(pattern, string, flags=0)</code></blockquote><pre><code class=language-python># output of finditer is an iterator object
->>> re.finditer(r'ab+c', 'abc ac adc abbbc')
+>>> re.findall(r'(.*?)/(.*?)/(.*?),', '2023/04/25,1986/Mar/02,77/12/31')
+[('2023', '04', '25'), ('1986', 'Mar', '02')]
+</code></pre><p>See the <a href=./groupings-and-backreferences.html#non-capturing-groups>Non-capturing groups</a> section if you need to use groupings without the behavior shown above.<h2 id=refinditer><a class=header href=#refinditer>re.finditer()</a></h2><p>You can use the <code>re.finditer()</code> function to get an iterator object with each element as <code>re.Match</code> objects for the matched portions.<blockquote><p><code>re.finditer(pattern, string, flags=0)</code></blockquote><p>Here's an example:<pre><code class=language-python># output of finditer is an iterator object
+>>> re.finditer(r'so+n', 'song too soon snatch')
 &LTcallable_iterator object at 0x7fb65e103438>
 
 # each element is a re.Match object corresponding to the matched portion
->>> m_iter = re.finditer(r'ab+c', 'abc ac adc abbbc')
+>>> m_iter = re.finditer(r'so+n', 'song too soon snatch')
 >>> for m in m_iter:
 ...     print(m)
 ... 
-&LTre.Match object; span=(0, 3), match='abc'>
-&LTre.Match object; span=(11, 16), match='abbbc'>
-</code></pre><p>Use the <code>re.Match</code> object's methods and attributes as needed. You can replicate <code>re.findall</code> functionality as well.<pre><code class=language-python>>>> m_iter = re.finditer(r'ab+c', 'abc ac adc abbbc')
+&LTre.Match object; span=(0, 3), match='son'>
+&LTre.Match object; span=(9, 13), match='soon'>
+</code></pre><p>Use the <code>re.Match</code> object's methods and attributes as needed. You can also replicate the <code>re.findall()</code> functionality.<pre><code class=language-python>>>> m_iter = re.finditer(r'so+n', 'song too soon snatch')
 >>> for m in m_iter:
 ...     print(m[0].upper(), m.span(), sep='\t')
 ... 
-ABC     (0, 3)
-ABBBC   (11, 16)
+SON     (0, 3)
+SOON    (9, 13)
 
 # same as: re.findall(r'(.*?)/(.*?)/(.*?),', d)
->>> d = '2020/04/25,1986/Mar/02,77/12/31'
+>>> d = '2023/04/25,1986/Mar/02,77/12/31'
 >>> m_iter = re.finditer(r'(.*?)/(.*?)/(.*?),', d)
 >>> [m.groups() for m in m_iter]
-[('2020', '04', '25'), ('1986', 'Mar', '02')]
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> Since the output of <code>re.finditer</code> is an iterator object, you cannot iterate over it again without re-assigning. Not the case with <code>re.findall</code> which gives a list.</blockquote><pre><code class=language-python>>>> d = '2020/04/25,1986/Mar/02,77/12/31'
+[('2023', '04', '25'), ('1986', 'Mar', '02')]
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> Since the output of <code>re.finditer()</code> is an iterator object, you cannot iterate over it more than once.<pre><code class=language-python>>>> d = '2023/04/25,1986/Mar/02,77/12/31'
 >>> m_iter = re.finditer(r'(.*?),', d)
 
 >>> [m[1] for m in m_iter]
-['2020/04/25', '1986/Mar/02']
+['2023/04/25', '1986/Mar/02']
 >>> [m[1] for m in m_iter]
 []
-</code></pre><h2 id=resplit-with-capture-groups><a class=header href=#resplit-with-capture-groups>re.split with capture groups</a></h2><p>Capture groups affects <code>re.split</code> function as well. If the pattern used to split contains capture groups, the portions matched by those groups will also be a part of the output list.<pre><code class=language-python># without capture group
+</code></pre></blockquote><h2 id=resplit-with-capture-groups><a class=header href=#resplit-with-capture-groups>re.split() with capture groups</a></h2><p>Capture groups affect the <code>re.split()</code> function as well. If the pattern used to split contains capture groups, the portions matched by those groups will also be a part of the output list.<pre><code class=language-python># without capture group
 >>> re.split(r'1*4?2', '31111111111251111426')
 ['3', '5', '6']
 
 # to include the matching portions of the pattern as well in the output
 >>> re.split(r'(1*4?2)', '31111111111251111426')
 ['3', '11111111112', '5', '111142', '6']
-</code></pre><p>If part of the pattern is outside a capture group, the text thus matched won't be in the output. If a capture group didn't participate, it will be represented by <code>None</code> in the output list.<pre><code class=language-python># here 4?2 is outside capture group, so that portion won't be in output
+</code></pre><p>If part of the pattern is outside a capture group, the text thus matched won't be in the output. If a capture group didn't participate, it will be represented by <code>None</code> in the output list.<pre><code class=language-python># here 4?2 is outside the capture group, so that portion won't be in the output
 >>> re.split(r'(1*)4?2', '31111111111251111426')
 ['3', '1111111111', '5', '1111', '6']
 
@@ -221,20 +223,20 @@ ABBBC   (11, 16)
 # here (4)? matches zero times on the first occasion
 >>> re.split(r'(1*)(4)?2', '31111111111251111426')
 ['3', '1111111111', None, '5', '1111', '4', '6']
-</code></pre><p>Use of capture groups and <code>maxsplit=1</code> gives behavior similar to <code>str.partition</code> method.<pre><code class=language-python># first element is portion before the first match
-# second element is portion matched by the pattern itself
-# third element is rest of the input string
+</code></pre><p>Use of capture groups and <code>maxsplit=1</code> gives behavior similar to the <code>str.partition()</code> method.<pre><code class=language-python># first element is the portion before the first match
+# second element is the portion matched by the pattern itself
+# third element is the rest of the input string
 >>> re.split(r'(a+b+c+)', '3.14aabccc42abc88', maxsplit=1)
 ['3.14', 'aabccc', '42abc88']
-</code></pre><h2 id=resubn><a class=header href=#resubn>re.subn</a></h2><p>The <code>re.subn</code> has the same functionality as <code>re.sub</code> except that the output is a tuple. The first element of the tuple is the same output as <code>re.sub</code> function. The second element gives the number of substitutions made. In other words, you also get the number of matches.<blockquote><p><code>re.subn(pattern, repl, string, count=0, flags=0)</code></blockquote><pre><code class=language-python>>>> greeting = 'Have a nice weekend'
+</code></pre><h2 id=resubn><a class=header href=#resubn>re.subn()</a></h2><p>The <code>re.subn()</code> function behaves the same as <code>re.sub()</code> except that the output is a tuple. The first element of the tuple is the same output as the <code>re.sub()</code> function. The second element gives the number of substitutions made. In other words, you also get the number of matches.<blockquote><p><code>re.subn(pattern, repl, string, count=0, flags=0)</code></blockquote><pre><code class=language-python>>>> greeting = 'Have a nice weekend'
 
 >>> re.sub(r'e', 'E', greeting)
 'HavE a nicE wEEkEnd'
 
-# with re.subn, you can infer that 5 substitutions were made
+# with re.subn, you can also infer that 5 substitutions were made
 >>> re.subn(r'e', 'E', greeting)
 ('HavE a nicE wEEkEnd', 5)
-</code></pre><p>Here's an example that performs conditional operation based on whether the substitution was successful.<pre><code class=language-python>>>> word = 'coffining'
+</code></pre><p>Here's an example that performs a conditional operation based on whether the substitution was successful or not.<pre><code class=language-python>>>> word = 'coffining'
 # recursively delete 'fin'
 >>> while True:
 ...     word, cnt = re.subn(r'fin', '', word)
@@ -243,16 +245,18 @@ ABBBC   (11, 16)
 ... 
 >>> word
 'cog'
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>re.Match</code> object<td>get details like matched portions, location, etc<tr><td><code>m[0]</code> or <code>m.group(0)</code><td>entire matched portion of <code>re.Match</code> object <code>m</code><tr><td><code>m[1]</code> or <code>m.group(1)</code><td>matched portion of first capture group<tr><td><code>m[2]</code> or <code>m.group(2)</code><td>matched portion of second capture group and so on<tr><td><code>m.groups()</code><td>tuple of all the capture groups' matched portions<tr><td><code>m.span()</code><td>start and end+1 index of entire matched portion<tr><td><td>pass a number to get span of that particular capture group<tr><td><td>can also use <code>m.start()</code> and <code>m.end()</code><tr><td><code>re.sub(r'pat', f, s)</code><td>function <code>f</code> will get <code>re.Match</code> object as argument<tr><td>using <code>dict</code><td>replacement string based on the matched text as dictionary key<tr><td><td>ex: <code>re.sub(r'pat', lambda m: d.get(m[0], default), s)</code><tr><td><code>re.findall</code><td>returns all the matches as a list of strings<tr><td><td><code>re.findall(pattern, string, flags=0)</code><tr><td><td>if 1 capture group is used, only its matches are returned<tr><td><td>1+, each element will be tuple of capture groups<tr><td><td>portion matched by pattern outside group won't be in output<tr><td><td>empty matches will be represented by empty string<tr><td><code>re.finditer</code><td>iterator with <code>re.Match</code> object for each match<tr><td><td><code>re.finditer(pattern, string, flags=0)</code><tr><td><code>re.split</code><td>capture groups affects <code>re.split</code> too<tr><td><td>text matched by the groups will be part of the output<tr><td><td>portion matched by pattern outside group won't be in output<tr><td><td>group that didn't match will be represented by <code>None</code><tr><td><code>re.subn</code><td>gives tuple of modified string and number of substitutions<tr><td><td><code>re.subn(pattern, repl, string, count=0, flags=0)</code></table><p>This chapter introduced different ways to work with various matching portions of input string. <code>re.Match</code> object helps you get the portion matched by the RE pattern and capture groups, location of the match, etc. Functions can be used in replacement section, which gets <code>re.Match</code> object as an argument. Using functions, you can do substitutions based on <code>dict</code> mappings. To get all the matches instead of just the first match, you can use <code>re.findall</code> (which gives a list of strings as output) and <code>re.finditer</code> (which gives an iterator of <code>re.Match</code> objects). You also learnt how capture groups affect the output of <code>re.findall</code> and <code>re.split</code> functions. You'll see many more uses of groupings in coming chapters. The <code>re.subn</code> function is like <code>re.sub</code> but additionally gives number of matches as well.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given strings, extract the matching portion from first <code>is</code> to last <code>t</code>.<pre><code class=language-python>>>> str1 = 'This the biggest fruit you have seen?'
+</code></pre><p>If you like using assignment expressions, the above <code>while</code> loop can be shortened to:<pre><code class=language-python>while (op := re.subn(r'fin', '', word))[1]:
+    word = op[0]
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>re.Match</code> object<td>get details like matched portions, location, etc<tr><td><code>m[0]</code> or <code>m.group(0)</code><td>entire matched portion of <code>re.Match</code> object <code>m</code><tr><td><code>m[1]</code> or <code>m.group(1)</code><td>matched portion of the first capture group<tr><td><code>m[2]</code> or <code>m.group(2)</code><td>matched portion of the second capture group and so on<tr><td><code>m.groups()</code><td>tuple of all the capture groups' matched portions<tr><td><code>m.span()</code><td>start and end+1 index of the entire matched portion<tr><td><td>pass a number to get span of that particular capture group<tr><td><td>can also use <code>m.start()</code> and <code>m.end()</code><tr><td><code>re.sub(r'pat', f, s)</code><td>function <code>f</code> will get a <code>re.Match</code> object as the argument<tr><td>using <code>dict</code><td>replacement string based on the matched text as dictionary key<tr><td><td>ex: <code>re.sub(r'pat', lambda m: d.get(m[0], default), s)</code><tr><td><code>re.findall()</code><td>returns all the matches as a list of strings<tr><td><td><code>re.findall(pattern, string, flags=0)</code><tr><td><td>if 1 capture group is used, only its matches are returned<tr><td><td>1+, each element will be tuple of capture groups<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>empty matches will be represented by empty string<tr><td><code>re.finditer()</code><td>iterator with <code>re.Match</code> object for each match<tr><td><td><code>re.finditer(pattern, string, flags=0)</code><tr><td><code>re.split()</code><td>capture groups affects <code>re.split()</code> too<tr><td><td>text matched by the groups will be part of the output<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>group that didn't match will be represented by <code>None</code><tr><td><code>re.subn()</code><td>gives tuple of modified string and number of substitutions<tr><td><td><code>re.subn(pattern, repl, string, count=0, flags=0)</code></table></div><p>This chapter introduced different ways to work with various matching portions of the input string. The <code>re.Match</code> object helps you get the portion matched by the RE pattern and capture groups, location of the match, etc. Functions can be used in the replacement section, which gets <code>re.Match</code> object as an argument. Using functions, you can do substitutions based on <code>dict</code> mappings. To get all the matches instead of just the first match, you can use <code>re.findall()</code> (which gives a list of strings as output) and <code>re.finditer()</code> (which gives an iterator of <code>re.Match</code> objects). You also learnt how capture groups affect the output of <code>re.findall()</code> and <code>re.split()</code> functions. You'll see many more uses of groupings in the coming chapters. The <code>re.subn()</code> function is like <code>re.sub()</code> but additionally gives number of matches as well.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given strings, extract the matching portion from the first <code>is</code> to the last <code>t</code>.<pre><code class=language-python>>>> str1 = 'This the biggest fruit you have seen?'
 >>> str2 = 'Your mission is to read and practice consistently'
 
->>> pat = re.compile()     ##### add your solution here
+>>> pat = re.compile()      ##### add your solution here
 
 ##### add your solution here for str1
 'is the biggest fruit'
 ##### add your solution here for str2
 'ission is to read and practice consistent'
-</code></pre><p><strong>b)</strong> Find the starting index of first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
+</code></pre><p><strong>b)</strong> Find the starting index of the first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
 >>> s2 = 'and then you want to test'
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
@@ -267,7 +271,7 @@ ABBBC   (11, 16)
 2
 ##### add your solution here for s4
 4
-</code></pre><p><strong>c)</strong> Find the starting index of last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
+</code></pre><p><strong>c)</strong> Find the starting index of the last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
 >>> s2 = 'and then you want to test'
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
@@ -312,11 +316,11 @@ ABBBC   (11, 16)
 
 >>> re.findall()        ##### add your solution here
 ['way', 'portion', 'by']
-</code></pre><p><strong>h)</strong> Extract all occurrences of <code><</code> up to next occurrence of <code>></code>, provided there is at least one character in between <code><</code> and <code>></code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
+</code></pre><p><strong>h)</strong> Extract all occurrences of <code><</code> up to the next occurrence of <code>></code>, provided there is at least one character in between <code><</code> and <code>></code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 >>> re.findall()        ##### add your solution here
 ['&LTapple>', '<> b&LTbye>', '<> c&LTcat>']
-</code></pre><p><strong>i)</strong> Use <code>re.findall</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.<pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+</code></pre><p><strong>i)</strong> Use <code>re.findall()</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.<pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 >>> pat = re.compile()       ##### add your solution here
@@ -325,10 +329,10 @@ ABBBC   (11, 16)
 [('-2', '5'), ('4', '+3'), ('+42', '-53'), ('4356246', '-357532354')]
 >>> pat.findall(row2)
 [('1.32', '-3.14'), ('634', '5.63'), ('63.3e3', '9907809345343.235')]
-</code></pre><p><strong>j)</strong> This is an extension to previous question.<ul><li>For <code>row1</code>, find the sum of integers of each tuple element. For example, sum of <code>-2</code> and <code>5</code> is <code>3</code>.<li>For <code>row2</code>, find the sum of floating-point numbers of each tuple element. For example, sum of <code>1.32</code> and <code>-3.14</code> is <code>-1.82</code>.</ul><pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+</code></pre><p><strong>j)</strong> This is an extension to the previous question.<ul><li>For <code>row1</code>, find the sum of integers of each tuple element. For example, sum of <code>-2</code> and <code>5</code> is <code>3</code>.<li>For <code>row2</code>, find the sum of floating-point numbers of each tuple element. For example, sum of <code>1.32</code> and <code>-3.14</code> is <code>-1.82</code>.</ul><pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
-# should be same as previous question
+# should be the same as previous question
 >>> pat = re.compile()       ##### add your solution here
 
 ##### add your solution here for row1
@@ -336,19 +340,19 @@ ABBBC   (11, 16)
 
 ##### add your solution here for row2
 [-1.82, 639.63, 9907809408643.234]
-</code></pre><p><strong>k)</strong> Use <code>re.split</code> to get the output as shown below.<pre><code class=language-python>>>> ip = '42:no-output;1000:car-truck;SQEX49801'
+</code></pre><p><strong>k)</strong> Use <code>re.split()</code> to get the output as shown below.<pre><code class=language-python>>>> ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
 
 >>> re.split()        ##### add your solution here
-['42', 'output', '1000', 'truck', 'SQEX49801']
-</code></pre><p><strong>l)</strong> For the given list of strings, change the elements into a tuple of original element and number of times <code>t</code> occurs in that element.<pre><code class=language-python>>>> words = ['sequoia', 'attest', 'tattletale', 'asset']
+['42', 'output', '1000', 'tr:u-ck', 'SQEX49801']
+</code></pre><p><strong>l)</strong> For the given list of strings, change the elements into a tuple of original element and the number of times <code>t</code> occurs in that element.<pre><code class=language-python>>>> words = ['sequoia', 'attest', 'tattletale', 'asset']
 
 ##### add your solution here
 [('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
-</code></pre><p><strong>m)</strong> The given input string has fields separated by <code>:</code>. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See <a href=https://docs.python.org/3/library/re.html#re.Match.groups>docs.python: Match.groups</a> and use <code>re.finditer</code> to get the output as shown below. If the optional digits aren't present, show <code>'NA'</code> instead of <code>None</code>.<pre><code class=language-python>>>> ip = 'TWXA42:JWPA:NTED01:'
+</code></pre><p><strong>m)</strong> The given input string has fields separated by <code>:</code>. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See <a href=https://docs.python.org/3/library/re.html#re.Match.groups>docs.python: Match.groups</a> and use <code>re.finditer()</code> to get the output as shown below. If the optional digits aren't present, show <code>'NA'</code> instead of <code>None</code>.<pre><code class=language-python>>>> ip = 'TWXA42:JWPA:NTED01:'
 
 ##### add your solution here
 [('TWXA', '42'), ('JWPA', 'NA'), ('NTED', '01')]
-</code></pre><blockquote><p><img src=images/info.svg alt=info> Note that this is different from <code>re.findall</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89,'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Note that this is different from <code>re.findall()</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89,'
 >>> row2 = 'name:rose,maths:88,phy:92,'
 
 >>> pat = re.compile()      ##### add your solution here
@@ -357,6 +361,4 @@ ABBBC   (11, 16)
 {'name': 'rohan', 'maths': '75', 'phy': '89'}
 ##### add your solution here for row2
 {'name': 'rose', 'maths': '88', 'phy': '92'}
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=interlude-tools-for-debugging-and-visualization.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=character-class.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=interlude-tools-for-debugging-and-visualization.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=character-class.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=interlude-tools-for-debugging-and-visualization.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=character-class.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=interlude-tools-for-debugging-and-visualization.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=character-class.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

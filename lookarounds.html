@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Lookarounds - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Lookarounds - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,36 +10,29 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html class=active><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a class=active href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=lookarounds><a class=header href=#lookarounds>Lookarounds</a></h1><p>You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within RE definition. These assertions are also known as <strong>zero-width patterns</strong> because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.<h2 id=conditional-expressions><a class=header href=#conditional-expressions>Conditional expressions</a></h2><p>Before you get used to lookarounds too much, it is good to remember that Python is a programming language. You have control structures and you can combine multiple conditions using logical operators, functions like <code>all/any</code>, etc. Also, do not forget that <code>re</code> is only one of the tools available for string processing.<pre><code class=language-python>>>> items = ['1,2,3,4', 'a,b,c,d', '#foo 123']
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=lookarounds><a class=header href=#lookarounds>Lookarounds</a></h1><p>You've already seen how to create custom character classes and various avatars of special groupings. In this chapter you'll learn more groupings, known as lookarounds, that help to create custom anchors and add conditions within RE definition. These assertions are also known as <strong>zero-width patterns</strong> because they add restrictions similar to anchors and are not part of the matched portions. Also, you will learn how to negate a grouping similar to negated character sets.<h2 id=conditional-expressions><a class=header href=#conditional-expressions>Conditional expressions</a></h2><p>Before you get used to lookarounds too much, it is good to remember that Python is a programming language. You have control structures and you can combine multiple conditions using logical operators, functions like <code>all()</code>, <code>any()</code>, etc. Also, do not forget that <code>re</code> is only one of the tools available for text processing.<pre><code class=language-python>>>> items = ['1,2,3,4', 'a,b,c,d', '#apple 123']
 
 # filter elements containing digit and '#' characters
->>> [s for s in items if re.search(r'\d', s) and '#' in s]
-['#foo 123']
+>>> [s for s in items if '#' in s and re.search(r'\d', s)]
+['#apple 123']
 
 # modify elements only if it doesn't start with '#'
 >>> for s in items:
@@ -51,29 +41,29 @@
 ... 
 1 4
 a d
-</code></pre><h2 id=negative-lookarounds><a class=header href=#negative-lookarounds>Negative lookarounds</a></h2><p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code><</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose complete syntax is shown below.<ul><li><code>(?!pat)</code> for negative lookahead assertion<li><code>(?&LT!pat)</code> for negative lookbehind assertion</ul><p>As mentioned earlier, lookarounds are not part of matched portions and do not affect capture group numbering.<pre><code class=language-python># change 'foo' only if it is not followed by a digit character
-# note that end of string satisfies the given assertion
-# 'foofoo' has two matches as the assertion doesn't consume characters
->>> re.sub(r'foo(?!\d)', 'baz', 'hey food! foo42 foot5 foofoo')
-'hey bazd! foo42 bazt5 bazbaz'
+</code></pre><h2 id=negative-lookarounds><a class=header href=#negative-lookarounds>Negative lookarounds</a></h2><p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code><</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose syntax is shown below:<ul><li><code>(?!pat)</code> for negative lookahead assertion<li><code>(?&LT!pat)</code> for negative lookbehind assertion</ul><p>As mentioned earlier, lookarounds are not part of the matched portions and do not affect capture group numbering.<pre><code class=language-python># change 'cat' only if it is not followed by a digit character
+# note that the end of string satisfies the given assertion
+# 'catcat' has two matches as the assertion doesn't consume characters
+>>> re.sub(r'cat(?!\d)', 'dog', 'hey cats! cat42 cat_5 catcat')
+'hey dogs! cat42 dog_5 dogdog'
 
-# change 'foo' only if it is not preceded by _
-# note how 'foo' at start of string is matched as well
->>> re.sub(r'(?&LT!_)foo', 'baz', 'foo _foo 42foofoo')
-'baz _foo 42bazbaz'
+# change 'cat' only if it is not preceded by _
+# note how 'cat' at the start of string is matched as well
+>>> re.sub(r'(?&LT!_)cat', 'dog', 'cat _cat 42catcat')
+'dog _cat 42dogdog'
 
 # overlap example
 # the final _ was replaced as well as played a part in the assertion
->>> re.sub(r'(?&LT!_)foo.', 'baz', 'food _fool 42foo_foot')
-'baz _fool 42bazfoot'
+>>> re.sub(r'(?&LT!_)cat.', 'dog', 'cats _cater 42cat_cats')
+'dog _cater 42dogcats'
 </code></pre><p>Lookarounds can be mixed with already existing anchors and other features to define truly powerful restrictions:<pre><code class=language-python># change whole word only if it is not preceded by : or -
->>> re.sub(r'(?&LT![:-])\b\w+\b', 'X', ':cart &LTapple -rest ;tea')
-':cart &LTX -rest ;X'
+>>> re.sub(r'(?&LT![:-])\b\w+\b', 'X', ':cart &LTapple: -rest ;tea')
+':cart &LTX: -rest ;X'
 
-# add space to word boundaries, but not at start or end of string
-# similar to: re.sub(r'\b', ' ', 'foo_baz=num1+35*42/num2').strip()
->>> re.sub(r'(?&LT!\A)\b(?!\Z)', ' ', 'foo_baz=num1+35*42/num2')
-'foo_baz = num1 + 35 * 42 / num2'
+# add space to word boundaries, but not at the start or end of string
+# similar to: re.sub(r'\b', ' ', 'output=num1+35*42/num2').strip()
+>>> re.sub(r'(?&LT!\A)\b(?!\Z)', ' ', 'output=num1+35*42/num2')
+'output = num1 + 35 * 42 / num2'
 </code></pre><p>In all the examples so far, lookahead grouping was placed as a suffix and lookbehind as a prefix. This is how they are used most of the time, but not the only way to use them. Lookarounds can be placed anywhere and multiple lookarounds can be combined in any order. They do not consume characters nor do they play a role in matched portions. They just let you know whether the condition you want to test is satisfied from the current location in the input string.<pre><code class=language-python># these two are equivalent
 # replace a character as long as it is not preceded by 'p' or 'r'
 >>> re.sub(r'(?&LT![pr]).', '*', 'spare')
@@ -84,28 +74,28 @@ a d
 # replace 'par' as long as 's' is not present later in the input
 # this assumes that the lookaround doesn't conflict with search pattern
 # i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
->>> re.sub(r'par(?!.*s)', 'X', 'par spare part party')
-'par sXe Xt Xty'
->>> re.sub(r'(?!.*s)par', 'X', 'par spare part party')
-'par sXe Xt Xty'
+>>> re.sub(r'par(?!.*s)', '[\g&LT0>]', 'par spare part party')
+'par s[par]e [par]t [par]ty'
+>>> re.sub(r'(?!.*s)par', '[\g&LT0>]', 'par spare part party')
+'par s[par]e [par]t [par]ty'
 
 # since the three assertions used here are all zero-width,
 # all of the 6 possible combinations will be equivalent
->>> re.sub(r'(?!\Z)\b(?&LT!\A)', ' ', 'foo_baz=num1+35*42/num2')
-'foo_baz = num1 + 35 * 42 / num2'
-</code></pre><h2 id=positive-lookarounds><a class=header href=#positive-lookarounds>Positive lookarounds</a></h2><p>Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookaround can be identified by use of <code>=</code> in the grouping. The complete syntax looks like:<ul><li><code>(?=pat)</code> for positive lookahead assertion<li><code>(?<=pat)</code> for positive lookbehind assertion</ul><pre><code class=language-python># extract digits only if it is followed by ,
-# note that end of string doesn't qualify as this is positive assertion
->>> re.findall(r'\d+(?=,)', '42 foo-5, baz3; x-83, y-20: f12')
+>>> re.sub(r'(?!\Z)\b(?&LT!\A)', ' ', 'output=num1+35*42/num2')
+'output = num1 + 35 * 42 / num2'
+</code></pre><h2 id=positive-lookarounds><a class=header href=#positive-lookarounds>Positive lookarounds</a></h2><p>Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookarounds can be identified by use of <code>=</code> in the grouping. Syntax is shown below:<ul><li><code>(?=pat)</code> for positive lookahead assertion<li><code>(?<=pat)</code> for positive lookbehind assertion</ul><pre><code class=language-python># extract digits only if it is followed by ,
+# note that end of string doesn't qualify as this is a positive assertion
+>>> re.findall(r'\d+(?=,)', '42 apple-5, fig3; x-83, y-20: f12')
 ['5', '83']
 
 # extract digits only if it is preceded by - and followed by ; or :
->>> re.findall(r'(?<=-)\d+(?=[:;])', '42 foo-5, baz3; x-83, y-20: f12')
+>>> re.findall(r'(?<=-)\d+(?=[:;])', '42 apple-5, fig3; x-83, y-20: f12')
 ['20']
 
 # replace 'par' as long as 'part' occurs as a whole word later in the line
->>> re.sub(r'par(?=.*\bpart\b)', 'X', 'par spare part party')
-'X sXe part party'
-</code></pre><p>Lookarounds can be quite handy in field based processing.<pre><code class=language-python># except first and last fields
+>>> re.sub(r'par(?=.*\bpart\b)', '[\g&LT0>]', 'par spare part party')
+'[par] s[par]e part party'
+</code></pre><p>Lookarounds can be quite handy for simple field based processing.<pre><code class=language-python># except first and last fields
 >>> re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5')
 ['two', '3', 'four']
 
@@ -113,7 +103,7 @@ a d
 # note that in this case, order of lookbehind and lookahead doesn't matter
 >>> re.sub(r'(?&LT![^,])(?![^,])', 'NA', ',1,,,two,3,,,')
 'NA,1,NA,NA,two,3,NA,NA,NA'
-</code></pre><h2 id=capture-groups-inside-positive-lookarounds><a class=header href=#capture-groups-inside-positive-lookarounds>Capture groups inside positive lookarounds</a></h2><p>Even though lookarounds are not part of matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?<pre><code class=language-python>>>> print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
+</code></pre><h2 id=capture-groups-inside-positive-lookarounds><a class=header href=#capture-groups-inside-positive-lookarounds>Capture groups inside positive lookarounds</a></h2><p>Even though lookarounds are not part of the matched portions, capture groups can be used inside positive lookarounds. Can you reason out why it won't work for negative lookarounds?<pre><code class=language-python>>>> print(re.sub(r'(\S+\s+)(?=(\S+)\s)', r'\1\2\n', 'a b c d e'))
 a b
 b c
 c d
@@ -124,7 +114,7 @@ d e
 ['po', 'ca']
 >>> re.findall(r'(?<=(?:po|ca)re)\d+', 'pore42 car3 pare7 care5')
 ['42', '5']
-</code></pre><h2 id=conditional-and-with-lookarounds><a class=header href=#conditional-and-with-lookarounds>Conditional AND with lookarounds</a></h2><p>As promised earlier, here's how lookarounds make it simpler to construct AND conditionals.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
+</code></pre><h2 id=conditional-and-with-lookarounds><a class=header href=#conditional-and-with-lookarounds>Conditional AND with lookarounds</a></h2><p>As promised earlier, here are some examples that show how lookarounds make it simpler to construct AND conditionals.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'questionable', 'exhibit', 'equation']
 
 # words containing 'b' and 'e' and 't' in any order
 # same as: r'b.*e.*t|b.*t.*e|e.*b.*t|e.*t.*b|t.*b.*e|t.*e.*b'
@@ -135,10 +125,10 @@ d e
 >>> [w for w in words if re.search(r'(?=.*a)(?=.*e)(?=.*i)(?=.*o).*u', w)]
 ['sequoia', 'questionable', 'equation']
 
-# words containing 'a' and 'q' but not 'n' at the end of the element
->>> [w for w in words if re.search(r'(?=.*a)(?=.*q)(?!.*n\Z)', w)]
-['sequoia', 'questionable']
-</code></pre><h2 id=variable-length-lookbehind><a class=header href=#variable-length-lookbehind>Variable length lookbehind</a></h2><p>With lookbehind assertion (both positive and negative), the pattern used for the assertion cannot <em>imply</em> matching variable length of text. Fixed length quantifier is allowed. Different length alternations are not allowed, even if the individual alternations are of fixed length. Here's some examples to clarify these points.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
+# words containing ('ab' or 'at') and 'q' but not 'n' at the end of the element
+>>> [w for w in words if re.search(r'(?!.*n\Z)(?=.*a[bt]).*q', w)]
+['questionable']
+</code></pre><h2 id=variable-length-lookbehind><a class=header href=#variable-length-lookbehind>Variable length lookbehind</a></h2><p>With lookbehind assertion (both positive and negative), the pattern used for the assertion cannot <em>imply</em> matching variable length of text. Fixed length quantifier is allowed. Different length alternations are not allowed, even if the individual alternations are of fixed length. Here are some examples to clarify these points.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
 
 # allowed
 >>> re.findall(r'(?<=(?:po|da)re)\d+', s)
@@ -153,7 +143,7 @@ re.error: look-behind requires fixed-width pattern
 re.error: look-behind requires fixed-width pattern
 >>> re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
 re.error: look-behind requires fixed-width pattern
-</code></pre><p>There are various workarounds possible depending upon the use case. See <a href=./regex-module.html#variable-length-lookbehind>Variable length lookbehind</a> section for <code>regex</code> module for the easiest and most robust solution.<p>First up, when the lookbehind alternatives are of fixed length. In such cases, you can manually expand the alternatives into individual lookbehinds. For negatives, place them next to each other. For positives, separate them with alternation inside another grouping.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
+</code></pre><p>There are various workarounds possible depending upon the use case. See the <a href=./regex-module.html#variable-length-lookbehind>Variable length lookbehind</a> section for <code>regex</code> module for the easiest solution.<p>First up, when the lookbehind alternatives are of fixed length. In such cases, you can manually expand the alternatives into individual lookbehinds. For negatives, place them next to each other. For positives, separate them with alternation inside another grouping.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
 
 # workaround for r'(?&LT!tar|dare)\d+'
 >>> re.findall(r'(?&LT!tar)(?&LT!dare)\d+', s)
@@ -184,7 +174,7 @@ re.error: look-behind requires fixed-width pattern
 # delete digits only if they are preceded by a word starting with 'p' or 'd'
 >>> re.sub(r'(\b[pd][a-z]*)\d+', r'\1', s)
 'pore tar3 dare care5'
-</code></pre><p>However, if you don't know the lengths for negative lookbehind, you cannot use the above workarounds. The next section will show how to negate a grouping, and that helps for some of the variable negative lookbehind cases.<h2 id=negated-groups><a class=header href=#negated-groups>Negated groups</a></h2><p>Variable length negative lookbehind can be simulated using negative lookahead (which doesn't have restriction on variable length) inside a grouping and applying quantifier to match characters one by one. This also showcases how grouping can be negated in certain cases. Note that this will only work if you have well defined conditions before the negated group.<pre><code class=language-python># note the use of \A anchor to force matching all characters up to 'dog'
+</code></pre><p>However, if you don't know the lengths for negative lookbehind, you cannot use the above workarounds. The next section will show how to negate a grouping, and that also helps for some of the variable negative lookbehind cases.<h2 id=negated-groups><a class=header href=#negated-groups>Negated groups</a></h2><p>Some of the variable length negative lookbehind cases can be simulated by using a negative lookahead (which doesn't have restriction on variable length). The trick is to assert negative lookahead one character at a time and applying quantifiers on such a grouping to satisfy the variable requirement. This will only work if you have well defined conditions before the negated group.<pre><code class=language-python># note the use of \A anchor to force matching all the characters up to 'dog'
 >>> bool(re.search(r'\A((?!cat).)*dog', 'fox,cat,dog,parrot'))
 False
 >>> bool(re.search(r'\A((?!parrot).)*dog', 'fox,cat,dog,parrot'))
@@ -193,17 +183,16 @@ True
 >>> bool(re.search(r'((?!cat).)*dog', 'fox,cat,dog,parrot'))
 True
 
-# easier to understand by checking matched portion
+# easier to understand by checking the matched portion
 >>> re.search(r'\A((?!cat).)*', 'fox,cat,dog,parrot')[0]
 'fox,'
 >>> re.search(r'\A((?!parrot).)*', 'fox,cat,dog,parrot')[0]
 'fox,cat,dog,'
->>> re.search(r'\A((?!(.)\2).)*', 'fox,cat,dog,parrot')[0]
+>>> re.search(r'\A(?:(?!(.)\1).)*', 'fox,cat,dog,parrot')[0]
 'fox,cat,dog,pa'
-</code></pre><p>Here's some examples of matching two patterns with a negated group between them.<pre><code class=language-python># match if 'do' is not there between 'at' and 'par'
+</code></pre><p>Here are some examples of matching two patterns with a negated group between them.<pre><code class=language-python># match if 'do' is not there between 'at' and 'par'
 >>> bool(re.search(r'at((?!do).)*par', 'fox,cat,dog,parrot'))
 False
-
 # match if 'go' is not there between 'at' and 'par'
 >>> bool(re.search(r'at((?!go).)*par', 'fox,cat,dog,parrot'))
 True
@@ -211,13 +200,14 @@ True
 'at,dog,par'
 
 # use non-capturing group if required
->>> re.findall(r'a(?:(?!\d).)*z', 'at,baz,a2z,bad-zoo')
-['at,baz', 'ad-z']
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td>lookarounds<td>custom assertions, zero-width like anchors<tr><td><code>(?!pat)</code><td>negative lookahead assertion<tr><td><code>(?&LT!pat)</code><td>negative lookbehind assertion<tr><td><code>(?=pat)</code><td>positive lookahead assertion<tr><td><code>(?<=pat)</code><td>positive lookbehind assertion<tr><td><code>(?!pat1)(?=pat2)</code><td>multiple assertions can be specified next to each other in any order<tr><td><td>as they mark a matching location without consuming characters<tr><td><code>((?!pat).)*</code><td>Negate a grouping, similar to negated character class</table><p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regular expressions have been covered. The special groupings seem never ending though, there's some more of them in coming chapters!!<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img src=images/info.svg alt=info> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</blockquote><p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
+>>> words = 'apple banana 12_bananas cherry fig mango cake42'
+>>> re.findall(r'\b[a-z](?:(?!pp|rr)[a-z])*\b', words)
+['banana', 'fig', 'mango']
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td>lookarounds<td>custom assertions, zero-width like anchors<tr><td><code>(?!pat)</code><td>negative lookahead assertion<tr><td><code>(?&LT!pat)</code><td>negative lookbehind assertion<tr><td><code>(?=pat)</code><td>positive lookahead assertion<tr><td><code>(?<=pat)</code><td>positive lookbehind assertion<tr><td><code>(?!pat1)(?=pat2)</code><td>multiple assertions can be specified next to each other in any order<tr><td><td>as they mark a matching location without consuming characters<tr><td><code>((?!pat).)*</code><td>Negate a grouping, similar to negated character class</table></div><p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regular expressions have been covered. The special groupings seem never ending though, there are some more of them in the coming chapters!<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</blockquote><p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by a <code>(</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
 
 ##### add your solution here
 '(apple) X X) X (mango) (grape'
-</code></pre><p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by <code>)</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
+</code></pre><p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by a <code>)</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
 
 ##### add your solution here
 '(apple) X berry) X (mango) (X'
@@ -225,31 +215,31 @@ True
 
 ##### add your solution here
 '(apple) X berry) X (mango) (grape'
-</code></pre><p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'at row on urn e note dust n'
+</code></pre><p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
 ##### add your solution here
-['at', 'row', 'dust']
-</code></pre><p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'at row on urn e note dust n'
+['a_t', 'row', 'Dust', 'end', 'a2', 'u']
+</code></pre><p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
 ##### add your solution here
-['row', 'on', 'urn', 'e']
-</code></pre><p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+['row', 'on', 'Urn', 'e', 'Dust', 'end', 'e', 'u']
+</code></pre><p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
-['poke', 'so', 'ever']
-</code></pre><p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+['Poke', 'so_good', 'ever2']
+</code></pre><p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
-['so', 'is', 'sit']
-</code></pre><p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.<pre><code class=language-python>>>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+['so_good', 'is', 'sit']
+</code></pre><p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
-['so', 'ink']
-</code></pre><p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.<pre><code class=language-python>>>> ip = 'poke,on=-=so:ink.to/is(vast)ever-sit'
+['so_good', 'ink']
+</code></pre><p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
-['so', 'vast', 'sit']
-</code></pre><p><strong>j)</strong> Remove leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.<pre><code class=language-python>>>> csv1 = ' comma  ,separated ,values \t\r '
+['so_good', 'vast', 'sit']
+</code></pre><p><strong>j)</strong> Remove the leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.<pre><code class=language-python>>>> csv1 = ' comma  ,separated ,values \t\r '
 >>> csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
 >>> remove_whitespace = re.compile()     ##### add your solution here
@@ -258,7 +248,7 @@ True
 'comma,separated,values'
 >>> remove_whitespace.sub('', csv2)
 'good bad,nice  ice,42,,stall   small'
-</code></pre><p><strong>k)</strong> Filter all elements that satisfy all of these rules:<ul><li>should have at least two alphabets<li>should have at least 3 digits<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code><li>should not end with a whitespace character</ul><pre><code class=language-python>>>> pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+</code></pre><p><strong>k)</strong> Filter all elements that satisfy all of these rules:<ul><li>should have at least two alphabets<li>should have at least three digits<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code><li>should not end with a whitespace character</ul><pre><code class=language-python>>>> pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
 ##### add your solution here
 ['F2H3u%9', 'A $B C1234']
@@ -266,7 +256,7 @@ True
 
 ##### add your solution here
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
-</code></pre><p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. A number ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-python>>>> ip = '12 ab32.4 go 5 2. 46.42 5'
+</code></pre><p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-python>>>> ip = '12 ab32.4 go 5 2. 46.42 5'
 
 ##### add your solution here
 ['32', '46']
@@ -279,9 +269,11 @@ True
 ['ap', 'pp', 'pl', 'le']
 ##### add your solution here for s2
 ['1.', '.2', '2-', '-3', '3:', ':4']
-</code></pre><p><strong>o)</strong> The given input strings contain fields separated by <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> s1 = '42:cat'
+</code></pre><p><strong>o)</strong> The given input strings contain fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> s1 = '42:cat'
 >>> s2 = 'twelve:a2b'
 >>> s3 = 'we:be:he:0:a:b:bother'
+>>> s4 = 'apple:banana-42:cherry:'
+>>> s5 = 'dragon:unicorn:centaur'
 
 >>> pat = re.compile()      ##### add your solution here
 
@@ -291,15 +283,20 @@ True
 'twelve:a2b'
 >>> pat.sub()       ##### add your solution here for s3
 'we:be:he:0:a:b'
+>>> pat.sub()       ##### add your solution here for s4
+'apple:banana-42:cherry'
+>>> pat.sub()       ##### add your solution here for s5
+'dragon:unicorn:centaur'
 </code></pre><p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 ##### add your solution here
 ['at', 'in', 'a_b', 'lion']
-</code></pre><p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is <strong>whitespace</strong> or the string <code>error</code> between them.<pre><code class=language-python>>>> str1 = '23,qty,price,42'
+</code></pre><p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is any <strong>whitespace</strong> character or the string <code>error</code> between them.<pre><code class=language-python>>>> str1 = '23,qty,price,42'
 >>> str2 = 'qty price,oh'
 >>> str3 = '3.14,qty,6,errors,9,price,3'
 >>> str4 = '42\nqty-6,apple-56,price-234,error'
 >>> str5 = '4,price,3.14,qty,4'
+>>> str6 = '(qtyprice) (hi-there)'
 
 >>> neg = re.compile()       ##### add your solution here
 
@@ -313,13 +310,17 @@ False
 True
 >>> bool(neg.search(str5))
 False
-</code></pre><p><strong>r)</strong> Can you reason out why the output shown is different for these two regular expressions?<pre><code class=language-python>>>> ip = 'I have 12, he has 2!'
+>>> bool(neg.search(str6))
+True
+</code></pre><p><strong>r)</strong> Can you reason out why the following regular expressions behave differently?<pre><code class=language-python>>>> ip = 'I have 12, he has 2!'
 
 >>> re.sub(r'\b..\b', '{\g&LT0>}', ip)
 '{I }have {12}{, }{he} has{ 2}!'
 
 >>> re.sub(r'(?&LT!\w)..(?!\w)', '{\g&LT0>}', ip)
 'I have {12}, {he} has {2!}'
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=interlude-common-tasks.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=flags.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=interlude-common-tasks.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=flags.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre><p><strong>s)</strong> The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.<pre><code class=language-python>>>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4'
+
+##### add your solution here
+'421,2425,5,cat,42,61,scat,6,Cat,425,4'
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=interlude-common-tasks.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=flags.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=interlude-common-tasks.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=flags.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>

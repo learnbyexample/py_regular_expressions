@@ -1,8 +1,5 @@
-<!DOCTYPE HTML><html lang=en class="sidebar-visible no-js light"><head><meta charset=UTF-8><title>Alternation and Grouping - Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta name=description content="Example based guide to mastering Python regular expressions"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=theme-color content=#ffffff><link rel=icon href=favicon.svg><link rel="shortcut icon"href=favicon.png><link rel=stylesheet href=css/variables.css><link rel=stylesheet href=css/general.css><link rel=stylesheet href=css/chrome.css><link rel=stylesheet href=FontAwesome/css/font-awesome.css><link rel=stylesheet href=fonts/fonts.css><link rel=stylesheet href=highlight.css><link rel=stylesheet href=tomorrow-night.css><link rel=stylesheet href=ayu-highlight.css><link rel=stylesheet href=style.css><body><script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script><script>
-            try {
+<!doctypehtml><html class="sidebar-visible no-js light"lang=en><head><meta charset=UTF-8><title>Alternation and Grouping - Understanding Python re(gex)?</title><meta content="text/html; charset=utf-8"http-equiv=Content-Type><meta content="Example based guide to mastering Python regular expressions"name=description><meta content=width=device-width,initial-scale=1 name=viewport><meta content=#ffffff name=theme-color><meta content="Understanding Python re(gex)?"property=og:title><meta content=website property=og:type><meta content="Example based guide to mastering Python regular expressions"property=og:description><meta content=https://learnbyexample.github.io/py_regular_expressions/ property=og:url><meta content=https://raw.githubusercontent.com/learnbyexample/py_regular_expressions/master/images/py_regex_ls.png property=og:image><meta content=1280 property=og:image:width><meta content=720 property=og:image:height><meta content=summary_large_image property=twitter:card><meta content=@learn_byexample property=twitter:site><link href=favicon.svg rel=icon><link rel="shortcut icon"href=favicon.png><link href=css/variables.css rel=stylesheet><link href=css/general.css rel=stylesheet><link href=css/chrome.css rel=stylesheet><link href=FontAwesome/css/font-awesome.css rel=stylesheet><link href=fonts/fonts.css rel=stylesheet><link href=highlight.css rel=stylesheet><link href=tomorrow-night.css rel=stylesheet><link href=ayu-highlight.css rel=stylesheet><link href=style.css rel=stylesheet><body><script>var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";</script><script>try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
 
@@ -13,53 +10,47 @@
                 if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
                     localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
                 }
-            } catch (e) { }
-        </script><script>
-            var theme;
+            } catch (e) { }</script><script>var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
-        </script><script>
-            var html = document.querySelector('html');
+            html.classList.add('js');</script><script>var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             }
             html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script><nav id=sidebar class=sidebar aria-label="Table of contents"><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a href=alternation-and-grouping.html class=active><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i id=git-repository-button class="fa fa-github"></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i id=home-button class="fa fa-home"></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i id=book-button class="fa fa-book"></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i id=mail-button class="fa fa-envelope"></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a></ol></div><div id=sidebar-resize-handle class=sidebar-resize-handle></div></nav><div id=page-wrapper class=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div id=menu-bar class="menu-bar sticky bordered"><div class=left-buttons><button id=sidebar-toggle class=icon-button type=button title="Toggle Table of Contents"aria-label="Toggle Table of Contents"aria-controls=sidebar><i class="fa fa-bars"></i></button><button id=theme-toggle class=icon-button type=button title="Change theme"aria-label="Change theme"aria-haspopup=true aria-expanded=false aria-controls=theme-list><i class="fa fa-paint-brush"></i></button><ul id=theme-list class=theme-popup aria-label=Themes role=menu><li role=none><button role=menuitem class=theme id=light>Light (default)</button><li role=none><button role=menuitem class=theme id=rust>Rust</button><li role=none><button role=menuitem class=theme id=coal>Coal</button><li role=none><button role=menuitem class=theme id=navy>Navy</button><li role=none><button role=menuitem class=theme id=ayu>Ayu</button></ul><button id=search-toggle class=icon-button type=button title="Search. (Shortkey: s)"aria-label="Toggle Searchbar"aria-expanded=false aria-keyshortcuts=S aria-controls=searchbar><i class="fa fa-search"></i></button></div><h1 class=menu-title>Python re(gex)?</h1><div class=right-buttons><a href=https://learnbyexample.github.io title=Blog aria-label=Blog> <i id=home-button class="fa fa-home"></i> </a><a href=https://github.com/learnbyexample/py_regular_expressions title="Git repository"aria-label="Git repository"> <i id=git-repository-button class="fa fa-github"></i> </a></div></div><div id=search-wrapper class=hidden><form id=searchbar-outer class=searchbar-outer><input type=search id=searchbar name=searchbar placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header></form><div id=searchresults-outer class="searchresults-outer hidden"><div id=searchresults-header class=searchresults-header></div><ul id=searchresults></ul></div></div><script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+            html.classList.add("sidebar-" + sidebar);</script><nav aria-label="Table of contents"class=sidebar id=sidebar><div class=sidebar-scrollbox><ol class=chapter><li class="chapter-item expanded affix"><a href=cover.html>Cover</a><li class="chapter-item expanded affix"><a href=buy.html>Buy PDF/EPUB versions</a><li class="chapter-item expanded"><a href=preface.html><strong aria-hidden=true>1.</strong> Preface</a><li class="chapter-item expanded"><a href=why-is-it-needed.html><strong aria-hidden=true>2.</strong> Why is it needed?</a><li class="chapter-item expanded"><a href=re-introduction.html><strong aria-hidden=true>3.</strong> re introduction</a><li class="chapter-item expanded"><a href=anchors.html><strong aria-hidden=true>4.</strong> Anchors</a><li class="chapter-item expanded"><a class=active href=alternation-and-grouping.html><strong aria-hidden=true>5.</strong> Alternation and Grouping</a><li class="chapter-item expanded"><a href=escaping-metacharacters.html><strong aria-hidden=true>6.</strong> Escaping metacharacters</a><li class="chapter-item expanded"><a href=dot-metacharacter-and-quantifiers.html><strong aria-hidden=true>7.</strong> Dot metacharacter and Quantifiers</a><li class="chapter-item expanded"><a href=interlude-tools-for-debugging-and-visualization.html><strong aria-hidden=true>8.</strong> Interlude: Tools for debugging and visualization</a><li class="chapter-item expanded"><a href=working-with-matched-portions.html><strong aria-hidden=true>9.</strong> Working with matched portions</a><li class="chapter-item expanded"><a href=character-class.html><strong aria-hidden=true>10.</strong> Character class</a><li class="chapter-item expanded"><a href=groupings-and-backreferences.html><strong aria-hidden=true>11.</strong> Groupings and backreferences</a><li class="chapter-item expanded"><a href=interlude-common-tasks.html><strong aria-hidden=true>12.</strong> Interlude: Common tasks</a><li class="chapter-item expanded"><a href=lookarounds.html><strong aria-hidden=true>13.</strong> Lookarounds</a><li class="chapter-item expanded"><a href=flags.html><strong aria-hidden=true>14.</strong> Flags</a><li class="chapter-item expanded"><a href=unicode.html><strong aria-hidden=true>15.</strong> Unicode</a><li class="chapter-item expanded"><a href=regex-module.html><strong aria-hidden=true>16.</strong> regex module</a><li class="chapter-item expanded"><a href=gotchas.html><strong aria-hidden=true>17.</strong> Gotchas</a><li class="chapter-item expanded"><a href=further-reading.html><strong aria-hidden=true>18.</strong> Further Reading</a><li class="chapter-item expanded"><a href=Exercise_solutions.html><strong aria-hidden=true>19.</strong> Exercise Solutions</a></li><br><hr><li class="chapter-item expanded"><i class="fa fa-github"id=git-repository-button></i><a href=https://github.com/learnbyexample/py_regular_expressions>   Source code</a><li class="chapter-item expanded"><i class="fa fa-home"id=home-button></i><a href=https://learnbyexample.github.io/>   My Blog</a><li class="chapter-item expanded"><i class="fa fa-book"id=book-button></i><a href=https://learnbyexample.github.io/books/>   My Books</a><li class="chapter-item expanded"><i class="fa fa-envelope"id=mail-button></i><a href=https://learnbyexample.gumroad.com/l/learnbyexample-weekly>   learnbyexample weekly</a><li class="chapter-item expanded"><i class="fa fa-twitter"id=twitter-button></i><a href=https://twitter.com/learn_byexample>   Twitter</a></ol></div><div class=sidebar-resize-handle id=sidebar-resize-handle></div></nav><div class=page-wrapper id=page-wrapper><div class=page><div id=menu-bar-hover-placeholder></div><div class="menu-bar sticky bordered"id=menu-bar><div class=left-buttons><button aria-label="Toggle Table of Contents"title="Toggle Table of Contents"aria-controls=sidebar class=icon-button id=sidebar-toggle type=button><i class="fa fa-bars"></i></button><button aria-label="Change theme"title="Change theme"aria-controls=theme-list aria-expanded=false aria-haspopup=true class=icon-button id=theme-toggle type=button><i class="fa fa-paint-brush"></i></button><ul aria-label=Themes class=theme-popup id=theme-list role=menu><li role=none><button class=theme id=light role=menuitem>Light (default)</button><li role=none><button class=theme id=rust role=menuitem>Rust</button><li role=none><button class=theme id=coal role=menuitem>Coal</button><li role=none><button class=theme id=navy role=menuitem>Navy</button><li role=none><button class=theme id=ayu role=menuitem>Ayu</button></ul><button aria-label="Toggle Searchbar"title="Search. (Shortkey: s)"aria-controls=searchbar aria-expanded=false aria-keyshortcuts=S class=icon-button id=search-toggle type=button><i class="fa fa-search"></i></button></div><h1 class=menu-title>Understanding Python re(gex)?</h1><div class=right-buttons><a aria-label=Blog href=https://learnbyexample.github.io title=Blog> <i class="fa fa-home"id=home-button></i> </a><a aria-label=Twitter href=https://twitter.com/learn_byexample title=Twitter> <i class="fa fa-twitter"id=twitter-button></i> </a><a aria-label="Git repository"title="Git repository"href=https://github.com/learnbyexample/py_regular_expressions> <i class="fa fa-github"id=git-repository-button></i> </a></div></div><div class=hidden id=search-wrapper><form class=searchbar-outer id=searchbar-outer><input placeholder="Search this book ..."aria-controls=searchresults-outer aria-describedby=searchresults-header id=searchbar name=searchbar type=search></form><div class="searchresults-outer hidden"id=searchresults-outer><div class=searchresults-header id=searchresults-header></div><ul id=searchresults></ul></div></div><script>document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script><div id=content class=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=alternation-and-grouping><a class=header href=#alternation-and-grouping>Alternation and Grouping</a></h1><p>Similar to logical OR, alternation in regular expressions allows you to combine multiple patterns. These patterns can have some common elements between them, in which case grouping helps to form terser expressions. This chapter will also discuss the precedence rules used to determine which alternation wins.<h2 id=alternation><a class=header href=#alternation>Alternation</a></h2><p>A conditional expression combined with logical OR evaluates to <code>True</code> if any of the condition is satisfied. Similarly, in regular expressions, you can use <code>|</code> metacharacter to combine multiple patterns to indicate logical OR. The matching will succeed if any of the alternate pattern is found in the input string. These alternatives have the full power of a regular expression, for example they can have their own independent anchors. Here's some examples.<pre><code class=language-python># match either 'cat' or 'dog'
->>> bool(re.search(r'cat|dog', 'I like cats'))
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=alternation-and-grouping><a class=header href=#alternation-and-grouping>Alternation and Grouping</a></h1><p>Similar to logical OR, alternation in regular expressions allows you to combine multiple patterns. These patterns can have some common elements between them, in which case grouping helps to form terser expressions. This chapter will also discuss the precedence rules used to determine which alternation wins.<h2 id=alternation><a class=header href=#alternation>Alternation</a></h2><p>A conditional expression combined with logical OR evaluates to <code>True</code> if any of the condition is satisfied. Similarly, in regular expressions, you can use the <code>|</code> metacharacter to combine multiple patterns to indicate logical OR. The matching will succeed if any of the alternate pattern is found in the input string. These alternatives have the full power of a regular expression, for example they can have their own independent anchors. Here are some examples.<pre><code class=language-python># match either 'cat' or 'dog'
+>>> pet = re.compile(r'cat|dog')
+>>> bool(pet.search('I like cats'))
 True
->>> bool(re.search(r'cat|dog', 'I like dogs'))
+>>> bool(pet.search('I like dogs'))
 True
->>> bool(re.search(r'cat|dog', 'I like parrots'))
+>>> bool(pet.search('I like parrots'))
 False
 
-# replace either 'cat' at start of string or 'cat' at end of word
->>> re.sub(r'\Acat|cat\b', 'X', 'catapults concatenate cat scat')
-'Xapults concatenate X sX'
-# replace either 'cat' or 'dog' or 'fox' with 'mammal'
+# replace 'cat' at the start of string or 'cat' at the end of word
+>>> re.sub(r'\Acat|cat\b', 'X', 'catapults concatenate cat scat cater')
+'Xapults concatenate X sX cater'
+# replace 'cat' or 'dog' or 'fox' with 'mammal'
 >>> re.sub(r'cat|dog|fox', 'mammal', 'cat dog bee parrot fox')
 'mammal mammal bee parrot mammal'
-</code></pre><p>You might infer from above examples that there can be cases where many alternations are required. The <code>join</code> string method can be used to build the alternation list automatically from an iterable of strings.<pre><code class=language-python>>>> '|'.join(['car', 'jeep'])
+</code></pre><p>You might infer from the above examples that there can be cases where many alternations are required. The <code>join</code> string method can be used to build the alternation list automatically from an iterable of strings.<pre><code class=language-python>>>> '|'.join(['car', 'jeep'])
 'car|jeep'
 >>> words = ['cat', 'dog', 'fox']
 >>> '|'.join(words)
 'cat|dog|fox'
 >>> re.sub('|'.join(words), 'mammal', 'cat dog bee parrot fox')
 'mammal mammal bee parrot mammal'
-</code></pre><blockquote><p><img src=images/warning.svg alt=warning> In the above examples, the elements do not contain any special regular expression characters. Strings having metacharacters will be discussed in <a href=./escaping-metacharacters.html#reescape>re.escape</a> section.</blockquote><blockquote><p><img src=images/info.svg alt=info> If you have thousands of search terms to be matched, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>github: flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=grouping><a class=header href=#grouping>Grouping</a></h2><p>Often, there are some common things among the alternatives. It could be common characters or qualifiers like the anchors. In such cases, you can group them using a pair of parentheses metacharacters. Similar to <code>a(b+c)d = abd+acd</code> in maths, you get <code>a(b|c)d = abd|acd</code> in regular expressions.<pre><code class=language-python># without grouping
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> In the above examples, the elements do not contain any special regular expression characters. Handling strings that contain metacharacters will be discussed in the <a href=./escaping-metacharacters.html#reescape>re.escape()</a> section.</blockquote><blockquote><p><img alt=info src=images/info.svg> If you have thousands of search terms to be matched, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=grouping><a class=header href=#grouping>Grouping</a></h2><p>Often, there are some common portions among the alternatives. It could be common characters, qualifiers like the anchors and so on. In such cases, you can group them using a pair of parentheses metacharacters. Similar to <code>a(b+c)d = abd+acd</code> in maths, you get <code>a(b|c)d = abd|acd</code> in regular expressions.<pre><code class=language-python># without grouping
 >>> re.sub(r'reform|rest', 'X', 'red reform read arrest')
 'red X read arX'
 # with grouping
@@ -73,19 +64,18 @@ False
 >>> re.sub(r'\b(par|part)\b', 'X', 'par spare part party')
 'X spare X party'
 # taking out common characters as well
-# you'll later learn a better technique instead of using empty alternate
+# you'll later learn a better technique instead of using empty alternates
 >>> re.sub(r'\bpar(|t)\b', 'X', 'par spare part party')
 'X spare X party'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> There's plenty more features to grouping than just forming terser RE. It will be discussed as they become relevant in coming chapters.</blockquote><p>For now, this is a good place to show how to incorporate normal strings (from a variable, expression result, etc) while building a regular expression. For example, adding anchors to alternation list created using the <code>join</code> method.<pre><code class=language-python>>>> words = ['cat', 'par']
+</code></pre><blockquote><p><img alt=info src=images/info.svg> There are many more uses for grouping than just forming a terser RE. They will be discussed as they become relevant in the coming chapters.</blockquote><p>For now, this is a good place to show how to incorporate normal strings (from a variable, expression result, etc) while building a regular expression. For example, adding anchors to an alternation list created using the <code>join</code> method.<pre><code class=language-python>>>> words = ['cat', 'par']
 >>> '|'.join(words)
 'cat|par'
 # without word boundaries, any matching portion will be replaced
 >>> re.sub('|'.join(words), 'X', 'cater cat concatenate par spare')
 'Xer X conXenate X sXe'
 
-# note how raw string is used on either side of concatenation
-# avoid f-strings unless you know how to compensate for RE
->>> alt = re.compile(r'\b(' + '|'.join(words) + r')\b')
+# you can also use: alt = re.compile(r'\b(' + '|'.join(words) + r')\b')
+>>> alt = re.compile(rf"\b({'|'.join(words)})\b")
 # only whole words will be replaced now
 >>> alt.sub('X', 'cater cat concatenate par spare')
 'cater X concatenate X spare'
@@ -95,7 +85,7 @@ False
 '\\b(cat|par)\\b'
 >>> alt.pattern == r'\b(cat|par)\b'
 True
-</code></pre><p>In the above example, you had to concatenate strings to add word boundaries. If you needed to add string anchors so that the pattern only matches whole string, you can use <code>re.fullmatch</code> instead of manually adding the anchors.<pre><code class=language-python>>>> terms = ['no', 'ten', 'it']
+</code></pre><p>In the above example, you had to concatenate strings to add word boundaries. If you needed to add string anchors so that the pattern only matches whole string, you can use <code>re.fullmatch()</code> instead of manually adding the anchors.<pre><code class=language-python>>>> terms = ['no', 'ten', 'it']
 >>> items = ['dip', 'nobody', 'it', 'oh', 'no', 'bitten']
 
 >>> pat = re.compile('|'.join(terms))
@@ -106,29 +96,29 @@ True
 # matching anywhere
 >>> [w for w in items if(pat.search(w))]
 ['nobody', 'it', 'no', 'bitten']
-</code></pre><h2 id=precedence-rules><a class=header href=#precedence-rules>Precedence rules</a></h2><p>There's some tricky situations when using alternation. If it is used for testing a match to get <code>True/False</code> against a string input, there is no ambiguity. However, for other things like string replacement, it depends on a few factors. Say, you want to replace either <code>are</code> or <code>spared</code> — which one should get precedence? The bigger word <code>spared</code> or the substring <code>are</code> inside it or based on something else?<p>In Python, the alternative which matches earliest in the input string gets precedence. <code>re.Match</code> output comes handy to illustrate this concept.<pre><code class=language-python>>>> words = 'lion elephant are rope not'
+</code></pre><h2 id=precedence-rules><a class=header href=#precedence-rules>Precedence rules</a></h2><p>There are tricky situations when using alternation. There is no ambiguity if it is used to get a boolean result by testing a match against a string input. However, for cases like string replacement, it depends on a few factors. Say, you want to replace either <code>are</code> or <code>spared</code> — which one should get precedence? The bigger word <code>spared</code> or the substring <code>are</code> inside it or based on something else?<p>In Python, the alternative which matches earliest in the input string gets precedence. <code>re.Match</code> output is handy to illustrate this concept.<pre><code class=language-python>>>> words = 'lion elephant are rope not'
 
-# span shows the start and end+1 index of matched portion
+# span shows the start and end+1 index of the matched portion
 # match shows the text that satisfied the search criteria
 >>> re.search(r'on', words)
 &LTre.Match object; span=(2, 4), match='on'>
 >>> re.search(r'ant', words)
 &LTre.Match object; span=(10, 13), match='ant'>
 
-# starting index of 'on' < index of 'ant' for given string input
+# starting index of 'on' < index of 'ant' for the given string input
 # so 'on' will be replaced irrespective of order
 # count optional argument here restricts no. of replacements to 1
 >>> re.sub(r'on|ant', 'X', words, count=1)
 'liX elephant are rope not'
 >>> re.sub(r'ant|on', 'X', words, count=1)
 'liX elephant are rope not'
-</code></pre><p>What happens if alternatives match on same index? The precedence is then left to right in the order of declaration.<pre><code class=language-python>>>> mood = 'best years'
+</code></pre><p>What happens if alternatives have the same starting index? The precedence is left-to-right in the order of declaration.<pre><code class=language-python>>>> mood = 'best years'
 >>> re.search(r'year', mood)
 &LTre.Match object; span=(5, 9), match='year'>
 >>> re.search(r'years', mood)
 &LTre.Match object; span=(5, 10), match='years'>
 
-# starting index for 'year' and 'years' will always be same
+# starting index for 'year' and 'years' will always be the same
 # so, which one gets replaced depends on the order of alternation
 >>> re.sub(r'year|years', 'X', mood, count=1)
 'best Xs'
@@ -156,10 +146,10 @@ True
 >>> alt.sub('X', 'hands handful handed handy')
 'Xs X Xed X'
 
-# without sorting, alternation order will come into play
+# alternation order will come into play if you don't sort them properly
 >>> re.sub('|'.join(words), 'X', 'hands handful handed handy')
 'Xs Xful Xed Xy'
-</code></pre><blockquote><p><img src=images/info.svg alt=info> See also <a href=https://www.regular-expressions.info/alternation.html>regular-expressions: alternation</a> for more information regarding alternation and precedence rules in various regular expression implementations.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>|</code><td>multiple RE combined as conditional OR<tr><td><td>each alternative can have independent anchors<tr><td><code>'|'.join(iterable)</code><td>programmatically combine multiple RE<tr><td><code>()</code><td>group pattern(s)<tr><td><code>a(b|c)d</code><td>same as <code>abd|acd</code><tr><td>Alternation precedence<td>pattern which matches earliest in the input gets precedence<tr><td><td>tie-breaker is left to right if patterns have same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first<tr><td><td><code>'|'.join(sorted(iterable, key=len, reverse=True))</code></table><p>So, this chapter was about specifying one or more alternate matches within the same RE using <code>|</code> metacharacter. Which can further be simplified using <code>()</code> grouping if the alternations have common aspects. Among the alternations, earliest matching pattern gets precedence. Left to right ordering is used as a tie-breaker if multiple alternations match starting from the same location. You also learnt ways to programmatically construct a RE.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code><pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+</code></pre><blockquote><p><img alt=info src=images/info.svg> See also <a href=https://www.regular-expressions.info/alternation.html>regular-expressions: alternation</a> for more information regarding alternation and precedence rules in various regular expression implementations.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>|</code><td>multiple RE combined as conditional OR<tr><td><td>each alternative can have independent anchors<tr><td><code>'|'.join(iterable)</code><td>programmatically combine multiple RE<tr><td><code>()</code><td>group pattern(s)<tr><td><code>a(b|c)d</code><td>same as <code>abd|acd</code><tr><td>Alternation precedence<td>pattern which matches earliest in the input gets precedence<tr><td><td>tie-breaker is left-to-right if patterns have the same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first<tr><td><td><code>'|'.join(sorted(iterable, key=len, reverse=True))</code></table></div><p>So, this chapter was about specifying one or more alternate matches within the same RE using the <code>|</code> metacharacter. Which can further be simplified using <code>()</code> grouping if the alternations have common portions. Among the alternations, earliest matching pattern gets precedence. Left-to-right ordering is used as a tie-breaker if multiple alternations have the same starting location. You also learnt ways to programmatically construct a RE.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 ##### add your solution here
 ['lovely', '2 lonely', 'dent']
@@ -167,7 +157,7 @@ True
 
 ##### add your solution here
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
-</code></pre><p><strong>c)</strong> For the given input strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.<pre><code class=language-python>>>> s1 = 'creed refuse removed read'
+</code></pre><p><strong>c)</strong> For the given strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.<pre><code class=language-python>>>> s1 = 'creed refuse removed read'
 >>> s2 = 'refused reed redo received'
 
 >>> pat = re.compile()        ##### add your solution here
@@ -176,7 +166,7 @@ True
 'cX refuse X read'
 >>> pat.sub('X', s2)
 'X X redo X'
-</code></pre><p><strong>d)</strong> For the given input strings, replace all matches from the list <code>words</code> with <code>A</code>.<pre><code class=language-python>>>> s1 = 'plate full of slate'
+</code></pre><p><strong>d)</strong> For the given strings, replace all matches from the list <code>words</code> with <code>A</code>.<pre><code class=language-python>>>> s1 = 'plate full of slate'
 >>> s2 = "slated for later, don't be late"
 >>> words = ['late', 'later', 'slated']
 
@@ -193,6 +183,4 @@ True
 
 ##### add your solution here
 ['later', 'late']
-</code></pre></main><nav class=nav-wrapper aria-label="Page navigation"><a rel=prev href=anchors.html class="mobile-nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=escaping-metacharacters.html class="mobile-nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav class=nav-wide-wrapper aria-label="Page navigation"><a rel=prev href=anchors.html class="nav-chapters previous"title="Previous chapter"aria-label="Previous chapter"aria-keyshortcuts=Left> <i class="fa fa-angle-left"></i> </a><a rel=next href=escaping-metacharacters.html class="nav-chapters next"title="Next chapter"aria-label="Next chapter"aria-keyshortcuts=Right> <i class="fa fa-angle-right"></i> </a></nav></div><script>
-            window.playground_copyable = true;
-        </script><script src=elasticlunr.min.js charset=utf-8></script><script src=mark.min.js charset=utf-8></script><script src=searcher.js charset=utf-8></script><script src=clipboard.min.js charset=utf-8></script><script src=highlight.js charset=utf-8></script><script src=book.js charset=utf-8></script><script src=sidebar.js></script>
+</code></pre></main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=anchors.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=escaping-metacharacters.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=anchors.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=escaping-metacharacters.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>
