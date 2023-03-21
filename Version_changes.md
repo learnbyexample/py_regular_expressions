@@ -1,5 +1,14 @@
 <br>
 
+### 4.1
+
+* Updated details for **re(gex)? playground** app
+* Added section for **re(gex)? exercises** app
+* Better sample input for one of the exercises
+* Corrected one of the exercise solutions and added alternate solution for another exercise
+
+<br>
+
 ### 4.0
 
 * Python version updated to 3.11

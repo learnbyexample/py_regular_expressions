@@ -154,7 +154,7 @@ False
 **c)** For the given input list, filter all elements that contain `42` surrounded by word characters.
 
 ```ruby
->>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake42', '_42_']
+>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
 
 >>> [w for w in words if re.search()]   ##### add your solution here
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']

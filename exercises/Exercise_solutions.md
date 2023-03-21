@@ -150,7 +150,7 @@ False
 **c)** For the given input list, filter all elements that contain `42` surrounded by word characters.
 
 ```ruby
->>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake42', '_42_']
+>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
 
 >>> [w for w in words if re.search(r'\B42\B', w)]
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
@@ -1308,7 +1308,7 @@ took 22
 ```ruby
 >>> ip = '12 ab32.4 go 5 2. 46.42 5'
 
->>> re.findall(r'\d+(?=\.\d+)', ip)
+>>> re.findall(r'\d+(?=\.\d)', ip)
 ['32', '46']
 ```
 
@@ -1744,6 +1744,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 >>> s1 = 'Sample123string42with777numbers'
 >>> s2 = '12apples'
 
+# can also use: r'(?:.*\D)?\K(\d+)'
 # r'(\d+)(?!.*\d)' is an alternate solution that'll also work with 're' module
 >>> pat = regex.compile(r'.*\K(?<!\d)(\d+)')
 

@@ -65,7 +65,7 @@ Resources mentioned in Acknowledgements section above are available under origin
 
 ## Book version
 
-4.0
+4.1
 
 See [Version_changes.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/Version_changes.md) to track changes across book versions.
 
@@ -312,7 +312,7 @@ False
 
 ## re(gex)? playground
 
-To make it easier to experiment, I'm working on an interactive app. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide. A sample screenshot is shown below:
+To make it easier to experiment, I wrote an interactive TUI app. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide. A sample screenshot is shown below:
 
 ![Python re(gex)? playground](images/pyregex_playground.png)
 
@@ -749,7 +749,7 @@ False
 **c)** For the given input list, filter all elements that contain `42` surrounded by word characters.
 
 ```ruby
->>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake42', '_42_']
+>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
 
 >>> [w for w in words if re.search()]   ##### add your solution here
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
@@ -1891,19 +1891,23 @@ The below image is a screenshot from this link — [debuggex: `r'\bpar(en|ro)?t\
 
 ## re(gex)? playground
 
-As already mentioned in the introduction chapter, I'm also working on an interactive app. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide.
+As already mentioned in the introduction chapter, I wrote an interactive TUI app for interactive practice. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide.
+
+## re(gex)? exercises
+
+I wrote another TUI app to help you solve exercises from this book interactively. See [PyRegexExercises](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexExercises) repo for installation steps and [app_guide.md](https://github.com/learnbyexample/TUI-apps/blob/main/PyRegexExercises/app_guide.md) for instructions on using this app.
+
+Here's a sample screenshot:
+
+![PyRegexExercises example](images/pyregex_exercises.png)
 
 ## regexcrossword
 
 For practice, [regexcrossword](https://regexcrossword.com/) is often recommended. It only supports JavaScript, so some of the puzzles may not work the same with Python syntax. See [regexcrossword: howtoplay](https://regexcrossword.com/howtoplay) for help.
 
-The below image is a screenshot from this link — [regexcrossword: tutorial puzzle 5](https://regexcrossword.com/challenges/tutorial/puzzles/5)
-
-![regexcrossword example](images/regexcrossword.png)
-
 ## Summary
 
-This chapter briefly presented three online tools that can help you with understanding and interactively solving/debugging regular expressions. Syntax and features can vary, sometimes significantly, between various tools and programming languages. So, ensure that the program you are using supports the flavor of regular expressions you are using.
+This chapter briefly presented tools that can help you with understanding and interactively solving/debugging regular expressions. Syntax and features can vary, sometimes significantly, between various tools and programming languages. So, ensure that the program you are using supports the flavor of regular expressions you are using.
 
 # Working with matched portions
 
