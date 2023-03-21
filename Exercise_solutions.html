@@ -105,7 +105,7 @@ False
 
 >>> re.sub(r'\bred\b', 'brown', words)
 'bred brown spread credible brown.'
-</code></pre><p><strong>c)</strong> For the given input list, filter all elements that contain <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', 'fake42', '_42_']
+</code></pre><p><strong>c)</strong> For the given input list, filter all elements that contain <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
 
 >>> [w for w in words if re.search(r'\B42\B', w)]
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
@@ -752,7 +752,7 @@ took 22
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 </code></pre><p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-python>>>> ip = '12 ab32.4 go 5 2. 46.42 5'
 
->>> re.findall(r'\d+(?=\.\d+)', ip)
+>>> re.findall(r'\d+(?=\.\d)', ip)
 ['32', '46']
 </code></pre><p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.<pre><code class=language-python>>>> s1 = 'apple'
 >>> s2 = '1.2-3:4'
@@ -1018,6 +1018,7 @@ False
 </code></pre><p><strong>m)</strong> Replicate <code>str.rpartition()</code> functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'Sample123string42with777numbers'
 >>> s2 = '12apples'
 
+# can also use: r'(?:.*\D)?\K(\d+)'
 # r'(\d+)(?!.*\d)' is an alternate solution that'll also work with 're' module
 >>> pat = regex.compile(r'.*\K(?&LT!\d)(\d+)')
 
