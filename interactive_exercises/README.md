@@ -34,6 +34,10 @@ Adjust the terminal dimensions for the widgets to appear properly, for example 8
 
 See [app_guide.md](https://github.com/learnbyexample/TUI-apps/blob/main/PyRegexExercises/app_guide.md)
 
+# Video demo
+
+You can view a demo video about this app on Youtube: [https://youtu.be/0oXPeF8HutQ](https://youtu.be/0oXPeF8HutQ)
+
 # Looking for the tkinter version?
 
 See [this repo commit](https://github.com/learnbyexample/py_regular_expressions/tree/8433b34bd3f03662abac25c754a5ecf871712980/interactive_exercises) for an earlier version written in `tkinter`. That GUI app had 75 questions and supported only `re.search()`, `re.sub()`, `re.findall()` and `re.split()` functions.
