@@ -1083,7 +1083,7 @@ took 22
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
->>> re.sub(r'(\w+)[:.](\w+[:.])+', r'\1', ip)
+>>> re.sub(r'([:.]\w*)+', '', ip)
 'wow hi-2 bye kite'
 ```
 

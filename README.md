@@ -4,7 +4,7 @@ Learn Python Regular Expressions step-by-step from beginner to advanced levels w
 
 <p align="center"><img src="./images/py_regex_ls.png" alt="Understanding Python re(gex)? ebook cover image" /></p>
 
-The book also includes exercises to test your understanding, which is presented together as a single file in this repo — [Exercises.md](./exercises/Exercises.md)
+The book also includes exercises to test your understanding, which are presented together as a single file in this repo — [Exercises.md](./exercises/Exercises.md)
 
 For solutions to the exercises, see [Exercise_solutions.md](./exercises/Exercise_solutions.md).
 
@@ -32,9 +32,9 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 For a preview of the book, see [sample chapters](./sample_chapters/py_regex_sample.pdf)
 
-The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdf from markdown using pandoc](https://learnbyexample.github.io/customizing-pandoc/) if you are interested in the ebook creation process.
+The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdfs from markdown using pandoc](https://learnbyexample.github.io/customizing-pandoc/) if you are interested in the ebook creation process.
 
-For web version of the book, visit https://learnbyexample.github.io/py_regular_expressions/
+For the web version of the book, visit https://learnbyexample.github.io/py_regular_expressions/
 
 <br>
 
@@ -50,7 +50,7 @@ For web version of the book, visit https://learnbyexample.github.io/py_regular_e
 
 ⚠️ ⚠️ Please DO NOT submit pull requests. Main reason being any modification requires changes in multiple places.
 
-I would highly appreciate if you'd let me know how you felt about this book. It could be anything from a simple thank you, pointing out a typo, mistakes in code snippets, which aspects of the book worked for you (or didn't!) and so on. Reader feedback is essential and especially so for self-published authors.
+I would highly appreciate it if you'd let me know how you felt about this book. It could be anything from a simple thank you, pointing out a typo, mistakes in code snippets, which aspects of the book worked for you (or didn't!) and so on. Reader feedback is essential and especially so for self-published authors.
 
 You can reach me via:
 
@@ -107,7 +107,7 @@ Special thanks to Al Sweigart. His [Automate the Boring Stuff](https://automatet
 
 # License
 
-The book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+The book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-The code snippets are licensed under MIT, see [LICENSE](./LICENSE) file
+The code snippets are licensed under MIT, see [LICENSE](./LICENSE) file.
 
