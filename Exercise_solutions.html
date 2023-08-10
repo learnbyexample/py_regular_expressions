@@ -643,7 +643,7 @@ took 22
 '1234 23 4535 9339 1 60260260'
 </code></pre><p><strong>h)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
->>> re.sub(r'(\w+)[:.](\w+[:.])+', r'\1', ip)
+>>> re.sub(r'([:.]\w*)+', '', ip)
 'wow hi-2 bye kite'
 </code></pre><p><strong>i)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the last word of the sequence. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
