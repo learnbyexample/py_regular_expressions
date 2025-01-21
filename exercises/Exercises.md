@@ -8,7 +8,7 @@
 
 # re introduction
 
-**a)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
+**1)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
 
 ```ruby
 >>> line1 = 'start address: 0xA0, func1 address: 0xC0'
@@ -20,7 +20,7 @@ False
 True
 ```
 
-**b)** Replace all occurrences of `5` with `five` for the given string.
+**2)** Replace all occurrences of `5` with `five` for the given string.
 
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
@@ -29,7 +29,7 @@ True
 'They ate five apples and five oranges'
 ```
 
-**c)** Replace only the first occurrence of `5` with `five` for the given string.
+**3)** Replace only the first occurrence of `5` with `five` for the given string.
 
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
@@ -38,7 +38,7 @@ True
 'They ate five apples and 5 oranges'
 ```
 
-**d)** For the given list, filter all elements that do *not* contain `e`.
+**4)** For the given list, filter all elements that do *not* contain `e`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -47,7 +47,7 @@ True
 ['goal', 'sit']
 ```
 
-**e)** Replace all occurrences of `note` irrespective of case with `X`.
+**5)** Replace all occurrences of `note` irrespective of case with `X`.
 
 ```ruby
 >>> ip = 'This note should not be NoTeD'
@@ -56,7 +56,7 @@ True
 'This X should not be XD'
 ```
 
-**f)** Check if `at` is present in the given byte input data.
+**6)** Check if `at` is present in the given byte input data.
 
 ```ruby
 >>> ip = b'tiger imp goat'
@@ -65,7 +65,7 @@ True
 True
 ```
 
-**g)** For the given input string, display all lines not containing `start` irrespective of case.
+**7)** For the given input string, display all lines not containing `start` irrespective of case.
 
 ```ruby
 >>> para = '''good start
@@ -89,7 +89,7 @@ finish the book
 bye
 ```
 
-**h)** For the given list, filter all elements that contain either `a` or `w`.
+**8)** For the given list, filter all elements that contain either `a` or `w`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -99,7 +99,7 @@ bye
 ['goal', 'new', 'eat']
 ```
 
-**i)** For the given list, filter all elements that contain both `e` and `n`.
+**9)** For the given list, filter all elements that contain both `e` and `n`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -109,7 +109,7 @@ bye
 ['new', 'dinner']
 ```
 
-**j)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
+**10)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
 
 ```ruby
 >>> ip = 'start address: 0xA0, func1 address: 0xC0'
@@ -122,7 +122,7 @@ bye
 
 # Anchors
 
-**a)** Check if the given strings start with `be`.
+**1)** Check if the given strings start with `be`.
 
 ```ruby
 >>> line1 = 'be nice'
@@ -142,7 +142,7 @@ True
 False
 ```
 
-**b)** For the given input string, change only the whole word `red` to `brown`.
+**2)** For the given input string, change only the whole word `red` to `brown`.
 
 ```ruby
 >>> words = 'bred red spread credible red.'
@@ -151,7 +151,7 @@ False
 'bred brown spread credible brown.'
 ```
 
-**c)** For the given input list, filter all elements that contain `42` surrounded by word characters.
+**3)** For the given input list, filter all elements that contain `42` surrounded by word characters.
 
 ```ruby
 >>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
@@ -160,7 +160,7 @@ False
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
 ```
 
-**d)** For the given input list, filter all elements that start with `den` or end with `ly`.
+**4)** For the given input list, filter all elements that start with `den` or end with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
@@ -169,7 +169,7 @@ False
 ['lovely', '2 lonely', 'dent']
 ```
 
-**e)** For the given input string, change whole word `mall` to `1234` only if it is at the start of a line.
+**5)** For the given input string, change whole word `mall` to `1234` only if it is at the start of a line.
 
 ```ruby
 >>> para = '''\
@@ -189,7 +189,7 @@ mallet wallet malls
 1234:call:ball:pall
 ```
 
-**f)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
+**6)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
@@ -198,7 +198,7 @@ mallet wallet malls
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**g)** For the given input list, filter all whole elements `12\nthree` irrespective of case.
+**7)** For the given input list, filter all whole elements `12\nthree` irrespective of case.
 
 ```ruby
 >>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
@@ -207,7 +207,7 @@ mallet wallet malls
 ['12\nThree', '12\nthree']
 ```
 
-**h)** For the given input list, replace `hand` with `X` for all elements that start with `hand` followed by at least one word character.
+**8)** For the given input list, replace `hand` with `X` for all elements that start with `hand` followed by at least one word character.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
@@ -216,7 +216,7 @@ mallet wallet malls
 ['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
 ```
 
-**i)** For the given input list, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
+**9)** For the given input list, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
@@ -229,7 +229,7 @@ mallet wallet malls
 
 # Alternation and Grouping
 
-**a)** For the given list, filter all elements that start with `den` or end with `ly`.
+**1)** For the given list, filter all elements that start with `den` or end with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
@@ -238,7 +238,7 @@ mallet wallet malls
 ['lovely', '2 lonely', 'dent']
 ```
 
-**b)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
+**2)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
@@ -247,7 +247,7 @@ mallet wallet malls
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**c)** For the given strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
+**3)** For the given strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
 
 ```ruby
 >>> s1 = 'creed refuse removed read'
@@ -261,7 +261,7 @@ mallet wallet malls
 'X X redo X'
 ```
 
-**d)** For the given strings, replace all matches from the list `words` with `A`.
+**4)** For the given strings, replace all matches from the list `words` with `A`.
 
 ```ruby
 >>> s1 = 'plate full of slate'
@@ -276,7 +276,7 @@ mallet wallet malls
 "A for A, don't be A"
 ```
 
-**e)** Filter all whole elements from the input list `items` based on elements listed in `words`.
+**5)** Filter all whole elements from the input list `items` based on elements listed in `words`.
 
 ```ruby
 >>> items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
@@ -292,7 +292,7 @@ mallet wallet malls
 
 # Escaping metacharacters
 
-**a)** Transform the given input strings to the expected output using the same logic on both strings.
+**1)** Transform the given input strings to the expected output using the same logic on both strings.
 
 ```ruby
 >>> str1 = '(9-2)*5+qty/3-(9-2)*7'
@@ -304,7 +304,7 @@ mallet wallet malls
 '(qty+4)/2-35+pq/4'
 ```
 
-**b)** Replace `(4)\|` with `2` only at the start or end of the given input strings.
+**2)** Replace `(4)\|` with `2` only at the start or end of the given input strings.
 
 ```ruby
 >>> s1 = r'2.3/(4)\|6 foo 5.3-(4)\|'
@@ -321,7 +321,7 @@ mallet wallet malls
 'two - (4)\\|\n'
 ```
 
-**c)** Replace any matching element from the list `items` with `X` for given the input strings. Match the elements from `items` literally. Assume no two elements of `items` will result in any matching conflict.
+**3)** Replace any matching element from the list `items` with `X` for the given input strings. Match the elements from `items` literally. Assume no two elements of `items` will result in any matching conflict.
 
 ```ruby
 >>> items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
@@ -335,7 +335,7 @@ mallet wallet malls
 '4X2 aXe'
 ```
 
-**d)** Replace the backspace character `\b` with a single space character for the given input string.
+**4)** Replace the backspace character `\b` with a single space character for the given input string.
 
 ```ruby
 >>> ip = '123\b456'
@@ -348,7 +348,7 @@ mallet wallet malls
 '123 456'
 ```
 
-**e)** Replace all occurrences of `\e` with `e`.
+**5)** Replace all occurrences of `\e` with `e`.
 
 ```ruby
 >>> ip = r'th\er\e ar\e common asp\ects among th\e alt\ernations'
@@ -357,7 +357,7 @@ mallet wallet malls
 'there are common aspects among the alternations'
 ```
 
-**f)** Replace any matching item from the list `eqns` with `X` for given the string `ip`. Match the items from `eqns` literally.
+**6)** Replace any matching item from the list `eqns` with `X` for the given string `ip`. Match the items from `eqns` literally.
 
 ```ruby
 >>> ip = '3-(a^b)+2*(a^b)-(a/b)+3'
@@ -375,7 +375,7 @@ mallet wallet malls
 
 >![info](../images/info.svg) Since the `.` metacharacter doesn't match the newline character by default, assume that the input strings in the following exercises will not contain newline characters.
 
-**a)** Replace `42//5` or `42/5` with `8` for the given input.
+**1)** Replace `42//5` or `42/5` with `8` for the given input.
 
 ```ruby
 >>> ip = 'a+42//5-c pressure*3+42/5-14256'
@@ -384,7 +384,7 @@ mallet wallet malls
 'a+8-c pressure*3+8-14256'
 ```
 
-**b)** For the list `items`, filter all elements starting with `hand` and ending immediately with at most one more character or `le`.
+**2)** For the list `items`, filter all elements starting with `hand` and ending immediately with at most one more character or `le`.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
@@ -393,7 +393,7 @@ mallet wallet malls
 ['hand', 'handy', 'hands', 'handle']
 ```
 
-**c)** Use `re.split()` to get the output as shown for the given input strings.
+**3)** Use `re.split()` to get the output as shown for the given input strings.
 
 ```ruby
 >>> eqn1 = 'a+42//5-c'
@@ -408,7 +408,7 @@ mallet wallet malls
 ['r*42-5/3+42///5-', '3+a']
 ```
 
-**d)** For the given input strings, remove everything from the first occurrence of `i` till the end of the string.
+**4)** For the given input strings, remove everything from the first occurrence of `i` till the end of the string.
 
 ```ruby
 >>> s1 = 'remove the special meaning of such constructs'
@@ -425,7 +425,7 @@ mallet wallet malls
 ''
 ```
 
-**e)** For the given strings, construct a RE to get the output as shown below.
+**5)** For the given strings, construct a RE to get the output as shown below.
 
 ```ruby
 >>> str1 = 'a+b(addition)'
@@ -442,7 +442,7 @@ mallet wallet malls
 'Hi there. Nice day'
 ```
 
-**f)** Correct the given RE to get the expected output.
+**6)** Correct the given RE to get the expected output.
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -458,15 +458,15 @@ mallet wallet malls
 'plX XmX tX wX X cautX sentient'
 ```
 
-**g)** For the given greedy quantifiers, what would be the equivalent form using the `{m,n}` representation?
+**7)** For the given greedy quantifiers, what would be the equivalent form using the `{m,n}` representation?
 
 * `?` is same as
 * `*` is same as
 * `+` is same as
 
-**h)** `(a*|b*)` is same as `(a|b)*` — True or False?
+**8)** `(a*|b*)` is same as `(a|b)*` — True or False?
 
-**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till the end of the string, provided `test` isn't at the end of the string.
+**9)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till the end of the string, provided `test` isn't at the end of the string.
 
 ```ruby
 >>> s1 = 'this is a Test'
@@ -483,7 +483,7 @@ mallet wallet malls
 'a '
 ```
 
-**j)** For the input list `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
+**10)** For the input list `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
@@ -492,7 +492,7 @@ mallet wallet malls
 ['subtle', 'sets', 'site']
 ```
 
-**k)** For the input list `words`, remove all elements having less than `6` characters.
+**11)** For the input list `words`, remove all elements having less than `6` characters.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
@@ -501,7 +501,7 @@ mallet wallet malls
 ['sequoia', 'subtle', 'exhibit']
 ```
 
-**l)** For the input list `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
+**12)** For the input list `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
@@ -510,7 +510,7 @@ mallet wallet malls
 ['subtle', 'sets', 't set', 'site']
 ```
 
-**m)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+**13)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
 
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -519,7 +519,7 @@ mallet wallet malls
 'a 1 2'
 ```
 
-**n)** Use `re.split()` to get the output as shown below for given input strings.
+**14)** Use `re.split()` to get the output as shown below for given input strings.
 
 ```ruby
 >>> s1 = 'go there  //   "this // that"'
@@ -536,7 +536,7 @@ mallet wallet malls
 ['42// hi//bye//see', 'carefully']
 ```
 
-**o)** Modify the given regular expression such that it gives the expected results.
+**15)** Modify the given regular expression such that it gives the expected results.
 
 ```ruby
 >>> s1 = 'appleabcabcabcapricot'
@@ -558,7 +558,7 @@ True
 False
 ```
 
-**p)** Modify the given regular expression such that it gives the expected result.
+**16)** Modify the given regular expression such that it gives the expected result.
 
 ```ruby
 >>> cast = 'dragon-unicorn--centaur---mage----healer'
@@ -577,7 +577,7 @@ False
 
 # Working with matched portions
 
-**a)** For the given strings, extract the matching portion from the first `is` to the last `t`.
+**1)** For the given strings, extract the matching portion from the first `is` to the last `t`.
 
 ```ruby
 >>> str1 = 'This the biggest fruit you have seen?'
@@ -591,7 +591,7 @@ False
 'ission is to read and practice consistent'
 ```
 
-**b)** Find the starting index of the first occurrence of `is` or `the` or `was` or `to` for the given input strings.
+**2)** Find the starting index of the first occurrence of `is` or `the` or `was` or `to` for the given input strings.
 
 ```ruby
 >>> s1 = 'match after the last newline character'
@@ -611,7 +611,7 @@ False
 4
 ```
 
-**c)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings.
+**3)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings.
 
 ```ruby
 >>> s1 = 'match after the last newline character'
@@ -631,7 +631,7 @@ False
 14
 ```
 
-**d)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
+**4)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
 
 ```ruby
 >>> ip = 'fruits:apple, mango, guava, blueberry'
@@ -640,7 +640,7 @@ False
 'apple, mango, guava, blueberry'
 ```
 
-**e)** The given input strings contains some text followed by `-` followed by a number. Replace that number with its `log` value using `math.log()`.
+**5)** The given input strings contain some text followed by `-` followed by a number. Replace that number with its `log` value using `math.log()`.
 
 ```ruby
 >>> s1 = 'first-3.14'
@@ -655,7 +655,7 @@ False
 'next-4.812184355372417'
 ```
 
-**f)** Replace all occurrences of `par` with `spar`, `spare` with `extra` and `park` with `garden` for the given input strings.
+**6)** Replace all occurrences of `par` with `spar`, `spare` with `extra` and `park` with `garden` for the given input strings.
 
 ```ruby
 >>> str1 = 'apartment has a park'
@@ -672,7 +672,7 @@ False
 'write a sparser'
 ```
 
-**g)** Extract all words between `(` and `)` from the given input string as a list. Assume that the input will not contain any broken parentheses.
+**7)** Extract all words between `(` and `)` from the given input string as a list. Assume that the input will not contain any broken parentheses.
 
 ```ruby
 >>> ip = 'another (way) to reuse (portion) matched (by) capture groups'
@@ -681,7 +681,7 @@ False
 ['way', 'portion', 'by']
 ```
 
-**h)** Extract all occurrences of `<` up to the next occurrence of `>`, provided there is at least one character in between `<` and `>`.
+**8)** Extract all occurrences of `<` up to the next occurrence of `>`, provided there is at least one character in between `<` and `>`.
 
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -690,7 +690,7 @@ False
 ['<apple>', '<> b<bye>', '<> c<cat>']
 ```
 
-**i)** Use `re.findall()` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
+**9)** Use `re.findall()` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
 
 ```ruby
 >>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
@@ -704,7 +704,7 @@ False
 [('1.32', '-3.14'), ('634', '5.63'), ('63.3e3', '9907809345343.235')]
 ```
 
-**j)** This is an extension to the previous question.
+**10)** This is an extension to the previous question.
 
 * For `row1`, find the sum of integers of each tuple element. For example, sum of `-2` and `5` is `3`.
 * For `row2`, find the sum of floating-point numbers of each tuple element. For example, sum of `1.32` and `-3.14` is `-1.82`.
@@ -723,7 +723,7 @@ False
 [-1.82, 639.63, 9907809408643.234]
 ```
 
-**k)** Use `re.split()` to get the output as shown below.
+**11)** Use `re.split()` to get the output as shown below.
 
 ```ruby
 >>> ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
@@ -732,7 +732,7 @@ False
 ['42', 'output', '1000', 'tr:u-ck', 'SQEX49801']
 ```
 
-**l)** For the given list of strings, change the elements into a tuple of original element and the number of times `t` occurs in that element.
+**12)** For the given list of strings, change the elements into a tuple of original element and the number of times `t` occurs in that element.
 
 ```ruby
 >>> words = ['sequoia', 'attest', 'tattletale', 'asset']
@@ -741,7 +741,7 @@ False
 [('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
 ```
 
-**m)** The given input string has fields separated by `:`. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See [docs.python: Match.groups](https://docs.python.org/3/library/re.html#re.Match.groups) and use `re.finditer()` to get the output as shown below. If the optional digits aren't present, show `'NA'` instead of `None`.
+**13)** The given input string has fields separated by `:`. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See [docs.python: Match.groups](https://docs.python.org/3/library/re.html#re.Match.groups) and use `re.finditer()` to get the output as shown below. If the optional digits aren't present, show `'NA'` instead of `None`.
 
 ```ruby
 >>> ip = 'TWXA42:JWPA:NTED01:'
@@ -752,7 +752,7 @@ False
 
 >![info](../images/info.svg) Note that this is different from `re.findall()` which will just give empty string instead of `None` when a capture group doesn't participate.
 
-**n)** Convert the comma separated strings to corresponding `dict` objects as shown below.
+**14)** Convert the comma separated strings to corresponding `dict` objects as shown below.
 
 ```ruby
 >>> row1 = 'name:rohan,maths:75,phy:89,'
@@ -770,7 +770,7 @@ False
 
 # Character class
 
-**a)** For the list `items`, filter all elements starting with `hand` and ending immediately with `s` or `y` or `le`.
+**1)** For the list `items`, filter all elements starting with `hand` and ending immediately with `s` or `y` or `le`.
 
 ```ruby
 >>> items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'hand-icy', 'handle']
@@ -779,7 +779,7 @@ False
 ['handy', 'hands', 'handle']
 ```
 
-**b)** Replace all whole words `reed` or `read` or `red` with `X`.
+**2)** Replace all whole words `reed` or `read` or `red` with `X`.
 
 ```ruby
 >>> ip = 'redo red credible :read: rod reed'
@@ -788,7 +788,7 @@ False
 'redo X credible :X: rod X'
 ```
 
-**c)** For the list `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
+**3)** For the list `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
@@ -797,7 +797,7 @@ False
 ['surrender', 'unicorn', 'eel']
 ```
 
-**d)** For the list `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
+**4)** For the list `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
@@ -806,7 +806,7 @@ False
 ['surrender', 'unicorn', 'newer', 'eel']
 ```
 
-**e)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
+**5)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
 
 ```ruby
 >>> str1 = '128A foo 0xfe32 34 0xbar'
@@ -821,7 +821,7 @@ False
 ['0XDEADBEEF', '0x0ff1ce', 'bad']
 ```
 
-**f)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
+**6)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
 
 ```ruby
 >>> str1 = 'def factorial()'
@@ -838,7 +838,7 @@ False
 'Hi there. Nice day(a'
 ```
 
-**g)** For the list `words`, filter all elements not starting with `e` or `p` or `u`.
+**7)** For the list `words`, filter all elements not starting with `e` or `p` or `u`.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', '(pest)']
@@ -847,7 +847,7 @@ False
 ['surrender', 'newer', 'door', '(pest)']
 ```
 
-**h)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
+**8)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
 
 ```ruby
 >>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
@@ -856,7 +856,7 @@ False
 ['tea', 'ear']
 ```
 
-**i)** The given input strings contain fields separated by `,` and fields can be empty too. Replace last three fields with `WHTSZ323`.
+**9)** The given input strings contain fields separated by `,` and fields can be empty too. Replace the last three fields with `WHTSZ323`.
 
 ```ruby
 >>> row1 = '(2),kite,12,,D,C,,'
@@ -870,7 +870,7 @@ False
 'hi,WHTSZ323'
 ```
 
-**j)** Split the given strings based on consecutive sequence of digit or whitespace characters.
+**10)** Split the given strings based on consecutive sequence of digit or whitespace characters.
 
 ```ruby
 >>> str1 = 'lion \t Ink32onion Nice'
@@ -884,7 +884,7 @@ False
 ['**', 'star', '**']
 ```
 
-**k)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
+**11)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
 
 ```ruby
 >>> ip = 'a<ap\nple> 1<> b<bye> 2<> c<cat>'
@@ -893,7 +893,7 @@ False
 'a 1<> b 2<> c'
 ```
 
-**l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
+**12)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
 
 ```ruby
 >>> print('known\nmood\nknow\npony\ninns')
@@ -904,7 +904,7 @@ pony
 inns
 ```
 
-**m)** For the given list, filter all elements containing any number sequence greater than `624`.
+**13)** For the given list, filter all elements containing any number sequence greater than `624`.
 
 ```ruby
 >>> items = ['hi0000432abcd', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
@@ -913,7 +913,7 @@ inns
 ['car00625', '3.14 96 2 foo1234baz']
 ```
 
-**n)** Count the maximum depth of nested braces for the given strings. Unbalanced or wrongly ordered braces should return `-1`. Note that this will require a mix of regular expressions and Python code.
+**14)** Count the maximum depth of nested braces for the given strings. Unbalanced or wrongly ordered braces should return `-1`. Note that this will require a mix of regular expressions and Python code.
 
 ```ruby
 >>> def max_nested_braces(ip):
@@ -935,7 +935,7 @@ inns
 -1
 ```
 
-**o)** By default, the `str.split()` method will split on whitespace and remove empty strings from the result. Which `re` module function would you use to replicate this functionality?
+**15)** By default, the `str.split()` method will split on whitespace and remove empty strings from the result. Which `re` module function would you use to replicate this functionality?
 
 ```ruby
 >>> ip = ' \t\r  so  pole\t\t\t\n\nlit in to \r\n\v\f  '
@@ -946,7 +946,7 @@ inns
 ['so', 'pole', 'lit', 'in', 'to']
 ```
 
-**p)** Convert the given input string to two different lists as shown below.
+**16)** Convert the given input string to two different lists as shown below.
 
 ```ruby
 >>> ip = 'price_42 roast^\t\n^-ice==cat\neast'
@@ -958,7 +958,7 @@ inns
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 ```
 
-**q)** Filter all whole elements with optional whitespaces at the start followed by three to five non-digit characters. Whitespaces at the start should not be part of the calculation for non-digit characters.
+**17)** Filter all whole elements with optional whitespaces at the start followed by three to five non-digit characters. Whitespaces at the start should not be part of the calculation for non-digit characters.
 
 ```ruby
 >>> items = ['\t \ncat', 'goal', ' oh', 'he-he', 'goal2', 'ok ', 'sparrow']
@@ -971,7 +971,7 @@ inns
 
 # Groupings and backreferences
 
-**a)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
+**1)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
 
 ```ruby
 >>> ip = 'area not a _a2_ roar took 22'
@@ -983,7 +983,7 @@ _a2_ roar
 took 22
 ```
 
-**b)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
+**2)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
 
 ```ruby
 >>> ip = 'sequoia subtle exhibit asset sets2 tests si_te'
@@ -992,7 +992,7 @@ took 22
 'sequoia [subtle] exhibit asset [sets2] tests [si_te]'
 ```
 
-**c)** Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.
+**3)** Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.
 
 ```ruby
 >>> ip = 'oreo not a _a2_ Roar took 22'
@@ -1001,7 +1001,7 @@ took 22
 'X not X X X took X'
 ```
 
-**d)** Convert the given *markdown* headers to corresponding *anchor* tags. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
+**4)** Convert the given *markdown* headers to corresponding *anchor* tags. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
 
 ```ruby
 >>> header1 = '# Regular Expressions'
@@ -1013,7 +1013,7 @@ took 22
 '## <a name="compiling-regular-expressions"></a>Compiling regular expressions'
 ```
 
-**e)** Convert the given *markdown* anchors to corresponding *hyperlinks*.
+**5)** Convert the given *markdown* anchors to corresponding *hyperlinks*.
 
 ```ruby
 >>> anchor1 = '# <a name="regular-expressions"></a>Regular Expressions'
@@ -1025,7 +1025,7 @@ took 22
 '[Subexpression calls](#subexpression-calls)'
 ```
 
-**f)** Count the number of whole words that have at least two occurrences of consecutive repeated alphabets. For example, words like `stillness` and `Committee` should be counted but not words like `root` or `readable` or `rotational`.
+**6)** Count the number of whole words that have at least two occurrences of consecutive repeated alphabets. For example, words like `stillness` and `Committee` should be counted but not words like `root` or `readable` or `rotational`.
 
 ```ruby
 >>> ip = '''oppressed abandon accommodation bloodless
@@ -1038,7 +1038,7 @@ took 22
 13
 ```
 
-**g)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there are no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
+**7)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there are no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
 
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
@@ -1047,7 +1047,7 @@ took 22
 '1234 23 4535 9339 1 60260260'
 ```
 
-**h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**8)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -1056,7 +1056,7 @@ took 22
 'wow hi-2 bye kite'
 ```
 
-**i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**9)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -1065,7 +1065,7 @@ took 22
 'five hi-2 bye water'
 ```
 
-**j)** Split the given input string on one or more repeated sequence of `cat`.
+**10)** Split the given input string on one or more repeated sequence of `cat`.
 
 ```ruby
 >>> ip = 'firecatlioncatcatcatbearcatcatparrot'
@@ -1074,7 +1074,7 @@ took 22
 ['fire', 'lion', 'bear', 'parrot']
 ```
 
-**k)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
+**11)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
 
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
@@ -1090,7 +1090,7 @@ took 22
 ['23', '4535', '1']
 ```
 
-**l)** Convert the comma separated strings to corresponding `dict` objects as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
+**12)** Convert the comma separated strings to corresponding `dict` objects as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
 
 ```ruby
 >>> row1 = 'rohan,75,89'
@@ -1104,7 +1104,7 @@ took 22
 {'name': 'rose', 'maths': '88', 'phy': '92'}
 ```
 
-**m)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with just a single substitution?
+**13)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with just a single substitution?
 
 ```ruby
 >>> ip = 'tiger imp goat eagle ant important'
@@ -1113,7 +1113,7 @@ took 22
 '(tiger) () (goat) (eagle) () (important)'
 ```
 
-**n)** Filter all elements that contain a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by `{{` and `}}`. Any partial match shouldn't be part of the output.
+**14)** Filter all elements that contain a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by `{{` and `}}`. Any partial match shouldn't be part of the output.
 
 ```ruby
 >>> ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
@@ -1122,7 +1122,7 @@ took 22
 ['{{apple-150}}', 'grape-87']
 ```
 
-**o)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by the first word.
+**15)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by the first word.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -1131,7 +1131,7 @@ took 22
 ['five-wow', 'water-kite']
 ```
 
-**p)** Modify the given regular expression such that it gives the expected result.
+**16)** Modify the given regular expression such that it gives the expected result.
 
 ```ruby
 >>> ip = '( S:12 E:5 S:4 and E:123 ok S:100 & E:10 S:1 - E:2 S:42 E:43 )'
@@ -1151,7 +1151,7 @@ took 22
 
 >![info](../images/info.svg) Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.
 
-**a)** Replace all whole words with `X` unless it is preceded by a `(` character.
+**1)** Replace all whole words with `X` unless it is preceded by a `(` character.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -1160,7 +1160,7 @@ took 22
 '(apple) X X) X (mango) (grape'
 ```
 
-**b)** Replace all whole words with `X` unless it is followed by a `)` character.
+**2)** Replace all whole words with `X` unless it is followed by a `)` character.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -1169,7 +1169,7 @@ took 22
 '(apple) X berry) X (mango) (X'
 ```
 
-**c)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
+**3)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -1178,7 +1178,7 @@ took 22
 '(apple) X berry) X (mango) (grape'
 ```
 
-**d)** Extract all whole words that do not end with `e` or `n`.
+**4)** Extract all whole words that do not end with `e` or `n`.
 
 ```ruby
 >>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
@@ -1187,7 +1187,7 @@ took 22
 ['a_t', 'row', 'Dust', 'end', 'a2', 'u']
 ```
 
-**e)** Extract all whole words that do not start with `a` or `d` or `n`.
+**5)** Extract all whole words that do not start with `a` or `d` or `n`.
 
 ```ruby
 >>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
@@ -1196,7 +1196,7 @@ took 22
 ['row', 'on', 'Urn', 'e', 'Dust', 'end', 'e', 'u']
 ```
 
-**f)** Extract all whole words only if they are followed by `:` or `,` or `-`.
+**6)** Extract all whole words only if they are followed by `:` or `,` or `-`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -1205,7 +1205,7 @@ took 22
 ['Poke', 'so_good', 'ever2']
 ```
 
-**g)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
+**7)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -1214,7 +1214,7 @@ took 22
 ['so_good', 'is', 'sit']
 ```
 
-**h)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
+**8)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -1223,7 +1223,7 @@ took 22
 ['so_good', 'ink']
 ```
 
-**i)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
+**9)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -1232,7 +1232,7 @@ took 22
 ['so_good', 'vast', 'sit']
 ```
 
-**j)** Remove the leading and trailing whitespaces from all the individual fields where `,` is the field separator.
+**10)** Remove the leading and trailing whitespaces from all the individual fields where `,` is the field separator.
 
 ```ruby
 >>> csv1 = ' comma  ,separated ,values \t\r '
@@ -1246,7 +1246,7 @@ took 22
 'good bad,nice  ice,42,,stall   small'
 ```
 
-**k)** Filter all elements that satisfy all of these rules:
+**11)** Filter all elements that satisfy all of these rules:
 
 * should have at least two alphabets
 * should have at least three digits
@@ -1260,7 +1260,7 @@ took 22
 ['F2H3u%9', 'A $B C1234']
 ```
 
-**l)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
+**12)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
 
 ```ruby
 >>> ip = 'part; cat {super} rest_42 par scatter apple spar'
@@ -1269,7 +1269,7 @@ took 22
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 ```
 
-**m)** Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with `.` and no further digits should not be considered.
+**13)** Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with `.` and no further digits should not be considered.
 
 ```ruby
 >>> ip = '12 ab32.4 go 5 2. 46.42 5'
@@ -1278,7 +1278,7 @@ took 22
 ['32', '46']
 ```
 
-**n)** For the given input strings, extract all overlapping two character sequences.
+**14)** For the given input strings, extract all overlapping two character sequences.
 
 ```ruby
 >>> s1 = 'apple'
@@ -1292,7 +1292,7 @@ took 22
 ['1.', '.2', '2-', '-3', '3:', ':4']
 ```
 
-**o)** The given input strings contain fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+**15)** The given input strings contain fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
 
 ```ruby
 >>> s1 = '42:cat'
@@ -1315,7 +1315,7 @@ took 22
 'dragon:unicorn:centaur'
 ```
 
-**p)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+**16)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
 
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
@@ -1324,7 +1324,7 @@ took 22
 ['at', 'in', 'a_b', 'lion']
 ```
 
-**q)** Match strings if it contains `qty` followed by `price` but not if there is any **whitespace** character or the string `error` between them.
+**17)** Match strings if it contains `qty` followed by `price` but not if there is any **whitespace** character or the string `error` between them.
 
 ```ruby
 >>> str1 = '23,qty,price,42'
@@ -1350,19 +1350,19 @@ False
 True
 ```
 
-**r)** Can you reason out why the following regular expressions behave differently?
+**18)** Can you reason out why the following regular expressions behave differently?
 
 ```ruby
 >>> ip = 'I have 12, he has 2!'
 
->>> re.sub(r'\b..\b', '{\g<0>}', ip)
+>>> re.sub(r'\b..\b', r'{\g<0>}', ip)
 '{I }have {12}{, }{he} has{ 2}!'
 
->>> re.sub(r'(?<!\w)..(?!\w)', '{\g<0>}', ip)
+>>> re.sub(r'(?<!\w)..(?!\w)', r'{\g<0>}', ip)
 'I have {12}, {he} has {2!}'
 ```
 
-**s)** The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.
+**19)** The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.
 
 ```ruby
 >>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4'
@@ -1375,7 +1375,7 @@ True
 
 # Flags
 
-**a)** Remove from the first occurrence of `hat` to the last occurrence of `it` for the given input strings. Match these markers case insensitively.
+**1)** Remove from the first occurrence of `hat` to the last occurrence of `it` for the given input strings. Match these markers case insensitively.
 
 ```ruby
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
@@ -1389,7 +1389,7 @@ True
 'it this .'
 ```
 
-**b)** Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.
+**2)** Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.
 
 ```ruby
 >>> para = '''\
@@ -1416,7 +1416,7 @@ hi there
 bye
 ```
 
-**c)** For the given input strings, match all of these three conditions:
+**3)** For the given input strings, match all of these three conditions:
 
 * `This` case sensitively
 * `nice` and `cool` case insensitively
@@ -1445,7 +1445,7 @@ False
 False
 ```
 
-**d)** For the given input strings, match if the string begins with `Th` and also contains a line that starts with `There`.
+**4)** For the given input strings, match if the string begins with `Th` and also contains a line that starts with `There`.
 
 ```ruby
 >>> s1 = 'There there\nHave a cookie'
@@ -1465,7 +1465,7 @@ False
 False
 ```
 
-**e)** Explore what the `re.DEBUG` flag does. Here are some example patterns to check out.
+**5)** Explore what the `re.DEBUG` flag does. Here are some example patterns to check out.
 
 * `re.compile(r'\Aden|ly\Z', flags=re.DEBUG)`
 * `re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)`
@@ -1475,7 +1475,7 @@ False
 
 # Unicode
 
-**a)** Output `True` or `False` depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give `False`. Do you need regular expressions for this?
+**1)** Output `True` or `False` depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give `False`. Do you need regular expressions for this?
 
 ```ruby
 >>> str1 = '123—456'
@@ -1496,9 +1496,9 @@ False
 False
 ```
 
-**b)** Does the `.` quantifier match non-ASCII characters even with the `re.ASCII` flag enabled?
+**2)** Does the `.` quantifier match non-ASCII characters even with the `re.ASCII` flag enabled?
 
-**c)** Explore the following stackoverflow Q&A threads.
+**3)** Explore the following stackoverflow Q&A threads.
 
 * [Remove powered number from string](https://stackoverflow.com/q/57553721/4082052)
 * [Regular expression for French characters](https://stackoverflow.com/q/1922097/4082052)
@@ -1507,9 +1507,9 @@ False
 
 # regex module
 
-**a)** List the two `regex` module constants that affect the compatibility with the `re` module. Also specify their corresponding inline flags.
+**1)** List the two `regex` module constants that affect the compatibility with the `re` module. Also specify their corresponding inline flags.
 
-**b)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence and the separator. Such sequences will end when `:` or `.` is not followed by a word character.
+**2)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence and the separator. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -1518,7 +1518,7 @@ False
 'wow: hi-2 bye kite.'
 ```
 
-**c)** The given list of strings has fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+**3)** The given list of strings has fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
 
 ```ruby
 >>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother', 'fig-42:cherry:']
@@ -1527,7 +1527,7 @@ False
 ['42', 'twelve:a2b', 'we:be:he:0:a:b', 'fig-42:cherry']
 ```
 
-**d)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+**4)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
 
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
@@ -1536,7 +1536,7 @@ False
 ['at', 'in', 'a_b', 'lion']
 ```
 
-**e)** The given input string has fields separated by the `:` character. Extract field contents only if the previous field contains a digit character.
+**5)** The given input string has fields separated by the `:` character. Extract field contents only if the previous field contains a digit character.
 
 ```ruby
 >>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
@@ -1545,7 +1545,7 @@ False
 ['ride', '3list', 'end']
 ```
 
-**f)** The given input strings have fields separated by the `:` character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.
+**6)** The given input strings have fields separated by the `:` character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.
 
 ```ruby
 >>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
@@ -1565,7 +1565,7 @@ False
 ['Dragon', 'Unicorn', 'Wizard-Healer']
 ```
 
-**g)** For the given input strings, extract `if` followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.
+**7)** For the given input strings, extract `if` followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.
 
 ```ruby
 >>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
@@ -1579,7 +1579,7 @@ False
 'if(a(b)c(d(e(f)1)2)3)'
 ```
 
-**h)** Read about the `POSIX` flag from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). Is the following code snippet showing the correct output?
+**8)** Read about the `POSIX` flag from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). Is the following code snippet showing the correct output?
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -1590,7 +1590,7 @@ False
 'plX XmX tX wX X cautX sentient'
 ```
 
-**i)** Extract all whole words for the given input strings. However, based on the user input `ignore`, do not match words if they contain any character present in the `ignore` variable.
+**9)** Extract all whole words for the given input strings. However, based on the user input `ignore`, do not match words if they contain any character present in the `ignore` variable.
 
 ```ruby
 >>> s1 = 'match after the last new_line character A2'
@@ -1612,7 +1612,7 @@ False
 ['and', 'you', 'to']
 ```
 
-**j)** Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set `\p{P}` as punctuations for this exercise.
+**10)** Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set `\p{P}` as punctuations for this exercise.
 
 ```ruby
 >>> s1 = ''.join(chr(c) for c in range(0, 0x80))
@@ -1629,7 +1629,7 @@ False
 '❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪⟫'
 ```
 
-**k)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective of case) with the string `Python`. However, any match within code blocks that starts with the whole line ` ```python ` and ends with the whole line ` ``` ` shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.
+**11)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective of case) with the string `Python`. However, any match within code blocks that starts with the whole line ` ```python ` and ends with the whole line ` ``` ` shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.
 
 Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises) for the files `sample.md` and `expected.md` required to solve this exercise.
 
@@ -1643,7 +1643,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 >>> assert open('sample_mod.md').read() == open('expected.md').read()
 ```
 
-**l)** For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.
+**12)** For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.
 
 ```ruby
 >>> s1 = 'knack tic pi roar what'
@@ -1657,7 +1657,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 'r2d2'
 ```
 
-**m)** Replicate `str.rpartition()` functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is `777` and `12` for the given input strings.
+**13)** Replicate `str.rpartition()` functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is `777` and `12` for the given input strings.
 
 ```ruby
 >>> s1 = 'Sample123string42with777numbers'
@@ -1671,7 +1671,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 ['', '12', 'apples']
 ```
 
-**n)** Read about fuzzy matching from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). For the given input strings, return `True` if they are exactly the same as `cat` or there is exactly one character difference. Ignore case differences. For example, `Ca2` should give `True`. `act` will be `False` even though the characters are same because position should also be considered.
+**14)** Read about fuzzy matching from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). For the given input strings, return `True` if they are exactly the same as `cat` or there is exactly one character difference. Ignore case differences. For example, `Ca2` should give `True`. `act` will be `False` even though the characters are same because position should also be considered.
 
 ```ruby
 >>> pat = regex.compile()       ##### add your solution here
@@ -1694,7 +1694,7 @@ False
 False
 ```
 
-**o)** The given input strings have fields separated by the `:` character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.
+**15)** The given input strings have fields separated by the `:` character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.
 
 ```ruby
 >>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'

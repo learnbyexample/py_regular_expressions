@@ -4,7 +4,7 @@ Learn Python Regular Expressions step-by-step from beginner to advanced levels w
 
 <p align="center"><img src="./images/py_regex_ls.png" alt="Understanding Python re(gex)? ebook cover image" /></p>
 
-The book also includes exercises to test your understanding, which are presented together as a single file in this repo — [Exercises.md](./exercises/Exercises.md)
+The book also includes exercises to test your understanding, which are presented together as a single file in this repo — [Exercises.md](./exercises/Exercises.md).
 
 For solutions to the exercises, see [Exercise_solutions.md](./exercises/Exercise_solutions.md).
 
@@ -16,23 +16,18 @@ See [Version_changes.md](./Version_changes.md) to keep track of changes made to 
 
 # E-book
 
-* You can purchase the pdf/epub versions of the book using these links
-    * https://learnbyexample.gumroad.com/l/py_regex
+* You can purchase the pdf/epub versions of the book using these links:
     * https://leanpub.com/py_regex
+    * https://learnbyexample.gumroad.com/l/py_regex
 * You can also get the book as part of these bundles:
-    * **All books bundle** bundle from https://learnbyexample.gumroad.com/l/all-books
-        * Includes all my programming books
+    * **All books bundle** bundle from https://leanpub.com/b/learnbyexample-all-books or https://learnbyexample.gumroad.com/l/all-books
     * **Learn by example Python bundle** from https://leanpub.com/b/python-bundle or https://learnbyexample.gumroad.com/l/python-bundle
     * **Awesome Regex** bundle from https://leanpub.com/b/regex or https://learnbyexample.gumroad.com/l/regex
-    * **The Indie Python Extravaganza** bundle from https://leanpub.com/b/theindiepythonextravaganza
-        * Includes *Python 101*, *Pydon'ts*, *Python re(gex)?*, *Practice Python Projects* and *Clean Architectures in Python*
-    * [Python 101 + Python re(gex)?](https://leanpub.com/b/python101pythonregex) or [Python 201: Intermediate Python + Python re(gex)?](https://leanpub.com/b/python201_and_regex)
-        * Python 101/201 is authored by [Michael Driscoll](https://www.blog.pythonlibrary.org/)
-* See https://learnbyexample.github.io/books/ for list of other books
+* See https://learnbyexample.github.io/books/ for a list of other books
 
-For a preview of the book, see [sample chapters](./sample_chapters/py_regex_sample.pdf)
+For a preview of the book, see [sample chapters](./sample_chapters/py_regex_sample.pdf).
 
-The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdfs from markdown using pandoc](https://learnbyexample.github.io/customizing-pandoc/) if you are interested in the ebook creation process.
+The book can also be [viewed as a single markdown file in this repo](./py_regex.md). See my blogpost on [generating pdf/epub from markdown using pandoc](https://learnbyexample.github.io/customizing-pandoc/) if you are interested in the ebook creation process.
 
 For the web version of the book, visit https://learnbyexample.github.io/py_regular_expressions/
 

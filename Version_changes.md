@@ -1,5 +1,14 @@
 <br>
 
+### 4.5
+
+* Python version updated to 3.13
+    * deprecated features, SyntaxWarning, name change from `re.error` to `re.PatternError`
+* Corrected typos, updated descriptions, timing results and external links
+* Exercises are now numbered instead of using alphabets
+
+<br>
+
 ### 4.1
 
 * Updated details for **re(gex)? playground** app

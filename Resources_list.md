@@ -11,14 +11,14 @@
 
 # Learning resources
 
-**Note** that some of these resources are not specific to Python. So you'll have to adapt them to Python's syntax.
+Note that some of these resources are not specific to Python. So you'll have to adapt them to Python's syntax.
 
 * [docs.python: Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 * [Python 3 Module of the Week: re](https://pymotw.com/3/re/index.html) — covers till Python version 3.7.9
 * [stackoverflow: python regex](https://stackoverflow.com/questions/tagged/python+regex?sort=votes&pageSize=15)
 * [PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions) — construct regular expressions with natural language terms
 * [CommonRegex](https://github.com/madisonmay/CommonRegex) — collection of common regular expressions
-* [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
+* [Awesome Regex](https://github.com/slevithan/awesome-regex) — curated collection of tools, tutorials, libraries, etc
 * [Generate strings that match a given regular expression](https://stackoverflow.com/q/492716/4082052)
 * [stackoverflow: regex FAQ](https://stackoverflow.com/q/22937618/4082052)
     * [stackoverflow: regex tag](https://stackoverflow.com/questions/tagged/regex) is a good source of exercise questions

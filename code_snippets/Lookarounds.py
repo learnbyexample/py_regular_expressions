@@ -24,9 +24,9 @@ re.sub(r'(?<![pr]).', '*', 'spare')
 
 re.sub(r'.(?<![pr].)', '*', 'spare')
 
-re.sub(r'par(?!.*s)', '[\g<0>]', 'par spare part party')
+re.sub(r'par(?!.*s)', r'[\g<0>]', 'par spare part party')
 
-re.sub(r'(?!.*s)par', '[\g<0>]', 'par spare part party')
+re.sub(r'(?!.*s)par', r'[\g<0>]', 'par spare part party')
 
 re.sub(r'(?!\Z)\b(?<!\A)', ' ', 'output=num1+35*42/num2')
 
@@ -36,7 +36,7 @@ re.findall(r'\d+(?=,)', '42 apple-5, fig3; x-83, y-20: f12')
 
 re.findall(r'(?<=-)\d+(?=[:;])', '42 apple-5, fig3; x-83, y-20: f12')
 
-re.sub(r'par(?=.*\bpart\b)', '[\g<0>]', 'par spare part party')
+re.sub(r'par(?=.*\bpart\b)', r'[\g<0>]', 'par spare part party')
 
 re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5')
 

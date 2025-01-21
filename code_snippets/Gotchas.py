@@ -56,3 +56,7 @@ re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', flags=re.I)
 
 re.sub(r'(?i)key', r'(\g<0>)', 'KEY portkey oKey Keyed')
 
+import re
+
+re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', re.I)
+

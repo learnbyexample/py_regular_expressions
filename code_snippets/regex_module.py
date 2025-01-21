@@ -18,15 +18,15 @@ row = 'today,2008-03-24,food,2012-08-12,nice,5632'
 
 regex.search(r'(?P<date>\d{4}-\d{2}-\d{2}).*(?&date)', row)[0]
 
-## Set start of matching portion with \K
+## Set the start of matching portion with \K
 
 regex.sub(r'\b\w\K\w*\W*', '', 'sea eat car rat eel tea')
 
 s = 'cat scatter cater scat concatenate catastrophic catapult duplicate'
 
-regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s, count=1)
+regex.sub(r'(cat.*?){2}\Kcat', r'[\g<0>]', s, count=1)
 
-regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s)
+regex.sub(r'(cat.*?){2}\Kcat', r'[\g<0>]', s)
 
 row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,6,6,4'
 
@@ -115,28 +115,28 @@ eqn2 = 'a + (b) + ((c)) + (((d)))'
 
 regex.findall(r'\((?:[^()]++|\([^()]++\))++\)', eqn2)
 
-lvl2 = regex.compile('''
-         \(              #literal (
-           (?:           #start of non-capturing group
-            [^()]++      #non-parentheses characters
-            |            #OR
-            \([^()]++\)  #level-one RE
-           )++           #end of non-capturing group, 1 or more times
-         \)              #literal )
+lvl2 = regex.compile(r'''
+         \(              # literal (
+           (?:           # start of non-capturing group
+            [^()]++      # non-parentheses characters
+            |            # OR
+            \([^()]++\)  # level-one RE
+           )++           # end of non-capturing group, 1 or more times
+         \)              # literal )
          ''', flags=regex.X)
 
 lvl2.findall(eqn1)
 
 lvl2.findall(eqn2)
 
-lvln = regex.compile('''
-         \(           #literal (
-           (?:        #start of non-capturing group
-            [^()]++   #non-parentheses characters
-            |         #OR
-            (?0)      #recursive call
-           )++        #end of non-capturing group, 1 or more times
-         \)           #literal )
+lvln = regex.compile(r'''
+         \(           # literal (
+           (?:        # start of non-capturing group
+            [^()]++   # non-parentheses characters
+            |         # OR
+            (?0)      # recursive call
+           )++        # end of non-capturing group, 1 or more times
+         \)           # literal )
          ''', flags=regex.X)
 
 lvln.findall(eqn0)

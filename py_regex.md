@@ -2,7 +2,7 @@
 
 Scripting and automation tasks often need to extract particular portions of text from input data or modify them from one format to another. This book will help you understand Regular Expressions, a mini-programming language for all sorts of text processing needs.
 
-This book heavily leans on examples to present features of regular expressions one by one. It is recommended that you manually type each example and experiment with them. Understanding both the nature of input strings and the output produced is essential. As an analogy, consider learning to drive a car — no matter how much you read about them or listen to explanations, you'd need practical experience to become proficient.
+This book heavily leans on examples to present features of regular expressions one by one. It is recommended that you manually type each example and experiment with them. Make an effort to understand the sample input as well as the solution presented and check if the output changes (or not!) when you alter some part of the input and the command. As an analogy, consider learning to drive a car — no matter how much you read about them or listen to explanations, you'd need practical experience to become proficient.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ If you have prior experience with a programming language but not Python, see my 
 
 ## Conventions
 
-* The examples presented here have been tested with **Python version 3.11.1** and includes features not available in earlier versions.
+* The examples presented here have been tested with **Python version 3.13.1** and includes features not available in earlier versions.
 * Code snippets shown are copy pasted from the Python REPL shell and modified for presentation purposes. Some commands are preceded by comments to provide context and explanations. Blank lines have been added to improve readability. Error messages are shortened. `import` statements are skipped after initial use. And so on.
 * Unless otherwise noted, all examples and explanations are meant for **ASCII** characters.
 * External links are provided throughout the book for you to explore certain topics in more depth.
@@ -39,7 +39,7 @@ Special thanks to Al Sweigart. His [Automate the Boring Stuff](https://automatet
 
 ## Feedback and Errata
 
-I would highly appreciate if you'd let me know how you felt about this book. It could be anything from a simple thank you, pointing out a typo, mistakes in code snippets, which aspects of the book worked for you (or didn't!) and so on. Reader feedback is essential and especially so for self-published authors.
+I would highly appreciate it if you'd let me know how you felt about this book. It could be anything from a simple thank you, pointing out a typo, mistakes in code snippets, which aspects of the book worked for you (or didn't!) and so on. Reader feedback is essential and especially so for self-published authors.
 
 You can reach me via:
 
@@ -61,11 +61,11 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 
 Code snippets are available under [MIT License](https://github.com/learnbyexample/py_regular_expressions/blob/master/LICENSE).
 
-Resources mentioned in Acknowledgements section above are available under original licenses.
+Resources mentioned in the Acknowledgements section above are available under original licenses.
 
 ## Book version
 
-4.1
+4.5
 
 See [Version_changes.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/Version_changes.md) to track changes across book versions.
 
@@ -220,8 +220,8 @@ The first argument is the RE pattern to match against the input string, which is
 >>> re.sub(r'e', 'E', greeting)
 'HavE a nicE wEEkEnd'
 
-# replace first two occurrences of 'e' with 'E'
-# same as: greeting.replace('e', 'E', 2)
+# replace the first two occurrences of 'e' with 'E'
+# same as: greeting.replace('e', 'E', count=2)
 >>> re.sub(r'e', 'E', greeting, count=2)
 'HavE a nicE weekend'
 ```
@@ -343,7 +343,7 @@ The next section has exercises to test your understanding of the concepts introd
 
 >![info](images/info.svg) All the exercises are also collated together in one place at [Exercises.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md). For solutions, see [Exercise_solutions.md](https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md).
 
-**a)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
+**1)** Check whether the given strings contain `0xB0`. Display a boolean result as shown below.
 
 ```ruby
 >>> line1 = 'start address: 0xA0, func1 address: 0xC0'
@@ -355,7 +355,7 @@ False
 True
 ```
 
-**b)** Replace all occurrences of `5` with `five` for the given string.
+**2)** Replace all occurrences of `5` with `five` for the given string.
 
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
@@ -364,7 +364,7 @@ True
 'They ate five apples and five oranges'
 ```
 
-**c)** Replace only the first occurrence of `5` with `five` for the given string.
+**3)** Replace only the first occurrence of `5` with `five` for the given string.
 
 ```ruby
 >>> ip = 'They ate 5 apples and 5 oranges'
@@ -373,7 +373,7 @@ True
 'They ate five apples and 5 oranges'
 ```
 
-**d)** For the given list, filter all elements that do *not* contain `e`.
+**4)** For the given list, filter all elements that do *not* contain `e`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -382,7 +382,7 @@ True
 ['goal', 'sit']
 ```
 
-**e)** Replace all occurrences of `note` irrespective of case with `X`.
+**5)** Replace all occurrences of `note` irrespective of case with `X`.
 
 ```ruby
 >>> ip = 'This note should not be NoTeD'
@@ -391,7 +391,7 @@ True
 'This X should not be XD'
 ```
 
-**f)** Check if `at` is present in the given byte input data.
+**6)** Check if `at` is present in the given byte input data.
 
 ```ruby
 >>> ip = b'tiger imp goat'
@@ -400,7 +400,7 @@ True
 True
 ```
 
-**g)** For the given input string, display all lines not containing `start` irrespective of case.
+**7)** For the given input string, display all lines not containing `start` irrespective of case.
 
 ```ruby
 >>> para = '''good start
@@ -424,7 +424,7 @@ finish the book
 bye
 ```
 
-**h)** For the given list, filter all elements that contain either `a` or `w`.
+**8)** For the given list, filter all elements that contain either `a` or `w`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -434,7 +434,7 @@ bye
 ['goal', 'new', 'eat']
 ```
 
-**i)** For the given list, filter all elements that contain both `e` and `n`.
+**9)** For the given list, filter all elements that contain both `e` and `n`.
 
 ```ruby
 >>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
@@ -444,7 +444,7 @@ bye
 ['new', 'dinner']
 ```
 
-**j)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
+**10)** For the given string, replace `0xA0` with `0x7F` and `0xC0` with `0x1F`.
 
 ```ruby
 >>> ip = 'start address: 0xA0, func1 address: 0xC0'
@@ -717,7 +717,7 @@ In this chapter, you've begun to see building blocks of regular expressions and 
 
 ## Exercises
 
-**a)** Check if the given strings start with `be`.
+**1)** Check if the given strings start with `be`.
 
 ```ruby
 >>> line1 = 'be nice'
@@ -737,7 +737,7 @@ True
 False
 ```
 
-**b)** For the given input string, change only the whole word `red` to `brown`.
+**2)** For the given input string, change only the whole word `red` to `brown`.
 
 ```ruby
 >>> words = 'bred red spread credible red.'
@@ -746,7 +746,7 @@ False
 'bred brown spread credible brown.'
 ```
 
-**c)** For the given input list, filter all elements that contain `42` surrounded by word characters.
+**3)** For the given input list, filter all elements that contain `42` surrounded by word characters.
 
 ```ruby
 >>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
@@ -755,7 +755,7 @@ False
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
 ```
 
-**d)** For the given input list, filter all elements that start with `den` or end with `ly`.
+**4)** For the given input list, filter all elements that start with `den` or end with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
@@ -764,7 +764,7 @@ False
 ['lovely', '2 lonely', 'dent']
 ```
 
-**e)** For the given input string, change whole word `mall` to `1234` only if it is at the start of a line.
+**5)** For the given input string, change whole word `mall` to `1234` only if it is at the start of a line.
 
 ```ruby
 >>> para = '''\
@@ -784,7 +784,7 @@ mallet wallet malls
 1234:call:ball:pall
 ```
 
-**f)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
+**6)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
@@ -793,7 +793,7 @@ mallet wallet malls
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**g)** For the given input list, filter all whole elements `12\nthree` irrespective of case.
+**7)** For the given input list, filter all whole elements `12\nthree` irrespective of case.
 
 ```ruby
 >>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
@@ -802,7 +802,7 @@ mallet wallet malls
 ['12\nThree', '12\nthree']
 ```
 
-**h)** For the given input list, replace `hand` with `X` for all elements that start with `hand` followed by at least one word character.
+**8)** For the given input list, replace `hand` with `X` for all elements that start with `hand` followed by at least one word character.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
@@ -811,7 +811,7 @@ mallet wallet malls
 ['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
 ```
 
-**i)** For the given input list, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
+**9)** For the given input list, filter all elements starting with `h`. Additionally, replace `e` with `X` for these filtered elements.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
@@ -860,7 +860,7 @@ You might infer from the above examples that there can be cases where many alter
 
 >![warning](images/warning.svg) In the above examples, the elements do not contain any special regular expression characters. Handling strings that contain metacharacters will be discussed in the [re.escape()](#reescape) section.
 
->![info](images/info.svg) If you have thousands of search terms to be matched, using specialized libraries like [flashtext](https://github.com/vi3k6i5/flashtext) is highly recommended instead of regular expressions.
+>![info](images/info.svg) If you have thousands of search terms to be matched, using specialized libraries like [flashtext](https://github.com/vi3k6i5/flashtext) (or [flashtext2](https://pypi.org/project/flashtext2/)) is highly recommended instead of regular expressions.
 
 ## Grouping
 
@@ -1024,7 +1024,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 
 ## Exercises
 
-**a)** For the given list, filter all elements that start with `den` or end with `ly`.
+**1)** For the given list, filter all elements that start with `den` or end with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
@@ -1033,7 +1033,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 ['lovely', '2 lonely', 'dent']
 ```
 
-**b)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
+**2)** For the given list, filter all elements having a line starting with `den` or ending with `ly`.
 
 ```ruby
 >>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
@@ -1042,7 +1042,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
 ```
 
-**c)** For the given strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
+**3)** For the given strings, replace all occurrences of `removed` or `reed` or `received` or `refused` with `X`.
 
 ```ruby
 >>> s1 = 'creed refuse removed read'
@@ -1056,7 +1056,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 'X X redo X'
 ```
 
-**d)** For the given strings, replace all matches from the list `words` with `A`.
+**4)** For the given strings, replace all matches from the list `words` with `A`.
 
 ```ruby
 >>> s1 = 'plate full of slate'
@@ -1071,7 +1071,7 @@ So, this chapter was about specifying one or more alternate matches within the s
 "A for A, don't be A"
 ```
 
-**e)** Filter all whole elements from the input list `items` based on elements listed in `words`.
+**5)** Filter all whole elements from the input list `items` based on elements listed in `words`.
 
 ```ruby
 >>> items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
@@ -1092,7 +1092,7 @@ This chapter will show how to match metacharacters literally. Examples will be d
 You have seen a few metacharacters and escape sequences that help to compose a RE. To match the metacharacters literally, i.e. to remove their special meaning, prefix those characters with a `\` (backslash) character. To indicate a literal `\` character, use `\\`. This assumes you are using raw strings and not normal strings.
 
 ```ruby
-# even though ^ is not being used as anchor, it won't be matched literally
+# even though ^ is not being used as an anchor, it won't be matched literally
 >>> bool(re.search(r'b^2', 'a^2 + b^2 - C*3'))
 False
 # escaping will work
@@ -1137,7 +1137,7 @@ Okay, what if you have a string variable that must be used to construct a RE —
 Recall that in the [Alternation](#alternation) section, `join` was used to dynamically construct RE pattern from an iterable of strings. However, that didn't handle metacharacters. Here are some examples on how you can use `re.escape()` so that the resulting pattern will match the strings from the input iterable literally.
 
 ```ruby
-# iterable of strings, assume alternation precedence sorting isn't needed
+# iterable of strings, assume that alternation precedence sorting isn't needed
 >>> terms = ['a_42', '(a^b)', '2|3']
 # using 're.escape' and 'join' to construct the pattern
 >>> pat1 = re.compile('|'.join(re.escape(s) for s in terms))
@@ -1160,7 +1160,7 @@ a_42|(a^b)|2|3
 
 Certain characters like tab and newline can be expressed using escape sequences as `\t` and `\n` respectively. These are similar to how they are treated in normal string literals. However, `\b` is for word boundaries as seen earlier, whereas it stands for the backspace character in normal string literals.
 
-The full list is mentioned at the end of [docs.python: Regular Expression Syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax) section as `\a \b \f \n \N \r \t \u \U \v \x \\`. Do read the documentation for details as well as how it differs for byte data.
+The full list is mentioned at the end of the [docs.python: Regular Expression Syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax) section as `\a \b \f \n \N \r \t \u \U \v \x \\`. Do read the documentation for details as well as how it differs for byte data.
 
 ```ruby
 >>> re.sub(r'\t', ':', 'a\tb\tc')
@@ -1174,8 +1174,10 @@ The full list is mentioned at the end of [docs.python: Regular Expression Syntax
 > 
 > ```ruby
 > >>> re.search(r'\e', 'hello')
-> re.error: bad escape \e at position 0
+> re.PatternError: bad escape \e at position 0
 > ```
+>
+> Note that `re.PatternError` was named as `re.error` prior to Python version 3.13.
 
 You can also represent a character using hexadecimal escape of the format `\xNN` where `NN` are exactly two hexadecimal characters. If you represent a metacharacter using escapes, it will be treated literally instead of its metacharacter feature.
 
@@ -1213,7 +1215,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 
 ## Exercises
 
-**a)** Transform the given input strings to the expected output using the same logic on both strings.
+**1)** Transform the given input strings to the expected output using the same logic on both strings.
 
 ```ruby
 >>> str1 = '(9-2)*5+qty/3-(9-2)*7'
@@ -1225,7 +1227,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 '(qty+4)/2-35+pq/4'
 ```
 
-**b)** Replace `(4)\|` with `2` only at the start or end of the given input strings.
+**2)** Replace `(4)\|` with `2` only at the start or end of the given input strings.
 
 ```ruby
 >>> s1 = r'2.3/(4)\|6 foo 5.3-(4)\|'
@@ -1242,7 +1244,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 'two - (4)\\|\n'
 ```
 
-**c)** Replace any matching element from the list `items` with `X` for given the input strings. Match the elements from `items` literally. Assume no two elements of `items` will result in any matching conflict.
+**3)** Replace any matching element from the list `items` with `X` for the given input strings. Match the elements from `items` literally. Assume no two elements of `items` will result in any matching conflict.
 
 ```ruby
 >>> items = ['a.b', '3+n', r'x\y\z', 'qty||price', '{n}']
@@ -1256,7 +1258,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 '4X2 aXe'
 ```
 
-**d)** Replace the backspace character `\b` with a single space character for the given input string.
+**4)** Replace the backspace character `\b` with a single space character for the given input string.
 
 ```ruby
 >>> ip = '123\b456'
@@ -1269,7 +1271,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 '123 456'
 ```
 
-**e)** Replace all occurrences of `\e` with `e`.
+**5)** Replace all occurrences of `\e` with `e`.
 
 ```ruby
 >>> ip = r'th\er\e ar\e common asp\ects among th\e alt\ernations'
@@ -1278,7 +1280,7 @@ This short chapter discussed how to match metacharacters literally. `re.escape()
 'there are common aspects among the alternations'
 ```
 
-**f)** Replace any matching item from the list `eqns` with `X` for given the string `ip`. Match the items from `eqns` literally.
+**6)** Replace any matching item from the list `eqns` with `X` for the given string `ip`. Match the items from `eqns` literally.
 
 ```ruby
 >>> ip = '3-(a^b)+2*(a^b)-(a/b)+3'
@@ -1344,12 +1346,12 @@ The first argument is the RE pattern to be used for splitting the input string, 
 >>> re.split(r'-', 'apple-85-mango-70', maxsplit=1)
 ['apple', '85-mango-70']
 
-# example with dot metacharacter
+# example with the dot metacharacter
 >>> re.split(r':.:', 'bus:3:car:-:van')
 ['bus', 'car', 'van']
 ```
 
-See the [re.split() with capture groups](#resplit-with-capture-groups) section for details of how capture groups affect the output of `re.split()`.
+See the [re.split() with capture groups](#resplit-with-capture-groups) section for details on how capture groups affect the output of `re.split()`.
 
 ## Greedy quantifiers
 
@@ -1429,12 +1431,12 @@ The `+` metacharacter quantifies a character or group to match `1` or more times
 
 You can specify a range of integer numbers, both bounded and unbounded, using the `{}` metacharacters. There are four ways to use this quantifier as shown below:
 
-| Pattern | Description |
-| ------- | ----------- |
-| `{m,n}` | match `m` to `n` times |
-| `{m,}`  | match at least `m` times |
-| `{,n}`  | match up to `n` times (including `0` times) |
-| `{n}`   | match exactly `n` times |
+| Quantifier | Description |
+| ---------- | ----------- |
+| `{m,n}`    | match `m` to `n` times |
+| `{m,}`     | match at least `m` times |
+| `{,n}`     | match up to `n` times (including `0` times) |
+| `{n}`      | match exactly `n` times |
 
 ```ruby
 >>> repeats = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
@@ -1566,7 +1568,7 @@ Like greedy quantifiers, lazy quantifiers will try to satisfy the overall RE. Fo
 
 ## Possessive quantifiers
 
-Before Python 3.11, you had to use alternatives like the third-party [regex module](https://pypi.org/project/regex/) for possessive quantifiers. The difference between greedy and possessive quantifiers is that possessive will not backtrack to find a match. In other words, possessive quantifiers will always consume every character that matches the pattern on which it is applied. Syntax wise, you need to append `+` to greedy quantifiers to make it possessive, similar to adding `?` for the non-greedy case.
+Before Python 3.11, you had to use alternatives like the third-party [regex module](https://pypi.org/project/regex/) for possessive quantifiers. The difference between greedy and possessive quantifiers is that possessive will not backtrack to find a match. In other words, possessive quantifiers will always consume every character that matches the pattern on which it is applied. Syntax wise, you need to append `+` to greedy quantifiers to make it possessive (similar to adding `?` for the non-greedy case).
 
 Unlike greedy and non-greedy quantifiers, a pattern like `:.*+apple` will never result in a match because `.*+` will consume rest of the line, leaving no way to match `apple`.
 
@@ -1587,13 +1589,13 @@ Here's a more practical example. Suppose you want to match integer numbers great
 
 # this solution fails because 0* and \d{3,} can both match leading zeros
 # and greedy quantifiers will give up characters to help the overall RE succeed
+# re.findall gives you all the matched portions as a list of strings
 >>> re.findall(r'0*\d{3,}', numbers)
 ['314', '001', '00984']
 
 # here 0*+ will never give back leading zeros
 >>> re.findall(r'0*+\d{3,}', numbers)
 ['314', '00984']
-
 # workaround if you can only use greedy quantifiers
 >>> re.findall(r'0*[1-9]\d{2,}', numbers)
 ['314', '00984']
@@ -1622,16 +1624,16 @@ Here's an example. `\w` matches a word character once (see the [Character class]
 
 # no issues when input string has a match
 >>> timeit('greedy.search(s1)', number=10000, globals=globals())
-0.016464739997900324
+0.005801149000035366
 >>> timeit('possessive.search(s1)', number=10000, globals=globals())
-0.016358205997676123
+0.005724595000174304
 
 # if input doesn't match, greedy version suffers from catastrophic backtracking
-# note that 'number' parameter is reduced to 10 since it takes a long time
+# note that the 'number' parameter is reduced to 10 since it takes a long time
 >>> timeit('greedy.search(s2)', number=10, globals=globals())
-53.71723825200024
+52.67446187199948
 >>> timeit('possessive.search(s2)', number=10, globals=globals())
-0.00019008600065717474
+0.00013407200003712205
 ```
 
 `(a+|\w+)*:` is a silly pattern, since it can be rewritten as `\w*:` which will not suffer from catastrophic backtracking. But this example shows how quantifiers applied to a group with multiple alternatives using quantifiers can lead to explosive results. More such patterns and mitigation strategies can be found in the following links:
@@ -1663,13 +1665,13 @@ Here's an example. `\w` matches a word character once (see the [Character class]
 | | `re.split(pattern, string, maxsplit=0, flags=0)` |
 | | `maxsplit` and `flags` are optional arguments |
 
-This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide ranges of text. In the coming chapters, you'll learn how to create your own restricted set of placeholder characters.
+This chapter introduced the concept of specifying a placeholder instead of fixed strings. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide ranges of text. In the coming chapters, you'll learn how to create your own restricted set of placeholder characters.
 
 ## Exercises
 
 >![info](images/info.svg) Since the `.` metacharacter doesn't match the newline character by default, assume that the input strings in the following exercises will not contain newline characters.
 
-**a)** Replace `42//5` or `42/5` with `8` for the given input.
+**1)** Replace `42//5` or `42/5` with `8` for the given input.
 
 ```ruby
 >>> ip = 'a+42//5-c pressure*3+42/5-14256'
@@ -1678,7 +1680,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 'a+8-c pressure*3+8-14256'
 ```
 
-**b)** For the list `items`, filter all elements starting with `hand` and ending immediately with at most one more character or `le`.
+**2)** For the list `items`, filter all elements starting with `hand` and ending immediately with at most one more character or `le`.
 
 ```ruby
 >>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
@@ -1687,7 +1689,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['hand', 'handy', 'hands', 'handle']
 ```
 
-**c)** Use `re.split()` to get the output as shown for the given input strings.
+**3)** Use `re.split()` to get the output as shown for the given input strings.
 
 ```ruby
 >>> eqn1 = 'a+42//5-c'
@@ -1702,7 +1704,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['r*42-5/3+42///5-', '3+a']
 ```
 
-**d)** For the given input strings, remove everything from the first occurrence of `i` till the end of the string.
+**4)** For the given input strings, remove everything from the first occurrence of `i` till the end of the string.
 
 ```ruby
 >>> s1 = 'remove the special meaning of such constructs'
@@ -1719,7 +1721,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ''
 ```
 
-**e)** For the given strings, construct a RE to get the output as shown below.
+**5)** For the given strings, construct a RE to get the output as shown below.
 
 ```ruby
 >>> str1 = 'a+b(addition)'
@@ -1736,7 +1738,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 'Hi there. Nice day'
 ```
 
-**f)** Correct the given RE to get the expected output.
+**6)** Correct the given RE to get the expected output.
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -1752,15 +1754,15 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 'plX XmX tX wX X cautX sentient'
 ```
 
-**g)** For the given greedy quantifiers, what would be the equivalent form using the `{m,n}` representation?
+**7)** For the given greedy quantifiers, what would be the equivalent form using the `{m,n}` representation?
 
 * `?` is same as
 * `*` is same as
 * `+` is same as
 
-**h)** `(a*|b*)` is same as `(a|b)*` — True or False?
+**8)** `(a*|b*)` is same as `(a|b)*` — True or False?
 
-**i)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till the end of the string, provided `test` isn't at the end of the string.
+**9)** For the given input strings, remove everything from the first occurrence of `test` (irrespective of case) till the end of the string, provided `test` isn't at the end of the string.
 
 ```ruby
 >>> s1 = 'this is a Test'
@@ -1777,7 +1779,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 'a '
 ```
 
-**j)** For the input list `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
+**10)** For the input list `words`, filter all elements starting with `s` and containing `e` and `t` in any order.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
@@ -1786,7 +1788,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['subtle', 'sets', 'site']
 ```
 
-**k)** For the input list `words`, remove all elements having less than `6` characters.
+**11)** For the input list `words`, remove all elements having less than `6` characters.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
@@ -1795,7 +1797,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['sequoia', 'subtle', 'exhibit']
 ```
 
-**l)** For the input list `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
+**12)** For the input list `words`, filter all elements starting with `s` or `t` and having a maximum of `6` characters.
 
 ```ruby
 >>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
@@ -1804,7 +1806,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['subtle', 'sets', 't set', 'site']
 ```
 
-**m)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
+**13)** Can you reason out why this code results in the output shown? The aim was to remove all `<characters>` patterns but not the `<>` ones. The expected result was `'a 1<> b 2<> c'`.
 
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -1813,7 +1815,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 'a 1 2'
 ```
 
-**n)** Use `re.split()` to get the output as shown below for given input strings.
+**14)** Use `re.split()` to get the output as shown below for given input strings.
 
 ```ruby
 >>> s1 = 'go there  //   "this // that"'
@@ -1830,7 +1832,7 @@ This chapter introduced the concept of specifying a placeholder instead of fixed
 ['42// hi//bye//see', 'carefully']
 ```
 
-**o)** Modify the given regular expression such that it gives the expected results.
+**15)** Modify the given regular expression such that it gives the expected results.
 
 ```ruby
 >>> s1 = 'appleabcabcabcapricot'
@@ -1852,7 +1854,7 @@ True
 False
 ```
 
-**p)** Modify the given regular expression such that it gives the expected result.
+**16)** Modify the given regular expression such that it gives the expected result.
 
 ```ruby
 >>> cast = 'dragon-unicorn--centaur---mage----healer'
@@ -1873,7 +1875,7 @@ As your RE gets complicated, it can get difficult to debug when you run into iss
 
 ## regex101
 
-[regex101](https://regex101.com/) is a popular site to test your RE. You'll have to first choose the flavor as Python. Then you can add your RE, input strings, choose flags and an optional replacement string. Matching portions will be highlighted and explanation is offered in separate panes.
+[regex101](https://regex101.com/) is a popular site to test your RE. You'll have to first choose the flavor as Python. Then you can add your RE, input strings, choose flags and an optional replacement string. Matching portions will be highlighted and explanation is offered in separate panels.
 
 The below image is a screenshot from this link — [regex101: `r'ab{0,2}c'`](https://regex101.com/r/HSeO0z/2)
 
@@ -1891,7 +1893,7 @@ The below image is a screenshot from this link — [debuggex: `r'\bpar(en|ro)?t\
 
 ## re(gex)? playground
 
-As already mentioned in the introduction chapter, I wrote an interactive TUI app for interactive practice. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide.
+As already mentioned in the [introduction chapter](#regex-playground), I wrote an interactive TUI app for interactive practice. See [PyRegexPlayground](https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground) repo for installation instructions and usage guide.
 
 ## re(gex)? exercises
 
@@ -1948,7 +1950,7 @@ The `()` grouping is also known as a **capture group**. It has multiple uses, on
 >>> re.search(r'of.*ink', motivation)
 <re.Match object; span=(9, 32), match='often better than think'>
 
-# retrieving entire matched portion using index
+# retrieving the entire matched portion using index
 >>> re.search(r'of.*ink', motivation)[0]
 'often better than think'
 
@@ -2004,7 +2006,7 @@ To get the matching locations for the capture groups, pass the group number to t
 > 'This is goodbye then'
 > ```
 
-`groupdict()` method will be covered in the [Named capture groups](#named-capture-groups) section and the `expand()` method will be covered in the [Match.expand()](#matchexpand) section.
+The `groupdict()` method will be discussed in the [Named capture groups](#named-capture-groups) section and the `expand()` method will be covered in the [Match.expand()](#matchexpand) section.
 
 ## Assignment expressions
 
@@ -2041,7 +2043,7 @@ month: 04, year: 2023
 
 ## Using functions in the replacement section
 
-Functions can be used in the replacement section of `re.sub()` instead of a string. A `re.Match` object will be passed to the function as argument. In the [Backreference](#backreference) section, you'll learn an easier way to directly reference the matching portions in the replacement section.
+Functions can be used in the replacement section of `re.sub()` instead of a string. A `re.Match` object will be passed to the function as the argument. In the [Backreference](#backreference) section, you'll learn an easier way to directly reference the matching portions in the replacement section.
 
 ```ruby
 # m[0] will contain entire matched portion
@@ -2084,7 +2086,7 @@ For swapping two or more portions without using intermediate results, using a `d
 'tiger cat dog cat tiger'
 ```
 
-For `dict` objects that have many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first.
+For `dict` objects that have many entries and likely to undergo changes during development, building an alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first.
 
 ```ruby
 # note that numbers have been converted to strings here
@@ -2101,7 +2103,7 @@ For `dict` objects that have many entries and likely to undergo changes during d
 '3 1 pin 2 (4)'
 ```
 
->![info](images/info.svg) If you have thousands of key-value pairs, using specialized libraries like [flashtext](https://github.com/vi3k6i5/flashtext) is highly recommended instead of regular expressions.
+>![info](images/info.svg) If you have thousands of key-value pairs, using specialized libraries like [flashtext](https://github.com/vi3k6i5/flashtext) (or [flashtext2](https://pypi.org/project/flashtext2/)) is highly recommended instead of regular expressions.
 
 ## re.findall()
 
@@ -2327,7 +2329,7 @@ This chapter introduced different ways to work with various matching portions of
 
 ## Exercises
 
-**a)** For the given strings, extract the matching portion from the first `is` to the last `t`.
+**1)** For the given strings, extract the matching portion from the first `is` to the last `t`.
 
 ```ruby
 >>> str1 = 'This the biggest fruit you have seen?'
@@ -2341,7 +2343,7 @@ This chapter introduced different ways to work with various matching portions of
 'ission is to read and practice consistent'
 ```
 
-**b)** Find the starting index of the first occurrence of `is` or `the` or `was` or `to` for the given input strings.
+**2)** Find the starting index of the first occurrence of `is` or `the` or `was` or `to` for the given input strings.
 
 ```ruby
 >>> s1 = 'match after the last newline character'
@@ -2361,7 +2363,7 @@ This chapter introduced different ways to work with various matching portions of
 4
 ```
 
-**c)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings.
+**3)** Find the starting index of the last occurrence of `is` or `the` or `was` or `to` for the given input strings.
 
 ```ruby
 >>> s1 = 'match after the last newline character'
@@ -2381,7 +2383,7 @@ This chapter introduced different ways to work with various matching portions of
 14
 ```
 
-**d)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
+**4)** The given input string contains `:` exactly once. Extract all characters after the `:` as output.
 
 ```ruby
 >>> ip = 'fruits:apple, mango, guava, blueberry'
@@ -2390,7 +2392,7 @@ This chapter introduced different ways to work with various matching portions of
 'apple, mango, guava, blueberry'
 ```
 
-**e)** The given input strings contains some text followed by `-` followed by a number. Replace that number with its `log` value using `math.log()`.
+**5)** The given input strings contain some text followed by `-` followed by a number. Replace that number with its `log` value using `math.log()`.
 
 ```ruby
 >>> s1 = 'first-3.14'
@@ -2405,7 +2407,7 @@ This chapter introduced different ways to work with various matching portions of
 'next-4.812184355372417'
 ```
 
-**f)** Replace all occurrences of `par` with `spar`, `spare` with `extra` and `park` with `garden` for the given input strings.
+**6)** Replace all occurrences of `par` with `spar`, `spare` with `extra` and `park` with `garden` for the given input strings.
 
 ```ruby
 >>> str1 = 'apartment has a park'
@@ -2422,7 +2424,7 @@ This chapter introduced different ways to work with various matching portions of
 'write a sparser'
 ```
 
-**g)** Extract all words between `(` and `)` from the given input string as a list. Assume that the input will not contain any broken parentheses.
+**7)** Extract all words between `(` and `)` from the given input string as a list. Assume that the input will not contain any broken parentheses.
 
 ```ruby
 >>> ip = 'another (way) to reuse (portion) matched (by) capture groups'
@@ -2431,7 +2433,7 @@ This chapter introduced different ways to work with various matching portions of
 ['way', 'portion', 'by']
 ```
 
-**h)** Extract all occurrences of `<` up to the next occurrence of `>`, provided there is at least one character in between `<` and `>`.
+**8)** Extract all occurrences of `<` up to the next occurrence of `>`, provided there is at least one character in between `<` and `>`.
 
 ```ruby
 >>> ip = 'a<apple> 1<> b<bye> 2<> c<cat>'
@@ -2440,7 +2442,7 @@ This chapter introduced different ways to work with various matching portions of
 ['<apple>', '<> b<bye>', '<> c<cat>']
 ```
 
-**i)** Use `re.findall()` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
+**9)** Use `re.findall()` to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.
 
 ```ruby
 >>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
@@ -2454,7 +2456,7 @@ This chapter introduced different ways to work with various matching portions of
 [('1.32', '-3.14'), ('634', '5.63'), ('63.3e3', '9907809345343.235')]
 ```
 
-**j)** This is an extension to the previous question.
+**10)** This is an extension to the previous question.
 
 * For `row1`, find the sum of integers of each tuple element. For example, sum of `-2` and `5` is `3`.
 * For `row2`, find the sum of floating-point numbers of each tuple element. For example, sum of `1.32` and `-3.14` is `-1.82`.
@@ -2473,7 +2475,7 @@ This chapter introduced different ways to work with various matching portions of
 [-1.82, 639.63, 9907809408643.234]
 ```
 
-**k)** Use `re.split()` to get the output as shown below.
+**11)** Use `re.split()` to get the output as shown below.
 
 ```ruby
 >>> ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
@@ -2482,7 +2484,7 @@ This chapter introduced different ways to work with various matching portions of
 ['42', 'output', '1000', 'tr:u-ck', 'SQEX49801']
 ```
 
-**l)** For the given list of strings, change the elements into a tuple of original element and the number of times `t` occurs in that element.
+**12)** For the given list of strings, change the elements into a tuple of original element and the number of times `t` occurs in that element.
 
 ```ruby
 >>> words = ['sequoia', 'attest', 'tattletale', 'asset']
@@ -2491,7 +2493,7 @@ This chapter introduced different ways to work with various matching portions of
 [('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
 ```
 
-**m)** The given input string has fields separated by `:`. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See [docs.python: Match.groups](https://docs.python.org/3/library/re.html#re.Match.groups) and use `re.finditer()` to get the output as shown below. If the optional digits aren't present, show `'NA'` instead of `None`.
+**13)** The given input string has fields separated by `:`. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See [docs.python: Match.groups](https://docs.python.org/3/library/re.html#re.Match.groups) and use `re.finditer()` to get the output as shown below. If the optional digits aren't present, show `'NA'` instead of `None`.
 
 ```ruby
 >>> ip = 'TWXA42:JWPA:NTED01:'
@@ -2502,7 +2504,7 @@ This chapter introduced different ways to work with various matching portions of
 
 >![info](images/info.svg) Note that this is different from `re.findall()` which will just give empty string instead of `None` when a capture group doesn't participate.
 
-**n)** Convert the comma separated strings to corresponding `dict` objects as shown below.
+**14)** Convert the comma separated strings to corresponding `dict` objects as shown below.
 
 ```ruby
 >>> row1 = 'name:rohan,maths:75,phy:89,'
@@ -2518,7 +2520,7 @@ This chapter introduced different ways to work with various matching portions of
 
 # Character class
 
-This chapter will discuss how to create your own custom placeholders to match limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.
+This chapter will discuss how to create your own custom placeholders to match a limited set of characters and various metacharacters applicable inside character classes. You'll also learn about escape sequences for predefined character sets.
 
 ## Custom character sets
 
@@ -2560,7 +2562,7 @@ Character classes have their own metacharacters to help define the sets succinct
 
 ## Negating character sets
 
-Next metacharacter is `^` which has to specified as the first character of the character class. It negates the set of characters, so all characters other than those specified will be matched. As highlighted earlier, handle negative logic with care, you might end up matching more than you wanted.
+Next metacharacter is `^` which has to specified as the first character of the character class. It negates the set of characters, so all characters other than those specified will be matched. As highlighted earlier, handle negative logic with care, you might end up matching more than what you wanted.
 
 ```ruby
 # all non-digits
@@ -2578,6 +2580,7 @@ Next metacharacter is `^` which has to specified as the first character of the c
 >>> dates = '2023/04/25,1986/Mar/02,77/12/31'
 # note that the third character set negates comma
 # and comma is matched optionally outside the capture groups
+# or, you can use re.findall(r'([^,/]+)/([^/]+)/([^,]+)', dates)
 >>> re.findall(r'([^/]+)/([^/]+)/([^,]+),?', dates)
 [('2023', '04', '25'), ('1986', 'Mar', '02'), ('77', '12', '31')]
 ```
@@ -2602,7 +2605,7 @@ Sometimes, it is easier to use positive character class and negate the `re.searc
 
 You can prefix a `\` to metacharacters to match them literally. Some of them can be achieved by different placement as well.
 
-`-` should be the first or the last character or escaped using `\`.
+`-` should be the first or last character or escaped using `\`.
 
 ```ruby
 >>> re.findall(r'\b[a-z-]{2,}\b', 'ab-cd gh-c 12-423')
@@ -2678,7 +2681,7 @@ And negative logic strikes again. Use `\W`, `\D`, and `\S` respectively for thei
 >>> re.sub(r'\W+', ':', 'apple=5, banana=3; x=83, y=120')
 'apple:5:banana:3:x:83:y:120'
 
-# this output can be achieved with normal string method too, guess which one?!
+# this output can be achieved with a normal string method too, guess which one?!
 >>> re.findall(r'\S+', '   7..9  \v\f  fig_tea 42\tzzz   \r\n1-2-3  ')
 ['7..9', 'fig_tea', '42', 'zzz', '1-2-3']
 ```
@@ -2763,11 +2766,11 @@ If a numeric range is difficult to construct, one alternative is to convert the 
 | `\s` | similar to `[ \t\n\r\f\v]` for matching whitespace characters |
 | | `\W`, `\D`, and `\S` for their opposites respectively |
 
-This chapter focused on how to create custom placeholders for limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside `[]` and on the other, you can have multiple alternations grouped inside `()` including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.
+This chapter focused on how to create custom placeholders for a limited set of characters. Grouping and character classes can be considered as two levels of abstractions. On the one hand, you can have character sets inside `[]` and on the other, you can have multiple alternations grouped inside `()` including character classes. As anchoring and quantifiers can be applied to both these abstractions, you can begin to see how regular expressions is considered a mini-programming language. In coming chapters, you'll even see how to negate groupings similar to negated character class in certain scenarios.
 
 ## Exercises
 
-**a)** For the list `items`, filter all elements starting with `hand` and ending immediately with `s` or `y` or `le`.
+**1)** For the list `items`, filter all elements starting with `hand` and ending immediately with `s` or `y` or `le`.
 
 ```ruby
 >>> items = ['-handy', 'hand', 'handy', 'unhand', 'hands', 'hand-icy', 'handle']
@@ -2776,7 +2779,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['handy', 'hands', 'handle']
 ```
 
-**b)** Replace all whole words `reed` or `read` or `red` with `X`.
+**2)** Replace all whole words `reed` or `read` or `red` with `X`.
 
 ```ruby
 >>> ip = 'redo red credible :read: rod reed'
@@ -2785,7 +2788,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 'redo X credible :X: rod X'
 ```
 
-**c)** For the list `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
+**3)** For the list `words`, filter all elements containing `e` or `i` followed by `l` or `n`. Note that the order mentioned should be followed.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
@@ -2794,7 +2797,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['surrender', 'unicorn', 'eel']
 ```
 
-**d)** For the list `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
+**4)** For the list `words`, filter all elements containing `e` or `i` and `l` or `n` in any order.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', 'pest']
@@ -2803,7 +2806,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['surrender', 'unicorn', 'newer', 'eel']
 ```
 
-**e)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
+**5)** Extract all hex character sequences, with `0x` optional prefix. Match the characters case insensitively, and the sequences shouldn't be surrounded by other word characters.
 
 ```ruby
 >>> str1 = '128A foo 0xfe32 34 0xbar'
@@ -2818,7 +2821,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['0XDEADBEEF', '0x0ff1ce', 'bad']
 ```
 
-**f)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
+**6)** Delete from `(` to the next occurrence of `)` unless they contain parentheses characters in between.
 
 ```ruby
 >>> str1 = 'def factorial()'
@@ -2835,7 +2838,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 'Hi there. Nice day(a'
 ```
 
-**g)** For the list `words`, filter all elements not starting with `e` or `p` or `u`.
+**7)** For the list `words`, filter all elements not starting with `e` or `p` or `u`.
 
 ```ruby
 >>> words = ['surrender', 'unicorn', 'newer', 'door', 'empty', 'eel', '(pest)']
@@ -2844,7 +2847,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['surrender', 'newer', 'door', '(pest)']
 ```
 
-**h)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
+**8)** For the list `words`, filter all elements not containing `u` or `w` or `ee` or `-`.
 
 ```ruby
 >>> words = ['p-t', 'you', 'tea', 'heel', 'owe', 'new', 'reed', 'ear']
@@ -2853,7 +2856,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['tea', 'ear']
 ```
 
-**i)** The given input strings contain fields separated by `,` and fields can be empty too. Replace last three fields with `WHTSZ323`.
+**9)** The given input strings contain fields separated by `,` and fields can be empty too. Replace the last three fields with `WHTSZ323`.
 
 ```ruby
 >>> row1 = '(2),kite,12,,D,C,,'
@@ -2867,7 +2870,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 'hi,WHTSZ323'
 ```
 
-**j)** Split the given strings based on consecutive sequence of digit or whitespace characters.
+**10)** Split the given strings based on consecutive sequence of digit or whitespace characters.
 
 ```ruby
 >>> str1 = 'lion \t Ink32onion Nice'
@@ -2881,7 +2884,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 ['**', 'star', '**']
 ```
 
-**k)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
+**11)** Delete all occurrences of the sequence `<characters>` where `characters` is one or more non `>` characters and cannot be empty.
 
 ```ruby
 >>> ip = 'a<ap\nple> 1<> b<bye> 2<> c<cat>'
@@ -2890,7 +2893,7 @@ This chapter focused on how to create custom placeholders for limited set of cha
 'a 1<> b 2<> c'
 ```
 
-**l)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
+**12)** `\b[a-z](on|no)[a-z]\b` is same as `\b[a-z][on]{2}[a-z]\b`. True or False? Sample input lines shown below might help to understand the differences, if any.
 
 ```ruby
 >>> print('known\nmood\nknow\npony\ninns')
@@ -2901,7 +2904,7 @@ pony
 inns
 ```
 
-**m)** For the given list, filter all elements containing any number sequence greater than `624`.
+**13)** For the given list, filter all elements containing any number sequence greater than `624`.
 
 ```ruby
 >>> items = ['hi0000432abcd', 'car00625', '42_624 0512', '3.14 96 2 foo1234baz']
@@ -2910,7 +2913,7 @@ inns
 ['car00625', '3.14 96 2 foo1234baz']
 ```
 
-**n)** Count the maximum depth of nested braces for the given strings. Unbalanced or wrongly ordered braces should return `-1`. Note that this will require a mix of regular expressions and Python code.
+**14)** Count the maximum depth of nested braces for the given strings. Unbalanced or wrongly ordered braces should return `-1`. Note that this will require a mix of regular expressions and Python code.
 
 ```ruby
 >>> def max_nested_braces(ip):
@@ -2932,7 +2935,7 @@ inns
 -1
 ```
 
-**o)** By default, the `str.split()` method will split on whitespace and remove empty strings from the result. Which `re` module function would you use to replicate this functionality?
+**15)** By default, the `str.split()` method will split on whitespace and remove empty strings from the result. Which `re` module function would you use to replicate this functionality?
 
 ```ruby
 >>> ip = ' \t\r  so  pole\t\t\t\n\nlit in to \r\n\v\f  '
@@ -2943,7 +2946,7 @@ inns
 ['so', 'pole', 'lit', 'in', 'to']
 ```
 
-**p)** Convert the given input string to two different lists as shown below.
+**16)** Convert the given input string to two different lists as shown below.
 
 ```ruby
 >>> ip = 'price_42 roast^\t\n^-ice==cat\neast'
@@ -2955,7 +2958,7 @@ inns
 ['price_42', ' ', 'roast', '^\t\n^-', 'ice', '==', 'cat', '\n', 'east']
 ```
 
-**q)** Filter all whole elements with optional whitespaces at the start followed by three to five non-digit characters. Whitespaces at the start should not be part of the calculation for non-digit characters.
+**17)** Filter all whole elements with optional whitespaces at the start followed by three to five non-digit characters. Whitespaces at the start should not be part of the calculation for non-digit characters.
 
 ```ruby
 >>> items = ['\t \ncat', 'goal', ' oh', 'he-he', 'goal2', 'ok ', 'sparrow']
@@ -2970,17 +2973,17 @@ This chapter will show how to reuse portions matched by capture groups via backr
 
 ## Backreference
 
-Backreferences are like variables in a programming language. You have already seen how to use `re.Match` object to refer to the text captured by groups. Backreferences provide the same functionality, with the advantage that these can be directly used in RE definition as well as the replacement section without having to invoke `re.Match` objects. Another advantage is that you can apply quantifiers to backreferences.
+Backreferences are like variables in a programming language. You have already seen how to use a `re.Match` object to refer to the text captured by groups. Backreferences provide the same functionality, with the advantage that these can be directly used in RE definition as well as the replacement section without having to invoke `re.Match` objects. Another advantage is that you can apply quantifiers to backreferences.
 
 The syntax is `\N` or `\g<N>` where `N` is the capture group you want. The below syntax variations are applicable in the **replacement section**, assuming they are used within raw strings.
 
 * `\1`, `\2` up to `\99` to refer to the corresponding capture group
     * provided there are no digit characters after
-    * `\0` and `\NNN` will be interpreted as octal value
+    * `\0` and `\NNN` will be interpreted as octal values
 * `\g<1>`, `\g<2>` etc (not limited to 99) to refer to the corresponding capture group
     * this also helps to avoid ambiguity between backreferences and digits that follow
 * `\g<0>` to refer to the entire matched portion, similar to index `0` of `re.Match` objects
-    * `\0` cannot be used because numbers starting with `0` are treated as octal value
+    * `\0` cannot be used because numbers starting with `0` are treated as octal values
 
 Here are some examples with `\N` syntax.
 
@@ -3004,7 +3007,7 @@ And here are some examples with `\g<N>` syntax.
 ```ruby
 # ambiguity between \N and digit characters part of the replacement string
 >>> re.sub(r'\[(\d+)\]', r'(\15)', '[52] apples and [31] mangoes')
-re.error: invalid group reference 15 at position 2
+re.PatternError: invalid group reference 15 at position 2
 # \g<N> is helpful in such cases
 >>> re.sub(r'\[(\d+)\]', r'(\g<1>5)', '[52] apples and [31] mangoes')
 '(525) apples and (315) mangoes'
@@ -3047,7 +3050,7 @@ Here are some examples for using backreferences within **RE definition**. Only `
 > 
 > # even though there's only one capture group, \11 will give an error
 > >>> re.sub(r'(.).*\11', 'X', s)
-> re.error: invalid group reference 11 at position 6
+> re.PatternError: invalid group reference 11 at position 6
 > # use escapes for the digit portion to distinguish from the backreference
 > >>> re.sub(r'(.).*\1\x31', 'X', s)
 > 'Xd'
@@ -3061,7 +3064,7 @@ Here are some examples for using backreferences within **RE definition**. Only `
 > 'Xd'
 > ```
 
->![warning](images/warning.svg) It may be obvious, but it should be noted that backreference will provide the string that was matched, not the RE that was inside the capture group. For example, if `(\d[a-f])` matches `3b`, then backreferencing will give `3b` and not any other valid match of RE like `8f`, `0a` etc. This is akin to how variables behave in programming, only the result of expression stays after variable assignment, not the expression itself. The `regex` module supports [Subexpression calls](#subexpression-calls) to refer to the RE itself.
+>![warning](images/warning.svg) It may be obvious, but it should be noted that backreferences will provide the string that was matched, not the RE that was inside the capture group. For example, if `(\d[a-f])` matches `3b`, then backreferencing will give `3b` and not any other valid match of RE like `8f`, `0a` etc. This is akin to how variables behave in programming, only the result of an expression stays after variable assignment, not the expression itself. The `regex` module supports [Subexpression calls](#subexpression-calls) to refer to the RE itself.
 
 ## Non-capturing groups
 
@@ -3070,7 +3073,7 @@ Grouping has many uses like applying quantifiers on a RE portion, creating terse
 When backreferencing is not required, you can use a non-capturing group to avoid undesired behavior. It also helps to avoid keeping a track of capture group numbers when that particular group is not needed for backreferencing. The syntax is `(?:pat)` to define a non-capturing group. You'll see many more of such special groups starting with `(?` syntax later on.
 
 ```ruby
-# normal capture group will hinder ability to get whole match
+# normal capture group will hinder ability to get the whole match
 # non-capturing group to the rescue
 >>> re.findall(r'\b\w*(?:st|in)\b', 'cost akin more east run against')
 ['cost', 'akin', 'east', 'against']
@@ -3246,7 +3249,7 @@ Another issue with the duplication alternation method is that you'll have to dea
 
 ## Match.expand()
 
-The `expand()` method on `re.Match` objects accepts syntax similar to the replacement section of the `re.sub()` function. The difference is that the `expand()` method returns only the string after backreference expansion, instead of the entire input string with the modified content.
+The `expand()` method on a `re.Match` object accepts syntax similar to the replacement section of the `re.sub()` function. The difference is that the `expand()` method returns only the string after backreference expansion, instead of the entire input string with the modified content.
 
 ```ruby
 # re.sub vs Match.expand
@@ -3297,7 +3300,7 @@ This chapter showed how to use backreferences to refer to the portion matched by
 
 ## Exercises
 
-**a)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
+**1)** Replace the space character that occurs after a word ending with `a` or `r` with a newline character.
 
 ```ruby
 >>> ip = 'area not a _a2_ roar took 22'
@@ -3309,7 +3312,7 @@ _a2_ roar
 took 22
 ```
 
-**b)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
+**2)** Add `[]` around words starting with `s` and containing `e` and `t` in any order.
 
 ```ruby
 >>> ip = 'sequoia subtle exhibit asset sets2 tests si_te'
@@ -3318,7 +3321,7 @@ took 22
 'sequoia [subtle] exhibit asset [sets2] tests [si_te]'
 ```
 
-**c)** Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.
+**3)** Replace all whole words with `X` that start and end with the same word character (irrespective of case). Single character word should get replaced with `X` too, as it satisfies the stated condition.
 
 ```ruby
 >>> ip = 'oreo not a _a2_ Roar took 22'
@@ -3327,7 +3330,7 @@ took 22
 'X not X X X took X'
 ```
 
-**d)** Convert the given *markdown* headers to corresponding *anchor* tags. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
+**4)** Convert the given *markdown* headers to corresponding *anchor* tags. Consider the input to start with one or more `#` characters followed by space and word characters. The `name` attribute is constructed by converting the header to lowercase and replacing spaces with hyphens. Can you do it without using a capture group?
 
 ```ruby
 >>> header1 = '# Regular Expressions'
@@ -3339,7 +3342,7 @@ took 22
 '## <a name="compiling-regular-expressions"></a>Compiling regular expressions'
 ```
 
-**e)** Convert the given *markdown* anchors to corresponding *hyperlinks*.
+**5)** Convert the given *markdown* anchors to corresponding *hyperlinks*.
 
 ```ruby
 >>> anchor1 = '# <a name="regular-expressions"></a>Regular Expressions'
@@ -3351,7 +3354,7 @@ took 22
 '[Subexpression calls](#subexpression-calls)'
 ```
 
-**f)** Count the number of whole words that have at least two occurrences of consecutive repeated alphabets. For example, words like `stillness` and `Committee` should be counted but not words like `root` or `readable` or `rotational`.
+**6)** Count the number of whole words that have at least two occurrences of consecutive repeated alphabets. For example, words like `stillness` and `Committee` should be counted but not words like `root` or `readable` or `rotational`.
 
 ```ruby
 >>> ip = '''oppressed abandon accommodation bloodless
@@ -3364,7 +3367,7 @@ took 22
 13
 ```
 
-**g)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there are no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
+**7)** For the given input string, replace all occurrences of digit sequences with only the unique non-repeating sequence. For example, `232323` should be changed to `23` and `897897` should be changed to `897`. If there are no repeats (for example `1234`) or if the repeats end prematurely (for example `12121`), it should not be changed.
 
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
@@ -3373,7 +3376,7 @@ took 22
 '1234 23 4535 9339 1 60260260'
 ```
 
-**h)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**8)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -3382,7 +3385,7 @@ took 22
 'wow hi-2 bye kite'
 ```
 
-**i)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
+**9)** Replace sequences made up of words separated by `:` or `.` by the last word of the sequence. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -3391,7 +3394,7 @@ took 22
 'five hi-2 bye water'
 ```
 
-**j)** Split the given input string on one or more repeated sequence of `cat`.
+**10)** Split the given input string on one or more repeated sequence of `cat`.
 
 ```ruby
 >>> ip = 'firecatlioncatcatcatbearcatcatparrot'
@@ -3400,7 +3403,7 @@ took 22
 ['fire', 'lion', 'bear', 'parrot']
 ```
 
-**k)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
+**11)** For the given input string, find all occurrences of digit sequences with at least one repeating sequence. For example, `232323` and `897897`. If the repeats end prematurely, for example `12121`, it should not be matched.
 
 ```ruby
 >>> ip = '1234 2323 453545354535 9339 11 60260260'
@@ -3416,7 +3419,7 @@ took 22
 ['23', '4535', '1']
 ```
 
-**l)** Convert the comma separated strings to corresponding `dict` objects as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
+**12)** Convert the comma separated strings to corresponding `dict` objects as shown below. The keys are `name`, `maths` and `phy` for the three fields in the input strings.
 
 ```ruby
 >>> row1 = 'rohan,75,89'
@@ -3430,7 +3433,7 @@ took 22
 {'name': 'rose', 'maths': '88', 'phy': '92'}
 ```
 
-**m)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with just a single substitution?
+**13)** Surround all whole words with `()`. Additionally, if the whole word is `imp` or `ant`, delete them. Can you do it with just a single substitution?
 
 ```ruby
 >>> ip = 'tiger imp goat eagle ant important'
@@ -3439,7 +3442,7 @@ took 22
 '(tiger) () (goat) (eagle) () (important)'
 ```
 
-**n)** Filter all elements that contain a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by `{{` and `}}`. Any partial match shouldn't be part of the output.
+**14)** Filter all elements that contain a sequence of lowercase alphabets followed by `-` followed by digits. They can be optionally surrounded by `{{` and `}}`. Any partial match shouldn't be part of the output.
 
 ```ruby
 >>> ip = ['{{apple-150}}', '{{mango2-100}}', '{{cherry-200', 'grape-87']
@@ -3448,7 +3451,7 @@ took 22
 ['{{apple-150}}', 'grape-87']
 ```
 
-**o)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by the first word.
+**15)** The given input string has sequences made up of words separated by `:` or `.` and such sequences will end when `:` or `.` is not followed by a word character. For all such sequences, display only the last word followed by `-` followed by the first word.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -3457,7 +3460,7 @@ took 22
 ['five-wow', 'water-kite']
 ```
 
-**p)** Modify the given regular expression such that it gives the expected result.
+**16)** Modify the given regular expression such that it gives the expected result.
 
 ```ruby
 >>> ip = '( S:12 E:5 S:4 and E:123 ok S:100 & E:10 S:1 - E:2 S:42 E:43 )'
@@ -3533,8 +3536,8 @@ a d
 
 Lookaround assertions can be added in two ways — **lookbehind** and **lookahead**. Each of these can be a **positive** or a **negative** assertion. Syntax wise, lookbehind has an extra `<` compared to the lookahead version. Negative lookarounds can be identified by the use of `!` whereas `=` is used for positive lookarounds. This section is about negative lookarounds, whose syntax is shown below:
 
-* `(?!pat)` for negative lookahead assertion
-* `(?<!pat)` for negative lookbehind assertion
+* `(?!pat)` negative lookahead assertion
+* `(?<!pat)` negative lookbehind assertion
 
 As mentioned earlier, lookarounds are not part of the matched portions and do not affect capture group numbering.
 
@@ -3582,9 +3585,9 @@ In all the examples so far, lookahead grouping was placed as a suffix and lookbe
 # replace 'par' as long as 's' is not present later in the input
 # this assumes that the lookaround doesn't conflict with search pattern
 # i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
->>> re.sub(r'par(?!.*s)', '[\g<0>]', 'par spare part party')
+>>> re.sub(r'par(?!.*s)', r'[\g<0>]', 'par spare part party')
 'par s[par]e [par]t [par]ty'
->>> re.sub(r'(?!.*s)par', '[\g<0>]', 'par spare part party')
+>>> re.sub(r'(?!.*s)par', r'[\g<0>]', 'par spare part party')
 'par s[par]e [par]t [par]ty'
 
 # since the three assertions used here are all zero-width,
@@ -3597,12 +3600,12 @@ In all the examples so far, lookahead grouping was placed as a suffix and lookbe
 
 Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookarounds can be identified by use of `=` in the grouping. Syntax is shown below:
 
-* `(?=pat)` for positive lookahead assertion
-* `(?<=pat)` for positive lookbehind assertion
+* `(?=pat)` positive lookahead assertion
+* `(?<=pat)` positive lookbehind assertion
 
 ```ruby
 # extract digits only if it is followed by ,
-# note that end of string doesn't qualify as this is a positive assertion
+# note that the end of string doesn't qualify as this is a positive assertion
 >>> re.findall(r'\d+(?=,)', '42 apple-5, fig3; x-83, y-20: f12')
 ['5', '83']
 
@@ -3611,14 +3614,14 @@ Unlike negative lookarounds, absence of something will not satisfy positive look
 ['20']
 
 # replace 'par' as long as 'part' occurs as a whole word later in the line
->>> re.sub(r'par(?=.*\bpart\b)', '[\g<0>]', 'par spare part party')
+>>> re.sub(r'par(?=.*\bpart\b)', r'[\g<0>]', 'par spare part party')
 '[par] s[par]e part party'
 ```
 
 Lookarounds can be quite handy for simple field based processing.
 
 ```ruby
-# except first and last fields
+# except the first and last fields
 >>> re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5')
 ['two', '3', 'four']
 
@@ -3682,11 +3685,11 @@ With lookbehind assertion (both positive and negative), the pattern used for the
 
 # not allowed
 >>> re.findall(r'(?<!tar|dare)\d+', s)
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 >>> re.findall(r'(?<=\b[pd][a-z]*)\d+', s)
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 >>> re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 ```
 
 There are various workarounds possible depending upon the use case. See the [Variable length lookbehind](#variable-length-lookbehind-1) section for `regex` module for the easiest solution.
@@ -3794,7 +3797,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 
 >![info](images/info.svg) Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.
 
-**a)** Replace all whole words with `X` unless it is preceded by a `(` character.
+**1)** Replace all whole words with `X` unless it is preceded by a `(` character.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -3803,7 +3806,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 '(apple) X X) X (mango) (grape'
 ```
 
-**b)** Replace all whole words with `X` unless it is followed by a `)` character.
+**2)** Replace all whole words with `X` unless it is followed by a `)` character.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -3812,7 +3815,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 '(apple) X berry) X (mango) (X'
 ```
 
-**c)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
+**3)** Replace all whole words with `X` unless it is preceded by `(` or followed by `)` characters.
 
 ```ruby
 >>> ip = '(apple) guava berry) apple (mango) (grape'
@@ -3821,7 +3824,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 '(apple) X berry) X (mango) (grape'
 ```
 
-**d)** Extract all whole words that do not end with `e` or `n`.
+**4)** Extract all whole words that do not end with `e` or `n`.
 
 ```ruby
 >>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
@@ -3830,7 +3833,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['a_t', 'row', 'Dust', 'end', 'a2', 'u']
 ```
 
-**e)** Extract all whole words that do not start with `a` or `d` or `n`.
+**5)** Extract all whole words that do not start with `a` or `d` or `n`.
 
 ```ruby
 >>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
@@ -3839,7 +3842,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['row', 'on', 'Urn', 'e', 'Dust', 'end', 'e', 'u']
 ```
 
-**f)** Extract all whole words only if they are followed by `:` or `,` or `-`.
+**6)** Extract all whole words only if they are followed by `:` or `,` or `-`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -3848,7 +3851,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['Poke', 'so_good', 'ever2']
 ```
 
-**g)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
+**7)** Extract all whole words only if they are preceded by `=` or `/` or `-`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -3857,7 +3860,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['so_good', 'is', 'sit']
 ```
 
-**h)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
+**8)** Extract all whole words only if they are preceded by `=` or `:` and followed by `:` or `.`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -3866,7 +3869,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['so_good', 'ink']
 ```
 
-**i)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
+**9)** Extract all whole words only if they are preceded by `=` or `:` or `.` or `(` or `-` and not followed by `.` or `/`.
 
 ```ruby
 >>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
@@ -3875,7 +3878,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['so_good', 'vast', 'sit']
 ```
 
-**j)** Remove the leading and trailing whitespaces from all the individual fields where `,` is the field separator.
+**10)** Remove the leading and trailing whitespaces from all the individual fields where `,` is the field separator.
 
 ```ruby
 >>> csv1 = ' comma  ,separated ,values \t\r '
@@ -3889,7 +3892,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 'good bad,nice  ice,42,,stall   small'
 ```
 
-**k)** Filter all elements that satisfy all of these rules:
+**11)** Filter all elements that satisfy all of these rules:
 
 * should have at least two alphabets
 * should have at least three digits
@@ -3903,7 +3906,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['F2H3u%9', 'A $B C1234']
 ```
 
-**l)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
+**12)** For the given string, surround all whole words with `{}` except for whole words `par` and `cat` and `apple`.
 
 ```ruby
 >>> ip = 'part; cat {super} rest_42 par scatter apple spar'
@@ -3912,7 +3915,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
 ```
 
-**m)** Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with `.` and no further digits should not be considered.
+**13)** Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with `.` and no further digits should not be considered.
 
 ```ruby
 >>> ip = '12 ab32.4 go 5 2. 46.42 5'
@@ -3921,7 +3924,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['32', '46']
 ```
 
-**n)** For the given input strings, extract all overlapping two character sequences.
+**14)** For the given input strings, extract all overlapping two character sequences.
 
 ```ruby
 >>> s1 = 'apple'
@@ -3935,7 +3938,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['1.', '.2', '2-', '-3', '3:', ':4']
 ```
 
-**o)** The given input strings contain fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+**15)** The given input strings contain fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
 
 ```ruby
 >>> s1 = '42:cat'
@@ -3958,7 +3961,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 'dragon:unicorn:centaur'
 ```
 
-**p)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+**16)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
 
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
@@ -3967,7 +3970,7 @@ In this chapter, you learnt how to use lookarounds to create custom restrictions
 ['at', 'in', 'a_b', 'lion']
 ```
 
-**q)** Match strings if it contains `qty` followed by `price` but not if there is any **whitespace** character or the string `error` between them.
+**17)** Match strings if it contains `qty` followed by `price` but not if there is any **whitespace** character or the string `error` between them.
 
 ```ruby
 >>> str1 = '23,qty,price,42'
@@ -3993,19 +3996,19 @@ False
 True
 ```
 
-**r)** Can you reason out why the following regular expressions behave differently?
+**18)** Can you reason out why the following regular expressions behave differently?
 
 ```ruby
 >>> ip = 'I have 12, he has 2!'
 
->>> re.sub(r'\b..\b', '{\g<0>}', ip)
+>>> re.sub(r'\b..\b', r'{\g<0>}', ip)
 '{I }have {12}{, }{he} has{ 2}!'
 
->>> re.sub(r'(?<!\w)..(?!\w)', '{\g<0>}', ip)
+>>> re.sub(r'(?<!\w)..(?!\w)', r'{\g<0>}', ip)
 'I have {12}, {he} has {2!}'
 ```
 
-**s)** The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.
+**19)** The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.
 
 ```ruby
 >>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4'
@@ -4160,13 +4163,13 @@ In these ways, flags can be specified precisely only where it is needed. The fla
 | Note    | Description |
 | ------- | ----------- |
 | `re.IGNORECASE` or `re.I` | flag to ignore case |
-| `re.DOTALL` or `re.S` | allow `.` metacharacter to match newline character |
+| `re.DOTALL` or `re.S` | allow `.` metacharacter to match newline characters |
 | `flags=re.S\|re.I` | multiple flags can be combined using the `\|` operator |
 | `re.MULTILINE` or `re.M` | allow `^` and `$` anchors to match line wise |
 | `re.VERBOSE` or `re.X` | allows to use literal whitespaces for aligning purposes |
 |  | and to add comments after the `#` character |
 |  | escape spaces and `#` if needed as part of actual RE |
-| `(?#comment)` | another way to add comments, not a flag |
+| `(?#comment)` | another way to add comments (not a flag) |
 | `(?flags:pat)` | inline flags only for this `pat`, overrides `flags` argument |
 |  | where flags is `i` for `re.I`, `s` for `re.S`, etc |
 |  | except `L` for `re.L` |
@@ -4179,7 +4182,7 @@ This chapter showed some of the flags that can be used to change the default beh
 
 ## Exercises
 
-**a)** Remove from the first occurrence of `hat` to the last occurrence of `it` for the given input strings. Match these markers case insensitively.
+**1)** Remove from the first occurrence of `hat` to the last occurrence of `it` for the given input strings. Match these markers case insensitively.
 
 ```ruby
 >>> s1 = 'But Cool THAT\nsee What okay\nwow quite'
@@ -4193,7 +4196,7 @@ This chapter showed some of the flags that can be used to change the default beh
 'it this .'
 ```
 
-**b)** Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.
+**2)** Delete from `start` if it is at the beginning of a line up to the next occurrence of the `end` at the end of a line. Match these markers case insensitively.
 
 ```ruby
 >>> para = '''\
@@ -4220,7 +4223,7 @@ hi there
 bye
 ```
 
-**c)** For the given input strings, match all of these three conditions:
+**3)** For the given input strings, match all of these three conditions:
 
 * `This` case sensitively
 * `nice` and `cool` case insensitively
@@ -4249,7 +4252,7 @@ False
 False
 ```
 
-**d)** For the given input strings, match if the string begins with `Th` and also contains a line that starts with `There`.
+**4)** For the given input strings, match if the string begins with `Th` and also contains a line that starts with `There`.
 
 ```ruby
 >>> s1 = 'There there\nHave a cookie'
@@ -4269,7 +4272,7 @@ False
 False
 ```
 
-**e)** Explore what the `re.DEBUG` flag does. Here are some example patterns to check out.
+**5)** Explore what the `re.DEBUG` flag does. Here are some example patterns to check out.
 
 * `re.compile(r'\Aden|ly\Z', flags=re.DEBUG)`
 * `re.compile(r'\b(0x)?[\da-f]+\b', flags=re.DEBUG)`
@@ -4277,7 +4280,7 @@ False
 
 # Unicode
 
-The examples so far had input strings made up of ASCII characters only. However, the `re` module's matching is Unicode by default. See [docs.python: Unicode](https://docs.python.org/3/howto/unicode.html) for a tutorial on Unicode support in Python. This chapter will briefly discuss a few things related to Unicode matching.
+The examples so far had input strings made up of ASCII characters only. However, the `re` module's matching works on Unicode by default. See [docs.python: Unicode](https://docs.python.org/3/howto/unicode.html) for a tutorial on Unicode support in Python. This chapter will briefly discuss a few things related to Unicode matching.
 
 ## re.ASCII
 
@@ -4373,7 +4376,7 @@ A comprehensive discussion on RE usage with Unicode characters is out of scope f
 
 ## Exercises
 
-**a)** Output `True` or `False` depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give `False`. Do you need regular expressions for this?
+**1)** Output `True` or `False` depending on input string made up of ASCII characters or not. Consider the input to be non-empty strings and any character that isn't part of 7-bit ASCII set should give `False`. Do you need regular expressions for this?
 
 ```ruby
 >>> str1 = '123—456'
@@ -4394,9 +4397,9 @@ False
 False
 ```
 
-**b)** Does the `.` quantifier match non-ASCII characters even with the `re.ASCII` flag enabled?
+**2)** Does the `.` quantifier match non-ASCII characters even with the `re.ASCII` flag enabled?
 
-**c)** Explore the following stackoverflow Q&A threads.
+**3)** Explore the following stackoverflow Q&A threads.
 
 * [Remove powered number from string](https://stackoverflow.com/q/57553721/4082052)
 * [Regular expression for French characters](https://stackoverflow.com/q/1922097/4082052)
@@ -4406,10 +4409,10 @@ False
 The third-party `regex` module ([https://pypi.org/project/regex/](https://pypi.org/project/regex/)) offers advanced features like those found in the Perl language and other regular expression implementations. To install the module from the command line, you can use either of these depending on your usage:
 
 * `pip install regex` in a virtual environment
-* `python3.11 -m pip install --user regex` for normal environments
-    * you might need to use `py` instead of `python3.11` on Windows
+* `python3.13 -m pip install --user regex` for normal environments
+    * you might need to use `py` instead of `python3.13` on Windows
 
-By default, `regex` module uses `VERSION0` which is compatible with the `re` module. If you want all the features, `VERSION1` should be used. For example, set operators is a feature available only if you use `VERSION1`. You can choose the version to be used in two ways. Setting `regex.DEFAULT_VERSION` to `regex.VERSION0` or `regex.VERSION1` is a global option. `(?V0)` and `(?V1)` are inline flag options.
+By default, the `regex` module uses `VERSION0` which is compatible with the `re` module. If you want all the features, `VERSION1` should be used. For example, set operators is a feature available only if you use `VERSION1`. You can choose the version to be used in two ways. Setting `regex.DEFAULT_VERSION` to `regex.VERSION0` or `regex.VERSION1` is a global option. `(?V0)` and `(?V1)` are inline flag options.
 
 >![info](images/info.svg) The examples in this chapter are presented assuming `VERSION1` is enabled.
 > 
@@ -4449,7 +4452,7 @@ Named capture groups can be called using `(?&name)` syntax.
 '2008-03-24,food,2012-08-12'
 ```
 
-## Set start of matching portion with \K
+## Set the start of matching portion with \K
 
 Some of the positive lookbehind cases can be solved by adding `\K` as a suffix to the pattern to be asserted. The text consumed until `\K` won't be part of the matching portion. In other words, `\K` determines the starting point. The pattern before `\K` can be variable length too.
 
@@ -4462,10 +4465,10 @@ Some of the positive lookbehind cases can be solved by adding `\K` as a suffix t
 # variable length example
 >>> s = 'cat scatter cater scat concatenate catastrophic catapult duplicate'
 # replace only the third occurrence of 'cat'
->>> regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s, count=1)
+>>> regex.sub(r'(cat.*?){2}\Kcat', r'[\g<0>]', s, count=1)
 'cat scatter [cat]er scat concatenate catastrophic catapult duplicate'
 # replace every third occurrence
->>> regex.sub(r'(cat.*?){2}\Kcat', '[\g<0>]', s)
+>>> regex.sub(r'(cat.*?){2}\Kcat', r'[\g<0>]', s)
 'cat scatter [cat]er scat concatenate [cat]astrophic catapult duplicate'
 ```
 
@@ -4639,14 +4642,14 @@ Next, matching a set of parentheses which may optionally contain any number of n
 That looks very cryptic. Better to use the `regex.X` flag for clarity as well as for comparing against the recursive version. Breaking down the RE, you can see that `(` and `)` have to be matched literally. Inside that, valid string is made up of either non-parentheses characters or a non-nested parentheses sequence (level-one RE).
 
 ```ruby
->>> lvl2 = regex.compile('''
-...          \(              #literal (
-...            (?:           #start of non-capturing group
-...             [^()]++      #non-parentheses characters
-...             |            #OR
-...             \([^()]++\)  #level-one RE
-...            )++           #end of non-capturing group, 1 or more times
-...          \)              #literal )
+>>> lvl2 = regex.compile(r'''
+...          \(              # literal (
+...            (?:           # start of non-capturing group
+...             [^()]++      # non-parentheses characters
+...             |            # OR
+...             \([^()]++\)  # level-one RE
+...            )++           # end of non-capturing group, 1 or more times
+...          \)              # literal )
 ...          ''', flags=regex.X)
 
 >>> lvl2.findall(eqn1)
@@ -4659,14 +4662,14 @@ That looks very cryptic. Better to use the `regex.X` flag for clarity as well as
 To recursively match any number of nested sets of parentheses, use a capture group and call it within the capture group itself. Since entire RE needs to be called here, you can use the default zeroth capture group (this also helps to avoid having to use `finditer()`). Comparing with the level-two RE, the only change is that `(?0)` is used instead of the level-one RE in the second alternation.
 
 ```ruby
->>> lvln = regex.compile('''
-...          \(           #literal (
-...            (?:        #start of non-capturing group
-...             [^()]++   #non-parentheses characters
-...             |         #OR
-...             (?0)      #recursive call
-...            )++        #end of non-capturing group, 1 or more times
-...          \)           #literal )
+>>> lvln = regex.compile(r'''
+...          \(           # literal (
+...            (?:        # start of non-capturing group
+...             [^()]++   # non-parentheses characters
+...             |         # OR
+...             (?0)      # recursive call
+...            )++        # end of non-capturing group, 1 or more times
+...          \)           # literal )
 ...          ''', flags=regex.X)
 
 >>> lvln.findall(eqn0)
@@ -4685,7 +4688,7 @@ To recursively match any number of nested sets of parentheses, use a capture gro
 
 ## Named character sets
 
-A named character set is defined by a name enclosed between `[:` and `:]` and has to be used within a character class `[]`, along with any other characters as needed. Using `[:^` instead of `[:` will negate the named character set. See [regular-expressions: POSIX Bracket](https://www.regular-expressions.info/posixbrackets.html) for full list, and refer to [pypi: regex](https://pypi.org/project/regex/) for notes on Unicode.
+A named character set is defined by a name enclosed between `[:` and `:]` and has to be used within a character class `[]`, along with any other characters as needed. Using `[:^` instead of `[:` will negate the named character set. See [regular-expressions: POSIX Bracket](https://www.regular-expressions.info/posixbrackets.html) for a complete list, and refer to [pypi: regex](https://pypi.org/project/regex/) for notes on Unicode.
 
 ```ruby
 # similar to: r'\d+' or r'[0-9]+'
@@ -4739,7 +4742,7 @@ As mentioned at the start of this chapter, `VERSION1` is needed for this feature
 'Hi there! How are you? All fine here.'
 ```
 
->![info](images/info.svg) These set operators may get added to the `re` module in future.
+>![info](images/info.svg) These set operators might get added to the `re` module in future.
 
 ## Unicode character sets
 
@@ -4747,6 +4750,7 @@ Similar to named character classes and escape sequence character sets, the `rege
 
 ```ruby
 # extract all consecutive letters
+# \p{L} is an alias for \p{Letter}
 >>> regex.findall(r'\p{L}+', 'fox:αλεπού,eagle:αετός')
 ['fox', 'αλεπού', 'eagle', 'αετός']
 # extract all consecutive Greek letters
@@ -4785,7 +4789,7 @@ Sometimes, you want to change or extract all matches except particular portions.
 
 ## \m and \M word anchors
 
-`\b` matches both the start and end of words. In some cases, that can cause issues. You can use the `\m` and `\M` anchors to match only the start and end of word respectively.
+`\b` matches both the start and end of words. In some cases, that can cause issues. You can use the `\m` and `\M` anchors to match only the start and end of words respectively.
 
 ```ruby
 >>> regex.sub(r'\b', ':', 'hi log_42 12b')
@@ -4823,10 +4827,10 @@ The `regex.R` or `regex.REVERSE` flag will result in right-to-left processing in
 ```ruby
 >>> words = 'par spare lion part cool'
 
-# replaces first match
+# replaces the first match
 >>> regex.sub(r'par', 'X', words, count=1)
 'X spare lion part cool'
-# replaces last match
+# replaces the last match
 >>> regex.sub(r'par', 'X', words, count=1, flags=regex.R)
 'par spare lion Xt cool'
 
@@ -4860,7 +4864,7 @@ Some characters have more than one codepoint. These are handled in Unicode with 
 >>> regex.sub(r'a\Xe', 'o', 'cag̈ed')
 'cod'
 
-# \X will always match newline character, DOTALL flag won't be needed
+# \X will always match newline characters, DOTALL flag isn't needed
 >>> regex.sub(r'e\Xa', 'i', 'nice he\nat')
 'nice hit'
 ```
@@ -4870,15 +4874,15 @@ Some characters have more than one codepoint. These are handled in Unicode with 
 | Note    | Description |
 | ------- | ----------- |
 | [pypi: regex](https://pypi.org/project/regex/) | third-party module, has many advanced features |
-|  | default is `VERSION0` which is compatible with `re` module |
+|  | default is `VERSION0` which is compatible with the `re` module |
 | `(?V1)` | inline flag to enable version 1 for `regex` module |
 |  | `regex.DEFAULT_VERSION=regex.VERSION1` can also be used |
 |  | `(?V0)` or `regex.VERSION0` to get back default version |
-| `(?N)` | subexpression call for Nth capture group |
-| `(?&name)` | subexpression call for named capture group |
+| `(?N)` | subexpression call for the Nth capture group |
+| `(?&name)` | subexpression call for named capture groups |
 |  | subexpression call is similar to functions, recursion also possible |
 |  | `r'\((?:[^()]++\|(?0))++\)'` matches nested sets of parentheses |
-| `pat\K` | `pat` won't be part of matching portion |
+| `pat\K` | `pat` won't be part of the matching portion |
 |  | `\K` can be used for some of the positive lookbehind cases |
 |  | `regex` module also supports variable length lookbehinds |
 | `\G` | restricts matching from the start of string like `\A` |
@@ -4887,7 +4891,7 @@ Some characters have more than one codepoint. These are handled in Unicode with 
 |  | `findall(r'(?:M\|\G) \K\d+', 'J 75 M 8 5')` gives `['8', '5']` |
 | `[[:digit:]]` | named character set for `\d` |
 | `[[:^digit:]]` | to indicate `\D` |
-|  | See [regular-expressions: POSIX Bracket](https://www.regular-expressions.info/posixbrackets.html) for full list |
+|  | See [regular-expressions: POSIX Bracket](https://www.regular-expressions.info/posixbrackets.html) for a complete list |
 | set operations | feature for character classes, nested `[]` allowed |
 |  | `\|\|` union, `~~` symmetric difference |
 |  | `&&` intersection, `--` difference |
@@ -4909,9 +4913,9 @@ There are plenty of features provided by the `regex` module. Some of them have n
 
 ## Exercises
 
-**a)** List the two `regex` module constants that affect the compatibility with the `re` module. Also specify their corresponding inline flags.
+**1)** List the two `regex` module constants that affect the compatibility with the `re` module. Also specify their corresponding inline flags.
 
-**b)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence and the separator. Such sequences will end when `:` or `.` is not followed by a word character.
+**2)** Replace sequences made up of words separated by `:` or `.` by the first word of the sequence and the separator. Such sequences will end when `:` or `.` is not followed by a word character.
 
 ```ruby
 >>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
@@ -4920,7 +4924,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 'wow: hi-2 bye kite.'
 ```
 
-**c)** The given list of strings has fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
+**3)** The given list of strings has fields separated by the `:` character. Delete `:` and the last field if there is a digit character anywhere before the last field.
 
 ```ruby
 >>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother', 'fig-42:cherry:']
@@ -4929,7 +4933,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 ['42', 'twelve:a2b', 'we:be:he:0:a:b', 'fig-42:cherry']
 ```
 
-**d)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
+**4)** Extract all whole words unless they are preceded by `:` or `<=>` or `----` or `#`.
 
 ```ruby
 >>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
@@ -4938,7 +4942,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 ['at', 'in', 'a_b', 'lion']
 ```
 
-**e)** The given input string has fields separated by the `:` character. Extract field contents only if the previous field contains a digit character.
+**5)** The given input string has fields separated by the `:` character. Extract field contents only if the previous field contains a digit character.
 
 ```ruby
 >>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
@@ -4947,7 +4951,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 ['ride', '3list', 'end']
 ```
 
-**f)** The given input strings have fields separated by the `:` character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.
+**6)** The given input strings have fields separated by the `:` character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.
 
 ```ruby
 >>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
@@ -4967,7 +4971,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 ['Dragon', 'Unicorn', 'Wizard-Healer']
 ```
 
-**g)** For the given input strings, extract `if` followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.
+**7)** For the given input strings, extract `if` followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.
 
 ```ruby
 >>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
@@ -4981,7 +4985,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 'if(a(b)c(d(e(f)1)2)3)'
 ```
 
-**h)** Read about the `POSIX` flag from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). Is the following code snippet showing the correct output?
+**8)** Read about the `POSIX` flag from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). Is the following code snippet showing the correct output?
 
 ```ruby
 >>> words = 'plink incoming tint winter in caution sentient'
@@ -4992,7 +4996,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 'plX XmX tX wX X cautX sentient'
 ```
 
-**i)** Extract all whole words for the given input strings. However, based on the user input `ignore`, do not match words if they contain any character present in the `ignore` variable.
+**9)** Extract all whole words for the given input strings. However, based on the user input `ignore`, do not match words if they contain any character present in the `ignore` variable.
 
 ```ruby
 >>> s1 = 'match after the last new_line character A2'
@@ -5014,7 +5018,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 ['and', 'you', 'to']
 ```
 
-**j)** Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set `\p{P}` as punctuations for this exercise.
+**10)** Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set `\p{P}` as punctuations for this exercise.
 
 ```ruby
 >>> s1 = ''.join(chr(c) for c in range(0, 0x80))
@@ -5031,7 +5035,7 @@ There are plenty of features provided by the `regex` module. Some of them have n
 '❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪⟫'
 ```
 
-**k)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective of case) with the string `Python`. However, any match within code blocks that starts with the whole line ` ```python ` and ends with the whole line ` ``` ` shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.
+**11)** For the given **markdown** file, replace all occurrences of the string `python` (irrespective of case) with the string `Python`. However, any match within code blocks that starts with the whole line ` ```python ` and ends with the whole line ` ``` ` shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.
 
 Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises) for the files `sample.md` and `expected.md` required to solve this exercise.
 
@@ -5045,7 +5049,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 >>> assert open('sample_mod.md').read() == open('expected.md').read()
 ```
 
-**l)** For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.
+**12)** For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.
 
 ```ruby
 >>> s1 = 'knack tic pi roar what'
@@ -5059,7 +5063,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 'r2d2'
 ```
 
-**m)** Replicate `str.rpartition()` functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is `777` and `12` for the given input strings.
+**13)** Replicate `str.rpartition()` functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is `777` and `12` for the given input strings.
 
 ```ruby
 >>> s1 = 'Sample123string42with777numbers'
@@ -5073,7 +5077,7 @@ Refer to the [exercises folder](https://github.com/learnbyexample/py_regular_exp
 ['', '12', 'apples']
 ```
 
-**n)** Read about fuzzy matching from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). For the given input strings, return `True` if they are exactly the same as `cat` or there is exactly one character difference. Ignore case differences. For example, `Ca2` should give `True`. `act` will be `False` even though the characters are same because position should also be considered.
+**14)** Read about fuzzy matching from [https://pypi.org/project/regex/](https://pypi.org/project/regex/). For the given input strings, return `True` if they are exactly the same as `cat` or there is exactly one character difference. Ignore case differences. For example, `Ca2` should give `True`. `act` will be `False` even though the characters are same because position should also be considered.
 
 ```ruby
 >>> pat = regex.compile()       ##### add your solution here
@@ -5096,7 +5100,7 @@ False
 False
 ```
 
-**o)** The given input strings have fields separated by the `:` character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.
+**15)** The given input strings have fields separated by the `:` character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.
 
 ```ruby
 >>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
@@ -5129,14 +5133,14 @@ Some RE engines match characters literally if an escape sequence is not defined.
 True
 
 >>> bool(re.search(r'\c', 'cat\tdog'))
-re.error: bad escape \c at position 0
+re.PatternError: bad escape \c at position 0
 ```
 
 Only octal escapes are allowed inside raw strings in the replacement section. If you are otherwise not using the `\` character, then using normal strings in replacement section is preferred as it will also allow hexadecimal and unicode escapes.
 
 ```ruby
 >>> re.sub(r',', r'\x7c', '1,2')
-re.error: bad escape \x at position 0
+re.PatternError: bad escape \x at position 0
 
 >>> re.sub(r',', r'\174', '1,2')
 '1|2'
@@ -5200,7 +5204,8 @@ When using the `flags` option with the `regex` module, the constants should also
 ```ruby
 # Using re module, assuming you don't yet know that this feature isn't supported
 >>> re.findall(r'[[:word:]]+', 'fox:αλεπού,eagle:αετός', flags=re.A)
-<stdin>:1: FutureWarning: Possible nested set at position 1
+<python-input-1>:1: FutureWarning: Possible nested set at position 1
+  re.findall(r'[[:word:]]+', 'fox:αλεπού,eagle:αετός', flags=re.A)
 []
 
 # Convert re to regex: oops, output is still wrong
@@ -5218,7 +5223,7 @@ When using the `flags` option with the `regex` module, the constants should also
 
 ## Optional arguments syntax
 
-Speaking of `flags`, you should always pass them as a keyword argument. Using it as positional argument leads to a common mistake between `re.findall()` and `re.sub()` functions due to difference in placement. Their syntax, as per the docs, is shown below:
+Speaking of `flags`, you should always pass them as a keyword argument. Using it as a positional argument leads to a common mistake between `re.findall()` and `re.sub()` functions due to difference in their placement. Their syntax, as per the docs, is shown below:
 
 >`re.findall(pattern, string, flags=0)`
 >
@@ -5247,20 +5252,31 @@ Here's an example:
 '(KEY) port(key) o(Key) (Key)ed'
 ```
 
+Note that Python version 3.13 will give you a `DeprecationWarning` and it is planned to make them as keyword-only parameters in future versions.
+
+```ruby
+$ python3.13
+>>> import re
+>>> re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', re.I)
+<python-input-1>:1: DeprecationWarning: 'count' is passed as positional argument
+  re.sub(r'key', r'(\g<0>)', 'KEY portkey oKey Keyed', re.I)
+'KEY port(key) oKey Keyed'
+```
+
 ## Summary
 
 Hope you have found Python regular expressions an interesting topic to learn. Sooner or later, you'll need to use them if your project has text processing tasks. At the same time, knowing when to use normal string methods and knowing when to reach for other text parsing modules like `json` is important. Happy coding!
 
 # Further Reading
 
-**Note** that some of these resources are not specific to Python. So you'll have to adapt them to Python's syntax.
+Note that some of these resources are not specific to Python. So you'll have to adapt them to Python's syntax.
 
 * [docs.python: Regular Expression HOWTO](https://docs.python.org/3/howto/regex.html)
 * [Python 3 Module of the Week: re](https://pymotw.com/3/re/index.html) — covers till Python version 3.7.9
 * [stackoverflow: python regex](https://stackoverflow.com/questions/tagged/python+regex?sort=votes&pageSize=15)
 * [PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions) — construct regular expressions with natural language terms
 * [CommonRegex](https://github.com/madisonmay/CommonRegex) — collection of common regular expressions
-* [Awesome Regex](https://github.com/aloisdg/awesome-regex) — curated collection of libraries, tools, frameworks and software
+* [Awesome Regex](https://github.com/slevithan/awesome-regex) — curated collection of tools, tutorials, libraries, etc
 * [Generate strings that match a given regular expression](https://stackoverflow.com/q/492716/4082052)
 * [stackoverflow: regex FAQ](https://stackoverflow.com/q/22937618/4082052)
     * [stackoverflow: regex tag](https://stackoverflow.com/questions/tagged/regex) is a good source of exercise questions
