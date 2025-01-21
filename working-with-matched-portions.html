@@ -48,7 +48,7 @@
 >>> re.search(r'of.*ink', motivation)
 &LTre.Match object; span=(9, 32), match='often better than think'>
 
-# retrieving entire matched portion using index
+# retrieving the entire matched portion using index
 >>> re.search(r'of.*ink', motivation)[0]
 'often better than think'
 
@@ -87,7 +87,7 @@
 re.compile('hi.*bye')
 >>> m.string
 'This is goodbye then'
-</code></pre></blockquote><p><code>groupdict()</code> method will be covered in the <a href=./groupings-and-backreferences.html#named-capture-groups>Named capture groups</a> section and the <code>expand()</code> method will be covered in the <a href=./groupings-and-backreferences.html#matchexpand>Match.expand()</a> section.<h2 id=assignment-expressions><a class=header href=#assignment-expressions>Assignment expressions</a></h2><p>Introduced in Python 3.8, assignment expressions has made it easier to work with matched portions in conditional structures. Here's an example to print the capture group content only if the pattern matches:<pre><code class=language-python># no output since there's no match
+</code></pre></blockquote><p>The <code>groupdict()</code> method will be discussed in the <a href=./groupings-and-backreferences.html#named-capture-groups>Named capture groups</a> section and the <code>expand()</code> method will be covered in the <a href=./groupings-and-backreferences.html#matchexpand>Match.expand()</a> section.<h2 id=assignment-expressions><a class=header href=#assignment-expressions>Assignment expressions</a></h2><p>Introduced in Python 3.8, assignment expressions has made it easier to work with matched portions in conditional structures. Here's an example to print the capture group content only if the pattern matches:<pre><code class=language-python># no output since there's no match
 >>> if m := re.search(r'(.*)s', 'oh!'):
 ...     print(m[1])
 ... 
@@ -106,7 +106,7 @@ awe
 ... 
 fruit
 month: 04, year: 2023
-</code></pre><blockquote><p><img alt=info src=images/info.svg> Did you know that <a href=https://peps.python.org/pep-0572/#capturing-condition-values>PEP 572</a> gives <code>re</code> module as one of the use cases for assignment expressions?</blockquote><h2 id=using-functions-in-the-replacement-section><a class=header href=#using-functions-in-the-replacement-section>Using functions in the replacement section</a></h2><p>Functions can be used in the replacement section of <code>re.sub()</code> instead of a string. A <code>re.Match</code> object will be passed to the function as argument. In the <a href=./groupings-and-backreferences.html#backreference>Backreference</a> section, you'll learn an easier way to directly reference the matching portions in the replacement section.<pre><code class=language-python># m[0] will contain entire matched portion
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Did you know that <a href=https://peps.python.org/pep-0572/#capturing-condition-values>PEP 572</a> gives <code>re</code> module as one of the use cases for assignment expressions?</blockquote><h2 id=using-functions-in-the-replacement-section><a class=header href=#using-functions-in-the-replacement-section>Using functions in the replacement section</a></h2><p>Functions can be used in the replacement section of <code>re.sub()</code> instead of a string. A <code>re.Match</code> object will be passed to the function as the argument. In the <a href=./groupings-and-backreferences.html#backreference>Backreference</a> section, you'll learn an easier way to directly reference the matching portions in the replacement section.<pre><code class=language-python># m[0] will contain entire matched portion
 # a^2 and b^2 for the two matches in this example
 >>> re.sub(r'(a|b)\^2', lambda m: m[0].upper(), 'a^2 + b^2 - c*3')
 'A^2 + B^2 - c*3'
@@ -130,7 +130,7 @@ month: 04, year: 2023
 
 >>> re.sub(r'cat|tiger', lambda m: swap[m[0]], words)
 'tiger cat dog cat tiger'
-</code></pre><p>For <code>dict</code> objects that have many entries and likely to undergo changes during development, building alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first.<pre><code class=language-python># note that numbers have been converted to strings here
+</code></pre><p>For <code>dict</code> objects that have many entries and likely to undergo changes during development, building an alternation list manually is not a good choice. Also, recall that as per precedence rules, longest length string should come first.<pre><code class=language-python># note that numbers have been converted to strings here
 # otherwise, you'd need to convert it in the lambda code
 >>> d = {'hand': '1', 'handy': '2', 'handful': '3', 'a^b': '4'}
 
@@ -142,7 +142,7 @@ month: 04, year: 2023
 'handful|handy|hand|a\\^b'
 >>> pat.sub(lambda m: d[m[0]], 'handful hand pin handy (a^b)')
 '3 1 pin 2 (4)'
-</code></pre><blockquote><p><img alt=info src=images/info.svg> If you have thousands of key-value pairs, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=refindall><a class=header href=#refindall>re.findall()</a></h2><p>The <code>re.findall()</code> function returns all the matched portions as a list of strings.<blockquote><p><code>re.findall(pattern, string, flags=0)</code></blockquote><p>The first argument is the RE pattern you want to test and extract against the input string, which is the second argument. <code>flags</code> is optional. Here are some examples.<pre><code class=language-python>>>> re.findall(r'so*n', 'too soon a song snatch')
+</code></pre><blockquote><p><img alt=info src=images/info.svg> If you have thousands of key-value pairs, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> (or <a href=https://pypi.org/project/flashtext2/>flashtext2</a>) is highly recommended instead of regular expressions.</blockquote><h2 id=refindall><a class=header href=#refindall>re.findall()</a></h2><p>The <code>re.findall()</code> function returns all the matched portions as a list of strings.<blockquote><p><code>re.findall(pattern, string, flags=0)</code></blockquote><p>The first argument is the RE pattern you want to test and extract against the input string, which is the second argument. <code>flags</code> is optional. Here are some examples.<pre><code class=language-python>>>> re.findall(r'so*n', 'too soon a song snatch')
 ['soon', 'son', 'sn']
 
 >>> re.findall(r'so+n', 'too soon a song snatch')
@@ -247,7 +247,7 @@ SOON    (9, 13)
 'cog'
 </code></pre><p>If you like using assignment expressions, the above <code>while</code> loop can be shortened to:<pre><code class=language-python>while (op := re.subn(r'fin', '', word))[1]:
     word = op[0]
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>re.Match</code> object<td>get details like matched portions, location, etc<tr><td><code>m[0]</code> or <code>m.group(0)</code><td>entire matched portion of <code>re.Match</code> object <code>m</code><tr><td><code>m[1]</code> or <code>m.group(1)</code><td>matched portion of the first capture group<tr><td><code>m[2]</code> or <code>m.group(2)</code><td>matched portion of the second capture group and so on<tr><td><code>m.groups()</code><td>tuple of all the capture groups' matched portions<tr><td><code>m.span()</code><td>start and end+1 index of the entire matched portion<tr><td><td>pass a number to get span of that particular capture group<tr><td><td>can also use <code>m.start()</code> and <code>m.end()</code><tr><td><code>re.sub(r'pat', f, s)</code><td>function <code>f</code> will get a <code>re.Match</code> object as the argument<tr><td>using <code>dict</code><td>replacement string based on the matched text as dictionary key<tr><td><td>ex: <code>re.sub(r'pat', lambda m: d.get(m[0], default), s)</code><tr><td><code>re.findall()</code><td>returns all the matches as a list of strings<tr><td><td><code>re.findall(pattern, string, flags=0)</code><tr><td><td>if 1 capture group is used, only its matches are returned<tr><td><td>1+, each element will be tuple of capture groups<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>empty matches will be represented by empty string<tr><td><code>re.finditer()</code><td>iterator with <code>re.Match</code> object for each match<tr><td><td><code>re.finditer(pattern, string, flags=0)</code><tr><td><code>re.split()</code><td>capture groups affects <code>re.split()</code> too<tr><td><td>text matched by the groups will be part of the output<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>group that didn't match will be represented by <code>None</code><tr><td><code>re.subn()</code><td>gives tuple of modified string and number of substitutions<tr><td><td><code>re.subn(pattern, repl, string, count=0, flags=0)</code></table></div><p>This chapter introduced different ways to work with various matching portions of the input string. The <code>re.Match</code> object helps you get the portion matched by the RE pattern and capture groups, location of the match, etc. Functions can be used in the replacement section, which gets <code>re.Match</code> object as an argument. Using functions, you can do substitutions based on <code>dict</code> mappings. To get all the matches instead of just the first match, you can use <code>re.findall()</code> (which gives a list of strings as output) and <code>re.finditer()</code> (which gives an iterator of <code>re.Match</code> objects). You also learnt how capture groups affect the output of <code>re.findall()</code> and <code>re.split()</code> functions. You'll see many more uses of groupings in the coming chapters. The <code>re.subn()</code> function is like <code>re.sub()</code> but additionally gives number of matches as well.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given strings, extract the matching portion from the first <code>is</code> to the last <code>t</code>.<pre><code class=language-python>>>> str1 = 'This the biggest fruit you have seen?'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>re.Match</code> object<td>get details like matched portions, location, etc<tr><td><code>m[0]</code> or <code>m.group(0)</code><td>entire matched portion of <code>re.Match</code> object <code>m</code><tr><td><code>m[1]</code> or <code>m.group(1)</code><td>matched portion of the first capture group<tr><td><code>m[2]</code> or <code>m.group(2)</code><td>matched portion of the second capture group and so on<tr><td><code>m.groups()</code><td>tuple of all the capture groups' matched portions<tr><td><code>m.span()</code><td>start and end+1 index of the entire matched portion<tr><td><td>pass a number to get span of that particular capture group<tr><td><td>can also use <code>m.start()</code> and <code>m.end()</code><tr><td><code>re.sub(r'pat', f, s)</code><td>function <code>f</code> will get a <code>re.Match</code> object as the argument<tr><td>using <code>dict</code><td>replacement string based on the matched text as dictionary key<tr><td><td>ex: <code>re.sub(r'pat', lambda m: d.get(m[0], default), s)</code><tr><td><code>re.findall()</code><td>returns all the matches as a list of strings<tr><td><td><code>re.findall(pattern, string, flags=0)</code><tr><td><td>if 1 capture group is used, only its matches are returned<tr><td><td>1+, each element will be tuple of capture groups<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>empty matches will be represented by empty string<tr><td><code>re.finditer()</code><td>iterator with <code>re.Match</code> object for each match<tr><td><td><code>re.finditer(pattern, string, flags=0)</code><tr><td><code>re.split()</code><td>capture groups affects <code>re.split()</code> too<tr><td><td>text matched by the groups will be part of the output<tr><td><td>portion matched by pattern outside groups won't be in output<tr><td><td>group that didn't match will be represented by <code>None</code><tr><td><code>re.subn()</code><td>gives tuple of modified string and number of substitutions<tr><td><td><code>re.subn(pattern, repl, string, count=0, flags=0)</code></table></div><p>This chapter introduced different ways to work with various matching portions of the input string. The <code>re.Match</code> object helps you get the portion matched by the RE pattern and capture groups, location of the match, etc. Functions can be used in the replacement section, which gets <code>re.Match</code> object as an argument. Using functions, you can do substitutions based on <code>dict</code> mappings. To get all the matches instead of just the first match, you can use <code>re.findall()</code> (which gives a list of strings as output) and <code>re.finditer()</code> (which gives an iterator of <code>re.Match</code> objects). You also learnt how capture groups affect the output of <code>re.findall()</code> and <code>re.split()</code> functions. You'll see many more uses of groupings in the coming chapters. The <code>re.subn()</code> function is like <code>re.sub()</code> but additionally gives number of matches as well.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> For the given strings, extract the matching portion from the first <code>is</code> to the last <code>t</code>.<pre><code class=language-python>>>> str1 = 'This the biggest fruit you have seen?'
 >>> str2 = 'Your mission is to read and practice consistently'
 
 >>> pat = re.compile()      ##### add your solution here
@@ -256,7 +256,7 @@ SOON    (9, 13)
 'is the biggest fruit'
 ##### add your solution here for str2
 'ission is to read and practice consistent'
-</code></pre><p><strong>b)</strong> Find the starting index of the first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
+</code></pre><p><strong>2)</strong> Find the starting index of the first occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
 >>> s2 = 'and then you want to test'
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
@@ -271,7 +271,7 @@ SOON    (9, 13)
 2
 ##### add your solution here for s4
 4
-</code></pre><p><strong>c)</strong> Find the starting index of the last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
+</code></pre><p><strong>3)</strong> Find the starting index of the last occurrence of <code>is</code> or <code>the</code> or <code>was</code> or <code>to</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'match after the last newline character'
 >>> s2 = 'and then you want to test'
 >>> s3 = 'this is good bye then'
 >>> s4 = 'who was there to see?'
@@ -286,11 +286,11 @@ SOON    (9, 13)
 17
 ##### add your solution here for s4
 14
-</code></pre><p><strong>d)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.<pre><code class=language-python>>>> ip = 'fruits:apple, mango, guava, blueberry'
+</code></pre><p><strong>4)</strong> The given input string contains <code>:</code> exactly once. Extract all characters after the <code>:</code> as output.<pre><code class=language-python>>>> ip = 'fruits:apple, mango, guava, blueberry'
 
 ##### add your solution here
 'apple, mango, guava, blueberry'
-</code></pre><p><strong>e)</strong> The given input strings contains some text followed by <code>-</code> followed by a number. Replace that number with its <code>log</code> value using <code>math.log()</code>.<pre><code class=language-python>>>> s1 = 'first-3.14'
+</code></pre><p><strong>5)</strong> The given input strings contain some text followed by <code>-</code> followed by a number. Replace that number with its <code>log</code> value using <code>math.log()</code>.<pre><code class=language-python>>>> s1 = 'first-3.14'
 >>> s2 = 'next-123'
 
 >>> pat = re.compile()      ##### add your solution here
@@ -300,7 +300,7 @@ SOON    (9, 13)
 'first-1.144222799920162'
 >>> pat.sub()     ##### add your solution here for s2
 'next-4.812184355372417'
-</code></pre><p><strong>f)</strong> Replace all occurrences of <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code> for the given input strings.<pre><code class=language-python>>>> str1 = 'apartment has a park'
+</code></pre><p><strong>6)</strong> Replace all occurrences of <code>par</code> with <code>spar</code>, <code>spare</code> with <code>extra</code> and <code>park</code> with <code>garden</code> for the given input strings.<pre><code class=language-python>>>> str1 = 'apartment has a park'
 >>> str2 = 'do you have a spare cable'
 >>> str3 = 'write a parser'
 
@@ -312,15 +312,15 @@ SOON    (9, 13)
 'do you have a extra cable'
 >>> pat.sub()        ##### add your solution here for str3
 'write a sparser'
-</code></pre><p><strong>g)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as a list. Assume that the input will not contain any broken parentheses.<pre><code class=language-python>>>> ip = 'another (way) to reuse (portion) matched (by) capture groups'
+</code></pre><p><strong>7)</strong> Extract all words between <code>(</code> and <code>)</code> from the given input string as a list. Assume that the input will not contain any broken parentheses.<pre><code class=language-python>>>> ip = 'another (way) to reuse (portion) matched (by) capture groups'
 
 >>> re.findall()        ##### add your solution here
 ['way', 'portion', 'by']
-</code></pre><p><strong>h)</strong> Extract all occurrences of <code><</code> up to the next occurrence of <code>></code>, provided there is at least one character in between <code><</code> and <code>></code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
+</code></pre><p><strong>8)</strong> Extract all occurrences of <code><</code> up to the next occurrence of <code>></code>, provided there is at least one character in between <code><</code> and <code>></code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 >>> re.findall()        ##### add your solution here
 ['&LTapple>', '<> b&LTbye>', '<> c&LTcat>']
-</code></pre><p><strong>i)</strong> Use <code>re.findall()</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.<pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+</code></pre><p><strong>9)</strong> Use <code>re.findall()</code> to get the output as shown below for the given input strings. Note the characters used in the input strings carefully.<pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 >>> pat = re.compile()       ##### add your solution here
@@ -329,7 +329,7 @@ SOON    (9, 13)
 [('-2', '5'), ('4', '+3'), ('+42', '-53'), ('4356246', '-357532354')]
 >>> pat.findall(row2)
 [('1.32', '-3.14'), ('634', '5.63'), ('63.3e3', '9907809345343.235')]
-</code></pre><p><strong>j)</strong> This is an extension to the previous question.<ul><li>For <code>row1</code>, find the sum of integers of each tuple element. For example, sum of <code>-2</code> and <code>5</code> is <code>3</code>.<li>For <code>row2</code>, find the sum of floating-point numbers of each tuple element. For example, sum of <code>1.32</code> and <code>-3.14</code> is <code>-1.82</code>.</ul><pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
+</code></pre><p><strong>10)</strong> This is an extension to the previous question.<ul><li>For <code>row1</code>, find the sum of integers of each tuple element. For example, sum of <code>-2</code> and <code>5</code> is <code>3</code>.<li>For <code>row2</code>, find the sum of floating-point numbers of each tuple element. For example, sum of <code>1.32</code> and <code>-3.14</code> is <code>-1.82</code>.</ul><pre><code class=language-python>>>> row1 = '-2,5 4,+3 +42,-53 4356246,-357532354 '
 >>> row2 = '1.32,-3.14 634,5.63 63.3e3,9907809345343.235 '
 
 # should be the same as previous question
@@ -340,19 +340,19 @@ SOON    (9, 13)
 
 ##### add your solution here for row2
 [-1.82, 639.63, 9907809408643.234]
-</code></pre><p><strong>k)</strong> Use <code>re.split()</code> to get the output as shown below.<pre><code class=language-python>>>> ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
+</code></pre><p><strong>11)</strong> Use <code>re.split()</code> to get the output as shown below.<pre><code class=language-python>>>> ip = '42:no-output;1000:car-tr:u-ck;SQEX49801'
 
 >>> re.split()        ##### add your solution here
 ['42', 'output', '1000', 'tr:u-ck', 'SQEX49801']
-</code></pre><p><strong>l)</strong> For the given list of strings, change the elements into a tuple of original element and the number of times <code>t</code> occurs in that element.<pre><code class=language-python>>>> words = ['sequoia', 'attest', 'tattletale', 'asset']
+</code></pre><p><strong>12)</strong> For the given list of strings, change the elements into a tuple of original element and the number of times <code>t</code> occurs in that element.<pre><code class=language-python>>>> words = ['sequoia', 'attest', 'tattletale', 'asset']
 
 ##### add your solution here
 [('sequoia', 0), ('attest', 3), ('tattletale', 4), ('asset', 1)]
-</code></pre><p><strong>m)</strong> The given input string has fields separated by <code>:</code>. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See <a href=https://docs.python.org/3/library/re.html#re.Match.groups>docs.python: Match.groups</a> and use <code>re.finditer()</code> to get the output as shown below. If the optional digits aren't present, show <code>'NA'</code> instead of <code>None</code>.<pre><code class=language-python>>>> ip = 'TWXA42:JWPA:NTED01:'
+</code></pre><p><strong>13)</strong> The given input string has fields separated by <code>:</code>. Each field contains four uppercase alphabets followed optionally by two digits. Ignore the last field, which is empty. See <a href=https://docs.python.org/3/library/re.html#re.Match.groups>docs.python: Match.groups</a> and use <code>re.finditer()</code> to get the output as shown below. If the optional digits aren't present, show <code>'NA'</code> instead of <code>None</code>.<pre><code class=language-python>>>> ip = 'TWXA42:JWPA:NTED01:'
 
 ##### add your solution here
 [('TWXA', '42'), ('JWPA', 'NA'), ('NTED', '01')]
-</code></pre><blockquote><p><img alt=info src=images/info.svg> Note that this is different from <code>re.findall()</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>n)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89,'
+</code></pre><blockquote><p><img alt=info src=images/info.svg> Note that this is different from <code>re.findall()</code> which will just give empty string instead of <code>None</code> when a capture group doesn't participate.</blockquote><p><strong>14)</strong> Convert the comma separated strings to corresponding <code>dict</code> objects as shown below.<pre><code class=language-python>>>> row1 = 'name:rohan,maths:75,phy:89,'
 >>> row2 = 'name:rose,maths:88,phy:92,'
 
 >>> pat = re.compile()      ##### add your solution here

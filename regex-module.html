@@ -28,7 +28,7 @@
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=regex-module><a class=header href=#regex-module>regex module</a></h1><p>The third-party <code>regex</code> module (<a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>) offers advanced features like those found in the Perl language and other regular expression implementations. To install the module from the command line, you can use either of these depending on your usage:<ul><li><code>pip install regex</code> in a virtual environment<li><code>python3.11 -m pip install --user regex</code> for normal environments <ul><li>you might need to use <code>py</code> instead of <code>python3.11</code> on Windows</ul></ul><p>By default, <code>regex</code> module uses <code>VERSION0</code> which is compatible with the <code>re</code> module. If you want all the features, <code>VERSION1</code> should be used. For example, set operators is a feature available only if you use <code>VERSION1</code>. You can choose the version to be used in two ways. Setting <code>regex.DEFAULT_VERSION</code> to <code>regex.VERSION0</code> or <code>regex.VERSION1</code> is a global option. <code>(?V0)</code> and <code>(?V1)</code> are inline flag options.<blockquote><p><img alt=info src=images/info.svg> The examples in this chapter are presented assuming <code>VERSION1</code> is enabled.<pre><code class=language-python>>>> import regex
+                    });</script><div class=content id=content><main><div class=sidetoc><nav class=pagetoc></nav></div><h1 id=regex-module><a class=header href=#regex-module>regex module</a></h1><p>The third-party <code>regex</code> module (<a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>) offers advanced features like those found in the Perl language and other regular expression implementations. To install the module from the command line, you can use either of these depending on your usage:<ul><li><code>pip install regex</code> in a virtual environment<li><code>python3.13 -m pip install --user regex</code> for normal environments <ul><li>you might need to use <code>py</code> instead of <code>python3.13</code> on Windows</ul></ul><p>By default, the <code>regex</code> module uses <code>VERSION0</code> which is compatible with the <code>re</code> module. If you want all the features, <code>VERSION1</code> should be used. For example, set operators is a feature available only if you use <code>VERSION1</code>. You can choose the version to be used in two ways. Setting <code>regex.DEFAULT_VERSION</code> to <code>regex.VERSION0</code> or <code>regex.VERSION1</code> is a global option. <code>(?V0)</code> and <code>(?V1)</code> are inline flag options.<blockquote><p><img alt=info src=images/info.svg> The examples in this chapter are presented assuming <code>VERSION1</code> is enabled.<pre><code class=language-python>>>> import regex
 >>> regex.DEFAULT_VERSION = regex.VERSION1
 
 >>> sentence = 'This is a sample string'
@@ -47,7 +47,7 @@ True
 
 >>> regex.search(r'(?P&LTdate>\d{4}-\d{2}-\d{2}).*(?&date)', row)[0]
 '2008-03-24,food,2012-08-12'
-</code></pre><h2 id=set-start-of-matching-portion-with-k><a class=header href=#set-start-of-matching-portion-with-k>Set start of matching portion with \K</a></h2><p>Some of the positive lookbehind cases can be solved by adding <code>\K</code> as a suffix to the pattern to be asserted. The text consumed until <code>\K</code> won't be part of the matching portion. In other words, <code>\K</code> determines the starting point. The pattern before <code>\K</code> can be variable length too.<pre><code class=language-python># similar to: r'(?<=\b\w)\w*\W*'
+</code></pre><h2 id=set-the-start-of-matching-portion-with-k><a class=header href=#set-the-start-of-matching-portion-with-k>Set the start of matching portion with \K</a></h2><p>Some of the positive lookbehind cases can be solved by adding <code>\K</code> as a suffix to the pattern to be asserted. The text consumed until <code>\K</code> won't be part of the matching portion. In other words, <code>\K</code> determines the starting point. The pattern before <code>\K</code> can be variable length too.<pre><code class=language-python># similar to: r'(?<=\b\w)\w*\W*'
 # text matched before \K won't be replaced
 >>> regex.sub(r'\b\w\K\w*\W*', '', 'sea eat car rat eel tea')
 'secret'
@@ -55,10 +55,10 @@ True
 # variable length example
 >>> s = 'cat scatter cater scat concatenate catastrophic catapult duplicate'
 # replace only the third occurrence of 'cat'
->>> regex.sub(r'(cat.*?){2}\Kcat', '[\g&LT0>]', s, count=1)
+>>> regex.sub(r'(cat.*?){2}\Kcat', r'[\g&LT0>]', s, count=1)
 'cat scatter [cat]er scat concatenate catastrophic catapult duplicate'
 # replace every third occurrence
->>> regex.sub(r'(cat.*?){2}\Kcat', '[\g&LT0>]', s)
+>>> regex.sub(r'(cat.*?){2}\Kcat', r'[\g&LT0>]', s)
 'cat scatter [cat]er scat concatenate [cat]astrophic catapult duplicate'
 </code></pre><p>Here's another example that won't work if greedy quantifier is used instead of possessive.<pre><code class=language-python>>>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,6,6,4'
 
@@ -166,14 +166,14 @@ True
 >>> eqn2 = 'a + (b) + ((c)) + (((d)))'
 >>> regex.findall(r'\((?:[^()]++|\([^()]++\))++\)', eqn2)
 ['(b)', '((c))', '((d))']
-</code></pre><p>That looks very cryptic. Better to use the <code>regex.X</code> flag for clarity as well as for comparing against the recursive version. Breaking down the RE, you can see that <code>(</code> and <code>)</code> have to be matched literally. Inside that, valid string is made up of either non-parentheses characters or a non-nested parentheses sequence (level-one RE).<pre><code class=language-python>>>> lvl2 = regex.compile('''
-...          \(              #literal (
-...            (?:           #start of non-capturing group
-...             [^()]++      #non-parentheses characters
-...             |            #OR
-...             \([^()]++\)  #level-one RE
-...            )++           #end of non-capturing group, 1 or more times
-...          \)              #literal )
+</code></pre><p>That looks very cryptic. Better to use the <code>regex.X</code> flag for clarity as well as for comparing against the recursive version. Breaking down the RE, you can see that <code>(</code> and <code>)</code> have to be matched literally. Inside that, valid string is made up of either non-parentheses characters or a non-nested parentheses sequence (level-one RE).<pre><code class=language-python>>>> lvl2 = regex.compile(r'''
+...          \(              # literal (
+...            (?:           # start of non-capturing group
+...             [^()]++      # non-parentheses characters
+...             |            # OR
+...             \([^()]++\)  # level-one RE
+...            )++           # end of non-capturing group, 1 or more times
+...          \)              # literal )
 ...          ''', flags=regex.X)
 
 >>> lvl2.findall(eqn1)
@@ -181,14 +181,14 @@ True
 
 >>> lvl2.findall(eqn2)
 ['(b)', '((c))', '((d))']
-</code></pre><p>To recursively match any number of nested sets of parentheses, use a capture group and call it within the capture group itself. Since entire RE needs to be called here, you can use the default zeroth capture group (this also helps to avoid having to use <code>finditer()</code>). Comparing with the level-two RE, the only change is that <code>(?0)</code> is used instead of the level-one RE in the second alternation.<pre><code class=language-python>>>> lvln = regex.compile('''
-...          \(           #literal (
-...            (?:        #start of non-capturing group
-...             [^()]++   #non-parentheses characters
-...             |         #OR
-...             (?0)      #recursive call
-...            )++        #end of non-capturing group, 1 or more times
-...          \)           #literal )
+</code></pre><p>To recursively match any number of nested sets of parentheses, use a capture group and call it within the capture group itself. Since entire RE needs to be called here, you can use the default zeroth capture group (this also helps to avoid having to use <code>finditer()</code>). Comparing with the level-two RE, the only change is that <code>(?0)</code> is used instead of the level-one RE in the second alternation.<pre><code class=language-python>>>> lvln = regex.compile(r'''
+...          \(           # literal (
+...            (?:        # start of non-capturing group
+...             [^()]++   # non-parentheses characters
+...             |         # OR
+...             (?0)      # recursive call
+...            )++        # end of non-capturing group, 1 or more times
+...          \)           # literal )
 ...          ''', flags=regex.X)
 
 >>> lvln.findall(eqn0)
@@ -203,7 +203,7 @@ True
 >>> eqn3 = '(3+a) * ((r-2)*(t+2)/6) + 42 * (a(b(c(d(e)))))'
 >>> lvln.findall(eqn3)
 ['(3+a)', '((r-2)*(t+2)/6)', '(a(b(c(d(e)))))']
-</code></pre><h2 id=named-character-sets><a class=header href=#named-character-sets>Named character sets</a></h2><p>A named character set is defined by a name enclosed between <code>[:</code> and <code>:]</code> and has to be used within a character class <code>[]</code>, along with any other characters as needed. Using <code>[:^</code> instead of <code>[:</code> will negate the named character set. See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for full list, and refer to <a href=https://pypi.org/project/regex/>pypi: regex</a> for notes on Unicode.<pre><code class=language-python># similar to: r'\d+' or r'[0-9]+'
+</code></pre><h2 id=named-character-sets><a class=header href=#named-character-sets>Named character sets</a></h2><p>A named character set is defined by a name enclosed between <code>[:</code> and <code>:]</code> and has to be used within a character class <code>[]</code>, along with any other characters as needed. Using <code>[:^</code> instead of <code>[:</code> will negate the named character set. See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for a complete list, and refer to <a href=https://pypi.org/project/regex/>pypi: regex</a> for notes on Unicode.<pre><code class=language-python># similar to: r'\d+' or r'[0-9]+'
 >>> regex.split(r'[[:digit:]]+', 'Sample123string42with777numbers')
 ['Sample', 'string', 'with', 'numbers']
 # similar to: r'[a-zA-Z]+'
@@ -238,7 +238,8 @@ True
 >>> para = '"Hi", there! How *are* you? All fine here.'
 >>> regex.sub(r'[[:punct:]--[.!?]]+', '', para)
 'Hi there! How are you? All fine here.'
-</code></pre><blockquote><p><img alt=info src=images/info.svg> These set operators may get added to the <code>re</code> module in future.</blockquote><h2 id=unicode-character-sets><a class=header href=#unicode-character-sets>Unicode character sets</a></h2><p>Similar to named character classes and escape sequence character sets, the <code>regex</code> module also supports <code>\p{}</code> construct that offers various predefined sets to work with Unicode strings. See <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for more details.<pre><code class=language-python># extract all consecutive letters
+</code></pre><blockquote><p><img alt=info src=images/info.svg> These set operators might get added to the <code>re</code> module in future.</blockquote><h2 id=unicode-character-sets><a class=header href=#unicode-character-sets>Unicode character sets</a></h2><p>Similar to named character classes and escape sequence character sets, the <code>regex</code> module also supports <code>\p{}</code> construct that offers various predefined sets to work with Unicode strings. See <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for more details.<pre><code class=language-python># extract all consecutive letters
+# \p{L} is an alias for \p{Letter}
 >>> regex.findall(r'\p{L}+', 'fox:αλεπού,eagle:αετός')
 ['fox', 'αλεπού', 'eagle', 'αετός']
 # extract all consecutive Greek letters
@@ -261,7 +262,7 @@ True
 >>> row = '1,"cat,12",nice,two,"dog,5"'
 >>> regex.sub(r'"[^"]++"(*SKIP)(*F)|,', '|', row)
 '1|"cat,12"|nice|two|"dog,5"'
-</code></pre><h2 id=m-and-m-word-anchors><a class=header href=#m-and-m-word-anchors>\m and \M word anchors</a></h2><p><code>\b</code> matches both the start and end of words. In some cases, that can cause issues. You can use the <code>\m</code> and <code>\M</code> anchors to match only the start and end of word respectively.<pre><code class=language-python>>>> regex.sub(r'\b', ':', 'hi log_42 12b')
+</code></pre><h2 id=m-and-m-word-anchors><a class=header href=#m-and-m-word-anchors>\m and \M word anchors</a></h2><p><code>\b</code> matches both the start and end of words. In some cases, that can cause issues. You can use the <code>\m</code> and <code>\M</code> anchors to match only the start and end of words respectively.<pre><code class=language-python>>>> regex.sub(r'\b', ':', 'hi log_42 12b')
 ':hi: :log_42: :12b:'
 >>> regex.sub(r'\m', ':', 'hi log_42 12b')
 ':hi :log_42 :12b'
@@ -282,10 +283,10 @@ True
 ['ap', 'pp', 'pl', 'le']
 </code></pre><h2 id=regexreverse-flag><a class=header href=#regexreverse-flag>regex.REVERSE flag</a></h2><p>The <code>regex.R</code> or <code>regex.REVERSE</code> flag will result in right-to-left processing instead of the usual left-to-right order.<pre><code class=language-python>>>> words = 'par spare lion part cool'
 
-# replaces first match
+# replaces the first match
 >>> regex.sub(r'par', 'X', words, count=1)
 'X spare lion part cool'
-# replaces last match
+# replaces the last match
 >>> regex.sub(r'par', 'X', words, count=1, flags=regex.R)
 'par spare lion Xt cool'
 
@@ -312,26 +313,26 @@ True
 >>> regex.sub(r'a\Xe', 'o', 'cag̈ed')
 'cod'
 
-# \X will always match newline character, DOTALL flag won't be needed
+# \X will always match newline characters, DOTALL flag isn't needed
 >>> regex.sub(r'e\Xa', 'i', 'nice he\nat')
 'nice hit'
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://pypi.org/project/regex/>pypi: regex</a><td>third-party module, has many advanced features<tr><td><td>default is <code>VERSION0</code> which is compatible with <code>re</code> module<tr><td><code>(?V1)</code><td>inline flag to enable version 1 for <code>regex</code> module<tr><td><td><code>regex.DEFAULT_VERSION=regex.VERSION1</code> can also be used<tr><td><td><code>(?V0)</code> or <code>regex.VERSION0</code> to get back default version<tr><td><code>(?N)</code><td>subexpression call for Nth capture group<tr><td><code>(?&name)</code><td>subexpression call for named capture group<tr><td><td>subexpression call is similar to functions, recursion also possible<tr><td><td><code>r'\((?:[^()]++|(?0))++\)'</code> matches nested sets of parentheses<tr><td><code>pat\K</code><td><code>pat</code> won't be part of matching portion<tr><td><td><code>\K</code> can be used for some of the positive lookbehind cases<tr><td><td><code>regex</code> module also supports variable length lookbehinds<tr><td><code>\G</code><td>restricts matching from the start of string like <code>\A</code><tr><td><td>continues matching from the end of previous match as the new anchor<tr><td><td><code>regex.findall(r'\G\d+-?', '12-34 42')</code> gives <code>['12-', '34']</code><tr><td><td><code>findall(r'(?:M|\G) \K\d+', 'J 75 M 8 5')</code> gives <code>['8', '5']</code><tr><td><code>[[:digit:]]</code><td>named character set for <code>\d</code><tr><td><code>[[:^digit:]]</code><td>to indicate <code>\D</code><tr><td><td>See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for full list<tr><td>set operations<td>feature for character classes, nested <code>[]</code> allowed<tr><td><td><code>||</code> union, <code>~~</code> symmetric difference<tr><td><td><code>&&</code> intersection, <code>--</code> difference<tr><td><td><code>[[:punct:]--[.!?]]</code> punctuation except <code>.</code> <code>!</code> and <code>?</code><tr><td><code>\p{}</code><td>Unicode character sets<tr><td><td>see <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for details<tr><td><code>\P{L}</code> or <code>\p{^L}</code><td>match characters other than the <code>\p{L}</code> set<tr><td><code>pat(*SKIP)(*F)</code><td>ignore text matched by <code>pat</code><tr><td><td><code>"[^"]++"(*SKIP)(*F)|,</code> will match <code>,</code> but not inside<tr><td><td>double quoted pairs<tr><td><code>\m</code> and <code>\M</code><td>anchors for the start and end of word respectively<tr><td><code>overlapped</code><td>set as <code>True</code> to match overlapping portions<tr><td><code>regex.R</code><td><code>REVERSE</code> flag to match from right-to-left<tr><td><code>\X</code><td>matches any character even if it has multiple codepoints<tr><td><td><code>\X</code> will also match newline characters by default<tr><td><td>whereas <code>.</code> requires the <code>DOTALL</code> flag to match newline characters</table></div><p>There are plenty of features provided by the <code>regex</code> module. Some of them have not been covered in this chapter — for example, fuzzy matching and <code>splititer()</code>. See <a href=https://pypi.org/project/regex/>pypi: regex</a> for details and examples. For those familiar with Perl style regular expressions, this module offers easier transition compared to the builtin <code>re</code> module.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> List the two <code>regex</code> module constants that affect the compatibility with the <code>re</code> module. Also specify their corresponding inline flags.<p><strong>b)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence and the separator. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://pypi.org/project/regex/>pypi: regex</a><td>third-party module, has many advanced features<tr><td><td>default is <code>VERSION0</code> which is compatible with the <code>re</code> module<tr><td><code>(?V1)</code><td>inline flag to enable version 1 for <code>regex</code> module<tr><td><td><code>regex.DEFAULT_VERSION=regex.VERSION1</code> can also be used<tr><td><td><code>(?V0)</code> or <code>regex.VERSION0</code> to get back default version<tr><td><code>(?N)</code><td>subexpression call for the Nth capture group<tr><td><code>(?&name)</code><td>subexpression call for named capture groups<tr><td><td>subexpression call is similar to functions, recursion also possible<tr><td><td><code>r'\((?:[^()]++|(?0))++\)'</code> matches nested sets of parentheses<tr><td><code>pat\K</code><td><code>pat</code> won't be part of the matching portion<tr><td><td><code>\K</code> can be used for some of the positive lookbehind cases<tr><td><td><code>regex</code> module also supports variable length lookbehinds<tr><td><code>\G</code><td>restricts matching from the start of string like <code>\A</code><tr><td><td>continues matching from the end of previous match as the new anchor<tr><td><td><code>regex.findall(r'\G\d+-?', '12-34 42')</code> gives <code>['12-', '34']</code><tr><td><td><code>findall(r'(?:M|\G) \K\d+', 'J 75 M 8 5')</code> gives <code>['8', '5']</code><tr><td><code>[[:digit:]]</code><td>named character set for <code>\d</code><tr><td><code>[[:^digit:]]</code><td>to indicate <code>\D</code><tr><td><td>See <a href=https://www.regular-expressions.info/posixbrackets.html>regular-expressions: POSIX Bracket</a> for a complete list<tr><td>set operations<td>feature for character classes, nested <code>[]</code> allowed<tr><td><td><code>||</code> union, <code>~~</code> symmetric difference<tr><td><td><code>&&</code> intersection, <code>--</code> difference<tr><td><td><code>[[:punct:]--[.!?]]</code> punctuation except <code>.</code> <code>!</code> and <code>?</code><tr><td><code>\p{}</code><td>Unicode character sets<tr><td><td>see <a href=https://www.regular-expressions.info/unicode.html>regular-expressions: Unicode</a> for details<tr><td><code>\P{L}</code> or <code>\p{^L}</code><td>match characters other than the <code>\p{L}</code> set<tr><td><code>pat(*SKIP)(*F)</code><td>ignore text matched by <code>pat</code><tr><td><td><code>"[^"]++"(*SKIP)(*F)|,</code> will match <code>,</code> but not inside<tr><td><td>double quoted pairs<tr><td><code>\m</code> and <code>\M</code><td>anchors for the start and end of word respectively<tr><td><code>overlapped</code><td>set as <code>True</code> to match overlapping portions<tr><td><code>regex.R</code><td><code>REVERSE</code> flag to match from right-to-left<tr><td><code>\X</code><td>matches any character even if it has multiple codepoints<tr><td><td><code>\X</code> will also match newline characters by default<tr><td><td>whereas <code>.</code> requires the <code>DOTALL</code> flag to match newline characters</table></div><p>There are plenty of features provided by the <code>regex</code> module. Some of them have not been covered in this chapter — for example, fuzzy matching and <code>splititer()</code>. See <a href=https://pypi.org/project/regex/>pypi: regex</a> for details and examples. For those familiar with Perl style regular expressions, this module offers easier transition compared to the builtin <code>re</code> module.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> List the two <code>regex</code> module constants that affect the compatibility with the <code>re</code> module. Also specify their corresponding inline flags.<p><strong>2)</strong> Replace sequences made up of words separated by <code>:</code> or <code>.</code> by the first word of the sequence and the separator. Such sequences will end when <code>:</code> or <code>.</code> is not followed by a word character.<pre><code class=language-python>>>> ip = 'wow:Good:2_two.five: hi-2 bye kite.777:water.'
 
 ##### add your solution here
 'wow: hi-2 bye kite.'
-</code></pre><p><strong>c)</strong> The given list of strings has fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother', 'fig-42:cherry:']
+</code></pre><p><strong>3)</strong> The given list of strings has fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> items = ['42:cat', 'twelve:a2b', 'we:be:he:0:a:b:bother', 'fig-42:cherry:']
 
 ##### add your solution here
 ['42', 'twelve:a2b', 'we:be:he:0:a:b', 'fig-42:cherry']
-</code></pre><p><strong>d)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
+</code></pre><p><strong>4)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 ##### add your solution here
 ['at', 'in', 'a_b', 'lion']
-</code></pre><p><strong>e)</strong> The given input string has fields separated by the <code>:</code> character. Extract field contents only if the previous field contains a digit character.<pre><code class=language-python>>>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+</code></pre><p><strong>5)</strong> The given input string has fields separated by the <code>:</code> character. Extract field contents only if the previous field contains a digit character.<pre><code class=language-python>>>> ip = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 
 ##### add your solution here
 ['ride', '3list', 'end']
-</code></pre><p><strong>f)</strong> The given input strings have fields separated by the <code>:</code> character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+</code></pre><p><strong>6)</strong> The given input strings have fields separated by the <code>:</code> character. Assume that each string has a minimum of two fields and cannot have empty fields. Extract all fields, but stop if a field with a digit character is found.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 >>> row2 = 'um:no:low:3e:s4w:seer'
 >>> row3 = 'oh100:apple:banana:fig'
 >>> row4 = 'Dragon:Unicorn:Wizard-Healer'
@@ -346,7 +347,7 @@ True
 []
 >>> pat.findall(row4)
 ['Dragon', 'Unicorn', 'Wizard-Healer']
-</code></pre><p><strong>g)</strong> For the given input strings, extract <code>if</code> followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.<pre><code class=language-python>>>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
+</code></pre><p><strong>7)</strong> For the given input strings, extract <code>if</code> followed by any number of nested parentheses. Assume that there will be only one such pattern per input string.<pre><code class=language-python>>>> ip1 = 'for (((i*3)+2)/6) if(3-(k*3+4)/12-(r+2/3)) while()'
 >>> ip2 = 'if+while if(a(b)c(d(e(f)1)2)3) for(i=1)'
 
 >>> pat = regex.compile()       ##### add your solution here
@@ -355,13 +356,13 @@ True
 'if(3-(k*3+4)/12-(r+2/3))'
 >>> pat.search(ip2)[0]
 'if(a(b)c(d(e(f)1)2)3)'
-</code></pre><p><strong>h)</strong> Read about the <code>POSIX</code> flag from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. Is the following code snippet showing the correct output?<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
+</code></pre><p><strong>8)</strong> Read about the <code>POSIX</code> flag from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. Is the following code snippet showing the correct output?<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
 
 >>> change = regex.compile(r'int|in|ion|ing|inco|inter|ink', flags=regex.POSIX)
 
 >>> change.sub('X', words)
 'plX XmX tX wX X cautX sentient'
-</code></pre><p><strong>i)</strong> Extract all whole words for the given input strings. However, based on the user input <code>ignore</code>, do not match words if they contain any character present in the <code>ignore</code> variable.<pre><code class=language-python>>>> s1 = 'match after the last new_line character A2'
+</code></pre><p><strong>9)</strong> Extract all whole words for the given input strings. However, based on the user input <code>ignore</code>, do not match words if they contain any character present in the <code>ignore</code> variable.<pre><code class=language-python>>>> s1 = 'match after the last new_line character A2'
 >>> s2 = 'and then you want to test'
 
 >>> ignore = 'aty'
@@ -378,7 +379,7 @@ True
 ['match', 'A2']
 >>> pat.findall(s2)
 ['and', 'you', 'to']
-</code></pre><p><strong>j)</strong> Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set <code>\p{P}</code> as punctuations for this exercise.<pre><code class=language-python>>>> s1 = ''.join(chr(c) for c in range(0, 0x80))
+</code></pre><p><strong>10)</strong> Retain only the punctuation characters for the given strings (generated from codepoints). Consider the characters defined by the Unicode set <code>\p{P}</code> as punctuations for this exercise.<pre><code class=language-python>>>> s1 = ''.join(chr(c) for c in range(0, 0x80))
 >>> s2 = ''.join(chr(c) for c in range(0x80, 0x100))
 >>> s3 = ''.join(chr(c) for c in range(0x2600, 0x27ec))
 
@@ -390,14 +391,14 @@ True
 '¡§«¶·»¿'
 >>> pat.sub('', s3)
 '❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟅⟆⟦⟧⟨⟩⟪⟫'
-</code></pre><p><strong>k)</strong> For the given <strong>markdown</strong> file, replace all occurrences of the string <code>python</code> (irrespective of case) with the string <code>Python</code>. However, any match within code blocks that starts with the whole line <code>```python</code> and ends with the whole line <code>```</code> shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.<p>Refer to the <a href=https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises>exercises folder</a> for the files <code>sample.md</code> and <code>expected.md</code> required to solve this exercise.<pre><code class=language-python>>>> ip_str = open('sample.md', 'r').read()
+</code></pre><p><strong>11)</strong> For the given <strong>markdown</strong> file, replace all occurrences of the string <code>python</code> (irrespective of case) with the string <code>Python</code>. However, any match within code blocks that starts with the whole line <code>```python</code> and ends with the whole line <code>```</code> shouldn't be replaced. Consider the input file to be small enough to fit memory requirements.<p>Refer to the <a href=https://github.com/learnbyexample/py_regular_expressions/tree/master/exercises>exercises folder</a> for the files <code>sample.md</code> and <code>expected.md</code> required to solve this exercise.<pre><code class=language-python>>>> ip_str = open('sample.md', 'r').read()
 >>> pat = regex.compile()      ##### add your solution here
 >>> with open('sample_mod.md', 'w') as op_file:
 ...     ##### add your solution here
 ... 
 305
 >>> assert open('sample_mod.md').read() == open('expected.md').read()
-</code></pre><p><strong>l)</strong> For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.<pre><code class=language-python>>>> s1 = 'knack tic pi roar what'
+</code></pre><p><strong>12)</strong> For the given input strings, construct a word that is made up of the last characters of all the words in the input. Use the last character of the last word as the first character, last character of the last but one word as the second character and so on.<pre><code class=language-python>>>> s1 = 'knack tic pi roar what'
 >>> s2 = ':42;rod;t2t2;car--'
 
 >>> pat = regex.compile()       ##### add your solution here
@@ -406,7 +407,7 @@ True
 'trick'
 ##### add your solution here for s2
 'r2d2'
-</code></pre><p><strong>m)</strong> Replicate <code>str.rpartition()</code> functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'Sample123string42with777numbers'
+</code></pre><p><strong>13)</strong> Replicate <code>str.rpartition()</code> functionality with regular expressions. Split into three parts based on the last match of sequences of digits, which is <code>777</code> and <code>12</code> for the given input strings.<pre><code class=language-python>>>> s1 = 'Sample123string42with777numbers'
 >>> s2 = '12apples'
 
 >>> pat = regex.compile()       ##### add your solution here
@@ -415,7 +416,7 @@ True
 ['Sample123string42with', '777', 'numbers']
 >>> pat.split(s2)
 ['', '12', 'apples']
-</code></pre><p><strong>n)</strong> Read about fuzzy matching from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. For the given input strings, return <code>True</code> if they are exactly the same as <code>cat</code> or there is exactly one character difference. Ignore case differences. For example, <code>Ca2</code> should give <code>True</code>. <code>act</code> will be <code>False</code> even though the characters are same because position should also be considered.<pre><code class=language-python>>>> pat = regex.compile()       ##### add your solution here
+</code></pre><p><strong>14)</strong> Read about fuzzy matching from <a href=https://pypi.org/project/regex/>https://pypi.org/project/regex/</a>. For the given input strings, return <code>True</code> if they are exactly the same as <code>cat</code> or there is exactly one character difference. Ignore case differences. For example, <code>Ca2</code> should give <code>True</code>. <code>act</code> will be <code>False</code> even though the characters are same because position should also be considered.<pre><code class=language-python>>>> pat = regex.compile()       ##### add your solution here
 
 >>> bool(pat.fullmatch('CaT'))
 True
@@ -433,7 +434,7 @@ False
 False
 >>> bool(pat.fullmatch('2a1'))
 False
-</code></pre><p><strong>o)</strong> The given input strings have fields separated by the <code>:</code> character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
+</code></pre><p><strong>15)</strong> The given input strings have fields separated by the <code>:</code> character. Extract all fields only after a field containing a digit character is found. Assume that each string has a minimum of two fields and cannot have empty fields.<pre><code class=language-python>>>> row1 = 'vast:a2b2:ride:in:awe:b2b:3list:end'
 >>> row2 = 'um:no:low:3e:s4w:seer'
 >>> row3 = 'oh100:apple:banana:fig'
 >>> row4 = 'Dragon:Unicorn:Wizard-Healer'

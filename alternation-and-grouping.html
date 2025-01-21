@@ -50,7 +50,7 @@ False
 'cat|dog|fox'
 >>> re.sub('|'.join(words), 'mammal', 'cat dog bee parrot fox')
 'mammal mammal bee parrot mammal'
-</code></pre><blockquote><p><img alt=warning src=images/warning.svg> In the above examples, the elements do not contain any special regular expression characters. Handling strings that contain metacharacters will be discussed in the <a href=./escaping-metacharacters.html#reescape>re.escape()</a> section.</blockquote><blockquote><p><img alt=info src=images/info.svg> If you have thousands of search terms to be matched, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> is highly recommended instead of regular expressions.</blockquote><h2 id=grouping><a class=header href=#grouping>Grouping</a></h2><p>Often, there are some common portions among the alternatives. It could be common characters, qualifiers like the anchors and so on. In such cases, you can group them using a pair of parentheses metacharacters. Similar to <code>a(b+c)d = abd+acd</code> in maths, you get <code>a(b|c)d = abd|acd</code> in regular expressions.<pre><code class=language-python># without grouping
+</code></pre><blockquote><p><img alt=warning src=images/warning.svg> In the above examples, the elements do not contain any special regular expression characters. Handling strings that contain metacharacters will be discussed in the <a href=./escaping-metacharacters.html#reescape>re.escape()</a> section.</blockquote><blockquote><p><img alt=info src=images/info.svg> If you have thousands of search terms to be matched, using specialized libraries like <a href=https://github.com/vi3k6i5/flashtext>flashtext</a> (or <a href=https://pypi.org/project/flashtext2/>flashtext2</a>) is highly recommended instead of regular expressions.</blockquote><h2 id=grouping><a class=header href=#grouping>Grouping</a></h2><p>Often, there are some common portions among the alternatives. It could be common characters, qualifiers like the anchors and so on. In such cases, you can group them using a pair of parentheses metacharacters. Similar to <code>a(b+c)d = abd+acd</code> in maths, you get <code>a(b|c)d = abd|acd</code> in regular expressions.<pre><code class=language-python># without grouping
 >>> re.sub(r'reform|rest', 'X', 'red reform read arrest')
 'red X read arX'
 # with grouping
@@ -149,15 +149,15 @@ True
 # alternation order will come into play if you don't sort them properly
 >>> re.sub('|'.join(words), 'X', 'hands handful handed handy')
 'Xs Xful Xed Xy'
-</code></pre><blockquote><p><img alt=info src=images/info.svg> See also <a href=https://www.regular-expressions.info/alternation.html>regular-expressions: alternation</a> for more information regarding alternation and precedence rules in various regular expression implementations.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>|</code><td>multiple RE combined as conditional OR<tr><td><td>each alternative can have independent anchors<tr><td><code>'|'.join(iterable)</code><td>programmatically combine multiple RE<tr><td><code>()</code><td>group pattern(s)<tr><td><code>a(b|c)d</code><td>same as <code>abd|acd</code><tr><td>Alternation precedence<td>pattern which matches earliest in the input gets precedence<tr><td><td>tie-breaker is left-to-right if patterns have the same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first<tr><td><td><code>'|'.join(sorted(iterable, key=len, reverse=True))</code></table></div><p>So, this chapter was about specifying one or more alternate matches within the same RE using the <code>|</code> metacharacter. Which can further be simplified using <code>()</code> grouping if the alternations have common portions. Among the alternations, earliest matching pattern gets precedence. Left-to-right ordering is used as a tie-breaker if multiple alternations have the same starting location. You also learnt ways to programmatically construct a RE.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> For the given list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+</code></pre><blockquote><p><img alt=info src=images/info.svg> See also <a href=https://www.regular-expressions.info/alternation.html>regular-expressions: alternation</a> for more information regarding alternation and precedence rules in various regular expression implementations.</blockquote><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>|</code><td>multiple RE combined as conditional OR<tr><td><td>each alternative can have independent anchors<tr><td><code>'|'.join(iterable)</code><td>programmatically combine multiple RE<tr><td><code>()</code><td>group pattern(s)<tr><td><code>a(b|c)d</code><td>same as <code>abd|acd</code><tr><td>Alternation precedence<td>pattern which matches earliest in the input gets precedence<tr><td><td>tie-breaker is left-to-right if patterns have the same starting location<tr><td><td>robust solution: sort the alternations based on length, longest first<tr><td><td><code>'|'.join(sorted(iterable, key=len, reverse=True))</code></table></div><p>So, this chapter was about specifying one or more alternate matches within the same RE using the <code>|</code> metacharacter. Which can further be simplified using <code>()</code> grouping if the alternations have common portions. Among the alternations, earliest matching pattern gets precedence. Left-to-right ordering is used as a tie-breaker if multiple alternations have the same starting location. You also learnt ways to programmatically construct a RE.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> For the given list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 ##### add your solution here
 ['lovely', '2 lonely', 'dent']
-</code></pre><p><strong>b)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+</code></pre><p><strong>2)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
 ##### add your solution here
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
-</code></pre><p><strong>c)</strong> For the given strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.<pre><code class=language-python>>>> s1 = 'creed refuse removed read'
+</code></pre><p><strong>3)</strong> For the given strings, replace all occurrences of <code>removed</code> or <code>reed</code> or <code>received</code> or <code>refused</code> with <code>X</code>.<pre><code class=language-python>>>> s1 = 'creed refuse removed read'
 >>> s2 = 'refused reed redo received'
 
 >>> pat = re.compile()        ##### add your solution here
@@ -166,7 +166,7 @@ True
 'cX refuse X read'
 >>> pat.sub('X', s2)
 'X X redo X'
-</code></pre><p><strong>d)</strong> For the given strings, replace all matches from the list <code>words</code> with <code>A</code>.<pre><code class=language-python>>>> s1 = 'plate full of slate'
+</code></pre><p><strong>4)</strong> For the given strings, replace all matches from the list <code>words</code> with <code>A</code>.<pre><code class=language-python>>>> s1 = 'plate full of slate'
 >>> s2 = "slated for later, don't be late"
 >>> words = ['late', 'later', 'slated']
 
@@ -176,7 +176,7 @@ True
 'pA full of sA'
 >>> pat.sub('A', s2)
 "A for A, don't be A"
-</code></pre><p><strong>e)</strong> Filter all whole elements from the input list <code>items</code> based on elements listed in <code>words</code>.<pre><code class=language-python>>>> items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
+</code></pre><p><strong>5)</strong> Filter all whole elements from the input list <code>items</code> based on elements listed in <code>words</code>.<pre><code class=language-python>>>> items = ['slate', 'later', 'plate', 'late', 'slates', 'slated ']
 >>> words = ['late', 'later', 'slated']
 
 >>> pat = re.compile()       ##### add your solution here

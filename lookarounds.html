@@ -41,7 +41,7 @@
 ... 
 1 4
 a d
-</code></pre><h2 id=negative-lookarounds><a class=header href=#negative-lookarounds>Negative lookarounds</a></h2><p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code><</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose syntax is shown below:<ul><li><code>(?!pat)</code> for negative lookahead assertion<li><code>(?&LT!pat)</code> for negative lookbehind assertion</ul><p>As mentioned earlier, lookarounds are not part of the matched portions and do not affect capture group numbering.<pre><code class=language-python># change 'cat' only if it is not followed by a digit character
+</code></pre><h2 id=negative-lookarounds><a class=header href=#negative-lookarounds>Negative lookarounds</a></h2><p>Lookaround assertions can be added in two ways — <strong>lookbehind</strong> and <strong>lookahead</strong>. Each of these can be a <strong>positive</strong> or a <strong>negative</strong> assertion. Syntax wise, lookbehind has an extra <code><</code> compared to the lookahead version. Negative lookarounds can be identified by the use of <code>!</code> whereas <code>=</code> is used for positive lookarounds. This section is about negative lookarounds, whose syntax is shown below:<ul><li><code>(?!pat)</code> negative lookahead assertion<li><code>(?&LT!pat)</code> negative lookbehind assertion</ul><p>As mentioned earlier, lookarounds are not part of the matched portions and do not affect capture group numbering.<pre><code class=language-python># change 'cat' only if it is not followed by a digit character
 # note that the end of string satisfies the given assertion
 # 'catcat' has two matches as the assertion doesn't consume characters
 >>> re.sub(r'cat(?!\d)', 'dog', 'hey cats! cat42 cat_5 catcat')
@@ -74,17 +74,17 @@ a d
 # replace 'par' as long as 's' is not present later in the input
 # this assumes that the lookaround doesn't conflict with search pattern
 # i.e. 's' will not conflict 'par' but would affect if it was 'r' and 'par'
->>> re.sub(r'par(?!.*s)', '[\g&LT0>]', 'par spare part party')
+>>> re.sub(r'par(?!.*s)', r'[\g&LT0>]', 'par spare part party')
 'par s[par]e [par]t [par]ty'
->>> re.sub(r'(?!.*s)par', '[\g&LT0>]', 'par spare part party')
+>>> re.sub(r'(?!.*s)par', r'[\g&LT0>]', 'par spare part party')
 'par s[par]e [par]t [par]ty'
 
 # since the three assertions used here are all zero-width,
 # all of the 6 possible combinations will be equivalent
 >>> re.sub(r'(?!\Z)\b(?&LT!\A)', ' ', 'output=num1+35*42/num2')
 'output = num1 + 35 * 42 / num2'
-</code></pre><h2 id=positive-lookarounds><a class=header href=#positive-lookarounds>Positive lookarounds</a></h2><p>Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookarounds can be identified by use of <code>=</code> in the grouping. Syntax is shown below:<ul><li><code>(?=pat)</code> for positive lookahead assertion<li><code>(?<=pat)</code> for positive lookbehind assertion</ul><pre><code class=language-python># extract digits only if it is followed by ,
-# note that end of string doesn't qualify as this is a positive assertion
+</code></pre><h2 id=positive-lookarounds><a class=header href=#positive-lookarounds>Positive lookarounds</a></h2><p>Unlike negative lookarounds, absence of something will not satisfy positive lookarounds. Instead, for the condition to satisfy, the pattern has to match actual characters and/or zero-width assertions. Positive lookarounds can be identified by use of <code>=</code> in the grouping. Syntax is shown below:<ul><li><code>(?=pat)</code> positive lookahead assertion<li><code>(?<=pat)</code> positive lookbehind assertion</ul><pre><code class=language-python># extract digits only if it is followed by ,
+# note that the end of string doesn't qualify as this is a positive assertion
 >>> re.findall(r'\d+(?=,)', '42 apple-5, fig3; x-83, y-20: f12')
 ['5', '83']
 
@@ -93,9 +93,9 @@ a d
 ['20']
 
 # replace 'par' as long as 'part' occurs as a whole word later in the line
->>> re.sub(r'par(?=.*\bpart\b)', '[\g&LT0>]', 'par spare part party')
+>>> re.sub(r'par(?=.*\bpart\b)', r'[\g&LT0>]', 'par spare part party')
 '[par] s[par]e part party'
-</code></pre><p>Lookarounds can be quite handy for simple field based processing.<pre><code class=language-python># except first and last fields
+</code></pre><p>Lookarounds can be quite handy for simple field based processing.<pre><code class=language-python># except the first and last fields
 >>> re.findall(r'(?<=,)[^,]+(?=,)', '1,two,3,four,5')
 ['two', '3', 'four']
 
@@ -138,11 +138,11 @@ d e
 
 # not allowed
 >>> re.findall(r'(?&LT!tar|dare)\d+', s)
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 >>> re.findall(r'(?<=\b[pd][a-z]*)\d+', s)
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 >>> re.sub(r'(?<=\A|,)(?=,|\Z)', 'NA', ',1,,,two,3,,,')
-re.error: look-behind requires fixed-width pattern
+re.PatternError: look-behind requires fixed-width pattern
 </code></pre><p>There are various workarounds possible depending upon the use case. See the <a href=./regex-module.html#variable-length-lookbehind>Variable length lookbehind</a> section for <code>regex</code> module for the easiest solution.<p>First up, when the lookbehind alternatives are of fixed length. In such cases, you can manually expand the alternatives into individual lookbehinds. For negatives, place them next to each other. For positives, separate them with alternation inside another grouping.<pre><code class=language-python>>>> s = 'pore42 tar3 dare7 care5'
 
 # workaround for r'(?&LT!tar|dare)\d+'
@@ -203,43 +203,43 @@ True
 >>> words = 'apple banana 12_bananas cherry fig mango cake42'
 >>> re.findall(r'\b[a-z](?:(?!pp|rr)[a-z])*\b', words)
 ['banana', 'fig', 'mango']
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td>lookarounds<td>custom assertions, zero-width like anchors<tr><td><code>(?!pat)</code><td>negative lookahead assertion<tr><td><code>(?&LT!pat)</code><td>negative lookbehind assertion<tr><td><code>(?=pat)</code><td>positive lookahead assertion<tr><td><code>(?<=pat)</code><td>positive lookbehind assertion<tr><td><code>(?!pat1)(?=pat2)</code><td>multiple assertions can be specified next to each other in any order<tr><td><td>as they mark a matching location without consuming characters<tr><td><code>((?!pat).)*</code><td>Negate a grouping, similar to negated character class</table></div><p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regular expressions have been covered. The special groupings seem never ending though, there are some more of them in the coming chapters!<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</blockquote><p><strong>a)</strong> Replace all whole words with <code>X</code> unless it is preceded by a <code>(</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td>lookarounds<td>custom assertions, zero-width like anchors<tr><td><code>(?!pat)</code><td>negative lookahead assertion<tr><td><code>(?&LT!pat)</code><td>negative lookbehind assertion<tr><td><code>(?=pat)</code><td>positive lookahead assertion<tr><td><code>(?<=pat)</code><td>positive lookbehind assertion<tr><td><code>(?!pat1)(?=pat2)</code><td>multiple assertions can be specified next to each other in any order<tr><td><td>as they mark a matching location without consuming characters<tr><td><code>((?!pat).)*</code><td>Negate a grouping, similar to negated character class</table></div><p>In this chapter, you learnt how to use lookarounds to create custom restrictions and also how to use negated grouping. With this, most of the powerful features of regular expressions have been covered. The special groupings seem never ending though, there are some more of them in the coming chapters!<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Please use lookarounds for solving the following exercises even if you can do it without lookarounds. Unless you cannot use lookarounds for cases like variable length lookbehinds.</blockquote><p><strong>1)</strong> Replace all whole words with <code>X</code> unless it is preceded by a <code>(</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
 
 ##### add your solution here
 '(apple) X X) X (mango) (grape'
-</code></pre><p><strong>b)</strong> Replace all whole words with <code>X</code> unless it is followed by a <code>)</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
+</code></pre><p><strong>2)</strong> Replace all whole words with <code>X</code> unless it is followed by a <code>)</code> character.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
 
 ##### add your solution here
 '(apple) X berry) X (mango) (X'
-</code></pre><p><strong>c)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
+</code></pre><p><strong>3)</strong> Replace all whole words with <code>X</code> unless it is preceded by <code>(</code> or followed by <code>)</code> characters.<pre><code class=language-python>>>> ip = '(apple) guava berry) apple (mango) (grape'
 
 ##### add your solution here
 '(apple) X berry) X (mango) (grape'
-</code></pre><p><strong>d)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
+</code></pre><p><strong>4)</strong> Extract all whole words that do not end with <code>e</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
 ##### add your solution here
 ['a_t', 'row', 'Dust', 'end', 'a2', 'u']
-</code></pre><p><strong>e)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
+</code></pre><p><strong>5)</strong> Extract all whole words that do not start with <code>a</code> or <code>d</code> or <code>n</code>.<pre><code class=language-python>>>> ip = 'a_t row on Urn e note Dust n end a2-e|u'
 
 ##### add your solution here
 ['row', 'on', 'Urn', 'e', 'Dust', 'end', 'e', 'u']
-</code></pre><p><strong>f)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
+</code></pre><p><strong>6)</strong> Extract all whole words only if they are followed by <code>:</code> or <code>,</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
 ['Poke', 'so_good', 'ever2']
-</code></pre><p><strong>g)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
+</code></pre><p><strong>7)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>/</code> or <code>-</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
 ['so_good', 'is', 'sit']
-</code></pre><p><strong>h)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
+</code></pre><p><strong>8)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> and followed by <code>:</code> or <code>.</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
 ['so_good', 'ink']
-</code></pre><p><strong>i)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
+</code></pre><p><strong>9)</strong> Extract all whole words only if they are preceded by <code>=</code> or <code>:</code> or <code>.</code> or <code>(</code> or <code>-</code> and not followed by <code>.</code> or <code>/</code>.<pre><code class=language-python>>>> ip = 'Poke,on=-=so_good:ink.to/is(vast)ever2-sit'
 
 ##### add your solution here
 ['so_good', 'vast', 'sit']
-</code></pre><p><strong>j)</strong> Remove the leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.<pre><code class=language-python>>>> csv1 = ' comma  ,separated ,values \t\r '
+</code></pre><p><strong>10)</strong> Remove the leading and trailing whitespaces from all the individual fields where <code>,</code> is the field separator.<pre><code class=language-python>>>> csv1 = ' comma  ,separated ,values \t\r '
 >>> csv2 = 'good bad,nice  ice  , 42 , ,   stall   small'
 
 >>> remove_whitespace = re.compile()     ##### add your solution here
@@ -248,19 +248,19 @@ True
 'comma,separated,values'
 >>> remove_whitespace.sub('', csv2)
 'good bad,nice  ice,42,,stall   small'
-</code></pre><p><strong>k)</strong> Filter all elements that satisfy all of these rules:<ul><li>should have at least two alphabets<li>should have at least three digits<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code><li>should not end with a whitespace character</ul><pre><code class=language-python>>>> pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
+</code></pre><p><strong>11)</strong> Filter all elements that satisfy all of these rules:<ul><li>should have at least two alphabets<li>should have at least three digits<li>should have at least one special character among <code>%</code> or <code>*</code> or <code>#</code> or <code>$</code><li>should not end with a whitespace character</ul><pre><code class=language-python>>>> pwds = ['hunter2', 'F2H3u%9', '*X3Yz3.14\t', 'r2_d2_42', 'A $B C1234']
 
 ##### add your solution here
 ['F2H3u%9', 'A $B C1234']
-</code></pre><p><strong>l)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.<pre><code class=language-python>>>> ip = 'part; cat {super} rest_42 par scatter apple spar'
+</code></pre><p><strong>12)</strong> For the given string, surround all whole words with <code>{}</code> except for whole words <code>par</code> and <code>cat</code> and <code>apple</code>.<pre><code class=language-python>>>> ip = 'part; cat {super} rest_42 par scatter apple spar'
 
 ##### add your solution here
 '{part}; cat {{super}} {rest_42} par {scatter} apple {spar}'
-</code></pre><p><strong>m)</strong> Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-python>>>> ip = '12 ab32.4 go 5 2. 46.42 5'
+</code></pre><p><strong>13)</strong> Extract integer portion of floating-point numbers for the given string. Integers and numbers ending with <code>.</code> and no further digits should not be considered.<pre><code class=language-python>>>> ip = '12 ab32.4 go 5 2. 46.42 5'
 
 ##### add your solution here
 ['32', '46']
-</code></pre><p><strong>n)</strong> For the given input strings, extract all overlapping two character sequences.<pre><code class=language-python>>>> s1 = 'apple'
+</code></pre><p><strong>14)</strong> For the given input strings, extract all overlapping two character sequences.<pre><code class=language-python>>>> s1 = 'apple'
 >>> s2 = '1.2-3:4'
 
 >>> pat = re.compile()       ##### add your solution here
@@ -269,7 +269,7 @@ True
 ['ap', 'pp', 'pl', 'le']
 ##### add your solution here for s2
 ['1.', '.2', '2-', '-3', '3:', ':4']
-</code></pre><p><strong>o)</strong> The given input strings contain fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> s1 = '42:cat'
+</code></pre><p><strong>15)</strong> The given input strings contain fields separated by the <code>:</code> character. Delete <code>:</code> and the last field if there is a digit character anywhere before the last field.<pre><code class=language-python>>>> s1 = '42:cat'
 >>> s2 = 'twelve:a2b'
 >>> s3 = 'we:be:he:0:a:b:bother'
 >>> s4 = 'apple:banana-42:cherry:'
@@ -287,11 +287,11 @@ True
 'apple:banana-42:cherry'
 >>> pat.sub()       ##### add your solution here for s5
 'dragon:unicorn:centaur'
-</code></pre><p><strong>p)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
+</code></pre><p><strong>16)</strong> Extract all whole words unless they are preceded by <code>:</code> or <code><=></code> or <code>----</code> or <code>#</code>.<pre><code class=language-python>>>> ip = '::very--at<=>row|in.a_b#b2c=>lion----east'
 
 ##### add your solution here
 ['at', 'in', 'a_b', 'lion']
-</code></pre><p><strong>q)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is any <strong>whitespace</strong> character or the string <code>error</code> between them.<pre><code class=language-python>>>> str1 = '23,qty,price,42'
+</code></pre><p><strong>17)</strong> Match strings if it contains <code>qty</code> followed by <code>price</code> but not if there is any <strong>whitespace</strong> character or the string <code>error</code> between them.<pre><code class=language-python>>>> str1 = '23,qty,price,42'
 >>> str2 = 'qty price,oh'
 >>> str3 = '3.14,qty,6,errors,9,price,3'
 >>> str4 = '42\nqty-6,apple-56,price-234,error'
@@ -312,14 +312,14 @@ True
 False
 >>> bool(neg.search(str6))
 True
-</code></pre><p><strong>r)</strong> Can you reason out why the following regular expressions behave differently?<pre><code class=language-python>>>> ip = 'I have 12, he has 2!'
+</code></pre><p><strong>18)</strong> Can you reason out why the following regular expressions behave differently?<pre><code class=language-python>>>> ip = 'I have 12, he has 2!'
 
->>> re.sub(r'\b..\b', '{\g&LT0>}', ip)
+>>> re.sub(r'\b..\b', r'{\g&LT0>}', ip)
 '{I }have {12}{, }{he} has{ 2}!'
 
->>> re.sub(r'(?&LT!\w)..(?!\w)', '{\g&LT0>}', ip)
+>>> re.sub(r'(?&LT!\w)..(?!\w)', r'{\g&LT0>}', ip)
 'I have {12}, {he} has {2!}'
-</code></pre><p><strong>s)</strong> The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.<pre><code class=language-python>>>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4'
+</code></pre><p><strong>19)</strong> The given input string has comma separated fields and some of them can occur more than once. For the duplicated fields, retain only the rightmost one. Assume that there are no empty fields.<pre><code class=language-python>>>> row = '421,cat,2425,42,5,cat,6,6,42,61,6,6,scat,6,6,4,Cat,425,4'
 
 ##### add your solution here
 '421,2425,5,cat,42,61,scat,6,Cat,425,4'

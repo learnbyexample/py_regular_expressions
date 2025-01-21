@@ -77,8 +77,8 @@ False
 >>> re.sub(r'e', 'E', greeting)
 'HavE a nicE wEEkEnd'
 
-# replace first two occurrences of 'e' with 'E'
-# same as: greeting.replace('e', 'E', 2)
+# replace the first two occurrences of 'e' with 'E'
+# same as: greeting.replace('e', 'E', count=2)
 >>> re.sub(r'e', 'E', greeting, count=2)
 'HavE a nicE weekend'
 </code></pre><blockquote><p><img alt=warning src=images/warning.svg> A common mistake, not specific to <code>re.sub()</code>, is forgetting that strings are immutable in Python.<pre><code class=language-python>>>> word = 'cater'
@@ -131,34 +131,34 @@ TypeError: cannot use a string pattern on a bytes-like object
 True
 >>> bool(re.search(rb'xyz', byte_data))
 False
-</code></pre><h2 id=regex-playground><a class=header href=#regex-playground>re(gex)? playground</a></h2><p>To make it easier to experiment, I wrote an interactive TUI app. See <a href=https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground>PyRegexPlayground</a> repo for installation instructions and usage guide. A sample screenshot is shown below:<p align=center><img alt="Python re(gex)? playground"src=images/pyregex_playground.png><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://docs.python.org/3/library/re.html>docs.python: re</a><td>Python standard module for regular expressions<tr><td><code>re.search()</code><td>Check if the given pattern is present anywhere in the input string<tr><td><td><code>re.search(pattern, string, flags=0)</code><tr><td><td>Output is a <code>re.Match</code> object, usable in conditional expressions<tr><td><td>raw strings preferred to define RE<tr><td><td>Additionally, Python maintains a small cache of recent RE<tr><td><code>re.sub()</code><td>search and replace using RE<tr><td><td><code>re.sub(pattern, repl, string, count=0, flags=0)</code><tr><td><code>re.compile()</code><td>Compile a pattern for reuse, output is a <code>re.Pattern</code> object<tr><td><td><code>re.compile(pattern, flags=0)</code><tr><td><code>rb'pat'</code><td>Use byte pattern for byte input<tr><td><code>re.IGNORECASE</code> or <code>re.I</code><td>flag to ignore case while matching</table></div><p>This chapter introduced the <code>re</code> module, which is part of the standard library. Functions <code>re.search()</code> and <code>re.sub()</code> were discussed as well as how to compile RE using the <code>re.compile()</code> function. The RE pattern is usually defined using raw strings. For byte input, the pattern has to be of byte type too. Although the <code>re</code> module is good enough for most use cases, there are situations where you need to use the third-party <code>regex</code> module. To avoid mixing up features, a separate chapter is dedicated for the <a href=./regex-module.html#regex-module>regex module</a> at the end of this book.<p>The next section has exercises to test your understanding of the concepts introduced in this chapter. Please do solve them before moving on to the next chapter.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.</blockquote><blockquote><p><img alt=info src=images/info.svg> All the exercises are also collated together in one place at <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md>Exercises.md</a>. For solutions, see <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md>Exercise_solutions.md</a>.</blockquote><p><strong>a)</strong> Check whether the given strings contain <code>0xB0</code>. Display a boolean result as shown below.<pre><code class=language-python>>>> line1 = 'start address: 0xA0, func1 address: 0xC0'
+</code></pre><h2 id=regex-playground><a class=header href=#regex-playground>re(gex)? playground</a></h2><p>To make it easier to experiment, I wrote an interactive TUI app. See <a href=https://github.com/learnbyexample/TUI-apps/tree/main/PyRegexPlayground>PyRegexPlayground</a> repo for installation instructions and usage guide. A sample screenshot is shown below:<p align=center><img alt="Python re(gex)? playground"src=images/pyregex_playground.png><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><a href=https://docs.python.org/3/library/re.html>docs.python: re</a><td>Python standard module for regular expressions<tr><td><code>re.search()</code><td>Check if the given pattern is present anywhere in the input string<tr><td><td><code>re.search(pattern, string, flags=0)</code><tr><td><td>Output is a <code>re.Match</code> object, usable in conditional expressions<tr><td><td>raw strings preferred to define RE<tr><td><td>Additionally, Python maintains a small cache of recent RE<tr><td><code>re.sub()</code><td>search and replace using RE<tr><td><td><code>re.sub(pattern, repl, string, count=0, flags=0)</code><tr><td><code>re.compile()</code><td>Compile a pattern for reuse, output is a <code>re.Pattern</code> object<tr><td><td><code>re.compile(pattern, flags=0)</code><tr><td><code>rb'pat'</code><td>Use byte pattern for byte input<tr><td><code>re.IGNORECASE</code> or <code>re.I</code><td>flag to ignore case while matching</table></div><p>This chapter introduced the <code>re</code> module, which is part of the standard library. Functions <code>re.search()</code> and <code>re.sub()</code> were discussed as well as how to compile RE using the <code>re.compile()</code> function. The RE pattern is usually defined using raw strings. For byte input, the pattern has to be of byte type too. Although the <code>re</code> module is good enough for most use cases, there are situations where you need to use the third-party <code>regex</code> module. To avoid mixing up features, a separate chapter is dedicated for the <a href=./regex-module.html#regex-module>regex module</a> at the end of this book.<p>The next section has exercises to test your understanding of the concepts introduced in this chapter. Please do solve them before moving on to the next chapter.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Try to solve exercises in every chapter using only the features discussed until that chapter. Some of the exercises will be easier to solve with techniques presented in later chapters, but the aim of these exercises is to explore the features presented so far.</blockquote><blockquote><p><img alt=info src=images/info.svg> All the exercises are also collated together in one place at <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercises.md>Exercises.md</a>. For solutions, see <a href=https://github.com/learnbyexample/py_regular_expressions/blob/master/exercises/Exercise_solutions.md>Exercise_solutions.md</a>.</blockquote><p><strong>1)</strong> Check whether the given strings contain <code>0xB0</code>. Display a boolean result as shown below.<pre><code class=language-python>>>> line1 = 'start address: 0xA0, func1 address: 0xC0'
 >>> line2 = 'end address: 0xFF, func2 address: 0xB0'
 
 >>> bool(re.search(r'', line1))     ##### add your solution here
 False
 >>> bool(re.search(r'', line2))     ##### add your solution here
 True
-</code></pre><p><strong>b)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
+</code></pre><p><strong>2)</strong> Replace all occurrences of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
 
 >>> re.sub()        ##### add your solution here
 'They ate five apples and five oranges'
-</code></pre><p><strong>c)</strong> Replace only the first occurrence of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
+</code></pre><p><strong>3)</strong> Replace only the first occurrence of <code>5</code> with <code>five</code> for the given string.<pre><code class=language-python>>>> ip = 'They ate 5 apples and 5 oranges'
 
 >>> re.sub()       ##### add your solution here
 'They ate five apples and 5 oranges'
-</code></pre><p><strong>d)</strong> For the given list, filter all elements that do <em>not</em> contain <code>e</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>4)</strong> For the given list, filter all elements that do <em>not</em> contain <code>e</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 >>> [w for w in items if not re.search()]        ##### add your solution here
 ['goal', 'sit']
-</code></pre><p><strong>e)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.<pre><code class=language-python>>>> ip = 'This note should not be NoTeD'
+</code></pre><p><strong>5)</strong> Replace all occurrences of <code>note</code> irrespective of case with <code>X</code>.<pre><code class=language-python>>>> ip = 'This note should not be NoTeD'
 
 >>> re.sub()        ##### add your solution here
 'This X should not be XD'
-</code></pre><p><strong>f)</strong> Check if <code>at</code> is present in the given byte input data.<pre><code class=language-python>>>> ip = b'tiger imp goat'
+</code></pre><p><strong>6)</strong> Check if <code>at</code> is present in the given byte input data.<pre><code class=language-python>>>> ip = b'tiger imp goat'
 
 >>> bool(re.search())     ##### add your solution here
 True
-</code></pre><p><strong>g)</strong> For the given input string, display all lines not containing <code>start</code> irrespective of case.<pre><code class=language-python>>>> para = '''good start
+</code></pre><p><strong>7)</strong> For the given input string, display all lines not containing <code>start</code> irrespective of case.<pre><code class=language-python>>>> para = '''good start
 ... Start working on that
 ... project you always wanted
 ... stars are shining brightly
@@ -177,17 +177,17 @@ stars are shining brightly
 hi there
 finish the book
 bye
-</code></pre><p><strong>h)</strong> For the given list, filter all elements that contain either <code>a</code> or <code>w</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>8)</strong> For the given list, filter all elements that contain either <code>a</code> or <code>w</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 ##### add your solution here
 >>> [w for w in items if re.search() or re.search()]
 ['goal', 'new', 'eat']
-</code></pre><p><strong>i)</strong> For the given list, filter all elements that contain both <code>e</code> and <code>n</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
+</code></pre><p><strong>9)</strong> For the given list, filter all elements that contain both <code>e</code> and <code>n</code>.<pre><code class=language-python>>>> items = ['goal', 'new', 'user', 'sit', 'eat', 'dinner']
 
 ##### add your solution here
 >>> [w for w in items if re.search() and re.search()]
 ['new', 'dinner']
-</code></pre><p><strong>j)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.<pre><code class=language-python>>>> ip = 'start address: 0xA0, func1 address: 0xC0'
+</code></pre><p><strong>10)</strong> For the given string, replace <code>0xA0</code> with <code>0x7F</code> and <code>0xC0</code> with <code>0x1F</code>.<pre><code class=language-python>>>> ip = 'start address: 0xA0, func1 address: 0xC0'
 
 ##### add your solution here
 'start address: 0x7F, func1 address: 0x1F'

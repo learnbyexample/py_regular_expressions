@@ -55,10 +55,10 @@ False
 >>> re.split(r'-', 'apple-85-mango-70', maxsplit=1)
 ['apple', '85-mango-70']
 
-# example with dot metacharacter
+# example with the dot metacharacter
 >>> re.split(r':.:', 'bus:3:car:-:van')
 ['bus', 'car', 'van']
-</code></pre><p>See the <a href=./working-with-matched-portions.html#resplit-with-capture-groups>re.split() with capture groups</a> section for details of how capture groups affect the output of <code>re.split()</code>.<h2 id=greedy-quantifiers><a class=header href=#greedy-quantifiers>Greedy quantifiers</a></h2><p>Quantifiers have functionality like the string repetition operator and the <code>range()</code> function. They can be applied to characters and groupings (and more, as you'll see in later chapters). Apart from the ability to specify exact quantity and bounded range, these can also match unbounded varying quantities. If the input string can satisfy a pattern with varying quantities in multiple ways, you can choose among three types of quantifiers to narrow down possibilities. In this section, <strong>greedy</strong> type of quantifiers is covered.<p>First up, the <code>?</code> metacharacter which quantifies a character or group to match <code>0</code> or <code>1</code> times. In other words, you make that character or group as something to be optionally matched. This leads to a terser RE compared to alternation and grouping.<pre><code class=language-python># same as: r'ear|ar'
+</code></pre><p>See the <a href=./working-with-matched-portions.html#resplit-with-capture-groups>re.split() with capture groups</a> section for details on how capture groups affect the output of <code>re.split()</code>.<h2 id=greedy-quantifiers><a class=header href=#greedy-quantifiers>Greedy quantifiers</a></h2><p>Quantifiers have functionality like the string repetition operator and the <code>range()</code> function. They can be applied to characters and groupings (and more, as you'll see in later chapters). Apart from the ability to specify exact quantity and bounded range, these can also match unbounded varying quantities. If the input string can satisfy a pattern with varying quantities in multiple ways, you can choose among three types of quantifiers to narrow down possibilities. In this section, <strong>greedy</strong> type of quantifiers is covered.<p>First up, the <code>?</code> metacharacter which quantifies a character or group to match <code>0</code> or <code>1</code> times. In other words, you make that character or group as something to be optionally matched. This leads to a terser RE compared to alternation and grouping.<pre><code class=language-python># same as: r'ear|ar'
 >>> re.sub(r'e?ar', 'X', 'far feat flare fear')
 'fX feat flXe fX'
 
@@ -110,7 +110,7 @@ False
 ['3', '25', '42']
 >>> re.split(r'u+', 'cloudy')
 ['clo', 'dy']
-</code></pre><p>You can specify a range of integer numbers, both bounded and unbounded, using the <code>{}</code> metacharacters. There are four ways to use this quantifier as shown below:<div class=table-wrapper><table><thead><tr><th>Pattern<th>Description<tbody><tr><td><code>{m,n}</code><td>match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>match at least <code>m</code> times<tr><td><code>{,n}</code><td>match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>match exactly <code>n</code> times</table></div><pre><code class=language-python>>>> repeats = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
+</code></pre><p>You can specify a range of integer numbers, both bounded and unbounded, using the <code>{}</code> metacharacters. There are four ways to use this quantifier as shown below:<div class=table-wrapper><table><thead><tr><th>Quantifier<th>Description<tbody><tr><td><code>{m,n}</code><td>match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>match at least <code>m</code> times<tr><td><code>{,n}</code><td>match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>match exactly <code>n</code> times</table></div><pre><code class=language-python>>>> repeats = ['abc', 'ac', 'adc', 'abbc', 'xabbbcz', 'bbb', 'bc', 'abbbbbc']
 
 >>> [w for w in repeats if re.search(r'ab{1,4}c', w)]
 ['abc', 'abbc', 'xabbbcz']
@@ -189,7 +189,7 @@ table \< fig \< bat \< box \< cake
 # r':.*?:' will match from ':' to the very next ':'
 >>> re.split(r':.*?:', 'green:3.14:teal::brown:oh!:blue')
 ['green', 'teal', 'brown', 'blue']
-</code></pre><h2 id=possessive-quantifiers><a class=header href=#possessive-quantifiers>Possessive quantifiers</a></h2><p>Before Python 3.11, you had to use alternatives like the third-party <a href=https://pypi.org/project/regex/>regex module</a> for possessive quantifiers. The difference between greedy and possessive quantifiers is that possessive will not backtrack to find a match. In other words, possessive quantifiers will always consume every character that matches the pattern on which it is applied. Syntax wise, you need to append <code>+</code> to greedy quantifiers to make it possessive, similar to adding <code>?</code> for the non-greedy case.<p>Unlike greedy and non-greedy quantifiers, a pattern like <code>:.*+apple</code> will never result in a match because <code>.*+</code> will consume rest of the line, leaving no way to match <code>apple</code>.<pre><code class=language-python>>>> ip = 'fig:mango:pineapple:guava:apples:orange'
+</code></pre><h2 id=possessive-quantifiers><a class=header href=#possessive-quantifiers>Possessive quantifiers</a></h2><p>Before Python 3.11, you had to use alternatives like the third-party <a href=https://pypi.org/project/regex/>regex module</a> for possessive quantifiers. The difference between greedy and possessive quantifiers is that possessive will not backtrack to find a match. In other words, possessive quantifiers will always consume every character that matches the pattern on which it is applied. Syntax wise, you need to append <code>+</code> to greedy quantifiers to make it possessive (similar to adding <code>?</code> for the non-greedy case).<p>Unlike greedy and non-greedy quantifiers, a pattern like <code>:.*+apple</code> will never result in a match because <code>.*+</code> will consume rest of the line, leaving no way to match <code>apple</code>.<pre><code class=language-python>>>> ip = 'fig:mango:pineapple:guava:apples:orange'
 
 >>> re.sub(r':.*+', 'X', ip)
 'figX'
@@ -200,13 +200,13 @@ False
 
 # this solution fails because 0* and \d{3,} can both match leading zeros
 # and greedy quantifiers will give up characters to help the overall RE succeed
+# re.findall gives you all the matched portions as a list of strings
 >>> re.findall(r'0*\d{3,}', numbers)
 ['314', '001', '00984']
 
 # here 0*+ will never give back leading zeros
 >>> re.findall(r'0*+\d{3,}', numbers)
 ['314', '00984']
-
 # workaround if you can only use greedy quantifiers
 >>> re.findall(r'0*[1-9]\d{2,}', numbers)
 ['314', '00984']
@@ -222,25 +222,25 @@ False
 
 # no issues when input string has a match
 >>> timeit('greedy.search(s1)', number=10000, globals=globals())
-0.016464739997900324
+0.005801149000035366
 >>> timeit('possessive.search(s1)', number=10000, globals=globals())
-0.016358205997676123
+0.005724595000174304
 
 # if input doesn't match, greedy version suffers from catastrophic backtracking
-# note that 'number' parameter is reduced to 10 since it takes a long time
+# note that the 'number' parameter is reduced to 10 since it takes a long time
 >>> timeit('greedy.search(s2)', number=10, globals=globals())
-53.71723825200024
+52.67446187199948
 >>> timeit('possessive.search(s2)', number=10, globals=globals())
-0.00019008600065717474
-</code></pre><p><code>(a+|\w+)*:</code> is a silly pattern, since it can be rewritten as <code>\w*:</code> which will not suffer from catastrophic backtracking. But this example shows how quantifiers applied to a group with multiple alternatives using quantifiers can lead to explosive results. More such patterns and mitigation strategies can be found in the following links:<ul><li><a href=https://www.rexegg.com/regex-explosive-quantifiers.html>The Explosive Quantifier Trap</a><li><a href=https://www.regular-expressions.info/catastrophic.html>Runaway Regular Expressions: Catastrophic Backtracking</a><li><a href=https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/>Details of the Cloudflare outage on July 2, 2019</a></ul><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>.</code><td>match any character except the newline character<tr><td>greedy<td>match as much as possible<tr><td><code>?</code><td>greedy quantifier, match <code>0</code> or <code>1</code> times<tr><td><code>*</code><td>greedy quantifier, match <code>0</code> or more times<tr><td><code>+</code><td>greedy quantifier, match <code>1</code> or more times<tr><td><code>{m,n}</code><td>greedy quantifier, match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>greedy quantifier, match at least <code>m</code> times<tr><td><code>{,n}</code><td>greedy quantifier, match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>greedy quantifier, match exactly <code>n</code> times<tr><td><code>pat1.*pat2</code><td>any number of characters between <code>pat1</code> and <code>pat2</code><tr><td><code>pat1.*pat2|pat2.*pat1</code><td>match both <code>pat1</code> and <code>pat2</code> in any order<tr><td>non-greedy<td>append <code>?</code> to greedy quantifiers<tr><td><td>match as minimally as possible<tr><td>possessive<td>append <code>+</code> to greedy quantifiers<tr><td><td>like greedy, but no backtracking<tr><td><code>re.split()</code><td>split a string using regular expressions<tr><td><td><code>re.split(pattern, string, maxsplit=0, flags=0)</code><tr><td><td><code>maxsplit</code> and <code>flags</code> are optional arguments</table></div><p>This chapter introduced the concept of specifying a placeholder instead of fixed string. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide ranges of text. In the coming chapters, you'll learn how to create your own restricted set of placeholder characters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Since the <code>.</code> metacharacter doesn't match the newline character by default, assume that the input strings in the following exercises will not contain newline characters.</blockquote><p><strong>a)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.<pre><code class=language-python>>>> ip = 'a+42//5-c pressure*3+42/5-14256'
+0.00013407200003712205
+</code></pre><p><code>(a+|\w+)*:</code> is a silly pattern, since it can be rewritten as <code>\w*:</code> which will not suffer from catastrophic backtracking. But this example shows how quantifiers applied to a group with multiple alternatives using quantifiers can lead to explosive results. More such patterns and mitigation strategies can be found in the following links:<ul><li><a href=https://www.rexegg.com/regex-explosive-quantifiers.html>The Explosive Quantifier Trap</a><li><a href=https://www.regular-expressions.info/catastrophic.html>Runaway Regular Expressions: Catastrophic Backtracking</a><li><a href=https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/>Details of the Cloudflare outage on July 2, 2019</a></ul><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>.</code><td>match any character except the newline character<tr><td>greedy<td>match as much as possible<tr><td><code>?</code><td>greedy quantifier, match <code>0</code> or <code>1</code> times<tr><td><code>*</code><td>greedy quantifier, match <code>0</code> or more times<tr><td><code>+</code><td>greedy quantifier, match <code>1</code> or more times<tr><td><code>{m,n}</code><td>greedy quantifier, match <code>m</code> to <code>n</code> times<tr><td><code>{m,}</code><td>greedy quantifier, match at least <code>m</code> times<tr><td><code>{,n}</code><td>greedy quantifier, match up to <code>n</code> times (including <code>0</code> times)<tr><td><code>{n}</code><td>greedy quantifier, match exactly <code>n</code> times<tr><td><code>pat1.*pat2</code><td>any number of characters between <code>pat1</code> and <code>pat2</code><tr><td><code>pat1.*pat2|pat2.*pat1</code><td>match both <code>pat1</code> and <code>pat2</code> in any order<tr><td>non-greedy<td>append <code>?</code> to greedy quantifiers<tr><td><td>match as minimally as possible<tr><td>possessive<td>append <code>+</code> to greedy quantifiers<tr><td><td>like greedy, but no backtracking<tr><td><code>re.split()</code><td>split a string using regular expressions<tr><td><td><code>re.split(pattern, string, maxsplit=0, flags=0)</code><tr><td><td><code>maxsplit</code> and <code>flags</code> are optional arguments</table></div><p>This chapter introduced the concept of specifying a placeholder instead of fixed strings. When combined with quantifiers, you've seen a glimpse of how a simple RE can match wide ranges of text. In the coming chapters, you'll learn how to create your own restricted set of placeholder characters.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><blockquote><p><img alt=info src=images/info.svg> Since the <code>.</code> metacharacter doesn't match the newline character by default, assume that the input strings in the following exercises will not contain newline characters.</blockquote><p><strong>1)</strong> Replace <code>42//5</code> or <code>42/5</code> with <code>8</code> for the given input.<pre><code class=language-python>>>> ip = 'a+42//5-c pressure*3+42/5-14256'
 
 >>> re.sub()      ##### add your solution here
 'a+8-c pressure*3+8-14256'
-</code></pre><p><strong>b)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending immediately with at most one more character or <code>le</code>.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
+</code></pre><p><strong>2)</strong> For the list <code>items</code>, filter all elements starting with <code>hand</code> and ending immediately with at most one more character or <code>le</code>.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handled', 'handy', 'unhand', 'hands', 'handle']
 
 ##### add your solution here
 ['hand', 'handy', 'hands', 'handle']
-</code></pre><p><strong>c)</strong> Use <code>re.split()</code> to get the output as shown for the given input strings.<pre><code class=language-python>>>> eqn1 = 'a+42//5-c'
+</code></pre><p><strong>3)</strong> Use <code>re.split()</code> to get the output as shown for the given input strings.<pre><code class=language-python>>>> eqn1 = 'a+42//5-c'
 >>> eqn2 = 'pressure*3+42/5-14256'
 >>> eqn3 = 'r*42-5/3+42///5-42/53+a'
 
@@ -250,7 +250,7 @@ False
 ['pressure*3+', '-14256']
 ##### add your solution here for eqn3
 ['r*42-5/3+42///5-', '3+a']
-</code></pre><p><strong>d)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till the end of the string.<pre><code class=language-python>>>> s1 = 'remove the special meaning of such constructs'
+</code></pre><p><strong>4)</strong> For the given input strings, remove everything from the first occurrence of <code>i</code> till the end of the string.<pre><code class=language-python>>>> s1 = 'remove the special meaning of such constructs'
 >>> s2 = 'characters while constructing'
 >>> s3 = 'input output'
 
@@ -262,7 +262,7 @@ False
 'characters wh'
 >>> pat.sub('', s3)
 ''
-</code></pre><p><strong>e)</strong> For the given strings, construct a RE to get the output as shown below.<pre><code class=language-python>>>> str1 = 'a+b(addition)'
+</code></pre><p><strong>5)</strong> For the given strings, construct a RE to get the output as shown below.<pre><code class=language-python>>>> str1 = 'a+b(addition)'
 >>> str2 = 'a/b(division) + c%d(#modulo)'
 >>> str3 = 'Hi there(greeting). Nice day(a(b)'
 
@@ -274,7 +274,7 @@ False
 'a/b + c%d'
 >>> remove_parentheses.sub('', str3)
 'Hi there. Nice day'
-</code></pre><p><strong>f)</strong> Correct the given RE to get the expected output.<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
+</code></pre><p><strong>6)</strong> Correct the given RE to get the expected output.<pre><code class=language-python>>>> words = 'plink incoming tint winter in caution sentient'
 >>> change = re.compile(r'int|in|ion|ing|inco|inter|ink')
 
 # wrong output
@@ -285,7 +285,7 @@ False
 >>> change = re.compile()       ##### add your solution here
 >>> change.sub('X', words)
 'plX XmX tX wX X cautX sentient'
-</code></pre><p><strong>g)</strong> For the given greedy quantifiers, what would be the equivalent form using the <code>{m,n}</code> representation?<ul><li><code>?</code> is same as<li><code>*</code> is same as<li><code>+</code> is same as</ul><p><strong>h)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — True or False?<p><strong>i)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till the end of the string, provided <code>test</code> isn't at the end of the string.<pre><code class=language-python>>>> s1 = 'this is a Test'
+</code></pre><p><strong>7)</strong> For the given greedy quantifiers, what would be the equivalent form using the <code>{m,n}</code> representation?<ul><li><code>?</code> is same as<li><code>*</code> is same as<li><code>+</code> is same as</ul><p><strong>8)</strong> <code>(a*|b*)</code> is same as <code>(a|b)*</code> — True or False?<p><strong>9)</strong> For the given input strings, remove everything from the first occurrence of <code>test</code> (irrespective of case) till the end of the string, provided <code>test</code> isn't at the end of the string.<pre><code class=language-python>>>> s1 = 'this is a Test'
 >>> s2 = 'always test your RE for corner cases'
 >>> s3 = 'a TEST of skill tests?'
 
@@ -297,23 +297,23 @@ False
 'always '
 >>> pat.sub('', s3)
 'a '
-</code></pre><p><strong>j)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
+</code></pre><p><strong>10)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> and containing <code>e</code> and <code>t</code> in any order.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'a set', 'sets', 'tests', 'site']
 
 ##### add your solution here
 ['subtle', 'sets', 'site']
-</code></pre><p><strong>k)</strong> For the input list <code>words</code>, remove all elements having less than <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
+</code></pre><p><strong>11)</strong> For the input list <code>words</code>, remove all elements having less than <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 'tests', 'site']
 
 ##### add your solution here
 ['sequoia', 'subtle', 'exhibit']
-</code></pre><p><strong>l)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
+</code></pre><p><strong>12)</strong> For the input list <code>words</code>, filter all elements starting with <code>s</code> or <code>t</code> and having a maximum of <code>6</code> characters.<pre><code class=language-python>>>> words = ['sequoia', 'subtle', 'exhibit', 'asset', 'sets', 't set', 'site']
 
 ##### add your solution here
 ['subtle', 'sets', 't set', 'site']
-</code></pre><p><strong>m)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&LTcharacters></code> patterns but not the <code><></code> ones. The expected result was <code>'a 1<> b 2<> c'</code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
+</code></pre><p><strong>13)</strong> Can you reason out why this code results in the output shown? The aim was to remove all <code>&LTcharacters></code> patterns but not the <code><></code> ones. The expected result was <code>'a 1<> b 2<> c'</code>.<pre><code class=language-python>>>> ip = 'a&LTapple> 1<> b&LTbye> 2<> c&LTcat>'
 
 >>> re.sub(r'<.+?>', '', ip)
 'a 1 2'
-</code></pre><p><strong>n)</strong> Use <code>re.split()</code> to get the output as shown below for given input strings.<pre><code class=language-python>>>> s1 = 'go there  //   "this // that"'
+</code></pre><p><strong>14)</strong> Use <code>re.split()</code> to get the output as shown below for given input strings.<pre><code class=language-python>>>> s1 = 'go there  //   "this // that"'
 >>> s2 = 'a//b // c//d e//f // 4//5'
 >>> s3 = '42// hi//bye//see // carefully'
 
@@ -325,7 +325,7 @@ False
 ['a//b', 'c//d e//f // 4//5']
 >>> pat.split()     ##### add your solution here for s3
 ['42// hi//bye//see', 'carefully']
-</code></pre><p><strong>o)</strong> Modify the given regular expression such that it gives the expected results.<pre><code class=language-python>>>> s1 = 'appleabcabcabcapricot'
+</code></pre><p><strong>15)</strong> Modify the given regular expression such that it gives the expected results.<pre><code class=language-python>>>> s1 = 'appleabcabcabcapricot'
 >>> s2 = 'bananabcabcabcdelicious'
 
 # wrong output
@@ -342,7 +342,7 @@ True
 True
 >>> bool(pat.search(s2))
 False
-</code></pre><p><strong>p)</strong> Modify the given regular expression such that it gives the expected result.<pre><code class=language-python>>>> cast = 'dragon-unicorn--centaur---mage----healer'
+</code></pre><p><strong>16)</strong> Modify the given regular expression such that it gives the expected result.<pre><code class=language-python>>>> cast = 'dragon-unicorn--centaur---mage----healer'
 >>> c = '-'
 
 # wrong output

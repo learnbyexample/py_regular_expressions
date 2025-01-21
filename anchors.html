@@ -181,7 +181,7 @@ cat.
 '----- hello -----'
 >>> re.sub(r'\B', ' ', '-----hello-----')
 ' - - - - -h e l l o- - - - - '
-</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\A</code><td>restricts the match to the start of string<tr><td><code>\Z</code><td>restricts the match to the end of string<tr><td><code>re.fullmatch()</code><td>ensures pattern matches the entire input string<tr><td><td><code>re.fullmatch(pattern, string, flags=0)</code><tr><td><code>\n</code><td>line separator, dos-style files may need special attention<tr><td>metacharacter<td>characters with special meaning in RE<tr><td><code>^</code><td>restricts the match to the start of line<tr><td><code>$</code><td>restricts the match to the end of line<tr><td><code>re.MULTILINE</code> or <code>re.M</code><td>flag to treat input as multiline string<tr><td><code>\b</code><td>restricts the match to the start and end of words<tr><td><td>word characters: alphabets, digits, underscore<tr><td><code>\B</code><td>matches wherever <code>\b</code> doesn't match</table></div><p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with other string methods and expressions. Practice, experience and imagination would help you construct creative solutions. In the coming chapters, you'll see examples for anchors in combination with other features.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>a)</strong> Check if the given strings start with <code>be</code>.<pre><code class=language-python>>>> line1 = 'be nice'
+</code></pre><h2 id=cheatsheet-and-summary><a class=header href=#cheatsheet-and-summary>Cheatsheet and Summary</a></h2><div class=table-wrapper><table><thead><tr><th>Note<th>Description<tbody><tr><td><code>\A</code><td>restricts the match to the start of string<tr><td><code>\Z</code><td>restricts the match to the end of string<tr><td><code>re.fullmatch()</code><td>ensures pattern matches the entire input string<tr><td><td><code>re.fullmatch(pattern, string, flags=0)</code><tr><td><code>\n</code><td>line separator, dos-style files may need special attention<tr><td>metacharacter<td>characters with special meaning in RE<tr><td><code>^</code><td>restricts the match to the start of line<tr><td><code>$</code><td>restricts the match to the end of line<tr><td><code>re.MULTILINE</code> or <code>re.M</code><td>flag to treat input as multiline string<tr><td><code>\b</code><td>restricts the match to the start and end of words<tr><td><td>word characters: alphabets, digits, underscore<tr><td><code>\B</code><td>matches wherever <code>\b</code> doesn't match</table></div><p>In this chapter, you've begun to see building blocks of regular expressions and how they can be used in interesting ways. But at the same time, regular expression is but another tool in the land of text processing. Often, you'd get simpler solution by combining regular expressions with other string methods and expressions. Practice, experience and imagination would help you construct creative solutions. In the coming chapters, you'll see examples for anchors in combination with other features.<h2 id=exercises><a class=header href=#exercises>Exercises</a></h2><p><strong>1)</strong> Check if the given strings start with <code>be</code>.<pre><code class=language-python>>>> line1 = 'be nice'
 >>> line2 = '"best!"'
 >>> line3 = 'better?'
 >>> line4 = 'oh no\nbear spotted'
@@ -196,19 +196,19 @@ False
 True
 >>> bool(pat.search(line4))
 False
-</code></pre><p><strong>b)</strong> For the given input string, change only the whole word <code>red</code> to <code>brown</code>.<pre><code class=language-python>>>> words = 'bred red spread credible red.'
+</code></pre><p><strong>2)</strong> For the given input string, change only the whole word <code>red</code> to <code>brown</code>.<pre><code class=language-python>>>> words = 'bred red spread credible red.'
 
 >>> re.sub()     ##### add your solution here
 'bred brown spread credible brown.'
-</code></pre><p><strong>c)</strong> For the given input list, filter all elements that contain <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
+</code></pre><p><strong>3)</strong> For the given input list, filter all elements that contain <code>42</code> surrounded by word characters.<pre><code class=language-python>>>> words = ['hi42bye', 'nice1423', 'bad42', 'cool_42a', '42fake', '_42_']
 
 >>> [w for w in words if re.search()]   ##### add your solution here
 ['hi42bye', 'nice1423', 'cool_42a', '_42_']
-</code></pre><p><strong>d)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
+</code></pre><p><strong>4)</strong> For the given input list, filter all elements that start with <code>den</code> or end with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\n', 'dent']
 
 >>> [e for e in items if ]        ##### add your solution here
 ['lovely', '2 lonely', 'dent']
-</code></pre><p><strong>e)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of a line.<pre><code class=language-python>>>> para = '''\
+</code></pre><p><strong>5)</strong> For the given input string, change whole word <code>mall</code> to <code>1234</code> only if it is at the start of a line.<pre><code class=language-python>>>> para = '''\
 ... (mall) call ball pall
 ... ball fall wall tall
 ... mall call ball pall
@@ -223,19 +223,19 @@ ball fall wall tall
 wall mall ball fall
 mallet wallet malls
 1234:call:ball:pall
-</code></pre><p><strong>f)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
+</code></pre><p><strong>6)</strong> For the given list, filter all elements having a line starting with <code>den</code> or ending with <code>ly</code>.<pre><code class=language-python>>>> items = ['lovely', '1\ndentist', '2 lonely', 'eden', 'fly\nfar', 'dent']
 
 ##### add your solution here
 ['lovely', '1\ndentist', '2 lonely', 'fly\nfar', 'dent']
-</code></pre><p><strong>g)</strong> For the given input list, filter all whole elements <code>12\nthree</code> irrespective of case.<pre><code class=language-python>>>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
+</code></pre><p><strong>7)</strong> For the given input list, filter all whole elements <code>12\nthree</code> irrespective of case.<pre><code class=language-python>>>> items = ['12\nthree\n', '12\nThree', '12\nthree\n4', '12\nthree']
 
 ##### add your solution here
 ['12\nThree', '12\nthree']
-</code></pre><p><strong>h)</strong> For the given input list, replace <code>hand</code> with <code>X</code> for all elements that start with <code>hand</code> followed by at least one word character.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
+</code></pre><p><strong>8)</strong> For the given input list, replace <code>hand</code> with <code>X</code> for all elements that start with <code>hand</code> followed by at least one word character.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'un-handed', 'handle', 'hand-2']
 
 ##### add your solution here
 ['Xed', 'hand', 'Xy', 'un-handed', 'Xle', 'hand-2']
-</code></pre><p><strong>i)</strong> For the given input list, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
+</code></pre><p><strong>9)</strong> For the given input list, filter all elements starting with <code>h</code>. Additionally, replace <code>e</code> with <code>X</code> for these filtered elements.<pre><code class=language-python>>>> items = ['handed', 'hand', 'handy', 'unhanded', 'handle', 'hand-2']
 
 ##### add your solution here
 ['handXd', 'hand', 'handy', 'handlX', 'hand-2']

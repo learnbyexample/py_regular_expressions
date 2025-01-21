@@ -32,9 +32,9 @@
 True
 
 >>> bool(re.search(r'\c', 'cat\tdog'))
-re.error: bad escape \c at position 0
+re.PatternError: bad escape \c at position 0
 </code></pre><p>Only octal escapes are allowed inside raw strings in the replacement section. If you are otherwise not using the <code>\</code> character, then using normal strings in replacement section is preferred as it will also allow hexadecimal and unicode escapes.<pre><code class=language-python>>>> re.sub(r',', r'\x7c', '1,2')
-re.error: bad escape \x at position 0
+re.PatternError: bad escape \x at position 0
 
 >>> re.sub(r',', r'\174', '1,2')
 '1|2'
@@ -70,7 +70,8 @@ apple
 ['1,2,3,', '4,5,6,']
 </code></pre><h2 id=converting-re-to-regex-module><a class=header href=#converting-re-to-regex-module>Converting re to regex module</a></h2><p>When using the <code>flags</code> option with the <code>regex</code> module, the constants should also be used from the <code>regex</code> module.<pre><code class=language-python># Using re module, assuming you don't yet know that this feature isn't supported
 >>> re.findall(r'[[:word:]]+', 'fox:αλεπού,eagle:αετός', flags=re.A)
-&LTstdin>:1: FutureWarning: Possible nested set at position 1
+&LTpython-input-1>:1: FutureWarning: Possible nested set at position 1
+  re.findall(r'[[:word:]]+', 'fox:αλεπού,eagle:αετός', flags=re.A)
 []
 
 # Convert re to regex: oops, output is still wrong
@@ -84,7 +85,7 @@ apple
 # or, use inline flags to entirely avoid such shenanigans
 >>> regex.findall(r'(?a)[[:word:]]+', 'fox:αλεπού,eagle:αετός')
 ['fox', 'eagle']
-</code></pre><h2 id=optional-arguments-syntax><a class=header href=#optional-arguments-syntax>Optional arguments syntax</a></h2><p>Speaking of <code>flags</code>, you should always pass them as a keyword argument. Using it as positional argument leads to a common mistake between <code>re.findall()</code> and <code>re.sub()</code> functions due to difference in placement. Their syntax, as per the docs, is shown below:<blockquote><p><code>re.findall(pattern, string, flags=0)</code><p><code>re.sub(pattern, repl, string, count=0, flags=0)</code></blockquote><p>Here's an example:<pre><code class=language-python>>>> +re.I
+</code></pre><h2 id=optional-arguments-syntax><a class=header href=#optional-arguments-syntax>Optional arguments syntax</a></h2><p>Speaking of <code>flags</code>, you should always pass them as a keyword argument. Using it as a positional argument leads to a common mistake between <code>re.findall()</code> and <code>re.sub()</code> functions due to difference in their placement. Their syntax, as per the docs, is shown below:<blockquote><p><code>re.findall(pattern, string, flags=0)</code><p><code>re.sub(pattern, repl, string, count=0, flags=0)</code></blockquote><p>Here's an example:<pre><code class=language-python>>>> +re.I
 2
 
 # works because flags is the only optional argument for findall
@@ -102,4 +103,10 @@ apple
 # alternatively, you can use inline flags to avoid this problem altogether
 >>> re.sub(r'(?i)key', r'(\g&LT0>)', 'KEY portkey oKey Keyed')
 '(KEY) port(key) o(Key) (Key)ed'
+</code></pre><p>Note that Python version 3.13 will give you a <code>DeprecationWarning</code> and it is planned to make them as keyword-only parameters in future versions.<pre><code class=language-python>$ python3.13
+>>> import re
+>>> re.sub(r'key', r'(\g&LT0>)', 'KEY portkey oKey Keyed', re.I)
+&LTpython-input-1>:1: DeprecationWarning: 'count' is passed as positional argument
+  re.sub(r'key', r'(\g&LT0>)', 'KEY portkey oKey Keyed', re.I)
+'KEY port(key) oKey Keyed'
 </code></pre><h2 id=summary><a class=header href=#summary>Summary</a></h2><p>Hope you have found Python regular expressions an interesting topic to learn. Sooner or later, you'll need to use them if your project has text processing tasks. At the same time, knowing when to use normal string methods and knowing when to reach for other text parsing modules like <code>json</code> is important. Happy coding!</main><nav aria-label="Page navigation"class=nav-wrapper><a aria-label="Previous chapter"class="mobile-nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=regex-module.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="mobile-nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=further-reading.html rel=next> <i class="fa fa-angle-right"></i> </a><div style="clear: both"></div></nav></div></div><nav aria-label="Page navigation"class=nav-wide-wrapper><a aria-label="Previous chapter"class="nav-chapters previous"title="Previous chapter"aria-keyshortcuts=Left href=regex-module.html rel=prev> <i class="fa fa-angle-left"></i> </a><a aria-label="Next chapter"class="nav-chapters next"title="Next chapter"aria-keyshortcuts=Right href=further-reading.html rel=next> <i class="fa fa-angle-right"></i> </a></nav></div><script>window.playground_copyable = true;</script><script charset=utf-8 src=elasticlunr.min.js></script><script charset=utf-8 src=mark.min.js></script><script charset=utf-8 src=searcher.js></script><script charset=utf-8 src=clipboard.min.js></script><script charset=utf-8 src=highlight.js></script><script charset=utf-8 src=book.js></script><script src=sidebar.js></script>
